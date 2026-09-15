@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+
+# Gradle's output. The APK that ships is copied into the site repo; rebuilding
+# it here is one command, so there is no reason to carry the intermediates.
+android/build/
+android/app/build/
+android/local.properties
+android/.gradle/
+.gradle/
+
+# Signing material never goes in here.
+android/keystore.properties
+*.keystore
+*.jks

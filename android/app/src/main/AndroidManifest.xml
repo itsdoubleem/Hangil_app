@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android 11 and later hide other packages from an app unless it says
+         what it is looking for. Without this, TextToSpeech.getEngines() returns
+         only the system default, so Samsung's Korean voices were invisible on a
+         phone that had them installed and the app quietly used Google's embedded
+         voice with no way to change it. This asks only "which speech engines are
+         there" — nothing about any other app on the phone. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        <!-- Naming the engines as well as the intent. Measured on a Galaxy
+             S24: even with both declared, TextToSpeech.getEngines() still
+             returns only the system default, though the shell resolves both
+             services — so One UI does not hand Samsung's engine to third-party
+             apps through enumeration. Binding one BY NAME is a separate question
+             and is what MainActivity actually does, which is why these entries
+             stay. An engine missing here is still usable: make it the phone's
+             default under Settings › General management › Text-to-speech. -->
+        <package android:name="com.samsung.SMT" />
+        <package android:name="com.google.android.tts" />
+    </queries>
+
+    <!-- No INTERNET permission, deliberately. Everything the app needs is inside
+         the APK, and the website says your progress cannot be sent anywhere.
+         Leaving this permission out is what makes that enforceable by Android
+         rather than a promise: with it absent the system will not let the app
+         open a socket, whatever the code says. -->
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="false"
+        android:hardwareAccelerated="true"
+        android:usesCleartextTraffic="false"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Hangil"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode|smallestScreenSize|screenLayout"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

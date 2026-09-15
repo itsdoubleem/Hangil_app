@@ -1,0 +1,9 @@
+<resources>
+    <!-- DayNight so the system bars follow the phone's theme; the page paints its
+         own background either way. -->
+    <style name="Theme.Hangil" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@color/window_bg</item>
+    </style>
+</resources>

@@ -1,0 +1,771 @@
+{
+  "note": "Original practice items written for this app, in the question shapes the EPS-TOPIK paper uses, including the picture items — the drawings are original line art in data/pictures.json and are not copied from any book or app. Where the real paper prints a photograph of a sign, these items print the sign's own words, because the words are what is being tested.",
+  "drills": [
+    {
+      "id": "d01",
+      "title": "Signs and notices",
+      "titleKo": "표지판",
+      "section": "reading",
+      "blurb": "The paper shows a sign and asks what it means. These are the signs that are actually on the wall.",
+      "items": [
+        {
+          "display": "출입 금지",
+          "stem": "이 표지의 뜻으로 맞는 것을 고르십시오.",
+          "options": [
+            "들어가면 안 됩니다",
+            "빨리 들어가십시오",
+            "문을 닫으십시오",
+            "여기에서 기다리십시오"
+          ],
+          "a": 0,
+          "why": "출입 is entry and 금지 is prohibition."
+        },
+        {
+          "display": "안전모 착용",
+          "stem": "이 표지의 뜻으로 맞는 것을 고르십시오.",
+          "options": [
+            "안전모를 써야 합니다",
+            "안전모를 벗어야 합니다",
+            "안전모를 팝니다",
+            "안전모가 없습니다"
+          ],
+          "a": 0,
+          "why": "착용 means wearing or putting on."
+        },
+        {
+          "display": "미끄럼 주의",
+          "stem": "이 표지의 뜻으로 맞는 것을 고르십시오.",
+          "options": [
+            "바닥이 미끄러우니 조심하십시오",
+            "바닥을 닦으십시오",
+            "여기는 계단입니다",
+            "신발을 벗으십시오"
+          ],
+          "a": 0,
+          "why": "미끄럼 is slipping, 주의 is caution."
+        },
+        {
+          "display": "비상구",
+          "stem": "이 표지가 가리키는 곳은 어디입니까?",
+          "options": [
+            "급할 때 나가는 문",
+            "화장실",
+            "사무실",
+            "식당"
+          ],
+          "a": 0,
+          "why": "비상 is emergency, 구 is an exit or opening."
+        },
+        {
+          "display": "고장",
+          "stem": "이 표지가 붙어 있는 기계는 어떻습니까?",
+          "options": [
+            "쓸 수 없습니다",
+            "새 기계입니다",
+            "청소했습니다",
+            "수리가 끝났습니다"
+          ],
+          "a": 0,
+          "why": "고장 means the machine has broken down."
+        },
+        {
+          "display": "관계자 외 출입 금지",
+          "stem": "누가 들어갈 수 있습니까?",
+          "options": [
+            "일하는 사람만",
+            "누구나",
+            "손님만",
+            "아무도 못 들어갑니다"
+          ],
+          "a": 0,
+          "why": "관계자 is a person concerned with the work; 외 is other than."
+        },
+        {
+          "display": "화기 엄금",
+          "stem": "이곳에서 하면 안 되는 것은 무엇입니까?",
+          "options": [
+            "담배를 피우는 것",
+            "물을 마시는 것",
+            "이야기하는 것",
+            "앉는 것"
+          ],
+          "a": 0,
+          "why": "화기 is fire or flame, 엄금 is a strict prohibition."
+        },
+        {
+          "display": "안전 제일",
+          "stem": "이 말의 뜻으로 맞는 것을 고르십시오.",
+          "options": [
+            "안전이 가장 중요합니다",
+            "빨리 일해야 합니다",
+            "한 사람만 들어갑니다",
+            "첫 번째 문입니다"
+          ],
+          "a": 0,
+          "why": "제일 means first, in the sense of most important."
+        }
+      ]
+    },
+    {
+      "id": "d02",
+      "title": "The right word",
+      "titleKo": "알맞은 단어",
+      "section": "reading",
+      "blurb": "A sentence with one word missing. The exam uses this to test whether you know the workplace vocabulary, not the grammar.",
+      "items": [
+        {
+          "stem": "기계가 ( ) 나서 오늘은 작업을 못 합니다.",
+          "options": [
+            "고장",
+            "청소",
+            "검사",
+            "포장"
+          ],
+          "a": 0,
+          "why": "고장이 나다 is the set phrase for breaking down."
+        },
+        {
+          "stem": "작업장에 들어갈 때는 ( )를 써야 합니다.",
+          "options": [
+            "안전모",
+            "신발장",
+            "사무실",
+            "점심"
+          ],
+          "a": 0,
+          "why": "안전모 is the safety helmet; the verb 쓰다 confirms it is worn on the head."
+        },
+        {
+          "stem": "이번 달 ( )이 아직 통장에 안 들어왔습니다.",
+          "options": [
+            "월급",
+            "휴가",
+            "교육",
+            "주소"
+          ],
+          "a": 0,
+          "why": "월급 is the monthly wage, and 통장 is a bank account."
+        },
+        {
+          "stem": "허리를 다쳐서 ( )에 갔습니다.",
+          "options": [
+            "병원",
+            "은행",
+            "공장",
+            "시장"
+          ],
+          "a": 0,
+          "why": "An injury goes to 병원."
+        },
+        {
+          "stem": "오늘 일이 많아서 ( )을 두 시간 했습니다.",
+          "options": [
+            "잔업",
+            "휴일",
+            "지각",
+            "퇴근"
+          ],
+          "a": 0,
+          "why": "잔업 is overtime."
+        },
+        {
+          "stem": "쓰레기는 ( )해서 버리십시오.",
+          "options": [
+            "분리수거",
+            "포장",
+            "수리",
+            "신청"
+          ],
+          "a": 0,
+          "why": "분리수거 is separating waste for collection."
+        },
+        {
+          "stem": "계약서에 ( )하기 전에 꼭 읽어 보십시오.",
+          "options": [
+            "사인",
+            "출근",
+            "운동",
+            "전화"
+          ],
+          "a": 0,
+          "why": "사인하다 is to sign."
+        },
+        {
+          "stem": "기계를 만지기 전에 ( )을 끄십시오.",
+          "options": [
+            "전원",
+            "장갑",
+            "의자",
+            "서류"
+          ],
+          "a": 0,
+          "why": "전원 is the power supply; 끄다 is to switch off."
+        }
+      ]
+    },
+    {
+      "id": "d03",
+      "title": "What it means",
+      "titleKo": "같은 뜻 고르기",
+      "section": "reading",
+      "blurb": "One sentence, then four sentences. Pick the one that means the same thing. This is where careless reading costs marks.",
+      "items": [
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n내일은 쉬는 날입니다.",
+          "options": [
+            "내일은 일을 하지 않습니다",
+            "내일은 일이 많습니다",
+            "내일 일을 시작합니다",
+            "내일까지 일합니다"
+          ],
+          "a": 0,
+          "why": "쉬는 날 is a day of rest — no work."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n월급이 아직 안 나왔습니다.",
+          "options": [
+            "월급을 아직 받지 못했습니다",
+            "월급을 벌써 받았습니다",
+            "월급이 올랐습니다",
+            "월급을 안 받습니다"
+          ],
+          "a": 0,
+          "why": "나오다 here means to be paid out; 아직 안 means not yet."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n이 기계는 위험하니까 혼자 쓰지 마십시오.",
+          "options": [
+            "다른 사람과 같이 써야 합니다",
+            "아무도 쓸 수 없습니다",
+            "혼자 써도 괜찮습니다",
+            "기계를 고쳐야 합니다"
+          ],
+          "a": 0,
+          "why": "Do not use it alone implies someone else must be there."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n비가 와서 오늘 작업이 취소됐습니다.",
+          "options": [
+            "오늘은 일을 안 합니다",
+            "오늘 일이 빨리 끝납니다",
+            "비가 오면 일합니다",
+            "작업이 내일 시작합니다"
+          ],
+          "a": 0,
+          "why": "취소되다 means to be cancelled."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n점심시간은 12시부터 1시까지입니다.",
+          "options": [
+            "한 시간 동안 점심을 먹습니다",
+            "12시에 일이 끝납니다",
+            "1시에 점심이 시작됩니다",
+            "점심시간이 두 시간입니다"
+          ],
+          "a": 0,
+          "why": "From 12 to 1 is one hour."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n안전화를 신지 않으면 작업장에 들어갈 수 없습니다.",
+          "options": [
+            "안전화를 신어야 들어갈 수 있습니다",
+            "안전화는 필요 없습니다",
+            "작업장에 못 들어갑니다",
+            "안전화를 작업장에서 줍니다"
+          ],
+          "a": 0,
+          "why": "A negative condition restated as a positive requirement."
+        }
+      ]
+    },
+    {
+      "id": "d04",
+      "title": "Answering back",
+      "titleKo": "알맞은 대답",
+      "section": "listening",
+      "blurb": "You hear a line. Choose the natural reply. Tap the speaker to hear it again — you get two plays in the real exam.",
+      "items": [
+        {
+          "lines": [
+            {
+              "spk": "남자",
+              "text": "오늘 잔업 할 수 있어요?"
+            }
+          ],
+          "stem": "이어지는 말로 알맞은 것을 고르십시오.",
+          "options": [
+            "네, 할 수 있어요.",
+            "네, 잔업이에요.",
+            "아니요, 잔업이 좋아요.",
+            "네, 잔업을 했어요."
+          ],
+          "a": 0,
+          "why": "The question asks about ability, so the answer uses 할 수 있어요."
+        },
+        {
+          "lines": [
+            {
+              "spk": "여자",
+              "text": "어디가 아프세요?"
+            }
+          ],
+          "stem": "이어지는 말로 알맞은 것을 고르십시오.",
+          "options": [
+            "허리가 아파요.",
+            "병원이 멀어요.",
+            "약을 먹었어요.",
+            "의사가 좋아요."
+          ],
+          "a": 0,
+          "why": "어디가 아프세요 asks which part hurts."
+        },
+        {
+          "lines": [
+            {
+              "spk": "남자",
+              "text": "이 서류 언제까지 내야 돼요?"
+            }
+          ],
+          "stem": "이어지는 말로 알맞은 것을 고르십시오.",
+          "options": [
+            "금요일까지요.",
+            "사무실에서요.",
+            "제가 썼어요.",
+            "두 장이에요."
+          ],
+          "a": 0,
+          "why": "언제까지 asks for a deadline."
+        },
+        {
+          "lines": [
+            {
+              "spk": "여자",
+              "text": "한국에 온 지 얼마나 됐어요?"
+            }
+          ],
+          "stem": "이어지는 말로 알맞은 것을 고르십시오.",
+          "options": [
+            "2년 됐어요.",
+            "비행기로 왔어요.",
+            "서울에 있어요.",
+            "일하러 왔어요."
+          ],
+          "a": 0,
+          "why": "온 지 얼마나 됐어요 asks how long since you came."
+        },
+        {
+          "lines": [
+            {
+              "spk": "남자",
+              "text": "이거 어떻게 쓰는지 아세요?"
+            }
+          ],
+          "stem": "이어지는 말로 알맞은 것을 고르십시오.",
+          "options": [
+            "아니요, 잘 모르겠어요.",
+            "네, 여기 있어요.",
+            "아니요, 안 샀어요.",
+            "네, 제 거예요."
+          ],
+          "a": 0,
+          "why": "The question is whether you know how to use it."
+        },
+        {
+          "lines": [
+            {
+              "spk": "여자",
+              "text": "죄송한데 다시 한번 말씀해 주시겠어요?"
+            }
+          ],
+          "stem": "이어지는 말로 알맞은 것을 고르십시오.",
+          "options": [
+            "네, 천천히 말할게요.",
+            "네, 다 끝났어요.",
+            "아니요, 안 왔어요.",
+            "네, 여기 있습니다."
+          ],
+          "a": 0,
+          "why": "They asked you to repeat, so you agree to say it again."
+        }
+      ]
+    },
+    {
+      "id": "d05",
+      "title": "Listening to a conversation",
+      "titleKo": "대화 듣기",
+      "section": "listening",
+      "blurb": "Two people talk, then a question. The trick is that the answer is rarely a word you hear — you have to work it out.",
+      "items": [
+        {
+          "lines": [
+            {
+              "spk": "여자",
+              "text": "이 기계 어떻게 켜요?"
+            },
+            {
+              "spk": "남자",
+              "text": "먼저 이 빨간 버튼을 누르고, 소리가 나면 초록 버튼을 누르세요."
+            }
+          ],
+          "stem": "여자가 제일 먼저 해야 하는 것은 무엇입니까?",
+          "options": [
+            "빨간 버튼을 누릅니다",
+            "초록 버튼을 누릅니다",
+            "소리를 듣습니다",
+            "기계를 끕니다"
+          ],
+          "a": 0,
+          "why": "먼저 marks the first step."
+        },
+        {
+          "lines": [
+            {
+              "spk": "남자",
+              "text": "내일 몇 시까지 오면 돼요?"
+            },
+            {
+              "spk": "여자",
+              "text": "평소보다 한 시간 일찍요. 여덟 시에 시작하니까요."
+            }
+          ],
+          "stem": "남자는 내일 몇 시에 와야 합니까?",
+          "options": [
+            "일곱 시",
+            "여덟 시",
+            "아홉 시",
+            "여섯 시"
+          ],
+          "a": 0,
+          "why": "Work starts at eight and he must come an hour earlier."
+        },
+        {
+          "lines": [
+            {
+              "spk": "여자",
+              "text": "손을 다쳤는데 어떻게 해야 돼요?"
+            },
+            {
+              "spk": "남자",
+              "text": "먼저 반장님께 말하세요. 그리고 병원에 가야 돼요. 회사에서 산재 처리를 해 줄 거예요."
+            }
+          ],
+          "stem": "여자가 제일 먼저 해야 할 일은 무엇입니까?",
+          "options": [
+            "반장님께 말합니다",
+            "병원에 갑니다",
+            "산재를 신청합니다",
+            "약을 삽니다"
+          ],
+          "a": 0,
+          "why": "먼저 again — the team leader comes before the hospital."
+        },
+        {
+          "lines": [
+            {
+              "spk": "남자",
+              "text": "이번 달 월급명세서 받으셨어요?"
+            },
+            {
+              "spk": "여자",
+              "text": "네, 받았는데 야간 수당이 안 들어간 것 같아요. 내일 사무실에 물어보려고요."
+            }
+          ],
+          "stem": "여자는 내일 무엇을 할 것입니까?",
+          "options": [
+            "사무실에 물어봅니다",
+            "야간 근무를 합니다",
+            "월급을 받습니다",
+            "명세서를 만듭니다"
+          ],
+          "a": 0,
+          "why": "물어보려고요 states her intention for tomorrow."
+        },
+        {
+          "lines": [
+            {
+              "spk": "여자",
+              "text": "주말에 뭐 하실 거예요?"
+            },
+            {
+              "spk": "남자",
+              "text": "원래 친구를 만나기로 했는데, 갑자기 회사에서 나오라고 해서요."
+            }
+          ],
+          "stem": "남자는 주말에 무엇을 합니까?",
+          "options": [
+            "회사에 갑니다",
+            "친구를 만납니다",
+            "집에서 쉽니다",
+            "고향에 갑니다"
+          ],
+          "a": 0,
+          "why": "The plan changed — the company told him to come in."
+        },
+        {
+          "lines": [
+            {
+              "spk": "남자",
+              "text": "기숙사 방에 물이 안 나와요."
+            },
+            {
+              "spk": "여자",
+              "text": "아, 오늘 오전에 수도 공사가 있어서요. 두 시쯤이면 다시 나올 거예요."
+            }
+          ],
+          "stem": "물은 언제 다시 나옵니까?",
+          "options": [
+            "오후 두 시쯤",
+            "오전 두 시쯤",
+            "내일 아침",
+            "지금 나옵니다"
+          ],
+          "a": 0,
+          "why": "The work is in the morning and water returns around two."
+        }
+      ]
+    },
+    {
+      "id": "d06",
+      "title": "Reading a notice",
+      "titleKo": "안내문 읽기",
+      "section": "reading",
+      "blurb": "A short notice, then two questions about it. These are the longest items on the paper and the ones most people run out of time on.",
+      "items": [
+        {
+          "passage": "[안전 교육 안내]\n\n일시: 3월 15일 (금) 오후 2시 ~ 4시\n장소: 3층 회의실\n대상: 전 직원 (신입 사원 필수)\n\n※ 교육에 참석하지 못하는 사람은 미리 사무실에 알려 주시기 바랍니다.\n※ 교육 시간은 근무 시간으로 인정됩니다.",
+          "stem": "교육은 몇 시간 동안 합니까?",
+          "options": [
+            "두 시간",
+            "세 시간",
+            "네 시간",
+            "한 시간"
+          ],
+          "a": 0,
+          "why": "2pm to 4pm is two hours."
+        },
+        {
+          "passage": "[안전 교육 안내]\n\n일시: 3월 15일 (금) 오후 2시 ~ 4시\n장소: 3층 회의실\n대상: 전 직원 (신입 사원 필수)\n\n※ 교육에 참석하지 못하는 사람은 미리 사무실에 알려 주시기 바랍니다.\n※ 교육 시간은 근무 시간으로 인정됩니다.",
+          "stem": "이 안내문의 내용과 같은 것을 고르십시오.",
+          "options": [
+            "못 가는 사람은 사무실에 미리 말해야 합니다",
+            "교육은 쉬는 시간에 합니다",
+            "신입 사원은 안 가도 됩니다",
+            "교육은 회사 밖에서 합니다"
+          ],
+          "a": 0,
+          "why": "미리 사무실에 알려 주시기 바랍니다 says exactly that."
+        },
+        {
+          "passage": "[기숙사 이용 안내]\n\n1. 세탁기는 오전 6시부터 오후 10시까지 사용할 수 있습니다.\n2. 쓰레기는 분리수거해서 1층에 버려 주십시오.\n3. 방에서 요리하면 안 됩니다. 주방을 이용해 주십시오.\n4. 문제가 있으면 관리실(1층)로 오십시오.",
+          "stem": "기숙사에서 할 수 없는 것은 무엇입니까?",
+          "options": [
+            "방에서 요리하기",
+            "1층에 쓰레기 버리기",
+            "저녁 8시에 세탁하기",
+            "관리실에 가기"
+          ],
+          "a": 0,
+          "why": "Rule 3 forbids cooking in the room."
+        },
+        {
+          "passage": "[기숙사 이용 안내]\n\n1. 세탁기는 오전 6시부터 오후 10시까지 사용할 수 있습니다.\n2. 쓰레기는 분리수거해서 1층에 버려 주십시오.\n3. 방에서 요리하면 안 됩니다. 주방을 이용해 주십시오.\n4. 문제가 있으면 관리실(1층)로 오십시오.",
+          "stem": "밤 11시에 세탁기를 쓸 수 있습니까?",
+          "options": [
+            "쓸 수 없습니다",
+            "쓸 수 있습니다",
+            "관리실에 물어봐야 합니다",
+            "주말에만 쓸 수 있습니다"
+          ],
+          "a": 0,
+          "why": "The washing machine is available until 10pm."
+        }
+      ]
+    },
+    {
+      "id": "d07",
+      "title": "Pictures and words",
+      "titleKo": "그림과 단어",
+      "section": "reading",
+      "blurb": "A drawing, and four words. This is the first thing the paper asks you, and it is pure vocabulary — you either know the word or you do not.",
+      "items": [
+        {
+          "pic": "helmet",
+          "stem": "그림을 보고 알맞은 것을 고르십시오.",
+          "options": [
+            "안전모",
+            "장갑",
+            "마스크",
+            "안전화"
+          ],
+          "a": 0,
+          "why": "안전모 — the helmet worn on a work site."
+        },
+        {
+          "pic": "boots",
+          "stem": "그림을 보고 알맞은 것을 고르십시오.",
+          "options": [
+            "안전화",
+            "안전모",
+            "조끼",
+            "사다리"
+          ],
+          "a": 0,
+          "why": "안전화 — safety shoes."
+        },
+        {
+          "pic": "forklift",
+          "stem": "그림을 보고 알맞은 것을 고르십시오.",
+          "options": [
+            "지게차",
+            "트랙터",
+            "버스",
+            "자전거"
+          ],
+          "a": 0,
+          "why": "지게차 — the forklift that moves pallets."
+        },
+        {
+          "pic": "ladder",
+          "stem": "그림을 보고 알맞은 것을 고르십시오.",
+          "options": [
+            "사다리",
+            "계단",
+            "의자",
+            "선반"
+          ],
+          "a": 0,
+          "why": "사다리 — a ladder. 계단 would be stairs."
+        },
+        {
+          "pic": "extinguisher",
+          "stem": "그림을 보고 알맞은 것을 고르십시오.",
+          "options": [
+            "소화기",
+            "소화전",
+            "산소통",
+            "물통"
+          ],
+          "a": 0,
+          "why": "소화기 — the fire extinguisher."
+        },
+        {
+          "pic": "hospital",
+          "stem": "그림을 보고 알맞은 곳을 고르십시오.",
+          "options": [
+            "병원",
+            "은행",
+            "식당",
+            "우체국"
+          ],
+          "a": 0,
+          "why": "The cross marks 병원."
+        },
+        {
+          "pic": "liftbox",
+          "stem": "그림을 보고 알맞은 것을 고르십시오.",
+          "options": [
+            "상자를 듭니다",
+            "상자를 던집니다",
+            "상자를 엽니다",
+            "상자를 셉니다"
+          ],
+          "a": 0,
+          "why": "들다 is to lift."
+        },
+        {
+          "pic": "washhands",
+          "stem": "그림을 보고 알맞은 것을 고르십시오.",
+          "options": [
+            "손을 씻습니다",
+            "이를 닦습니다",
+            "물을 마십니다",
+            "청소를 합니다"
+          ],
+          "a": 0,
+          "why": "씻다 is to wash."
+        }
+      ]
+    },
+    {
+      "id": "d08",
+      "title": "Listen and choose the picture",
+      "titleKo": "듣고 그림 고르기",
+      "section": "listening",
+      "blurb": "You hear one sentence and choose which of four drawings it describes. Nothing is written down, so the word has to be in your ear, not your eye.",
+      "items": [
+        {
+          "audio": "안전모를 쓰세요.",
+          "stem": "잘 듣고 알맞은 그림을 고르십시오.",
+          "picOptions": [
+            "helmet",
+            "gloves",
+            "mask",
+            "goggles"
+          ],
+          "a": 0,
+          "why": "안전모 is the helmet. 쓰다 is used for things worn on the head."
+        },
+        {
+          "audio": "장갑을 끼고 일하십시오.",
+          "stem": "잘 듣고 알맞은 그림을 고르십시오.",
+          "picOptions": [
+            "gloves",
+            "boots",
+            "vest",
+            "mask"
+          ],
+          "a": 0,
+          "why": "장갑 — gloves. 끼다 is the verb for gloves and rings."
+        },
+        {
+          "audio": "이 상자를 옮겨 주세요.",
+          "stem": "잘 듣고 알맞은 그림을 고르십시오.",
+          "picOptions": [
+            "box",
+            "cart",
+            "broom",
+            "ladder"
+          ],
+          "a": 0,
+          "why": "상자 — a box."
+        },
+        {
+          "audio": "머리가 아파요.",
+          "stem": "잘 듣고 알맞은 그림을 고르십시오.",
+          "picOptions": [
+            "headache",
+            "backpain",
+            "hurthand",
+            "washhands"
+          ],
+          "a": 0,
+          "why": "머리 is the head."
+        },
+        {
+          "audio": "바닥이 미끄러우니까 조심하세요.",
+          "stem": "잘 듣고 알맞은 그림을 고르십시오.",
+          "picOptions": [
+            "slippery",
+            "noentry",
+            "nosmoking",
+            "exit"
+          ],
+          "a": 0,
+          "why": "미끄럽다 is to be slippery."
+        },
+        {
+          "audio": "여기에서 담배를 피우면 안 됩니다.",
+          "stem": "잘 듣고 알맞은 그림을 고르십시오.",
+          "picOptions": [
+            "nosmoking",
+            "noentry",
+            "slippery",
+            "extinguisher"
+          ],
+          "a": 0,
+          "why": "담배를 피우다 is to smoke, so the no-smoking sign."
+        }
+      ]
+    }
+  ]
+}

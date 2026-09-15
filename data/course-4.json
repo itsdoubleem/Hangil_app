@@ -1,0 +1,255 @@
+{
+  "units": [
+    {
+      "id": "g19", "level": "L4", "order": 19,
+      "title": "Turning a whole sentence into an adjective",
+      "form": "(으)ㄴ / 는 / (으)ㄹ",
+      "goal": "Say the man who fixed the machine, not just the man — the single structure that separates beginner Korean from adult Korean.",
+      "explain": [
+        "English hangs a clause behind the noun with who, which or that. Korean has no such word. It puts the whole clause in front of the noun instead and marks the verb with a modifier ending. 어제 만난 사람 — the person I met yesterday, literally yesterday met person.",
+        "Which ending you use carries the tense, and this is the whole of it: 는 for something happening now, (으)ㄴ for something finished, (으)ㄹ for something not yet done. So 일하는 사람 is the person who is working, 일한 사람 is the person who worked, 일할 사람 is the person who will work.",
+        "Descriptive verbs behave differently: they take (으)ㄴ for the plain present. 좋은 사람 is a good person, not a person who was good. This is why 있다 and 없다 quietly side with action verbs — 맛있는 음식, never 맛있은 음식.",
+        "Once this clicks, sentences stop being lists. You can load as much as you like in front of a noun, and Korean writing does exactly that: 어제 반장님이 고쳐 준 기계 — the machine the team leader fixed for me yesterday."
+      ],
+      "table": {
+        "head": ["Verb type", "Past", "Present", "Future"],
+        "rows": [
+          ["action — 먹다", "먹은", "먹는", "먹을"],
+          ["action — 가다", "간", "가는", "갈"],
+          ["descriptive — 좋다", "— (좋았던)", "좋은", "좋을"],
+          ["있다 / 없다", "있었던", "있는 / 없는", "있을 / 없을"],
+          ["noun — 학생", "학생이었던", "학생인", "학생일"]
+        ]
+      },
+      "examples": [
+        { "ko": "어제 만난 사람이 반장님이에요.", "en": "The person I met yesterday is the team leader." },
+        { "ko": "제가 일하는 공장은 안산에 있어요.", "en": "The factory I work at is in Ansan." },
+        { "ko": "내일 만날 사람이 누구예요?", "en": "Who is the person you're meeting tomorrow?" },
+        { "ko": "한국에 온 지 3년 된 친구가 통역해 줬어요.", "en": "A friend who has been in Korea three years interpreted for me." },
+        { "ko": "사인하기 전에 읽어야 하는 서류가 많아요.", "en": "There are a lot of documents you have to read before signing." }
+      ],
+      "notes": [
+        "(으)ㄴ 지 counts elapsed time since something happened: 온 지 3년 됐어요, it has been three years since I came. The 지 here is not the 지 of 지 않다.",
+        "던 and 았/었던 describe something habitual or interrupted in the past — 자주 가던 식당, the restaurant I used to go to often. It carries a flavour of no longer.",
+        "A long modifier is read back to front. Find the noun at the end first, then work leftwards. Korean legal and official writing is built almost entirely this way, which is why contracts feel impossible before this unit and merely tedious after it."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "어제 ___ 사람이 반장님이에요.", "qEn": "The person I met yesterday is the team leader.", "options": ["만난", "만나는", "만날", "만나던"], "a": 0, "why": "It is finished, so the past modifier 만난." },
+        { "type": "choice", "q": "제가 ___ 공장은 안산에 있어요.", "qEn": "The factory I work at is in Ansan.", "options": ["일하는", "일한", "일할", "일하던"], "a": 0, "why": "An ongoing action takes 는." },
+        { "type": "choice", "q": "___ 음식이에요.", "qEn": "It's delicious food.", "options": ["맛있는", "맛있은", "맛있을", "맛있던"], "a": 0, "why": "있다 and 없다 take 는 even though they feel descriptive." },
+        { "type": "build", "qEn": "Who is the person you're meeting tomorrow?", "tiles": ["내일", "만날", "사람이", "누구예요"], "a": ["내일", "만날", "사람이", "누구예요"] },
+        { "type": "listen", "ko": "사인하기 전에 읽어야 하는 서류가 많아요.", "q": "What did you hear?", "options": ["There are a lot of documents to read before signing.", "Sign the documents after reading them.", "I signed a lot of documents.", "There aren't many documents left."], "a": 0 },
+        { "type": "match", "pairs": [["일하는 사람", "the person working"], ["일한 사람", "the person who worked"], ["일할 사람", "the person who will work"], ["일하던 사람", "the person who used to work"]] }
+      ]
+    },
+    {
+      "id": "g20", "level": "L4", "order": 20,
+      "title": "Becoming, and being made to happen",
+      "form": "아/어지다 · 게 되다",
+      "goal": "Describe change over time, and say a thing happened without naming who caused it.",
+      "explain": [
+        "아/어지다 attaches to a descriptive verb and turns a state into a change: 좋다 is good, 좋아지다 is to get better. 바빠지다 to get busy, 익숙해지다 to become used to something. It is how Korean says the comparative arc that English gets from more and more.",
+        "게 되다 attaches to an action verb and says something came about — usually through circumstances rather than your own decision. 한국에 오게 됐어요 means I ended up coming to Korea. The plain 한국에 왔어요 states the fact; 오게 됐어요 hints that events arranged it.",
+        "That difference is culturally loaded and worth using deliberately. Announcing 회사를 그만두게 됐어요 — I've come to be leaving the company — presents the decision as the result of circumstances rather than a challenge to anyone. Koreans reach for it constantly when the news is awkward."
+      ],
+      "table": {
+        "head": ["Base", "Becomes", "Meaning"],
+        "rows": [
+          ["좋다 — good", "좋아지다", "to get better"],
+          ["바쁘다 — busy", "바빠지다", "to get busier"],
+          ["익숙하다 — familiar", "익숙해지다", "to get used to"],
+          ["알다 — to know", "알게 되다", "to come to know"],
+          ["일하다 — to work", "일하게 되다", "to end up working"]
+        ]
+      },
+      "examples": [
+        { "ko": "한국말이 조금씩 늘어서 일이 쉬워졌어요.", "en": "My Korean improved bit by bit, so the work got easier." },
+        { "ko": "처음에는 힘들었는데 이제 익숙해졌어요.", "en": "It was hard at first, but I've got used to it now." },
+        { "ko": "친구 소개로 이 회사에서 일하게 됐어요.", "en": "Through a friend's introduction I ended up working at this company." },
+        { "ko": "다음 달에 부서를 옮기게 됐습니다.", "en": "I'll be moving department next month." },
+        { "ko": "사고 후에 안전 교육이 많아졌어요.", "en": "After the accident there is much more safety training." }
+      ],
+      "notes": [
+        "지다 also builds the plain passive on some action verbs: 만들어지다 to be made, 켜지다 to come on, 정해지다 to be decided. 회의 시간이 정해졌어요 — the meeting time has been set, with nobody blamed for setting it.",
+        "아/어지다 needs a descriptive verb. 가지다 is not the passive of 가다; it is a different word meaning to have."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "처음에는 힘들었는데 이제 ___.", "qEn": "It was hard at first, but I've got used to it now.", "options": ["익숙해졌어요", "익숙했어요", "익숙하게 됐어요", "익숙해요"], "a": 0, "why": "익숙하다 is descriptive, so 아/어지다 gives 익숙해지다." },
+        { "type": "choice", "q": "친구 소개로 이 회사에서 ___.", "qEn": "I ended up working at this company.", "options": ["일하게 됐어요", "일해졌어요", "일했어요", "일하고 싶어요"], "a": 0, "why": "게 되다 attaches to action verbs and says circumstances brought it about." },
+        { "type": "build", "qEn": "The meeting time has been set.", "tiles": ["회의", "시간이", "정해졌어요"], "a": ["회의", "시간이", "정해졌어요"] },
+        { "type": "listen", "ko": "사고 후에 안전 교육이 많아졌어요.", "q": "What did you hear?", "options": ["After the accident there is more safety training.", "There was an accident during safety training.", "Safety training was cancelled after the accident.", "The accident happened because of training."], "a": 0 },
+        { "type": "choice", "q": "You are telling your team you are leaving, and want it to sound like circumstances, not a complaint. Which?", "options": ["회사를 그만두게 됐어요", "회사를 그만둬요", "회사를 그만둘 거예요", "회사를 그만두고 싶어요"], "a": 0, "why": "게 되다 presents the decision as something that came about." },
+        { "type": "match", "pairs": [["좋아졌어요", "it got better"], ["바빠졌어요", "it got busier"], ["알게 됐어요", "I came to know"], ["정해졌어요", "it was decided"]] }
+      ]
+    },
+    {
+      "id": "g21", "level": "L4", "order": 21,
+      "title": "Reporting what somebody said",
+      "form": "다고 / 냐고 / 자고 / 라고 하다",
+      "goal": "Pass on a message accurately — the skill a workplace actually tests you on.",
+      "explain": [
+        "Korean has no he said that. It reshapes the quoted verb instead, and the ending you choose depends on what kind of sentence was originally said.",
+        "A statement takes 다고: 내일 온다고 했어요, he said he's coming tomorrow. A question takes 냐고: 언제 오냐고 물었어요, she asked when I'm coming. A suggestion takes 자고: 같이 가자고 했어요, he suggested we go together. An order takes 라고: 쉬라고 했어요, the doctor told me to rest.",
+        "The statement form is the fiddly one, because it changes shape with the verb type. Action verbs take ㄴ다고 or 는다고 — 간다고, 먹는다고. Descriptive verbs take plain 다고 — 춥다고. Nouns take (이)라고 — 학생이라고. The past, for all of them, is 았/었다고.",
+        "In speech the whole thing contracts: 온대요 for 온다고 해요, 가재요 for 가자고 해요, 뭐래요 for 뭐라고 해요. You will hear the short forms long before you hear the full ones."
+      ],
+      "table": {
+        "head": ["Original sentence", "Ending", "Reported"],
+        "rows": [
+          ["갑니다 — a statement, action verb", "ㄴ다고 / 는다고", "간다고 했어요"],
+          ["춥습니다 — a statement, descriptive", "다고", "춥다고 했어요"],
+          ["학생입니다 — a noun", "(이)라고", "학생이라고 했어요"],
+          ["언제 와요? — a question", "냐고", "언제 오냐고 물었어요"],
+          ["같이 가요 — a suggestion", "자고", "같이 가자고 했어요"],
+          ["쉬세요 — an order", "(으)라고", "쉬라고 했어요"]
+        ]
+      },
+      "examples": [
+        { "ko": "반장님이 내일 일곱 시까지 오라고 했어요.", "en": "The team leader said to come by seven tomorrow." },
+        { "ko": "의사가 일주일 쉬라고 했습니다.", "en": "The doctor told me to rest for a week." },
+        { "ko": "회사에서 잔업이 없다고 했는데 갑자기 하라고 해요.", "en": "The company said there'd be no overtime, and now suddenly they're telling us to do it." },
+        { "ko": "친구가 같이 센터에 가자고 했어요.", "en": "My friend suggested we go to the support centre together." },
+        { "ko": "사장님이 언제 고향에 가냐고 물어봤어요.", "en": "The director asked when I'm going home." }
+      ],
+      "notes": [
+        "고 하다 can swap 하다 for a more exact verb: 물어보다 to ask, 말하다 to say, 부탁하다 to request, 약속하다 to promise. 쉬라고 부탁했어요 is I asked them to let me rest.",
+        "This pattern is what you need to explain a dispute to anyone official. 회사가 이렇게 말했습니다 — the company said this — followed by 그런데 실제로는 — but in reality — is the shape of every complaint ever made.",
+        "다고 also stands alone to protest something the listener seems not to have heard: 아니라고요, I said no."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "의사가 일주일 ___ 했습니다.", "qEn": "The doctor told me to rest for a week.", "options": ["쉬라고", "쉰다고", "쉬냐고", "쉬자고"], "a": 0, "why": "It was an instruction, so (으)라고." },
+        { "type": "choice", "q": "친구가 같이 센터에 ___ 했어요.", "qEn": "My friend suggested we go together.", "options": ["가자고", "간다고", "가라고", "가냐고"], "a": 0, "why": "A suggestion takes 자고." },
+        { "type": "choice", "q": "사장님이 언제 고향에 ___ 물어봤어요.", "qEn": "The director asked when I'm going home.", "options": ["가냐고", "간다고", "가라고", "가자고"], "a": 0, "why": "A question takes 냐고." },
+        { "type": "build", "qEn": "The team leader said to come by seven tomorrow.", "tiles": ["반장님이", "내일", "일곱", "시까지", "오라고", "했어요"], "a": ["반장님이", "내일", "일곱", "시까지", "오라고", "했어요"] },
+        { "type": "listen", "ko": "회사에서 잔업이 없다고 했는데 갑자기 하라고 해요.", "q": "What is the complaint?", "options": ["They said no overtime, now they're ordering it.", "They want more overtime pay.", "Overtime was cancelled today.", "The worker refused overtime."], "a": 0 },
+        { "type": "match", "pairs": [["간다고 했어요", "said they're going"], ["가라고 했어요", "told me to go"], ["가자고 했어요", "suggested going"], ["가냐고 했어요", "asked if I'm going"]] }
+      ]
+    },
+    {
+      "id": "g22", "level": "L4", "order": 22,
+      "title": "Where the feeling lives",
+      "form": "네요 · 군요 · 잖아요 · 더라고요",
+      "goal": "Sound like a person rather than a textbook, by putting your stance into the ending.",
+      "explain": [
+        "These four endings add nothing to the facts. They tell the listener how you came by the information and what you want them to do with it — and Korean carries that in the ending where English carries it in tone of voice.",
+        "네요 is noticing, right now: 비가 오네요, oh, it's raining. Use it when you have just registered something, and it makes you sound present and engaged. Overuse is the commonest tic of intermediate learners, but underuse makes you sound flat.",
+        "잖아요 means as you know — it appeals to something you believe you both already share. 어제 말했잖아요, I told you yesterday, remember. Handle it carefully: with a senior person it can land as you should have known this, which is why textbooks avoid teaching it and real conversation is full of it.",
+        "더라고요 reports something you personally witnessed and found notable: 가 보니까 사람이 진짜 많더라고요 — I went, and there really were a lot of people. The 더 means I saw this myself, so you cannot use it about your own feelings in the same way."
+      ],
+      "table": {
+        "head": ["Ending", "What it signals", "Example"],
+        "rows": [
+          ["네요", "I have just noticed", "한국말 잘하시네요"],
+          ["군요 / 구나", "now I understand", "그래서 안 왔군요"],
+          ["잖아요", "as you already know", "어제 말했잖아요"],
+          ["더라고요", "I saw it myself", "생각보다 춥더라고요"],
+          ["지요 / 죠", "we agree, don't we", "오늘 덥죠?"]
+        ]
+      },
+      "examples": [
+        { "ko": "한국말 진짜 잘하시네요.", "en": "Your Korean is really good — I hadn't realised." },
+        { "ko": "아, 그래서 어제 안 왔군요.", "en": "Ah, so that's why you didn't come yesterday." },
+        { "ko": "제가 어제 말했잖아요.", "en": "I told you yesterday, remember." },
+        { "ko": "그 식당 가 봤는데 생각보다 비싸더라고요.", "en": "I tried that restaurant — it was pricier than I expected." },
+        { "ko": "오늘 진짜 춥죠?", "en": "It's really cold today, isn't it?" }
+      ],
+      "notes": [
+        "네요 on someone's ability is a standard compliment and is expected: 잘하시네요. Answer it with 아니에요, not 감사합니다 — Korean deflects compliments rather than accepting them.",
+        "잖아요 to a superior is risky. To a colleague it is warm; to 사장님 it can sound like you are correcting them. When unsure, use 지요 instead.",
+        "Do not stack them. 비가 오네요잖아요 is not a sentence. One stance ending per sentence."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "한국말 진짜 ___.", "qEn": "Your Korean is really good — said on noticing it.", "options": ["잘하시네요", "잘하시잖아요", "잘하시더라고요", "잘하십니다"], "a": 0, "why": "네요 is the ending for something just noticed." },
+        { "type": "choice", "q": "그 식당 가 봤는데 생각보다 ___.", "qEn": "I tried it — it was pricier than I expected.", "options": ["비싸더라고요", "비싸네요", "비싸잖아요", "비싸요"], "a": 0, "why": "더라고요 reports what you witnessed yourself." },
+        { "type": "choice", "q": "Which would be risky to say to your 사장님?", "options": ["어제 말했잖아요", "어제 말했어요", "어제 말씀드렸습니다", "어제 말했는데요"], "a": 0, "why": "잖아요 implies they should already know it, which can read as a correction." },
+        { "type": "build", "qEn": "Ah, so that's why you didn't come yesterday.", "tiles": ["아", "그래서", "어제", "안", "왔군요"], "a": ["아", "그래서", "어제", "안", "왔군요"] },
+        { "type": "listen", "ko": "오늘 진짜 춥죠?", "q": "What is the speaker doing?", "options": ["Inviting agreement about the cold", "Asking what the temperature is", "Complaining they are ill", "Saying it will get cold"], "a": 0 },
+        { "type": "match", "pairs": [["네요", "I've just noticed"], ["군요", "now I see"], ["잖아요", "as you know"], ["더라고요", "I saw it myself"]] }
+      ]
+    },
+    {
+      "id": "g23", "level": "L4", "order": 23,
+      "title": "Hedging, conceding and regretting",
+      "form": "기는 하지만 · (으)ㄹ 텐데 · 았/었더라면",
+      "goal": "Disagree without a confrontation, and talk about what did not happen.",
+      "explain": [
+        "기는 하다 concedes a point before you take it back: 좋기는 한데 너무 비싸요 — it is good, I grant you, but it's too expensive. The 기는 contracts to 긴 in speech. This is the polite skeleton of every disagreement in Korean: agree with the part you can, then turn.",
+        "(으)ㄹ 텐데 is a supposition with a consequence hanging off it — it must be so, and that's a problem. 지금 가면 늦을 텐데요, if you go now you'll be late, won't you. Ending on 텐데요 leaves the worry with the listener instead of instructing them, which is why it sounds concerned rather than bossy.",
+        "았/었더라면 is the regret form: if only it had been otherwise. It pairs with (으)ㄹ 걸 그랬어요 or 았/었을 텐데. 미리 알았더라면 계약을 안 했을 텐데요 — if I had known beforehand, I wouldn't have signed. This is the grammar of hindsight, and it turns up in every account of something that went wrong."
+      ],
+      "table": {
+        "head": ["Pattern", "Force", "Example"],
+        "rows": [
+          ["기는 하지만 / 긴 한데", "I concede, but", "힘들긴 한데 할 수 있어요"],
+          ["(으)ㄹ 텐데", "it must be, and that matters", "피곤할 텐데 쉬세요"],
+          ["았/었더라면", "if only it had been", "알았더라면"],
+          ["(으)ㄹ 걸 그랬어요", "I should have", "미리 물어볼 걸 그랬어요"],
+          ["(으)ㄹ 뻔했어요", "very nearly happened", "다칠 뻔했어요"]
+        ]
+      },
+      "examples": [
+        { "ko": "일이 힘들긴 한데 사람들이 좋아서 괜찮아요.", "en": "The work is hard, I'll admit, but the people are good so it's fine." },
+        { "ko": "하루 종일 서 있었으니까 피곤할 텐데 좀 쉬세요.", "en": "You must be tired after standing all day — get some rest." },
+        { "ko": "계약서를 미리 읽었더라면 이런 일은 없었을 텐데요.", "en": "If I had read the contract beforehand, this wouldn't have happened." },
+        { "ko": "그때 물어볼 걸 그랬어요.", "en": "I should have asked at the time." },
+        { "ko": "기계에 손이 들어갈 뻔했어요.", "en": "My hand nearly went into the machine." }
+      ],
+      "notes": [
+        "(으)ㄹ 뻔했다 is always about a near miss that did not happen. 다쳤어요 means you were hurt; 다칠 뻔했어요 means you were not, and it was close.",
+        "텐데 is 터이다 plus 는데 — a bound noun meaning an expected circumstance. Knowing that makes the shape stop looking arbitrary.",
+        "Regret forms are emotionally heavy in Korean and are not used lightly in conversation with people you barely know. In writing — a statement, a complaint, an account of an accident — they are exactly right."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "일이 ___ 사람들이 좋아서 괜찮아요.", "qEn": "The work is hard, I'll admit, but the people are good.", "options": ["힘들긴 한데", "힘들어서", "힘들면", "힘들고"], "a": 0, "why": "기는 하다 concedes the point before turning it." },
+        { "type": "choice", "q": "피곤___ 좀 쉬세요.", "qEn": "You must be tired — get some rest.", "options": ["할 텐데", "하면", "해서", "하고"], "a": 0, "why": "(으)ㄹ 텐데 supposes a state and leaves the concern with the listener." },
+        { "type": "choice", "q": "계약서를 미리 ___ 이런 일은 없었을 텐데요.", "qEn": "If I had read the contract beforehand…", "options": ["읽었더라면", "읽으면", "읽어서", "읽는데"], "a": 0, "why": "았/었더라면 is the counterfactual — it did not happen." },
+        { "type": "build", "qEn": "My hand nearly went into the machine.", "tiles": ["기계에", "손이", "들어갈", "뻔했어요"], "a": ["기계에", "손이", "들어갈", "뻔했어요"] },
+        { "type": "listen", "ko": "그때 물어볼 걸 그랬어요.", "q": "What is the speaker saying?", "options": ["I should have asked at the time.", "I asked at the time.", "I'll ask next time.", "Nobody asked me."], "a": 0 },
+        { "type": "match", "pairs": [["긴 한데", "granted, but"], ["ㄹ 텐데", "it must be, and…"], ["었더라면", "if only it had"], ["ㄹ 뻔했어요", "nearly happened"]] }
+      ]
+    },
+    {
+      "id": "g24", "level": "L4", "order": 24,
+      "title": "Written Korean, and the documents that matter",
+      "form": "ㄴ다 · 되다 · 에 따라",
+      "goal": "Read a contract, a notice and an official letter without translating every third word.",
+      "explain": [
+        "Written Korean does not use 요 or 습니다. It uses the plain style: 한다, 있다, 이다. A notice on the wall says 금지한다, not 금지해요. This is not rudeness — it is the register of anything addressed to nobody in particular.",
+        "Official writing leans on 되다 and the passive, because it deliberately avoids naming who acts. 근로계약은 1년으로 한다 — the contract is set at one year. Nobody set it; it simply is. Recognising this is most of what makes legal Korean readable.",
+        "A handful of connectives carry the logic of formal documents, and they repeat endlessly: 에 따라 in accordance with, 에 대하여 regarding, 경우에는 in the case of, 이 경우 in this case, 다만 provided that, 단 except that. Learn these six and a contract's skeleton becomes visible even where the vocabulary does not.",
+        "The most useful habit for a document is structural, not lexical: find the verb at the very end of the sentence first, then read backwards to see what is attached to it. A Korean sentence tells you what happens last."
+      ],
+      "table": {
+        "head": ["Spoken", "Written / official", "Meaning"],
+        "rows": [
+          ["해요", "한다", "does"],
+          ["돼요", "된다", "becomes / is done"],
+          ["하면 안 돼요", "하여서는 아니 된다", "must not"],
+          ["…에 대해서", "…에 대하여", "regarding"],
+          ["…때문에", "…에 따라 / …로 인하여", "in accordance with / due to"],
+          ["그런데", "다만 / 단", "provided that"]
+        ]
+      },
+      "examples": [
+        { "ko": "근로시간은 1일 8시간, 1주 40시간으로 한다.", "en": "Working hours shall be 8 hours a day and 40 hours a week." },
+        { "ko": "연장근로에 대하여는 통상임금의 100분의 50 이상을 가산하여 지급한다.", "en": "For overtime work, at least 50 percent of the ordinary wage shall be added and paid." },
+        { "ko": "사용자는 근로계약서를 서면으로 교부하여야 한다.", "en": "The employer shall issue the employment contract in writing." },
+        { "ko": "임금은 매월 1회 이상 일정한 날짜에 지급되어야 한다.", "en": "Wages must be paid on a fixed date at least once a month." },
+        { "ko": "다만, 당사자 간의 합의가 있는 경우에는 그러하지 아니하다.", "en": "Provided that this shall not apply where there is agreement between the parties." }
+      ],
+      "notes": [
+        "이상 means at least, 이하 at most, 초과 more than, 미만 less than. In a contract or a wage calculation these four words decide money, and they are not interchangeable.",
+        "그러하지 아니하다 is the fossilised legal way of saying this does not apply. When you meet it at the end of a 다만 clause, an exception has just been made.",
+        "If a document affects your pay or your visa, the grammar is not the last step. 고용노동부 고객상담센터 ☎ 1350 has interpreters and is free, and a 외국인노동자지원센터 will read a contract with you. Understanding the sentence is worth a great deal; it is not the same as advice."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "A notice reads 출입을 금지한다. What does it mean?", "options": ["Entry is prohibited", "Please enter here", "Entry is permitted with a pass", "The entrance has moved"], "a": 0, "why": "금지하다 is to prohibit, written in the plain style used for notices." },
+        { "type": "choice", "q": "근로시간은 1주 40시간으로 ___.", "qEn": "Working hours shall be 40 hours a week. (written style)", "options": ["한다", "해요", "합니다", "할게요"], "a": 0, "why": "Documents use the plain 한다 style." },
+        { "type": "choice", "q": "In a contract, what does 다만 introduce?", "options": ["An exception to what was just said", "A summary of the whole clause", "The date of signing", "The employer's name"], "a": 0, "why": "다만 marks a proviso — the rule above does not fully apply." },
+        { "type": "choice", "q": "Your contract says 1일 8시간 이상. Does eight hours exactly count?", "options": ["Yes — 이상 includes the number itself", "No — 이상 means strictly more", "Only with agreement", "It depends on the employer"], "a": 0, "why": "이상 is at least, inclusive. 초과 would be strictly more." },
+        { "type": "build", "qEn": "The employer shall issue the contract in writing.", "tiles": ["사용자는", "근로계약서를", "서면으로", "교부하여야", "한다"], "a": ["사용자는", "근로계약서를", "서면으로", "교부하여야", "한다"] },
+        { "type": "match", "pairs": [["이상", "at least, inclusive"], ["이하", "at most, inclusive"], ["초과", "more than, exclusive"], ["미만", "less than, exclusive"]] }
+      ]
+    }
+  ]
+}

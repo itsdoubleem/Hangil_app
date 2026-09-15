@@ -1,0 +1,246 @@
+{
+  "units": [
+    {
+      "id": "g13", "level": "L3", "order": 13,
+      "title": "Can and cannot",
+      "form": "(으)ㄹ 수 있다 / 없다",
+      "goal": "Say what you are able to do — and refuse something without sounding rude.",
+      "explain": [
+        "수 is a noun meaning a way, a means. So (으)ㄹ 수 있어요 is literally there is a way to do it, and (으)ㄹ 수 없어요 is there is no way. Vowel stem takes ㄹ 수, consonant stem takes 을 수.",
+        "못 in front of the verb says the same thing in one syllable — 못 가요, I can't go. The two are interchangeable most of the time, but 못 puts the blame on circumstances, while (으)ㄹ 수 없다 is flatter and more formal. On a form or a notice you will see the long one.",
+        "This pattern is how you say no at work without a flat refusal. 오늘은 잔업 할 수 없어요 states an inability; 오늘은 잔업 안 해요 states a decision. The first is heard as a reason, the second as a stance."
+      ],
+      "table": {
+        "head": ["Meaning", "Pattern", "Example"],
+        "rows": [
+          ["can, vowel stem", "ㄹ 수 있어요", "갈 수 있어요"],
+          ["can, consonant stem", "을 수 있어요", "먹을 수 있어요"],
+          ["cannot", "(으)ㄹ 수 없어요", "일할 수 없어요"],
+          ["cannot, short spoken form", "못 + verb", "못 해요"],
+          ["cannot, noun + 하다", "noun + 못 해요", "일 못 해요"]
+        ]
+      },
+      "examples": [
+        { "ko": "한국어를 조금 할 수 있어요.", "en": "I can speak a little Korean." },
+        { "ko": "지게차를 운전할 수 있어요.", "en": "I can drive a forklift." },
+        { "ko": "허리가 아파서 무거운 것을 들 수 없어요.", "en": "My back hurts, so I can't lift heavy things." },
+        { "ko": "오늘은 잔업 못 해요.", "en": "I can't do overtime today." },
+        { "ko": "이 서류는 혼자 쓸 수 없어요.", "en": "I can't fill in this form on my own." }
+      ],
+      "notes": [
+        "잘 하다 is a different idea — doing something well, not being able to do it at all. 한국어를 잘 못해요 means I'm not good at Korean, which is softer and more honest than 한국어를 할 수 없어요.",
+        "못 attaches to 하다 verbs the same way 안 does: 일 못 해요, not 못 일해요."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "지게차를 ___.", "qEn": "I can drive a forklift.", "options": ["운전할 수 있어요", "운전 수 있어요", "운전을 수 있어요", "운전할 수 해요"], "a": 0, "why": "하다 stem 운전하 ends in a vowel, so ㄹ 수 있어요." },
+        { "type": "choice", "q": "무거운 것을 ___.", "qEn": "I can't lift heavy things.", "options": ["들 수 없어요", "들을 수 없어요", "듣 수 없어요", "들 수 안 해요"], "a": 0, "why": "들다 ends in ㄹ, and the ㄹ carries straight into 수." },
+        { "type": "build", "qEn": "I can't do overtime today.", "tiles": ["오늘은", "잔업", "못", "해요"], "a": ["오늘은", "잔업", "못", "해요"] },
+        { "type": "listen", "ko": "허리가 아파서 무거운 것을 들 수 없어요.", "q": "What did you hear?", "options": ["My back hurts so I can't lift heavy things.", "My back hurts when I lift heavy things.", "Lifting heavy things is my job.", "My back is fine now."], "a": 0 },
+        { "type": "choice", "q": "Your Korean is basic and you want to say so modestly. Which is best?", "options": ["한국어를 잘 못해요", "한국어를 할 수 없어요", "한국어를 안 해요", "한국어가 없어요"], "a": 0, "why": "잘 못해요 says not very good at it. 할 수 없어요 claims you cannot speak it at all." },
+        { "type": "match", "pairs": [["할 수 있어요", "I can do it"], ["할 수 없어요", "I can't do it"], ["못 해요", "can't, something stops me"], ["잘 못해요", "I'm not good at it"]] }
+      ]
+    },
+    {
+      "id": "g14", "level": "L3", "order": 14,
+      "title": "Must, and must not",
+      "form": "아/어야 되다 · (으)면 안 되다",
+      "goal": "Read a safety rule and understand exactly what it requires of you.",
+      "explain": [
+        "아/어야 되다 is have to. Build the 아/어 form, then add 야 되다: 가야 돼요 I have to go, 써야 돼요 I have to wear it. 하다 gives 해야 돼요.",
+        "(으)면 안 되다 is must not. Literally if you do it, it does not become — Korean states a prohibition as a consequence rather than a command. 들어가면 안 돼요, you must not go in.",
+        "되다 and 하다 are both used here — 해야 돼요 and 해야 해요 mean the same thing. 돼요 is the spoken default; 해요 turns up more in writing. On safety notices you will usually meet the formal 해야 합니다 and 하면 안 됩니다."
+      ],
+      "table": {
+        "head": ["Meaning", "Pattern", "Example"],
+        "rows": [
+          ["must, have to", "아/어야 돼요", "안전화를 신어야 돼요"],
+          ["must not", "(으)면 안 돼요", "여기서 담배를 피우면 안 돼요"],
+          ["don't have to", "지 않아도 돼요", "안 와도 돼요"],
+          ["it's allowed", "아/어도 돼요", "먼저 가도 돼요"],
+          ["formal, on a sign", "해야 합니다 / 하면 안 됩니다", "착용해야 합니다"]
+        ]
+      },
+      "examples": [
+        { "ko": "작업장에서는 안전화를 신어야 돼요.", "en": "You have to wear safety shoes in the work area." },
+        { "ko": "기계를 만지기 전에 전원을 꺼야 돼요.", "en": "You have to switch the power off before touching the machine." },
+        { "ko": "여기서 담배를 피우면 안 돼요.", "en": "You must not smoke here." },
+        { "ko": "안전모를 안 쓰면 안 돼요.", "en": "You must not go without a helmet on." },
+        { "ko": "내일은 안 나와도 돼요.", "en": "You don't have to come in tomorrow." }
+      ],
+      "notes": [
+        "아/어도 돼요? is how you ask permission: 화장실 가도 돼요? — may I go to the toilet? The answer is 네, 돼요 or 아니요, 안 돼요.",
+        "안 하면 안 돼요 is a double negative that means you must do it. It is common and it is not a mistake — read it as it won't do if you don't."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "작업장에서는 안전화를 ___.", "qEn": "You have to wear safety shoes in the work area.", "options": ["신어야 돼요", "신면 안 돼요", "신어도 돼요", "신고 싶어요"], "a": 0, "why": "아/어야 되다 is the obligation pattern." },
+        { "type": "choice", "q": "여기서 담배를 ___.", "qEn": "You must not smoke here.", "options": ["피우면 안 돼요", "피워야 돼요", "피워도 돼요", "안 피워도 돼요"], "a": 0, "why": "(으)면 안 되다 is the prohibition." },
+        { "type": "build", "qEn": "May I go to the toilet?", "tiles": ["화장실", "가도", "돼요"], "a": ["화장실", "가도", "돼요"] },
+        { "type": "listen", "ko": "기계를 만지기 전에 전원을 꺼야 돼요.", "q": "What is the rule?", "options": ["Switch the power off before touching the machine.", "Touch the machine before switching it on.", "Don't switch the machine off.", "The power is off, so touch the machine."], "a": 0 },
+        { "type": "choice", "q": "A sign reads 안전모를 착용해야 합니다. What does it require?", "options": ["You must wear a helmet", "You may remove your helmet", "Helmets are provided", "No helmets beyond this point"], "a": 0, "why": "착용하다 is to wear or put on; 해야 합니다 is the formal must." },
+        { "type": "match", "pairs": [["해야 돼요", "have to do it"], ["하면 안 돼요", "must not do it"], ["해도 돼요", "may do it"], ["안 해도 돼요", "don't have to do it"]] }
+      ]
+    },
+    {
+      "id": "g15", "level": "L3", "order": 15,
+      "title": "If, and when",
+      "form": "(으)면",
+      "goal": "Set a condition — for a request, a warning, or a plan.",
+      "explain": [
+        "(으)면 covers both if and whenever. Vowel stem takes 면, consonant stem takes 으면. Korean does not separate the two meanings the way English does, and the difference almost never matters in practice.",
+        "The clause with 면 always comes first. 시간이 있으면 도와주세요 — if you have time, please help. Reversing them is not an option in Korean word order.",
+        "면 is also the polite way to make a request into a suggestion, which is its real value at work. 괜찮으면 내일 이야기해도 돼요? — if it's all right, could we talk tomorrow? You have asked for something without demanding it."
+      ],
+      "table": {
+        "head": ["Stem", "Add", "Example"],
+        "rows": [
+          ["ends in a vowel — 가다", "면", "가면"],
+          ["ends in a consonant — 먹다", "으면", "먹으면"],
+          ["ends in ㄹ — 살다", "면", "살면"],
+          ["past — 했다", "았/었으면", "했으면"],
+          ["noun — 학생", "(이)면", "학생이면"]
+        ]
+      },
+      "examples": [
+        { "ko": "시간이 있으면 좀 도와주세요.", "en": "If you have time, please help me." },
+        { "ko": "아프면 병원에 가세요.", "en": "If you're ill, go to the hospital." },
+        { "ko": "이 버튼을 누르면 기계가 멈춰요.", "en": "If you press this button, the machine stops." },
+        { "ko": "월급이 안 들어오면 어떻게 해요?", "en": "What do I do if my wages don't come in?" },
+        { "ko": "한국어를 매일 공부하면 늘어요.", "en": "If you study Korean every day, you improve." }
+      ],
+      "notes": [
+        "만약 or 혹시 in front flags the if clearly — 만약 늦으면, if by any chance I'm late. Neither is necessary; both make the condition sound more hypothetical.",
+        "Do not confuse 면 with 서. 아파서 쉬어요 means I'm resting because I'm ill — a real reason. 아프면 쉬어요 means when I'm ill, I rest — a rule."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "시간이 ___ 좀 도와주세요.", "qEn": "If you have time, please help me.", "options": ["있으면", "있면", "있어면", "있으니까"], "a": 0, "why": "있 ends in a consonant, so 으면." },
+        { "type": "choice", "q": "___ 병원에 가세요.", "qEn": "If you're ill, go to the hospital.", "options": ["아프면", "아파서", "아프고", "아프는데"], "a": 0, "why": "면 sets the condition. 아파서 would state it as a fact that already happened." },
+        { "type": "build", "qEn": "If you press this button, the machine stops.", "tiles": ["이", "버튼을", "누르면", "기계가", "멈춰요"], "a": ["이", "버튼을", "누르면", "기계가", "멈춰요"] },
+        { "type": "listen", "ko": "월급이 안 들어오면 어떻게 해요?", "q": "What was asked?", "options": ["What do I do if my wages don't come in?", "When do wages come in?", "My wages came in, what now?", "How much are the wages?"], "a": 0 },
+        { "type": "choice", "q": "Which sentence gives a reason rather than a condition?", "options": ["아파서 쉬어요", "아프면 쉬어요", "아프고 쉬어요", "아프지만 쉬어요"], "a": 0, "why": "아/어서 states a cause that is actually the case." },
+        { "type": "match", "pairs": [["있으면", "if there is"], ["아프면", "if you're ill"], ["가면", "if you go"], ["늦으면", "if you're late"]] }
+      ]
+    },
+    {
+      "id": "g16", "level": "L3", "order": 16,
+      "title": "Before, after, and while",
+      "form": "기 전에 · (으)ㄴ 후에 · (으)ㄹ 때",
+      "goal": "Order the events of a shift, and describe a procedure in the right sequence.",
+      "explain": [
+        "기 전에 is before. It goes on the plain stem and never changes: 밥을 먹기 전에, before eating. 전 on its own also works after a time word — 3년 전에, three years ago.",
+        "(으)ㄴ 후에 is after. It needs the past-modifier shape: vowel stem takes ㄴ 후에, consonant stem takes 은 후에. 먹은 후에, after eating. 다음에 and 뒤에 are used the same way.",
+        "(으)ㄹ 때 is when or while, covering a stretch of time rather than a point: 일할 때 while working, 한국에 처음 왔을 때 when I first came to Korea. Note that the past goes on 때, not in the main clause — 왔을 때, not 왔을 때예요."
+      ],
+      "table": {
+        "head": ["Meaning", "Pattern", "Example"],
+        "rows": [
+          ["before doing", "stem + 기 전에", "일하기 전에"],
+          ["after doing", "stem + (으)ㄴ 후에", "일한 후에"],
+          ["while, when", "stem + (으)ㄹ 때", "일할 때"],
+          ["when it happened", "stem + 았/었을 때", "다쳤을 때"],
+          ["during a noun", "noun + 때", "휴가 때"]
+        ]
+      },
+      "examples": [
+        { "ko": "일하기 전에 스트레칭을 해요.", "en": "I stretch before work." },
+        { "ko": "기계를 끈 후에 청소하세요.", "en": "Clean it after switching the machine off." },
+        { "ko": "일할 때 항상 장갑을 껴요.", "en": "I always wear gloves when working." },
+        { "ko": "한국에 처음 왔을 때 아무것도 몰랐어요.", "en": "When I first came to Korea, I knew nothing." },
+        { "ko": "다치면 바로 반장님한테 말하세요. 참지 마세요.", "en": "If you get hurt, tell the team leader right away. Don't put up with it." }
+      ],
+      "notes": [
+        "Only 기 전에 uses the plain stem. Both of the others need a modifier shape, which is the topic of unit 20 — if the endings look arbitrary now, they will not after that unit.",
+        "때 attaches straight to a noun with no particle: 점심 때, 휴가 때, 방학 때."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "일하___ 스트레칭을 해요.", "qEn": "I stretch before work.", "options": ["기 전에", "ㄴ 후에", "ㄹ 때", "면"], "a": 0, "why": "기 전에 attaches to the plain stem and means before." },
+        { "type": "choice", "q": "기계를 ___ 청소하세요.", "qEn": "Clean it after switching the machine off.", "options": ["끈 후에", "끄기 후에", "끌 후에", "끄는 후에"], "a": 0, "why": "후에 needs the past modifier: 끄다 → 끈." },
+        { "type": "build", "qEn": "I always wear gloves when working.", "tiles": ["일할", "때", "항상", "장갑을", "껴요"], "a": ["일할", "때", "항상", "장갑을", "껴요"] },
+        { "type": "listen", "ko": "한국에 처음 왔을 때 아무것도 몰랐어요.", "q": "What did you hear?", "options": ["When I first came to Korea I knew nothing.", "I want to go to Korea for the first time.", "I didn't come to Korea.", "Korea was my first country."], "a": 0 },
+        { "type": "choice", "q": "점심 ___ 만나요.", "qEn": "Let's meet at lunchtime.", "options": ["때", "기 전에", "후에", "에서"], "a": 0, "why": "때 attaches straight to a noun with nothing between." },
+        { "type": "match", "pairs": [["먹기 전에", "before eating"], ["먹은 후에", "after eating"], ["먹을 때", "when eating"], ["점심 때", "at lunchtime"]] }
+      ]
+    },
+    {
+      "id": "g17", "level": "L3", "order": 17,
+      "title": "Setting the scene before you ask",
+      "form": "는데 / (으)ㄴ데",
+      "goal": "Say the background first — the way Korean conversations actually open.",
+      "explain": [
+        "는데 is the most-used ending in spoken Korean and the hardest to translate, because it does not mean any one thing. It puts a piece of background on the table so the next sentence has somewhere to land.",
+        "Three jobs. Background: 지금 바쁜데 이따 이야기해요 — I'm busy right now, so let's talk later. Contrast: 한국어는 어려운데 재미있어요 — Korean is hard but it's interesting. And a soft opening that trails off, where the request is left unsaid: 저기, 부탁이 있는데요 — er, I have a favour to ask.",
+        "The shape depends on what it attaches to. Action verbs take 는데. Descriptive verbs take (으)ㄴ데. Nouns take 인데. The past, for everything, is 았/었는데."
+      ],
+      "table": {
+        "head": ["Attaches to", "Shape", "Example"],
+        "rows": [
+          ["action verb — 가다", "는데", "가는데"],
+          ["descriptive verb — 바쁘다", "(으)ㄴ데", "바쁜데"],
+          ["descriptive, consonant — 좋다", "은데", "좋은데"],
+          ["noun — 학생", "인데", "학생인데"],
+          ["any past — 했다", "았/었는데", "했는데"]
+        ]
+      },
+      "examples": [
+        { "ko": "지금 좀 바쁜데 이따가 이야기해도 돼요?", "en": "I'm a bit busy now — could we talk later?" },
+        { "ko": "한국어는 어려운데 재미있어요.", "en": "Korean is hard, but it's interesting." },
+        { "ko": "저기, 부탁이 있는데요.", "en": "Er, I have a favour to ask…" },
+        { "ko": "어제 병원에 갔는데 의사가 쉬라고 했어요.", "en": "I went to the hospital yesterday, and the doctor told me to rest." },
+        { "ko": "월급명세서를 받았는데 시간이 좀 이상해요.", "en": "I got my payslip, and the hours look wrong." },
+        { "ko": "일한 시간이 기록이랑 달라요. 한번 봐 주시겠어요?", "en": "The hours worked don't match my record. Could you take a look?" }
+      ],
+      "notes": [
+        "는데요 ending a sentence on its own is an invitation for the other person to respond. It is the Korean equivalent of leaving a sentence hanging, and it is polite rather than rude.",
+        "Do not confuse 는데 with 는 데. Written apart, 데 is a place: 아픈 데가 어디예요? — where does it hurt?"
+      ],
+      "exercises": [
+        { "type": "choice", "q": "지금 좀 ___ 이따가 이야기해도 돼요?", "qEn": "I'm a bit busy now — could we talk later?", "options": ["바쁜데", "바쁘는데", "바빠서데", "바쁘데"], "a": 0, "why": "바쁘다 is descriptive, so (으)ㄴ데 → 바쁜데." },
+        { "type": "choice", "q": "어제 병원에 ___ 의사가 쉬라고 했어요.", "qEn": "I went to the hospital yesterday, and…", "options": ["갔는데", "간데", "가는데", "갈는데"], "a": 0, "why": "The past takes 았/었는데 whatever the verb type." },
+        { "type": "build", "qEn": "Korean is hard, but it's interesting.", "tiles": ["한국어는", "어려운데", "재미있어요"], "a": ["한국어는", "어려운데", "재미있어요"] },
+        { "type": "listen", "ko": "월급명세서를 받았는데 시간이 좀 이상해요.", "q": "What is the speaker saying?", "options": ["They got the payslip and the hours look wrong.", "They haven't received a payslip.", "The payslip arrived on time.", "They want to work more hours."], "a": 0 },
+        { "type": "choice", "q": "What does 아픈 데가 어디예요? ask?", "options": ["Where does it hurt?", "Why does it hurt?", "Are you ill?", "When did it start hurting?"], "a": 0, "why": "Written with a space, 데 is a place — the spot that hurts." },
+        { "type": "match", "pairs": [["가는데", "I'm going, and…"], ["바쁜데", "I'm busy, so…"], ["학생인데", "I'm a student, and…"], ["했는데", "I did it, but…"]] }
+      ]
+    },
+    {
+      "id": "g18", "level": "L3", "order": 18,
+      "title": "The formal register",
+      "form": "습니다 / ㅂ니다 · (으)시",
+      "goal": "Speak the way an office, an interview or a 고용노동부 phone call expects you to.",
+      "explain": [
+        "Everything so far has been the 해요 level — polite, warm, right for almost every situation. Above it sits the 합니다 level: consonant stem takes 습니다, vowel stem takes ㅂ니다. Questions end 습니까 or ㅂ니까.",
+        "This is not more polite so much as more public. You use it in an interview, on the phone to an office, in a written statement, in an announcement, and when a soldier or a shop's loudspeaker addresses you. 감사합니다 and 죄송합니다 are this level, which is why they sound weightier than 고마워요 and 미안해요.",
+        "(으)시 is a separate dial, and it turns instead on who you are talking about. Slot it into the verb when the subject is someone senior: 사장님이 오십니다, the director is coming. You never use it about yourself. Combine the two dials freely — 오세요 is 해요 level with respect, 오십니다 is 합니다 level with respect."
+      ],
+      "table": {
+        "head": ["해요 level", "합니다 level", "Used in"],
+        "rows": [
+          ["가요", "갑니다", "statement"],
+          ["먹어요", "먹습니다", "statement"],
+          ["해요?", "합니까?", "question"],
+          ["고마워요", "감사합니다", "thanks"],
+          ["미안해요", "죄송합니다", "apology"]
+        ]
+      },
+      "examples": [
+        { "ko": "안녕하십니까. 저는 응웬 반 남입니다.", "en": "Good day. My name is Nguyen Van Nam." },
+        { "ko": "한국에 온 지 2년 됐습니다.", "en": "It has been two years since I came to Korea." },
+        { "ko": "성실하게 일하겠습니다.", "en": "I will work diligently." },
+        { "ko": "사장님께서 지금 안 계십니다.", "en": "The director is not in at the moment." },
+        { "ko": "확인 부탁드립니다.", "en": "I would be grateful if you could check." }
+      ],
+      "notes": [
+        "께서 is the respectful replacement for 이/가, and 께 replaces 에게/한테. You will meet them in writing far more than in speech.",
+        "Mixing levels inside one conversation is normal and not an error. Koreans open formally and slide into 해요 as the conversation settles.",
+        "겠 inserted before 습니다 adds intention or a softened guess: 하겠습니다 I will do it, 알겠습니다 understood. In an interview, 열심히 하겠습니다 is the expected closing line."
+      ],
+      "exercises": [
+        { "type": "choice", "q": "저는 응웬 반 남___.", "qEn": "My name is Nguyen Van Nam. (formal)", "options": ["입니다", "이에요", "입니까", "이습니다"], "a": 0, "why": "이다 becomes 입니다 at the 합니다 level." },
+        { "type": "choice", "q": "먹다 → 합니다 level", "options": ["먹습니다", "먹ㅂ니다", "먹읍니다", "머급니다"], "a": 0, "why": "먹 ends in a consonant, so 습니다." },
+        { "type": "build", "qEn": "I will work diligently.", "tiles": ["성실하게", "일하겠습니다"], "a": ["성실하게", "일하겠습니다"] },
+        { "type": "listen", "ko": "사장님께서 지금 안 계십니다.", "q": "What did you hear?", "options": ["The director is not in at the moment.", "The director is coming now.", "The director is busy.", "I am not in the office."], "a": 0 },
+        { "type": "choice", "q": "Which would you use about yourself?", "options": ["저는 갑니다", "저는 가십니다", "저는 오십니다", "저는 계십니다"], "a": 0, "why": "(으)시 is never used about yourself." },
+        { "type": "match", "pairs": [["감사합니다", "thank you (formal)"], ["죄송합니다", "I'm sorry (formal)"], ["알겠습니다", "understood"], ["부탁드립니다", "I ask this of you"]] }
+      ]
+    }
+  ]
+}

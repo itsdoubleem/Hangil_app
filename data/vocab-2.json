@@ -1,0 +1,132 @@
+{
+  "sets": [
+    {
+      "id": "v07", "title": "Documents and status", "titleKo": "서류와 체류", "order": 7,
+      "words": [
+        {"ko":"여권","rom":"yeogwon","en":"passport","ex":"여권을 보여 주세요.","exEn":"Please show your passport."},
+        {"ko":"비자","rom":"bija","en":"visa","ex":"비자가 내년에 끝나요.","exEn":"My visa ends next year."},
+        {"ko":"외국인등록증","rom":"oegugindeungnokjeung","en":"alien registration card","ex":"외국인등록증을 가지고 다니세요.","exEn":"Carry your registration card with you."},
+        {"ko":"체류","rom":"chelyu","en":"stay, residence","ex":"체류 기간을 연장했어요.","exEn":"I extended my period of stay."},
+        {"ko":"연장","rom":"yeonjang","en":"extension","ex":"연장 신청을 해야 돼요.","exEn":"I need to apply for an extension."},
+        {"ko":"계약서","rom":"gyeyakseo","en":"contract","ex":"계약서를 읽고 사인하세요.","exEn":"Read the contract before signing."},
+        {"ko":"사인","rom":"sain","en":"signature, to sign","ex":"여기에 사인해 주세요.","exEn":"Please sign here."},
+        {"ko":"서류","rom":"seoryu","en":"document, paperwork","ex":"서류가 부족해요.","exEn":"The paperwork is incomplete."},
+        {"ko":"신청","rom":"sincheong","en":"application","ex":"신청서를 냈어요.","exEn":"I submitted the application form."},
+        {"ko":"제출","rom":"jechul","en":"submission","ex":"내일까지 제출하세요.","exEn":"Submit it by tomorrow."},
+        {"ko":"확인","rom":"hwagin","en":"confirmation, checking","ex":"확인 부탁드립니다.","exEn":"Please confirm."},
+        {"ko":"도장","rom":"dojang","en":"seal, stamp","ex":"도장을 찍어야 돼요.","exEn":"You need to stamp it."},
+        {"ko":"사업장","rom":"saeopjang","en":"place of business, workplace","ex":"사업장을 변경했어요.","exEn":"I changed workplace."},
+        {"ko":"변경","rom":"byeongyeong","en":"change, alteration","ex":"주소 변경 신고를 하세요.","exEn":"Report your change of address."},
+        {"ko":"고용노동부","rom":"goyongnodongbu","en":"Ministry of Employment and Labor","ex":"고용노동부에 문의했어요.","exEn":"I asked the Ministry of Employment and Labor."},
+        {"ko":"출입국","rom":"churipguk","en":"immigration","ex":"출입국 사무소에 갔어요.","exEn":"I went to the immigration office."}
+      ]
+    },
+    {
+      "id": "v08", "title": "Home and daily life", "titleKo": "집과 생활", "order": 8,
+      "words": [
+        {"ko":"집","rom":"jip","en":"house, home","ex":"집이 회사에서 가까워요.","exEn":"My home is close to work."},
+        {"ko":"방","rom":"bang","en":"room","ex":"방이 두 개예요.","exEn":"There are two rooms."},
+        {"ko":"월세","rom":"wolse","en":"monthly rent","ex":"월세가 삼십만 원이에요.","exEn":"The rent is 300,000 won a month."},
+        {"ko":"보증금","rom":"bojeunggeum","en":"deposit","ex":"보증금을 돌려받았어요.","exEn":"I got the deposit back."},
+        {"ko":"전기","rom":"jeongi","en":"electricity","ex":"전기 요금이 많이 나왔어요.","exEn":"The electricity bill was high."},
+        {"ko":"수도","rom":"sudo","en":"water supply","ex":"수도가 안 나와요.","exEn":"There's no water."},
+        {"ko":"난방","rom":"nanbang","en":"heating","ex":"난방을 켜 주세요.","exEn":"Please turn the heating on."},
+        {"ko":"세탁","rom":"setak","en":"laundry","ex":"세탁기를 같이 써요.","exEn":"We share the washing machine."},
+        {"ko":"쓰레기","rom":"sseuregi","en":"rubbish","ex":"쓰레기는 분리수거해요.","exEn":"Rubbish is separated for recycling."},
+        {"ko":"분리수거","rom":"bullisugeo","en":"waste separation","ex":"분리수거를 꼭 해 주세요.","exEn":"Please separate your waste."},
+        {"ko":"마트","rom":"mateu","en":"supermarket","ex":"마트에서 장을 봐요.","exEn":"I do the shopping at the supermarket."},
+        {"ko":"편의점","rom":"pyeonuijeom","en":"convenience store","ex":"편의점이 24시간 해요.","exEn":"The convenience store is open 24 hours."},
+        {"ko":"은행","rom":"eunhaeng","en":"bank","ex":"은행이 네 시에 닫아요.","exEn":"The bank closes at four."},
+        {"ko":"우체국","rom":"ucheguk","en":"post office","ex":"우체국에서 소포를 보냈어요.","exEn":"I sent a parcel at the post office."},
+        {"ko":"휴대폰","rom":"hyudaepon","en":"mobile phone","ex":"휴대폰을 개통했어요.","exEn":"I got a phone connected."},
+        {"ko":"인터넷","rom":"inteonet","en":"internet","ex":"인터넷이 느려요.","exEn":"The internet is slow."}
+      ]
+    },
+    {
+      "id": "v09", "title": "Food and eating", "titleKo": "음식", "order": 9,
+      "words": [
+        {"ko":"밥","rom":"bap","en":"rice, a meal","ex":"밥 먹었어요?","exEn":"Have you eaten?"},
+        {"ko":"국","rom":"guk","en":"soup","ex":"국이 뜨거워요.","exEn":"The soup is hot."},
+        {"ko":"반찬","rom":"banchan","en":"side dish","ex":"반찬이 많아요.","exEn":"There are a lot of side dishes."},
+        {"ko":"김치","rom":"gimchi","en":"kimchi","ex":"김치가 매워요.","exEn":"The kimchi is spicy."},
+        {"ko":"고기","rom":"gogi","en":"meat","ex":"고기를 안 먹어요.","exEn":"I don't eat meat."},
+        {"ko":"채소","rom":"chaeso","en":"vegetables","ex":"채소를 많이 드세요.","exEn":"Eat plenty of vegetables."},
+        {"ko":"물","rom":"mul","en":"water","ex":"물 좀 주세요.","exEn":"Some water, please."},
+        {"ko":"맵다","rom":"maepda","en":"to be spicy","ex":"너무 매워요.","exEn":"It's too spicy."},
+        {"ko":"짜다","rom":"jjada","en":"to be salty","ex":"조금 짜요.","exEn":"It's a bit salty."},
+        {"ko":"맛있다","rom":"masitda","en":"to be delicious","ex":"정말 맛있어요.","exEn":"It's really good."},
+        {"ko":"배고프다","rom":"baegopeuda","en":"to be hungry","ex":"배고파요.","exEn":"I'm hungry."},
+        {"ko":"배부르다","rom":"baebureuda","en":"to be full","ex":"배불러요.","exEn":"I'm full."},
+        {"ko":"주문","rom":"jumun","en":"an order","ex":"주문하시겠어요?","exEn":"Would you like to order?"},
+        {"ko":"계산","rom":"gyesan","en":"paying the bill","ex":"계산해 주세요.","exEn":"The bill, please."},
+        {"ko":"포장","rom":"pojang","en":"takeaway","ex":"포장해 주세요.","exEn":"To take away, please."},
+        {"ko":"알레르기","rom":"allereugi","en":"allergy","ex":"돼지고기 알레르기가 있어요.","exEn":"I'm allergic to pork."}
+      ]
+    },
+    {
+      "id": "v10", "title": "Getting around", "titleKo": "교통과 길", "order": 10,
+      "words": [
+        {"ko":"버스","rom":"beoseu","en":"bus","ex":"버스를 타고 가요.","exEn":"I go by bus."},
+        {"ko":"지하철","rom":"jihacheol","en":"subway","ex":"지하철이 더 빨라요.","exEn":"The subway is faster."},
+        {"ko":"택시","rom":"taeksi","en":"taxi","ex":"택시를 불렀어요.","exEn":"I called a taxi."},
+        {"ko":"정류장","rom":"jeongnyujang","en":"bus stop","ex":"정류장이 어디예요?","exEn":"Where is the bus stop?"},
+        {"ko":"역","rom":"yeok","en":"station","ex":"다음 역에서 내리세요.","exEn":"Get off at the next station."},
+        {"ko":"타다","rom":"tada","en":"to ride, to board","ex":"몇 번 버스를 타요?","exEn":"Which bus number do I take?"},
+        {"ko":"내리다","rom":"naerida","en":"to get off","ex":"여기서 내려요.","exEn":"I get off here."},
+        {"ko":"갈아타다","rom":"garatada","en":"to transfer","ex":"서울역에서 갈아타세요.","exEn":"Change at Seoul Station."},
+        {"ko":"길","rom":"gil","en":"road, way","ex":"길을 잃었어요.","exEn":"I'm lost."},
+        {"ko":"왼쪽","rom":"oenjjok","en":"left","ex":"왼쪽으로 가세요.","exEn":"Go left."},
+        {"ko":"오른쪽","rom":"oreunjjok","en":"right","ex":"오른쪽에 있어요.","exEn":"It's on the right."},
+        {"ko":"직진","rom":"jikjin","en":"straight ahead","ex":"쭉 직진하세요.","exEn":"Keep going straight."},
+        {"ko":"가깝다","rom":"gakkapda","en":"to be near","ex":"회사에서 가까워요.","exEn":"It's near the company."},
+        {"ko":"멀다","rom":"meolda","en":"to be far","ex":"기숙사에서 멀어요.","exEn":"It's far from the dormitory."},
+        {"ko":"막히다","rom":"makhida","en":"to be blocked, jammed","ex":"길이 많이 막혀요.","exEn":"The traffic is heavy."},
+        {"ko":"자전거","rom":"jajeongeo","en":"bicycle","ex":"자전거로 출근해요.","exEn":"I cycle to work."}
+      ]
+    },
+    {
+      "id": "v11", "title": "Time and dates", "titleKo": "시간과 날짜", "order": 11,
+      "words": [
+        {"ko":"오늘","rom":"oneul","en":"today","ex":"오늘은 바빠요.","exEn":"Today is busy."},
+        {"ko":"어제","rom":"eoje","en":"yesterday","ex":"어제 잔업했어요.","exEn":"I did overtime yesterday."},
+        {"ko":"내일","rom":"naeil","en":"tomorrow","ex":"내일 쉬어요.","exEn":"I'm off tomorrow."},
+        {"ko":"아침","rom":"achim","en":"morning","ex":"아침 여섯 시에 일어나요.","exEn":"I get up at six in the morning."},
+        {"ko":"점심","rom":"jeomsim","en":"lunch, midday","ex":"점심시간이 한 시간이에요.","exEn":"Lunch break is an hour."},
+        {"ko":"저녁","rom":"jeonyeok","en":"evening, dinner","ex":"저녁에 만나요.","exEn":"Let's meet in the evening."},
+        {"ko":"주말","rom":"jumal","en":"weekend","ex":"주말에 일해요.","exEn":"I work at the weekend."},
+        {"ko":"이번 주","rom":"ibeon ju","en":"this week","ex":"이번 주는 야간이에요.","exEn":"This week is nights."},
+        {"ko":"다음 달","rom":"daeum dal","en":"next month","ex":"다음 달에 휴가예요.","exEn":"I'm on leave next month."},
+        {"ko":"작년","rom":"jangnyeon","en":"last year","ex":"작년에 한국에 왔어요.","exEn":"I came to Korea last year."},
+        {"ko":"요일","rom":"yoil","en":"day of the week","ex":"무슨 요일이에요?","exEn":"What day is it?"},
+        {"ko":"시간","rom":"sigan","en":"time, hour","ex":"시간이 없어요.","exEn":"There's no time."},
+        {"ko":"분","rom":"bun","en":"minute","ex":"십 분만 기다려 주세요.","exEn":"Please wait ten minutes."},
+        {"ko":"일찍","rom":"iljjik","en":"early","ex":"일찍 왔어요.","exEn":"I came early."},
+        {"ko":"늦게","rom":"neutge","en":"late","ex":"늦게 끝났어요.","exEn":"It finished late."},
+        {"ko":"자주","rom":"jaju","en":"often","ex":"자주 아파요.","exEn":"I'm often ill."},
+        {"ko":"항상","rom":"hangsang","en":"always","ex":"항상 장갑을 껴요.","exEn":"I always wear gloves."},
+        {"ko":"가끔","rom":"gakkeum","en":"sometimes","ex":"가끔 야근해요.","exEn":"I sometimes work nights."}
+      ]
+    },
+    {
+      "id": "v12", "title": "Farm, livestock and sea", "titleKo": "농업·축산·어업", "order": 12,
+      "words": [
+        {"ko":"농장","rom":"nongjang","en":"farm","ex":"농장에서 일해요.","exEn":"I work on a farm."},
+        {"ko":"비닐하우스","rom":"binilhauseu","en":"greenhouse, polytunnel","ex":"비닐하우스가 더워요.","exEn":"The greenhouse is hot."},
+        {"ko":"모종","rom":"mojong","en":"seedling","ex":"모종을 심어요.","exEn":"We plant the seedlings."},
+        {"ko":"수확","rom":"suhwak","en":"harvest","ex":"수확 철이에요.","exEn":"It's harvest season."},
+        {"ko":"비료","rom":"biryo","en":"fertiliser","ex":"비료를 뿌려요.","exEn":"We spread fertiliser."},
+        {"ko":"농약","rom":"nongyak","en":"pesticide","ex":"농약을 칠 때 마스크를 쓰세요.","exEn":"Wear a mask when spraying pesticide."},
+        {"ko":"트랙터","rom":"teuraekteo","en":"tractor","ex":"트랙터를 운전할 수 있어요.","exEn":"I can drive a tractor."},
+        {"ko":"축사","rom":"chuksa","en":"livestock shed","ex":"축사를 청소해요.","exEn":"I clean the livestock shed."},
+        {"ko":"소","rom":"so","en":"cow","ex":"소에게 먹이를 줘요.","exEn":"I feed the cows."},
+        {"ko":"돼지","rom":"dwaeji","en":"pig","ex":"돼지 농장이에요.","exEn":"It's a pig farm."},
+        {"ko":"닭","rom":"dak","en":"chicken","ex":"닭을 키워요.","exEn":"We raise chickens."},
+        {"ko":"사료","rom":"saryo","en":"animal feed","ex":"사료가 떨어졌어요.","exEn":"We've run out of feed."},
+        {"ko":"어선","rom":"eoseon","en":"fishing boat","ex":"어선을 타고 나가요.","exEn":"We go out on the fishing boat."},
+        {"ko":"그물","rom":"geumul","en":"net","ex":"그물을 걷어요.","exEn":"We pull in the nets."},
+        {"ko":"양식장","rom":"yangsikjang","en":"aquaculture farm","ex":"양식장에서 일했어요.","exEn":"I worked at a fish farm."},
+        {"ko":"선별","rom":"seonbyeol","en":"sorting, grading","ex":"크기별로 선별해요.","exEn":"We sort them by size."}
+      ]
+    }
+  ]
+}

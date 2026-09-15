@@ -1,0 +1,133 @@
+{
+  "sets": [
+    {
+      "id": "v01", "title": "Greetings and people", "titleKo": "인사와 사람", "order": 1,
+      "words": [
+        {"ko":"안녕하세요","rom":"annyeonghaseyo","en":"hello","ex":"안녕하세요, 처음 뵙겠습니다.","exEn":"Hello, pleased to meet you."},
+        {"ko":"감사합니다","rom":"gamsahamnida","en":"thank you","ex":"도와주셔서 감사합니다.","exEn":"Thank you for helping me."},
+        {"ko":"죄송합니다","rom":"joesonghamnida","en":"I'm sorry","ex":"늦어서 죄송합니다.","exEn":"I'm sorry for being late."},
+        {"ko":"괜찮아요","rom":"gwaenchanayo","en":"it's all right","ex":"괜찮아요, 천천히 하세요.","exEn":"It's all right, take your time."},
+        {"ko":"이름","rom":"ireum","en":"name","ex":"이름이 뭐예요?","exEn":"What's your name?"},
+        {"ko":"나라","rom":"nara","en":"country","ex":"어느 나라에서 왔어요?","exEn":"Which country are you from?"},
+        {"ko":"친구","rom":"chingu","en":"friend","ex":"기숙사 친구예요.","exEn":"He's a friend from the dormitory."},
+        {"ko":"가족","rom":"gajok","en":"family","ex":"가족이 고향에 있어요.","exEn":"My family is back home."},
+        {"ko":"사장님","rom":"sajangnim","en":"company boss, director","ex":"사장님이 부르셨어요.","exEn":"The boss called for you."},
+        {"ko":"반장님","rom":"banjangnim","en":"team leader, foreman","ex":"반장님한테 말씀드릴게요.","exEn":"I'll tell the team leader."},
+        {"ko":"동료","rom":"dongnyo","en":"colleague","ex":"동료가 도와줬어요.","exEn":"A colleague helped me."},
+        {"ko":"선배","rom":"seonbae","en":"senior colleague","ex":"선배한테 배웠어요.","exEn":"I learned it from a senior colleague."},
+        {"ko":"통역","rom":"tongyeok","en":"interpreting, interpreter","ex":"통역이 필요해요.","exEn":"I need an interpreter."},
+        {"ko":"외국인","rom":"oegugin","en":"foreigner","ex":"외국인 등록증 있어요?","exEn":"Do you have your residence card?"},
+        {"ko":"처음","rom":"cheoeum","en":"first time, the beginning","ex":"한국은 처음이에요.","exEn":"This is my first time in Korea."},
+        {"ko":"같이","rom":"gachi","en":"together","ex":"같이 점심 먹어요.","exEn":"Let's have lunch together."}
+      ]
+    },
+    {
+      "id": "v02", "title": "At the workplace", "titleKo": "직장", "order": 2,
+      "words": [
+        {"ko":"회사","rom":"hoesa","en":"company","ex":"회사가 안산에 있어요.","exEn":"The company is in Ansan."},
+        {"ko":"공장","rom":"gongjang","en":"factory","ex":"공장에서 일해요.","exEn":"I work at a factory."},
+        {"ko":"출근","rom":"chulgeun","en":"going to work","ex":"여덟 시까지 출근해요.","exEn":"I start work by eight."},
+        {"ko":"퇴근","rom":"toegeun","en":"leaving work","ex":"오늘은 여섯 시에 퇴근해요.","exEn":"I finish at six today."},
+        {"ko":"잔업","rom":"janeop","en":"overtime","ex":"오늘 잔업 있어요?","exEn":"Is there overtime today?"},
+        {"ko":"야간","rom":"yagan","en":"night shift","ex":"이번 주는 야간이에요.","exEn":"I'm on nights this week."},
+        {"ko":"교대","rom":"gyodae","en":"shift, shift change","ex":"2교대로 일해요.","exEn":"We work two shifts."},
+        {"ko":"휴일","rom":"hyuil","en":"day off, holiday","ex":"일요일은 휴일이에요.","exEn":"Sunday is a day off."},
+        {"ko":"휴가","rom":"hyuga","en":"leave, vacation","ex":"휴가를 신청했어요.","exEn":"I applied for leave."},
+        {"ko":"지각","rom":"jigak","en":"being late","ex":"차가 막혀서 지각했어요.","exEn":"I was late because of traffic."},
+        {"ko":"작업","rom":"jageop","en":"work, operation","ex":"작업이 끝났어요.","exEn":"The job is finished."},
+        {"ko":"작업장","rom":"jageopjang","en":"work area, shop floor","ex":"작업장에 들어가세요.","exEn":"Go into the work area."},
+        {"ko":"라인","rom":"rain","en":"production line","ex":"라인이 멈췄어요.","exEn":"The line has stopped."},
+        {"ko":"불량","rom":"bullyang","en":"defect, faulty item","ex":"불량이 나왔어요.","exEn":"A defective piece came out."},
+        {"ko":"검사","rom":"geomsa","en":"inspection, check","ex":"검사를 다시 해 주세요.","exEn":"Please check it again."},
+        {"ko":"쉬는 시간","rom":"swineun sigan","en":"break time","ex":"쉬는 시간이 십 분이에요.","exEn":"The break is ten minutes."},
+        {"ko":"식당","rom":"sikdang","en":"canteen, restaurant","ex":"구내식당에서 먹어요.","exEn":"I eat at the works canteen."},
+        {"ko":"기숙사","rom":"gisuksa","en":"dormitory","ex":"회사 기숙사에 살아요.","exEn":"I live in the company dormitory."}
+      ]
+    },
+    {
+      "id": "v03", "title": "Machines and tools", "titleKo": "기계와 도구", "order": 3,
+      "words": [
+        {"ko":"기계","rom":"gigye","en":"machine","ex":"기계가 고장 났어요.","exEn":"The machine has broken down."},
+        {"ko":"고장","rom":"gojang","en":"breakdown, fault","ex":"고장이 나면 바로 알려 주세요.","exEn":"Tell me straight away if it breaks."},
+        {"ko":"수리","rom":"suri","en":"repair","ex":"수리 중이에요.","exEn":"It's under repair."},
+        {"ko":"전원","rom":"jeonwon","en":"power supply","ex":"전원을 꺼 주세요.","exEn":"Please switch the power off."},
+        {"ko":"버튼","rom":"beoteun","en":"button","ex":"빨간 버튼을 누르세요.","exEn":"Press the red button."},
+        {"ko":"스위치","rom":"seuwichi","en":"switch","ex":"스위치가 어디예요?","exEn":"Where is the switch?"},
+        {"ko":"공구","rom":"gonggu","en":"tool","ex":"공구는 제자리에 두세요.","exEn":"Put the tools back in place."},
+        {"ko":"드라이버","rom":"deuraibeo","en":"screwdriver","ex":"드라이버 좀 주세요.","exEn":"Pass me a screwdriver."},
+        {"ko":"망치","rom":"mangchi","en":"hammer","ex":"망치로 치지 마세요.","exEn":"Don't hit it with a hammer."},
+        {"ko":"지게차","rom":"jigecha","en":"forklift","ex":"지게차가 지나가요.","exEn":"A forklift is coming through."},
+        {"ko":"컨베이어","rom":"keonbeieo","en":"conveyor","ex":"컨베이어 속도를 줄이세요.","exEn":"Slow the conveyor down."},
+        {"ko":"부품","rom":"bupum","en":"part, component","ex":"부품이 모자라요.","exEn":"We're short of parts."},
+        {"ko":"상자","rom":"sangja","en":"box","ex":"상자를 옮겨 주세요.","exEn":"Please move the boxes."},
+        {"ko":"포장","rom":"pojang","en":"packing, packaging","ex":"포장 작업을 해요.","exEn":"I do packing work."},
+        {"ko":"청소","rom":"cheongso","en":"cleaning","ex":"퇴근 전에 청소해요.","exEn":"We clean up before finishing."},
+        {"ko":"정리","rom":"jeongni","en":"tidying, sorting out","ex":"자재를 정리하세요.","exEn":"Sort out the materials."}
+      ]
+    },
+    {
+      "id": "v04", "title": "Safety", "titleKo": "안전", "order": 4,
+      "words": [
+        {"ko":"안전","rom":"anjeon","en":"safety","ex":"안전이 제일 중요해요.","exEn":"Safety comes first."},
+        {"ko":"위험","rom":"wiheom","en":"danger","ex":"위험하니까 들어가지 마세요.","exEn":"It's dangerous, so don't go in."},
+        {"ko":"조심","rom":"josim","en":"care, caution","ex":"발밑을 조심하세요.","exEn":"Watch your step."},
+        {"ko":"안전모","rom":"anjeonmo","en":"safety helmet","ex":"안전모를 꼭 쓰세요.","exEn":"Be sure to wear a helmet."},
+        {"ko":"안전화","rom":"anjeonhwa","en":"safety shoes","ex":"안전화를 신어야 돼요.","exEn":"You have to wear safety shoes."},
+        {"ko":"장갑","rom":"janggap","en":"gloves","ex":"장갑을 끼고 하세요.","exEn":"Do it with gloves on."},
+        {"ko":"마스크","rom":"maseukeu","en":"mask","ex":"먼지가 많으니까 마스크를 쓰세요.","exEn":"It's dusty, so wear a mask."},
+        {"ko":"보호구","rom":"bohogu","en":"protective equipment","ex":"보호구 착용은 필수입니다.","exEn":"Protective equipment is mandatory."},
+        {"ko":"사고","rom":"sago","en":"accident","ex":"사고가 났어요.","exEn":"There's been an accident."},
+        {"ko":"화재","rom":"hwajae","en":"fire","ex":"화재 시 계단을 이용하세요.","exEn":"In case of fire, use the stairs."},
+        {"ko":"비상구","rom":"bisanggu","en":"emergency exit","ex":"비상구는 저쪽입니다.","exEn":"The emergency exit is that way."},
+        {"ko":"소화기","rom":"sohwagi","en":"fire extinguisher","ex":"소화기가 어디에 있어요?","exEn":"Where is the fire extinguisher?"},
+        {"ko":"금지","rom":"geumji","en":"prohibited","ex":"출입 금지","exEn":"No entry"},
+        {"ko":"주의","rom":"jui","en":"caution, attention","ex":"미끄럼 주의","exEn":"Caution: slippery"},
+        {"ko":"점검","rom":"jeomgeom","en":"inspection, check-up","ex":"매일 아침에 점검해요.","exEn":"We inspect it every morning."},
+        {"ko":"교육","rom":"gyoyuk","en":"training","ex":"안전 교육을 받았어요.","exEn":"I received safety training."}
+      ]
+    },
+    {
+      "id": "v05", "title": "The body and the hospital", "titleKo": "몸과 병원", "order": 5,
+      "words": [
+        {"ko":"아프다","rom":"apeuda","en":"to hurt, to be ill","ex":"허리가 아파요.","exEn":"My back hurts."},
+        {"ko":"다치다","rom":"dachida","en":"to get injured","ex":"손을 다쳤어요.","exEn":"I hurt my hand."},
+        {"ko":"머리","rom":"meori","en":"head","ex":"머리가 아파요.","exEn":"I have a headache."},
+        {"ko":"허리","rom":"heori","en":"lower back","ex":"허리를 삐었어요.","exEn":"I twisted my back."},
+        {"ko":"손","rom":"son","en":"hand","ex":"손을 씻으세요.","exEn":"Wash your hands."},
+        {"ko":"발","rom":"bal","en":"foot","ex":"발을 밟혔어요.","exEn":"My foot got stepped on."},
+        {"ko":"눈","rom":"nun","en":"eye","ex":"눈에 뭐가 들어갔어요.","exEn":"Something got in my eye."},
+        {"ko":"병원","rom":"byeongwon","en":"hospital, clinic","ex":"병원에 가야 돼요.","exEn":"I have to go to the hospital."},
+        {"ko":"약국","rom":"yakguk","en":"pharmacy","ex":"약국에서 약을 샀어요.","exEn":"I bought medicine at the pharmacy."},
+        {"ko":"약","rom":"yak","en":"medicine","ex":"이 약을 하루에 세 번 드세요.","exEn":"Take this medicine three times a day."},
+        {"ko":"의사","rom":"uisa","en":"doctor","ex":"의사가 쉬라고 했어요.","exEn":"The doctor told me to rest."},
+        {"ko":"진단서","rom":"jindanseo","en":"medical certificate","ex":"진단서를 받았어요.","exEn":"I got a medical certificate."},
+        {"ko":"산재","rom":"sanjae","en":"industrial accident (insurance)","ex":"산재 신청을 했어요.","exEn":"I made an industrial accident claim."},
+        {"ko":"응급실","rom":"eunggeupsil","en":"emergency room","ex":"응급실로 갔어요.","exEn":"They went to the emergency room."},
+        {"ko":"감기","rom":"gamgi","en":"a cold","ex":"감기에 걸렸어요.","exEn":"I've caught a cold."},
+        {"ko":"열","rom":"yeol","en":"fever","ex":"열이 나요.","exEn":"I have a fever."},
+        {"ko":"쉬다","rom":"swida","en":"to rest","ex":"하루 쉬고 싶어요.","exEn":"I want to take a day off."}
+      ]
+    },
+    {
+      "id": "v06", "title": "Money and wages", "titleKo": "돈과 월급", "order": 6,
+      "words": [
+        {"ko":"월급","rom":"wolgeup","en":"monthly wage","ex":"월급이 언제 나와요?","exEn":"When do the wages come?"},
+        {"ko":"급여명세서","rom":"geubyeomyeongseseo","en":"payslip","ex":"급여명세서를 받았어요.","exEn":"I received my payslip."},
+        {"ko":"기본급","rom":"gibongeup","en":"basic pay","ex":"기본급이 얼마예요?","exEn":"How much is the basic pay?"},
+        {"ko":"수당","rom":"sudang","en":"allowance, premium","ex":"야간 수당이 안 나왔어요.","exEn":"The night premium wasn't paid."},
+        {"ko":"시급","rom":"sigeup","en":"hourly wage","ex":"시급으로 계산해요.","exEn":"It's calculated by the hour."},
+        {"ko":"공제","rom":"gongje","en":"deduction","ex":"공제 항목을 확인하세요.","exEn":"Check the deduction items."},
+        {"ko":"세금","rom":"segeum","en":"tax","ex":"세금이 얼마나 나가요?","exEn":"How much goes out in tax?"},
+        {"ko":"보험","rom":"boheom","en":"insurance","ex":"건강보험에 가입했어요.","exEn":"I'm enrolled in health insurance."},
+        {"ko":"통장","rom":"tongjang","en":"bank account, bankbook","ex":"통장으로 들어와요.","exEn":"It goes into my account."},
+        {"ko":"송금","rom":"songgeum","en":"remittance","ex":"고향에 송금했어요.","exEn":"I sent money home."},
+        {"ko":"저축","rom":"jeochuk","en":"savings","ex":"매달 저축해요.","exEn":"I save every month."},
+        {"ko":"체불","rom":"chebul","en":"unpaid wages","ex":"임금 체불로 신고했어요.","exEn":"I reported unpaid wages."},
+        {"ko":"계산","rom":"gyesan","en":"calculation","ex":"계산이 틀린 것 같아요.","exEn":"I think the calculation is wrong."},
+        {"ko":"영수증","rom":"yeongsujeung","en":"receipt","ex":"영수증 주세요.","exEn":"A receipt, please."},
+        {"ko":"현금","rom":"hyeongeum","en":"cash","ex":"현금으로 낼게요.","exEn":"I'll pay in cash."},
+        {"ko":"얼마","rom":"eolma","en":"how much","ex":"이거 얼마예요?","exEn":"How much is this?"}
+      ]
+    }
+  ]
+}

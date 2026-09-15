@@ -1,0 +1,5 @@
+{
+  "note": "Official EPS-TOPIK pictures you have downloaded yourself. This file ships empty on purpose — see README.md in this folder. An id here that matches one of the drawings in data/pictures.json replaces that drawing everywhere it is used, with no question needing to be edited.",
+  "source": "",
+  "images": {}
+}

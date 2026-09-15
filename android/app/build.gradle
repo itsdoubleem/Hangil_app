@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'app.hangil.study'
+    compileSdk 37
+
+    defaultConfig {
+        applicationId 'app.hangil.study'
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        debug {
+            // Signed with ~/.android/debug.keystore. Fine for sideloading onto your
+            // own phone; not a Play Store artifact. See DEPLOY.md.
+            minifyEnabled false
+        }
+        release {
+            // R8 is off for the same reason it is off in the Logger project: the only
+            // thing Java does here is speak Korean, and the WebView finds those methods
+            // by NAME through @JavascriptInterface. Rename one and the audio goes
+            // silent with no error anywhere — a failure no test on this side would
+            // catch, because there are no tests on this side.
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.14.0'
+}

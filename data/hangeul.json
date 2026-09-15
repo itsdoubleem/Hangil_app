@@ -1,0 +1,125 @@
+{
+  "intro": "Hangeul is not pictures. It is 24 letters that spell sounds, arranged into square blocks — one block, one syllable. Most people can read it out loud within a week.",
+  "groups": [
+    {
+      "id": "vowels-basic",
+      "title": "The plain vowels",
+      "titleKo": "기본 모음",
+      "blurb": "A long line with a short mark on it. The short mark points at where the sound goes.",
+      "letters": [
+        { "ch": "ㅏ", "rom": "a", "say": "아", "hint": "like the a in father" },
+        { "ch": "ㅓ", "rom": "eo", "say": "어", "hint": "like the u in cup" },
+        { "ch": "ㅗ", "rom": "o", "say": "오", "hint": "like the o in note, lips round" },
+        { "ch": "ㅜ", "rom": "u", "say": "우", "hint": "like the oo in moon" },
+        { "ch": "ㅡ", "rom": "eu", "say": "으", "hint": "lips flat and wide, like the last sound in roses" },
+        { "ch": "ㅣ", "rom": "i", "say": "이", "hint": "like the ee in see" }
+      ]
+    },
+    {
+      "id": "vowels-y",
+      "title": "The y vowels",
+      "titleKo": "이중 모음",
+      "blurb": "Add a second short mark and a y slides in front of the sound.",
+      "letters": [
+        { "ch": "ㅑ", "rom": "ya", "say": "야", "hint": "ㅏ with a y in front" },
+        { "ch": "ㅕ", "rom": "yeo", "say": "여", "hint": "ㅓ with a y in front" },
+        { "ch": "ㅛ", "rom": "yo", "say": "요", "hint": "ㅗ with a y in front" },
+        { "ch": "ㅠ", "rom": "yu", "say": "유", "hint": "ㅜ with a y in front" },
+        { "ch": "ㅐ", "rom": "ae", "say": "애", "hint": "like the e in bed" },
+        { "ch": "ㅔ", "rom": "e", "say": "에", "hint": "also like the e in bed — modern Korean barely separates ㅐ and ㅔ" },
+        { "ch": "ㅒ", "rom": "yae", "say": "얘", "hint": "ㅐ with a y in front" },
+        { "ch": "ㅖ", "rom": "ye", "say": "예", "hint": "ㅔ with a y in front" }
+      ]
+    },
+    {
+      "id": "vowels-w",
+      "title": "The w vowels",
+      "titleKo": "합성 모음",
+      "blurb": "Two vowels written side by side. You say them as one slide.",
+      "letters": [
+        { "ch": "ㅘ", "rom": "wa", "say": "와", "hint": "ㅗ + ㅏ" },
+        { "ch": "ㅚ", "rom": "oe", "say": "외", "hint": "ㅗ + ㅣ, said like we" },
+        { "ch": "ㅙ", "rom": "wae", "say": "왜", "hint": "ㅗ + ㅐ" },
+        { "ch": "ㅝ", "rom": "wo", "say": "워", "hint": "ㅜ + ㅓ" },
+        { "ch": "ㅟ", "rom": "wi", "say": "위", "hint": "ㅜ + ㅣ" },
+        { "ch": "ㅞ", "rom": "we", "say": "웨", "hint": "ㅜ + ㅔ" },
+        { "ch": "ㅢ", "rom": "ui", "say": "의", "hint": "ㅡ + ㅣ, slid together fast" }
+      ]
+    },
+    {
+      "id": "cons-plain",
+      "title": "The plain consonants",
+      "titleKo": "기본 자음",
+      "blurb": "Each shape is a drawing of the mouth making the sound. ㄱ is the back of the tongue, ㄴ is the tip behind the teeth, ㅁ is the closed lips.",
+      "letters": [
+        { "ch": "ㄱ", "rom": "g / k", "say": "기역", "hint": "g at the start of a word, k at the end" },
+        { "ch": "ㄴ", "rom": "n", "say": "니은", "hint": "n as in no" },
+        { "ch": "ㄷ", "rom": "d / t", "say": "디귿", "hint": "d at the start, t at the end" },
+        { "ch": "ㄹ", "rom": "r / l", "say": "리을", "hint": "between r and l — tongue taps once" },
+        { "ch": "ㅁ", "rom": "m", "say": "미음", "hint": "m as in mother" },
+        { "ch": "ㅂ", "rom": "b / p", "say": "비읍", "hint": "b at the start, p at the end" },
+        { "ch": "ㅅ", "rom": "s", "say": "시옷", "hint": "s, but sh before ㅣ and ㅟ" },
+        { "ch": "ㅇ", "rom": "silent / ng", "say": "이응", "hint": "silent at the front of a block, ng at the bottom" },
+        { "ch": "ㅈ", "rom": "j", "say": "지읒", "hint": "j as in jeep" },
+        { "ch": "ㅎ", "rom": "h", "say": "히읗", "hint": "h as in hat" }
+      ]
+    },
+    {
+      "id": "cons-aspirated",
+      "title": "The breathy consonants",
+      "titleKo": "격음",
+      "blurb": "One extra stroke on the plain letter. That stroke is a puff of air — hold your hand in front of your mouth and you should feel it.",
+      "letters": [
+        { "ch": "ㅋ", "rom": "k", "say": "키읔", "hint": "ㄱ plus air" },
+        { "ch": "ㅌ", "rom": "t", "say": "티읕", "hint": "ㄷ plus air" },
+        { "ch": "ㅍ", "rom": "p", "say": "피읖", "hint": "ㅂ plus air" },
+        { "ch": "ㅊ", "rom": "ch", "say": "치읓", "hint": "ㅈ plus air" }
+      ]
+    },
+    {
+      "id": "cons-tense",
+      "title": "The tight consonants",
+      "titleKo": "경음",
+      "blurb": "The letter written twice. No puff of air at all — the throat squeezes and the sound comes out short and hard. This pair is what separates 자요 (sleeps) from 짜요 (salty).",
+      "letters": [
+        { "ch": "ㄲ", "rom": "kk", "say": "쌍기역", "hint": "tight ㄱ" },
+        { "ch": "ㄸ", "rom": "tt", "say": "쌍디귿", "hint": "tight ㄷ" },
+        { "ch": "ㅃ", "rom": "pp", "say": "쌍비읍", "hint": "tight ㅂ" },
+        { "ch": "ㅆ", "rom": "ss", "say": "쌍시옷", "hint": "tight ㅅ" },
+        { "ch": "ㅉ", "rom": "jj", "say": "쌍지읒", "hint": "tight ㅈ" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "title": "How a block is built",
+      "rules": [
+        "Every syllable starts with a consonant. If the sound starts with a vowel, ㅇ holds the empty seat: 아, 오, 이.",
+        "A tall vowel (ㅏ ㅓ ㅣ ㅐ) sits to the right: 가, 너, 미.",
+        "A wide vowel (ㅗ ㅜ ㅡ ㅛ ㅠ) sits underneath: 고, 무, 스.",
+        "A closing consonant — the 받침 — goes at the bottom of the block: 밥, 문, 한."
+      ]
+    },
+    {
+      "title": "The seven closing sounds",
+      "rules": [
+        "Any letter can sit at the bottom of a block, but only seven sounds come out: ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅇ.",
+        "ㅅ ㅆ ㅈ ㅊ ㅌ ㅎ at the bottom are all said as a stopped ㄷ: 옷 is said ot, 꽃 is said kkot.",
+        "ㅋ ㄲ at the bottom are said as ㄱ. ㅍ at the bottom is said as ㅂ: 앞 is said ap.",
+        "When the next block starts with ㅇ, the closing sound slides across into it. 한국어 is said 한구거. This one rule makes spoken Korean sound nothing like it looks, and it is worth an hour of your time."
+      ]
+    }
+  ],
+  "drills": [
+    { "ko": "가", "rom": "ga" }, { "ko": "너", "rom": "neo" }, { "ko": "도", "rom": "do" },
+    { "ko": "루", "rom": "ru" }, { "ko": "므", "rom": "meu" }, { "ko": "비", "rom": "bi" },
+    { "ko": "사", "rom": "sa" }, { "ko": "여", "rom": "yeo" }, { "ko": "조", "rom": "jo" },
+    { "ko": "후", "rom": "hu" }, { "ko": "캐", "rom": "kae" }, { "ko": "테", "rom": "te" },
+    { "ko": "파", "rom": "pa" }, { "ko": "처", "rom": "cheo" }, { "ko": "꼬", "rom": "kko" },
+    { "ko": "따", "rom": "tta" }, { "ko": "빠", "rom": "ppa" }, { "ko": "쓰", "rom": "sseu" },
+    { "ko": "짜", "rom": "jja" }, { "ko": "밥", "rom": "bap" }, { "ko": "문", "rom": "mun" },
+    { "ko": "한", "rom": "han" }, { "ko": "길", "rom": "gil" }, { "ko": "옷", "rom": "ot" },
+    { "ko": "꽃", "rom": "kkot" }, { "ko": "앞", "rom": "ap" }, { "ko": "국", "rom": "guk" },
+    { "ko": "방", "rom": "bang" }, { "ko": "물", "rom": "mul" }, { "ko": "손", "rom": "son" }
+  ]
+}
