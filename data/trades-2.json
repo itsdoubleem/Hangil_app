@@ -1,0 +1,1788 @@
+{
+  "trades": [
+    {
+      "id": "t-food",
+      "order": 5,
+      "titleKo": "식품가공",
+      "title": "Food processing",
+      "blurb": "Hygiene rules, cold rooms, use-by dates and what you may not bring in.",
+      "icon": "food",
+      "about": "The trade with the most rules about your own body — hair, hands, jewellery, a cold you came in with. Nearly every notice is about keeping something out of the food, and the dates on a label are read aloud all day.",
+      "words": [
+        {
+          "ko": "위생",
+          "rom": "wisaeng",
+          "en": "hygiene",
+          "ex": "위생 교육을 받았습니다.",
+          "exEn": "I have had the hygiene training."
+        },
+        {
+          "ko": "위생모",
+          "rom": "wisaengmo",
+          "en": "hair net, hygiene cap",
+          "ex": "위생모 안에 머리를 다 넣으십시오.",
+          "exEn": "Put all your hair inside the cap."
+        },
+        {
+          "ko": "위생복",
+          "rom": "wisaengbok",
+          "en": "hygiene uniform",
+          "ex": "위생복은 매일 갈아입습니다.",
+          "exEn": "The uniform is changed every day."
+        },
+        {
+          "ko": "손 소독",
+          "rom": "son sodok",
+          "en": "hand sanitising",
+          "ex": "들어오기 전에 손 소독을 하십시오.",
+          "exEn": "Sanitise your hands before coming in."
+        },
+        {
+          "ko": "소독",
+          "rom": "sodok",
+          "en": "disinfection",
+          "ex": "칼과 도마는 소독합니다.",
+          "exEn": "Knives and boards are disinfected."
+        },
+        {
+          "ko": "이물",
+          "rom": "imul",
+          "en": "foreign body (in food)",
+          "ex": "이물이 들어가면 큰 문제가 됩니다.",
+          "exEn": "A foreign body in the food is a serious problem."
+        },
+        {
+          "ko": "유통기한",
+          "rom": "yutong-gihan",
+          "en": "use-by date",
+          "ex": "유통기한을 확인하십시오.",
+          "exEn": "Check the use-by date."
+        },
+        {
+          "ko": "제조일",
+          "rom": "jejoil",
+          "en": "date of manufacture",
+          "ex": "제조일을 상자에 씁니다.",
+          "exEn": "Write the production date on the box."
+        },
+        {
+          "ko": "냉장",
+          "rom": "naengjang",
+          "en": "refrigeration, chilled",
+          "ex": "이 제품은 냉장 보관합니다.",
+          "exEn": "This product is kept chilled."
+        },
+        {
+          "ko": "냉동",
+          "rom": "naengdong",
+          "en": "freezing, frozen",
+          "ex": "냉동실은 영하 십팔 도입니다.",
+          "exEn": "The freezer is minus eighteen degrees."
+        },
+        {
+          "ko": "보관",
+          "rom": "bogwan",
+          "en": "storage, keeping",
+          "ex": "보관 온도를 지키십시오.",
+          "exEn": "Keep to the storage temperature."
+        },
+        {
+          "ko": "선별",
+          "rom": "seonbyeol",
+          "en": "sorting",
+          "ex": "선별 작업은 앉아서 합니다.",
+          "exEn": "Sorting is done sitting down."
+        },
+        {
+          "ko": "세척",
+          "rom": "secheok",
+          "en": "washing",
+          "ex": "세척이 끝나면 물기를 뺍니다.",
+          "exEn": "Drain it once washing is done."
+        },
+        {
+          "ko": "포장지",
+          "rom": "pojangji",
+          "en": "wrapping, packaging",
+          "ex": "포장지가 찢어졌습니다.",
+          "exEn": "The packaging is torn."
+        },
+        {
+          "ko": "밀봉",
+          "rom": "milbong",
+          "en": "sealing",
+          "ex": "밀봉이 잘 됐는지 봅니다.",
+          "exEn": "Check that the seal is good."
+        },
+        {
+          "ko": "저울",
+          "rom": "jeoul",
+          "en": "scales",
+          "ex": "저울로 무게를 잽니다.",
+          "exEn": "Weigh it on the scales."
+        },
+        {
+          "ko": "반입",
+          "rom": "banip",
+          "en": "bringing in",
+          "ex": "휴대폰 반입은 금지입니다.",
+          "exEn": "Bringing phones in is forbidden."
+        },
+        {
+          "ko": "장신구",
+          "rom": "jangsingu",
+          "en": "jewellery, accessories",
+          "ex": "반지 같은 장신구는 빼십시오.",
+          "exEn": "Take off jewellery such as rings."
+        },
+        {
+          "ko": "상하다",
+          "rom": "sanghada",
+          "en": "to go off, to spoil",
+          "ex": "이 재료는 상했습니다.",
+          "exEn": "This ingredient has gone off."
+        },
+        {
+          "ko": "신선하다",
+          "rom": "sinseonhada",
+          "en": "to be fresh",
+          "ex": "신선한 것만 씁니다.",
+          "exEn": "Only fresh ones are used."
+        },
+        {
+          "ko": "미끄럼",
+          "rom": "mikkeureom",
+          "en": "slipping",
+          "ex": "물이 있는 곳은 미끄럼 사고가 많습니다.",
+          "exEn": "Wet floors cause a lot of slips."
+        },
+        {
+          "ko": "칼",
+          "rom": "kal",
+          "en": "knife",
+          "ex": "칼은 손잡이 쪽을 주십시오.",
+          "exEn": "Pass a knife handle first."
+        },
+        {
+          "ko": "도마",
+          "rom": "doma",
+          "en": "chopping board",
+          "ex": "고기와 채소 도마를 따로 씁니다.",
+          "exEn": "Use separate boards for meat and vegetables."
+        },
+        {
+          "ko": "탈의실",
+          "rom": "taruisil",
+          "en": "changing room",
+          "ex": "탈의실에서 위생복으로 갈아입습니다.",
+          "exEn": "Change into the uniform in the changing room."
+        },
+        {
+          "ko": "온도계",
+          "rom": "ondogye",
+          "en": "thermometer",
+          "ex": "온도계를 하루에 두 번 봅니다.",
+          "exEn": "Read the thermometer twice a day."
+        },
+        {
+          "ko": "설사",
+          "rom": "seolsa",
+          "en": "diarrhoea",
+          "ex": "설사를 하면 작업장에 들어갈 수 없습니다.",
+          "exEn": "You may not enter the floor if you have diarrhoea."
+        }
+      ],
+      "items": [
+        {
+          "display": "손 소독 후 입실",
+          "stem": "들어가기 전에 무엇을 해야 합니까?",
+          "options": [
+            "손을 소독합니다",
+            "손을 말립니다",
+            "장갑을 벗습니다",
+            "신발을 닦습니다"
+          ],
+          "a": 0,
+          "why": "손 소독 후 — after sanitising the hands."
+        },
+        {
+          "display": "위생모 착용",
+          "stem": "이곳에서 반드시 써야 하는 것은 무엇입니까?",
+          "options": [
+            "위생모",
+            "안전모",
+            "귀마개",
+            "보안경"
+          ],
+          "a": 0,
+          "why": "위생모 is the hair net, not the hard hat."
+        },
+        {
+          "display": "휴대폰 반입 금지",
+          "stem": "이곳에 가지고 들어갈 수 없는 것은 무엇입니까?",
+          "options": [
+            "휴대폰",
+            "위생복",
+            "장갑",
+            "물통"
+          ],
+          "a": 0,
+          "why": "반입 금지 — bringing it in is prohibited."
+        },
+        {
+          "display": "냉장 0~10℃ 보관",
+          "stem": "이 제품을 어디에 두어야 합니까?",
+          "options": [
+            "냉장고",
+            "냉동실",
+            "창고",
+            "작업대"
+          ],
+          "a": 0,
+          "why": "0~10℃ is chilled, not frozen."
+        },
+        {
+          "display": "장신구 착용 금지",
+          "stem": "작업장에 들어가기 전에 해야 하는 것은 무엇입니까?",
+          "options": [
+            "반지와 목걸이를 뺍니다",
+            "시계를 찹니다",
+            "머리를 묶습니다",
+            "화장을 합니다"
+          ],
+          "a": 0,
+          "why": "장신구 — rings, necklaces and the like."
+        },
+        {
+          "display": "바닥 물기 주의",
+          "stem": "이 표지가 있는 곳에서 조심해야 하는 것은 무엇입니까?",
+          "options": [
+            "미끄러져 넘어지는 것",
+            "물건이 떨어지는 것",
+            "손을 데는 것",
+            "감전되는 것"
+          ],
+          "a": 0,
+          "why": "물기 — water on the floor, so slipping."
+        },
+        {
+          "stem": "제품을 포장하기 전에 (   )을 확인합니다.",
+          "options": [
+            "유통기한",
+            "무게만",
+            "색깔만",
+            "상자 개수"
+          ],
+          "a": 0,
+          "why": "The use-by date is checked before it goes out."
+        },
+        {
+          "stem": "머리카락이 들어가지 않게 (   )를 씁니다.",
+          "options": [
+            "위생모",
+            "안전모",
+            "마스크",
+            "장갑"
+          ],
+          "a": 0,
+          "why": "The hair net keeps hair out of the food."
+        },
+        {
+          "stem": "고기를 자른 도마는 채소에 (   ) 씁니다.",
+          "options": [
+            "쓰지 않고 따로",
+            "그대로 같이",
+            "물만 뿌려서",
+            "닦지 않고"
+          ],
+          "a": 0,
+          "why": "Separate boards stop cross-contamination.",
+          "tags": [
+            "negation"
+          ]
+        },
+        {
+          "stem": "감기에 걸렸거나 배탈이 나면 반장님께 (   ).",
+          "options": [
+            "말해야 합니다",
+            "말하지 않습니다",
+            "약을 줍니다",
+            "숨깁니다"
+          ],
+          "a": 0,
+          "why": "Illness has to be reported in a food plant.",
+          "tags": [
+            "obligation"
+          ]
+        },
+        {
+          "stem": "재료에서 이상한 냄새가 나면 (   ) 마십시오.",
+          "options": [
+            "쓰지",
+            "씻지",
+            "자르지",
+            "재지"
+          ],
+          "a": 0,
+          "why": "A bad smell means it is not used."
+        },
+        {
+          "stem": "칼을 다른 사람에게 줄 때는 (   ) 쪽을 줍니다.",
+          "options": [
+            "손잡이",
+            "날",
+            "끝",
+            "가운데"
+          ],
+          "a": 0,
+          "why": "손잡이 — the handle."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n작업장 안에서는 아무것도 먹을 수 없습니다.",
+          "options": [
+            "작업장에서 음식을 먹으면 안 됩니다",
+            "작업장에서 밥을 먹습니다",
+            "작업장에 음식이 없습니다",
+            "작업장에서 물만 마십니다"
+          ],
+          "a": 0,
+          "why": "아무것도 … 없습니다 — nothing at all.",
+          "tags": [
+            "ability",
+            "obligation"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n유통기한이 지난 재료는 바로 버립니다.",
+          "options": [
+            "기한이 넘은 것은 쓰지 않고 버립니다",
+            "기한이 지나도 씁니다",
+            "기한을 다시 씁니다",
+            "기한이 지나면 냉동합니다"
+          ],
+          "a": 0,
+          "why": "지나다 — to have passed.",
+          "tags": [
+            "negation"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n위생복을 입은 채로 화장실에 가면 안 됩니다.",
+          "options": [
+            "화장실에 갈 때는 위생복을 벗습니다",
+            "위생복을 입고 화장실에 갑니다",
+            "화장실에 가면 안 됩니다",
+            "위생복은 벗지 않습니다"
+          ],
+          "a": 0,
+          "why": "-은 채로 … 안 됩니다 — not while still wearing it.",
+          "tags": [
+            "obligation",
+            "time-clauses"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n밀봉이 안 된 제품은 다시 포장합니다.",
+          "options": [
+            "봉지가 잘 안 붙었으면 포장을 다시 합니다",
+            "봉지가 안 붙어도 보냅니다",
+            "봉지를 버립니다",
+            "밀봉은 하지 않습니다"
+          ],
+          "a": 0,
+          "why": "밀봉이 안 되다 — the seal has not taken.",
+          "tags": [
+            "conditional",
+            "negation"
+          ]
+        },
+        {
+          "passage": "[작업장 출입 순서]\n\n1. 탈의실에서 위생복으로 갈아입습니다.\n2. 위생모 안에 머리를 모두 넣습니다.\n3. 반지, 시계, 목걸이를 뺍니다.\n4. 손을 씻고 소독합니다.\n5. 먼지 제거기를 지나 들어갑니다.\n\n※ 설사, 발열, 손의 상처가 있는 사람은 그날 작업장에 들어갈 수 없습니다.",
+          "stem": "손에 상처가 있는 사람은 어떻게 해야 합니까?",
+          "options": [
+            "그날은 작업장에 들어가지 않습니다",
+            "장갑을 끼고 들어갑니다",
+            "약을 바르고 들어갑니다",
+            "손을 더 씻습니다"
+          ],
+          "a": 0,
+          "why": "The note says a cut on the hand keeps you off the floor that day."
+        },
+        {
+          "passage": "[작업장 출입 순서]\n\n1. 탈의실에서 위생복으로 갈아입습니다.\n2. 위생모 안에 머리를 모두 넣습니다.\n3. 반지, 시계, 목걸이를 뺍니다.\n4. 손을 씻고 소독합니다.\n5. 먼지 제거기를 지나 들어갑니다.\n\n※ 설사, 발열, 손의 상처가 있는 사람은 그날 작업장에 들어갈 수 없습니다.",
+          "stem": "손을 씻기 전에 하는 일은 무엇입니까?",
+          "options": [
+            "장신구를 빼는 일",
+            "먼지 제거기를 지나는 일",
+            "제품을 만지는 일",
+            "온도계를 보는 일"
+          ],
+          "a": 0,
+          "why": "Taking off jewellery is step 3, washing is step 4."
+        },
+        {
+          "passage": "[냉장·냉동 보관 안내]\n\n· 냉장실은 0~10℃, 냉동실은 영하 18℃ 이하로 유지합니다.\n· 온도계는 오전 9시와 오후 3시에 확인하고 기록합니다.\n· 온도가 맞지 않으면 물건을 옮기지 말고 먼저 보고합니다.\n· 문은 오래 열어 두지 않습니다.\n· 바닥에 직접 놓지 말고 선반 위에 둡니다.",
+          "stem": "온도가 맞지 않을 때 가장 먼저 할 일은 무엇입니까?",
+          "options": [
+            "보고합니다",
+            "물건을 옮깁니다",
+            "문을 엽니다",
+            "온도계를 바꿉니다"
+          ],
+          "a": 0,
+          "why": "옮기지 말고 먼저 보고합니다 — report first, do not move things."
+        },
+        {
+          "passage": "[냉장·냉동 보관 안내]\n\n· 냉장실은 0~10℃, 냉동실은 영하 18℃ 이하로 유지합니다.\n· 온도계는 오전 9시와 오후 3시에 확인하고 기록합니다.\n· 온도가 맞지 않으면 물건을 옮기지 말고 먼저 보고합니다.\n· 문은 오래 열어 두지 않습니다.\n· 바닥에 직접 놓지 말고 선반 위에 둡니다.",
+          "stem": "이 안내문의 내용과 같은 것을 고르십시오.",
+          "options": [
+            "온도는 하루에 두 번 기록합니다",
+            "온도는 한 번만 봅니다",
+            "물건은 바닥에 놓습니다",
+            "문은 열어 두어도 됩니다"
+          ],
+          "a": 0,
+          "why": "9am and 3pm — twice a day."
+        }
+      ],
+      "tags": [
+        "industry"
+      ]
+    },
+    {
+      "id": "t-textile",
+      "order": 6,
+      "titleKo": "섬유·의복",
+      "title": "Textile and clothing",
+      "blurb": "Fabric, dye, sewing machines, and counting what you finished.",
+      "icon": "thread",
+      "about": "Fine dust, needles, steam and a count that has to come out right at the end of the day. The Korean here is quantities and quality words — how many, what size, and what counts as a fault.",
+      "words": [
+        {
+          "ko": "원단",
+          "rom": "wondan",
+          "en": "fabric, cloth",
+          "ex": "원단을 펴서 자릅니다.",
+          "exEn": "Spread the fabric out and cut it."
+        },
+        {
+          "ko": "재단",
+          "rom": "jaedan",
+          "en": "cutting (of cloth)",
+          "ex": "재단은 이 층에서 합니다.",
+          "exEn": "Cutting is done on this floor."
+        },
+        {
+          "ko": "봉제",
+          "rom": "bongje",
+          "en": "sewing, garment making",
+          "ex": "봉제 라인은 저쪽입니다.",
+          "exEn": "The sewing line is over there."
+        },
+        {
+          "ko": "재봉틀",
+          "rom": "jaebongteul",
+          "en": "sewing machine",
+          "ex": "재봉틀 바늘을 조심하십시오.",
+          "exEn": "Watch the sewing machine needle."
+        },
+        {
+          "ko": "바늘",
+          "rom": "baneul",
+          "en": "needle",
+          "ex": "바늘이 부러지면 모두 찾아야 합니다.",
+          "exEn": "If a needle breaks, every piece must be found."
+        },
+        {
+          "ko": "실",
+          "rom": "sil",
+          "en": "thread",
+          "ex": "실이 자꾸 끊어집니다.",
+          "exEn": "The thread keeps breaking."
+        },
+        {
+          "ko": "박음질",
+          "rom": "bageumjil",
+          "en": "stitching",
+          "ex": "박음질이 비뚤어졌습니다.",
+          "exEn": "The stitching is crooked."
+        },
+        {
+          "ko": "단추",
+          "rom": "danchu",
+          "en": "button",
+          "ex": "단추가 하나 빠졌습니다.",
+          "exEn": "One button is missing."
+        },
+        {
+          "ko": "지퍼",
+          "rom": "jipeo",
+          "en": "zip",
+          "ex": "지퍼가 잘 안 올라갑니다.",
+          "exEn": "The zip does not go up properly."
+        },
+        {
+          "ko": "다림질",
+          "rom": "darimjil",
+          "en": "ironing",
+          "ex": "다림질은 마지막에 합니다.",
+          "exEn": "Ironing is the last step."
+        },
+        {
+          "ko": "다리미",
+          "rom": "darimi",
+          "en": "iron",
+          "ex": "다리미를 세워 두십시오.",
+          "exEn": "Stand the iron up."
+        },
+        {
+          "ko": "증기",
+          "rom": "jeunggi",
+          "en": "steam",
+          "ex": "증기에 데지 않게 조심하십시오.",
+          "exEn": "Be careful not to be scalded by the steam."
+        },
+        {
+          "ko": "염색",
+          "rom": "yeomsaek",
+          "en": "dyeing",
+          "ex": "염색 작업장은 장갑을 끼고 들어갑니다.",
+          "exEn": "Wear gloves to enter the dye house."
+        },
+        {
+          "ko": "탈색",
+          "rom": "talsaek",
+          "en": "fading, bleaching",
+          "ex": "이 천은 탈색이 됐습니다.",
+          "exEn": "This cloth has faded."
+        },
+        {
+          "ko": "얼룩",
+          "rom": "eolluk",
+          "en": "a stain",
+          "ex": "얼룩이 있으면 불량입니다.",
+          "exEn": "A stain makes it a reject."
+        },
+        {
+          "ko": "치수",
+          "rom": "chisu",
+          "en": "size, measurement",
+          "ex": "치수가 맞는지 재 보십시오.",
+          "exEn": "Measure it and see if the size is right."
+        },
+        {
+          "ko": "사이즈",
+          "rom": "saijeu",
+          "en": "size",
+          "ex": "사이즈별로 나눕니다.",
+          "exEn": "Separate them by size."
+        },
+        {
+          "ko": "수량",
+          "rom": "suryang",
+          "en": "quantity",
+          "ex": "수량을 세어서 적습니다.",
+          "exEn": "Count them and write the number down."
+        },
+        {
+          "ko": "재고",
+          "rom": "jaego",
+          "en": "stock",
+          "ex": "재고가 모자랍니다.",
+          "exEn": "We are short of stock."
+        },
+        {
+          "ko": "납기",
+          "rom": "napgi",
+          "en": "delivery date",
+          "ex": "납기가 모레입니다.",
+          "exEn": "The delivery date is the day after tomorrow."
+        },
+        {
+          "ko": "먼지",
+          "rom": "meonji",
+          "en": "dust, lint",
+          "ex": "먼지가 많으니 마스크를 쓰십시오.",
+          "exEn": "Wear a mask — there is a lot of lint."
+        },
+        {
+          "ko": "마스크",
+          "rom": "maseukeu",
+          "en": "mask",
+          "ex": "마스크는 코까지 덮습니다.",
+          "exEn": "The mask covers your nose too."
+        },
+        {
+          "ko": "앞치마",
+          "rom": "apchima",
+          "en": "apron",
+          "ex": "염색할 때 앞치마를 두릅니다.",
+          "exEn": "Put an apron on for dyeing."
+        },
+        {
+          "ko": "세탁",
+          "rom": "setak",
+          "en": "washing (of cloth)",
+          "ex": "세탁 후에 다시 봅니다.",
+          "exEn": "Check them again after washing."
+        },
+        {
+          "ko": "포장 상자",
+          "rom": "pojang sangja",
+          "en": "packing box",
+          "ex": "포장 상자에 사이즈를 씁니다.",
+          "exEn": "Write the size on the box."
+        },
+        {
+          "ko": "가위",
+          "rom": "gawi",
+          "en": "scissors",
+          "ex": "가위는 날을 아래로 해서 둡니다.",
+          "exEn": "Put scissors down blade-first."
+        }
+      ],
+      "items": [
+        {
+          "display": "바늘 분실 시 즉시 신고",
+          "stem": "바늘을 잃어버리면 어떻게 해야 합니까?",
+          "options": [
+            "바로 알립니다",
+            "다음 날 알립니다",
+            "새 바늘을 씁니다",
+            "혼자 찾습니다"
+          ],
+          "a": 0,
+          "why": "즉시 신고 — report at once."
+        },
+        {
+          "display": "방진마스크 착용 구역",
+          "stem": "이곳에서 해야 하는 것은 무엇입니까?",
+          "options": [
+            "마스크를 씁니다",
+            "장갑을 낍니다",
+            "앞치마를 두릅니다",
+            "귀마개를 낍니다"
+          ],
+          "a": 0,
+          "why": "Lint means a dust mask."
+        },
+        {
+          "display": "고온 증기 주의",
+          "stem": "이 표지의 뜻으로 맞는 것을 고르십시오.",
+          "options": [
+            "뜨거운 김에 델 수 있습니다",
+            "물이 샐 수 있습니다",
+            "전기가 흐릅니다",
+            "바닥이 젖었습니다"
+          ],
+          "a": 0,
+          "why": "증기 is steam; 고온 is high temperature.",
+          "tags": [
+            "ability"
+          ]
+        },
+        {
+          "display": "불량품 별도 보관",
+          "stem": "불량품은 어떻게 합니까?",
+          "options": [
+            "따로 모아 둡니다",
+            "같이 포장합니다",
+            "바로 버립니다",
+            "다시 만듭니다"
+          ],
+          "a": 0,
+          "why": "별도 보관 — kept separately."
+        },
+        {
+          "display": "염색약 취급 주의 — 보호장갑 착용",
+          "stem": "염색약을 다룰 때 무엇을 해야 합니까?",
+          "options": [
+            "보호장갑을 낍니다",
+            "맨손으로 만집니다",
+            "마스크만 씁니다",
+            "물로 씻습니다"
+          ],
+          "a": 0,
+          "why": "보호장갑 착용 — wear protective gloves."
+        },
+        {
+          "display": "다리미 사용 후 전원 차단",
+          "stem": "다림질이 끝나면 무엇을 해야 합니까?",
+          "options": [
+            "다리미 전원을 끕니다",
+            "다리미를 눕힙니다",
+            "다리미를 씻습니다",
+            "다리미를 그대로 둡니다"
+          ],
+          "a": 0,
+          "why": "전원 차단 — cut the power after use."
+        },
+        {
+          "stem": "박음질이 비뚤어진 옷은 (   )으로 뺍니다.",
+          "options": [
+            "불량",
+            "양품",
+            "재고",
+            "수량"
+          ],
+          "a": 0,
+          "why": "Crooked stitching makes it a reject."
+        },
+        {
+          "stem": "원단에 (   )이 있으면 그 부분은 자르지 않습니다.",
+          "options": [
+            "얼룩",
+            "치수",
+            "사이즈",
+            "단추"
+          ],
+          "a": 0,
+          "why": "A stain is cut around, not into."
+        },
+        {
+          "stem": "하루가 끝나면 만든 (   )을 세어서 적습니다.",
+          "options": [
+            "수량",
+            "시간",
+            "사람",
+            "기계"
+          ],
+          "a": 0,
+          "why": "수량 — the quantity produced."
+        },
+        {
+          "stem": "가위를 다른 사람에게 줄 때는 (   ) 쪽을 줍니다.",
+          "options": [
+            "손잡이",
+            "날",
+            "끝",
+            "가운데"
+          ],
+          "a": 0,
+          "why": "Handle first, the same rule as a knife."
+        },
+        {
+          "stem": "먼지가 많은 곳에서 오래 일하면 (   )가 나빠집니다.",
+          "options": [
+            "숨 쉬기",
+            "듣기",
+            "보기",
+            "걷기"
+          ],
+          "a": 0,
+          "why": "Lint affects breathing."
+        },
+        {
+          "stem": "납기가 내일이니까 오늘 안에 (   ) 합니다.",
+          "options": [
+            "끝내야",
+            "시작해야",
+            "쉬어야",
+            "세어야"
+          ],
+          "a": 0,
+          "why": "A delivery date tomorrow means finishing today."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n바늘이 부러지면 조각을 모두 찾아야 합니다.",
+          "options": [
+            "부러진 바늘은 하나도 남기면 안 됩니다",
+            "부러진 바늘은 버립니다",
+            "바늘은 찾지 않아도 됩니다",
+            "바늘은 새것으로 바꿉니다"
+          ],
+          "a": 0,
+          "why": "모두 찾아야 — every piece, because one left in a garment is dangerous.",
+          "tags": [
+            "conditional",
+            "obligation"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n사이즈별로 나누어서 상자에 담으십시오.",
+          "options": [
+            "크기가 같은 것끼리 한 상자에 넣습니다",
+            "모두 한 상자에 넣습니다",
+            "상자는 쓰지 않습니다",
+            "사이즈는 보지 않습니다"
+          ],
+          "a": 0,
+          "why": "-별로 — by each one of them."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n다리미는 쓰지 않을 때 세워 둡니다.",
+          "options": [
+            "다리미를 눕혀 두면 안 됩니다",
+            "다리미를 눕혀 둡니다",
+            "다리미를 켜 둡니다",
+            "다리미를 들고 있습니다"
+          ],
+          "a": 0,
+          "why": "세워 두다 — to stand it upright, so it does not scorch the board.",
+          "tags": [
+            "negation",
+            "obligation",
+            "time-clauses"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n원단이 모자라면 재단을 시작하지 마십시오.",
+          "options": [
+            "천이 부족할 때는 자르지 않습니다",
+            "천이 부족해도 자릅니다",
+            "천을 더 삽니다",
+            "재단은 늘 먼저 합니다"
+          ],
+          "a": 0,
+          "why": "모자라면 … 마십시오 — if short, do not begin.",
+          "tags": [
+            "conditional",
+            "negation",
+            "time-clauses"
+          ]
+        },
+        {
+          "passage": "[봉제 작업 지시]\n\n· 오늘 작업: 남성 셔츠 M 사이즈 300장\n· 실 색깔: 흰색\n· 단추: 앞 6개, 소매 2개\n· 완성된 옷은 10장씩 묶어서 상자에 넣습니다.\n· 박음질이 비뚤어지거나 단추가 빠진 것은 빨간 통에 넣습니다.",
+          "stem": "셔츠 한 장에 달리는 단추는 모두 몇 개입니까?",
+          "options": [
+            "여덟 개",
+            "여섯 개",
+            "두 개",
+            "열 개"
+          ],
+          "a": 0,
+          "why": "Six at the front and two on the sleeves makes eight."
+        },
+        {
+          "passage": "[봉제 작업 지시]\n\n· 오늘 작업: 남성 셔츠 M 사이즈 300장\n· 실 색깔: 흰색\n· 단추: 앞 6개, 소매 2개\n· 완성된 옷은 10장씩 묶어서 상자에 넣습니다.\n· 박음질이 비뚤어지거나 단추가 빠진 것은 빨간 통에 넣습니다.",
+          "stem": "완성된 옷은 몇 장씩 묶습니까?",
+          "options": [
+            "열 장",
+            "여섯 장",
+            "삼백 장",
+            "두 장"
+          ],
+          "a": 0,
+          "why": "10장씩 묶어서 — tied in tens."
+        },
+        {
+          "passage": "[염색실 주의사항]\n\n· 염색약은 반드시 보호장갑과 앞치마를 착용하고 다룹니다.\n· 염색약이 피부에 닿으면 즉시 흐르는 물에 15분 이상 씻습니다.\n· 눈에 들어갔을 때는 씻은 다음 바로 병원에 갑니다.\n· 염색약 통은 열어 둔 채로 두지 않습니다.\n· 작업이 끝나면 환기 장치를 30분 더 켜 둡니다.",
+          "stem": "염색약이 피부에 닿았을 때 가장 먼저 할 일은 무엇입니까?",
+          "options": [
+            "물로 오래 씻습니다",
+            "병원에 갑니다",
+            "장갑을 낍니다",
+            "반장님께 갑니다"
+          ],
+          "a": 0,
+          "why": "즉시 흐르는 물에 15분 이상 — running water first."
+        },
+        {
+          "passage": "[염색실 주의사항]\n\n· 염색약은 반드시 보호장갑과 앞치마를 착용하고 다룹니다.\n· 염색약이 피부에 닿으면 즉시 흐르는 물에 15분 이상 씻습니다.\n· 눈에 들어갔을 때는 씻은 다음 바로 병원에 갑니다.\n· 염색약 통은 열어 둔 채로 두지 않습니다.\n· 작업이 끝나면 환기 장치를 30분 더 켜 둡니다.",
+          "stem": "일이 끝난 후 환기 장치는 어떻게 합니까?",
+          "options": [
+            "30분 더 켜 둡니다",
+            "바로 끕니다",
+            "다음 날 켭니다",
+            "켜지 않습니다"
+          ],
+          "a": 0,
+          "why": "30분 더 켜 둡니다 — leave it running another thirty minutes."
+        }
+      ],
+      "tags": [
+        "industry"
+      ]
+    },
+    {
+      "id": "t-chemical",
+      "order": 7,
+      "titleKo": "화학·제약",
+      "title": "Chemical",
+      "blurb": "Warning labels, protective gear, spills, and what to do in the first minute.",
+      "icon": "flask",
+      "about": "The trade where reading the label is the job. A container you cannot identify is the single most dangerous thing on the floor, and most of these questions are about a word on a drum and what it tells you to do.",
+      "words": [
+        {
+          "ko": "화학물질",
+          "rom": "hwahak-muljil",
+          "en": "chemical substance",
+          "ex": "화학물질은 이름을 확인하고 씁니다.",
+          "exEn": "Check the name before using a chemical."
+        },
+        {
+          "ko": "유해",
+          "rom": "yuhae",
+          "en": "harmful",
+          "ex": "유해 물질은 따로 보관합니다.",
+          "exEn": "Harmful substances are stored separately."
+        },
+        {
+          "ko": "독성",
+          "rom": "dokseong",
+          "en": "toxicity, toxic",
+          "ex": "독성이 있으니 마시면 안 됩니다.",
+          "exEn": "It is toxic — it must not be swallowed."
+        },
+        {
+          "ko": "부식성",
+          "rom": "busikseong",
+          "en": "corrosive",
+          "ex": "부식성 물질은 피부를 상하게 합니다.",
+          "exEn": "A corrosive substance damages the skin."
+        },
+        {
+          "ko": "인화성",
+          "rom": "inhwaseong",
+          "en": "flammable",
+          "ex": "인화성 물질 옆에서 불을 쓰면 안 됩니다.",
+          "exEn": "No flames near flammable substances."
+        },
+        {
+          "ko": "폭발",
+          "rom": "pokbal",
+          "en": "explosion",
+          "ex": "폭발 위험이 있는 구역입니다.",
+          "exEn": "This is an explosion risk area."
+        },
+        {
+          "ko": "누출",
+          "rom": "nuchul",
+          "en": "a leak, a spill",
+          "ex": "누출이 생기면 바로 대피합니다.",
+          "exEn": "Evacuate at once if there is a leak."
+        },
+        {
+          "ko": "증기",
+          "rom": "jeunggi",
+          "en": "vapour",
+          "ex": "증기를 마시지 않게 조심하십시오.",
+          "exEn": "Be careful not to breathe the vapour."
+        },
+        {
+          "ko": "분진",
+          "rom": "bunjin",
+          "en": "dust",
+          "ex": "분진이 많은 곳에서는 마스크를 씁니다.",
+          "exEn": "Wear a mask where there is a lot of dust."
+        },
+        {
+          "ko": "보호구",
+          "rom": "bohogu",
+          "en": "protective equipment",
+          "ex": "보호구 없이 들어가면 안 됩니다.",
+          "exEn": "Do not enter without protective equipment."
+        },
+        {
+          "ko": "방독마스크",
+          "rom": "bangdok-maseukeu",
+          "en": "respirator, gas mask",
+          "ex": "방독마스크를 쓰고 들어가십시오.",
+          "exEn": "Put a respirator on before going in."
+        },
+        {
+          "ko": "보호안경",
+          "rom": "boho-an-gyeong",
+          "en": "protective goggles",
+          "ex": "약품을 부을 때 보호안경을 씁니다.",
+          "exEn": "Wear goggles when pouring chemicals."
+        },
+        {
+          "ko": "세안기",
+          "rom": "sean-gi",
+          "en": "eye wash station",
+          "ex": "세안기 위치를 알아 두십시오.",
+          "exEn": "Know where the eye wash is."
+        },
+        {
+          "ko": "대피",
+          "rom": "daepi",
+          "en": "evacuation",
+          "ex": "사이렌이 울리면 대피하십시오.",
+          "exEn": "Evacuate when the siren sounds."
+        },
+        {
+          "ko": "비상구",
+          "rom": "bisanggu",
+          "en": "emergency exit",
+          "ex": "비상구 앞에 물건을 두지 마십시오.",
+          "exEn": "Do not put anything in front of the emergency exit."
+        },
+        {
+          "ko": "경보",
+          "rom": "gyeongbo",
+          "en": "alarm",
+          "ex": "경보가 울리면 밖으로 나갑니다.",
+          "exEn": "Go outside when the alarm sounds."
+        },
+        {
+          "ko": "밀폐",
+          "rom": "milpye",
+          "en": "sealed, confined",
+          "ex": "밀폐 공간에는 혼자 들어가지 않습니다.",
+          "exEn": "Never enter a confined space alone."
+        },
+        {
+          "ko": "희석",
+          "rom": "huiseok",
+          "en": "dilution",
+          "ex": "물에 희석해서 씁니다.",
+          "exEn": "Dilute it in water before use."
+        },
+        {
+          "ko": "용기",
+          "rom": "yonggi",
+          "en": "container",
+          "ex": "용기에 이름이 없으면 쓰지 마십시오.",
+          "exEn": "Do not use a container with no name on it."
+        },
+        {
+          "ko": "라벨",
+          "rom": "rabel",
+          "en": "label",
+          "ex": "라벨을 떼면 안 됩니다.",
+          "exEn": "The label must not be removed."
+        },
+        {
+          "ko": "취급",
+          "rom": "chwigeup",
+          "en": "handling",
+          "ex": "취급 방법을 교육받았습니다.",
+          "exEn": "I have been trained in how to handle it."
+        },
+        {
+          "ko": "혼합",
+          "rom": "honhap",
+          "en": "mixing",
+          "ex": "두 약품을 섞으면 위험합니다.",
+          "exEn": "Mixing the two chemicals is dangerous."
+        },
+        {
+          "ko": "중화",
+          "rom": "junghwa",
+          "en": "neutralisation",
+          "ex": "산이 쏟아지면 중화제를 뿌립니다.",
+          "exEn": "Spread neutraliser on spilled acid."
+        },
+        {
+          "ko": "흡입",
+          "rom": "heubip",
+          "en": "inhalation",
+          "ex": "흡입하면 어지러울 수 있습니다.",
+          "exEn": "Inhaling it can make you dizzy."
+        },
+        {
+          "ko": "어지럽다",
+          "rom": "eojireopda",
+          "en": "to feel dizzy",
+          "ex": "어지러우면 바로 밖으로 나가십시오.",
+          "exEn": "Go outside at once if you feel dizzy."
+        },
+        {
+          "ko": "환기 장치",
+          "rom": "hwangi jangchi",
+          "en": "ventilation system",
+          "ex": "환기 장치를 켜고 작업합니다.",
+          "exEn": "Work with the ventilation running."
+        }
+      ],
+      "items": [
+        {
+          "display": "인화성 물질 — 화기 엄금",
+          "stem": "이곳에서 절대 하면 안 되는 것은 무엇입니까?",
+          "options": [
+            "불을 쓰는 것",
+            "물을 쓰는 것",
+            "말하는 것",
+            "걷는 것"
+          ],
+          "a": 0,
+          "why": "화기 엄금 — fire of any kind is strictly forbidden."
+        },
+        {
+          "display": "부식성 — 피부 접촉 주의",
+          "stem": "이 물질이 닿으면 어디가 위험합니까?",
+          "options": [
+            "피부",
+            "귀",
+            "발",
+            "머리카락"
+          ],
+          "a": 0,
+          "why": "피부 접촉 — skin contact."
+        },
+        {
+          "display": "방독마스크 착용 후 출입",
+          "stem": "이 방에 들어가려면 무엇을 해야 합니까?",
+          "options": [
+            "방독마스크를 씁니다",
+            "장갑을 벗습니다",
+            "문을 열어 둡니다",
+            "불을 켭니다"
+          ],
+          "a": 0,
+          "why": "착용 후 출입 — enter after putting it on."
+        },
+        {
+          "display": "세안기",
+          "stem": "이것은 언제 씁니까?",
+          "options": [
+            "눈에 약품이 들어갔을 때",
+            "손이 더러울 때",
+            "목이 마를 때",
+            "불이 났을 때"
+          ],
+          "a": 0,
+          "why": "세안기 — the eye wash."
+        },
+        {
+          "display": "비상구 — 물건을 쌓지 마시오",
+          "stem": "이 앞에서 하면 안 되는 것은 무엇입니까?",
+          "options": [
+            "짐을 놓는 것",
+            "지나가는 것",
+            "문을 여는 것",
+            "청소하는 것"
+          ],
+          "a": 0,
+          "why": "An emergency exit must stay clear."
+        },
+        {
+          "display": "밀폐 공간 — 단독 작업 금지",
+          "stem": "이곳에서 일할 때 어떻게 해야 합니까?",
+          "options": [
+            "혼자 들어가면 안 됩니다",
+            "빨리 들어갑니다",
+            "문을 닫습니다",
+            "불을 끕니다"
+          ],
+          "a": 0,
+          "why": "단독 작업 금지 — working alone is prohibited.",
+          "tags": [
+            "obligation"
+          ]
+        },
+        {
+          "display": "위험물 보관소",
+          "stem": "이곳에 있는 것은 무엇입니까?",
+          "options": [
+            "위험한 물질",
+            "쓰는 공구",
+            "빈 상자",
+            "먹을 것"
+          ],
+          "a": 0,
+          "why": "위험물 — dangerous goods."
+        },
+        {
+          "stem": "용기에 (   )이 없으면 안에 무엇이 있는지 알 수 없으니 쓰지 마십시오.",
+          "options": [
+            "라벨",
+            "뚜껑",
+            "손잡이",
+            "물"
+          ],
+          "a": 0,
+          "why": "An unlabelled container is the classic hazard."
+        },
+        {
+          "stem": "약품 냄새를 맡고 (   ) 바로 밖으로 나가십시오.",
+          "options": [
+            "어지러우면",
+            "배고프면",
+            "졸리면",
+            "심심하면"
+          ],
+          "a": 0,
+          "why": "Dizziness is the first sign of inhalation."
+        },
+        {
+          "stem": "약품이 쏟아졌을 때는 혼자 치우지 말고 먼저 (   ).",
+          "options": [
+            "알립니다",
+            "닦습니다",
+            "마십니다",
+            "옮깁니다"
+          ],
+          "a": 0,
+          "why": "A spill is reported before it is touched."
+        },
+        {
+          "stem": "서로 다른 약품을 함부로 (   ) 안 됩니다.",
+          "options": [
+            "섞으면",
+            "보면",
+            "세면",
+            "들으면"
+          ],
+          "a": 0,
+          "why": "Mixing chemicals is what the rule forbids."
+        },
+        {
+          "stem": "경보가 울리면 하던 일을 멈추고 (   )로 나갑니다.",
+          "options": [
+            "비상구",
+            "화장실",
+            "창고",
+            "사무실"
+          ],
+          "a": 0,
+          "why": "An alarm sends you to the emergency exit."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n보호구를 착용하지 않은 사람은 들어올 수 없습니다.",
+          "options": [
+            "보호구를 써야 들어올 수 있습니다",
+            "보호구는 없어도 됩니다",
+            "아무도 들어올 수 없습니다",
+            "보호구는 안에서 씁니다"
+          ],
+          "a": 0,
+          "why": "-지 않은 사람은 … 없습니다 states the condition the other way round.",
+          "tags": [
+            "ability",
+            "negation"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n약품은 물에 희석한 다음에 씁니다.",
+          "options": [
+            "그대로 쓰지 않고 물을 섞어서 씁니다",
+            "물 없이 씁니다",
+            "물만 씁니다",
+            "약품을 버립니다"
+          ],
+          "a": 0,
+          "why": "희석 — dilution.",
+          "tags": [
+            "negation",
+            "time-clauses"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n환기 장치가 고장 났을 때는 작업을 멈춥니다.",
+          "options": [
+            "환기가 안 되면 일하지 않습니다",
+            "환기가 안 돼도 일합니다",
+            "환기 장치를 고칩니다",
+            "환기 장치는 필요 없습니다"
+          ],
+          "a": 0,
+          "why": "멈춥니다 — work stops.",
+          "tags": [
+            "conditional",
+            "negation",
+            "time-clauses"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n라벨이 지워진 용기는 사용하지 말고 신고하십시오.",
+          "options": [
+            "글씨가 안 보이는 통은 쓰지 말고 알립니다",
+            "글씨가 안 보이면 다시 씁니다",
+            "통을 버립니다",
+            "통을 씻습니다"
+          ],
+          "a": 0,
+          "why": "지워지다 — to have been rubbed out.",
+          "tags": [
+            "negation"
+          ]
+        },
+        {
+          "passage": "[약품이 몸에 닿았을 때]\n\n1. 하던 일을 멈추고 소리쳐서 주변에 알립니다.\n2. 닿은 옷을 벗습니다.\n3. 흐르는 물에 15분 이상 씻습니다.\n4. 눈에 들어갔으면 세안기로 씻습니다.\n5. 씻은 다음 병원에 가고, 약품 이름을 적어서 가지고 갑니다.\n\n※ 문지르지 마십시오. 상처가 더 커집니다.",
+          "stem": "병원에 갈 때 무엇을 가지고 갑니까?",
+          "options": [
+            "약품 이름을 적은 것",
+            "쓰던 장갑",
+            "빈 용기",
+            "작업 지시서"
+          ],
+          "a": 0,
+          "why": "약품 이름을 적어서 — the name of the chemical, written down."
+        },
+        {
+          "passage": "[약품이 몸에 닿았을 때]\n\n1. 하던 일을 멈추고 소리쳐서 주변에 알립니다.\n2. 닿은 옷을 벗습니다.\n3. 흐르는 물에 15분 이상 씻습니다.\n4. 눈에 들어갔으면 세안기로 씻습니다.\n5. 씻은 다음 병원에 가고, 약품 이름을 적어서 가지고 갑니다.\n\n※ 문지르지 마십시오. 상처가 더 커집니다.",
+          "stem": "하면 안 되는 것은 무엇입니까?",
+          "options": [
+            "문지르는 것",
+            "물로 씻는 것",
+            "옷을 벗는 것",
+            "주변에 알리는 것"
+          ],
+          "a": 0,
+          "why": "The note says not to rub it."
+        },
+        {
+          "passage": "[화학물질 보관 규칙]\n\n· 모든 용기에는 물질 이름과 위험 표시가 붙어 있어야 합니다.\n· 서로 반응하는 물질은 같은 선반에 두지 않습니다.\n· 인화성 물질은 전용 캐비닛에 넣고 잠급니다.\n· 바닥에는 쏟았을 때를 대비해 받침을 둡니다.\n· 남은 약품을 원래 통에 다시 붓지 않습니다.",
+          "stem": "쓰고 남은 약품은 어떻게 합니까?",
+          "options": [
+            "원래 통에 다시 붓지 않습니다",
+            "원래 통에 다시 붓습니다",
+            "바닥에 버립니다",
+            "다른 사람에게 줍니다"
+          ],
+          "a": 0,
+          "why": "다시 붓지 않습니다 — never pour it back, because the bottle is then no longer what the label says."
+        },
+        {
+          "passage": "[화학물질 보관 규칙]\n\n· 모든 용기에는 물질 이름과 위험 표시가 붙어 있어야 합니다.\n· 서로 반응하는 물질은 같은 선반에 두지 않습니다.\n· 인화성 물질은 전용 캐비닛에 넣고 잠급니다.\n· 바닥에는 쏟았을 때를 대비해 받침을 둡니다.\n· 남은 약품을 원래 통에 다시 붓지 않습니다.",
+          "stem": "인화성 물질은 어디에 둡니까?",
+          "options": [
+            "잠그는 전용 캐비닛",
+            "보통 선반",
+            "바닥",
+            "작업대 위"
+          ],
+          "a": 0,
+          "why": "전용 캐비닛에 넣고 잠급니다 — in a dedicated cabinet, locked."
+        }
+      ],
+      "tags": [
+        "industry"
+      ]
+    },
+    {
+      "id": "t-wood",
+      "order": 8,
+      "titleKo": "펄프·종이·목재",
+      "title": "Pulp, paper and wood",
+      "blurb": "Saws, rollers, stacked timber, and the notices on a mill wall.",
+      "icon": "wood",
+      "about": "Blades that do not stop when they hit something, rollers that pull, and stacks that fall. The words worth knowing first are the ones for the guard, the stop and the thing you must never do with your hands.",
+      "words": [
+        {
+          "ko": "목재",
+          "rom": "mokjae",
+          "en": "timber, wood",
+          "ex": "목재를 창고로 옮깁니다.",
+          "exEn": "Move the timber to the store."
+        },
+        {
+          "ko": "원목",
+          "rom": "wonmok",
+          "en": "log, raw timber",
+          "ex": "원목은 밖에 쌓아 둡니다.",
+          "exEn": "Logs are stacked outside."
+        },
+        {
+          "ko": "합판",
+          "rom": "happan",
+          "en": "plywood",
+          "ex": "합판 스무 장을 실었습니다.",
+          "exEn": "I loaded twenty sheets of plywood."
+        },
+        {
+          "ko": "톱",
+          "rom": "top",
+          "en": "saw",
+          "ex": "톱날은 아주 날카롭습니다.",
+          "exEn": "The saw blade is very sharp."
+        },
+        {
+          "ko": "톱날",
+          "rom": "tomnal",
+          "en": "saw blade",
+          "ex": "톱날 교체는 정비 담당이 합니다.",
+          "exEn": "Blade changes are done by maintenance."
+        },
+        {
+          "ko": "재단기",
+          "rom": "jaedan-gi",
+          "en": "cutting machine",
+          "ex": "재단기 덮개를 닫으십시오.",
+          "exEn": "Close the guard on the cutter."
+        },
+        {
+          "ko": "롤러",
+          "rom": "rolleo",
+          "en": "roller",
+          "ex": "롤러에 손이 말릴 수 있습니다.",
+          "exEn": "Your hand can be pulled into the roller."
+        },
+        {
+          "ko": "컨베이어",
+          "rom": "keonbeieo",
+          "en": "conveyor",
+          "ex": "컨베이어 위에 올라가지 마십시오.",
+          "exEn": "Do not climb on the conveyor."
+        },
+        {
+          "ko": "펄프",
+          "rom": "peolpeu",
+          "en": "pulp",
+          "ex": "펄프를 물에 풉니다.",
+          "exEn": "The pulp is mixed into water."
+        },
+        {
+          "ko": "지관",
+          "rom": "jigwan",
+          "en": "paper core, tube",
+          "ex": "지관을 기계에 끼웁니다.",
+          "exEn": "Fit the core into the machine."
+        },
+        {
+          "ko": "절단",
+          "rom": "jeoldan",
+          "en": "cutting",
+          "ex": "절단 작업 중에는 접근하지 마십시오.",
+          "exEn": "Keep away while cutting is in progress."
+        },
+        {
+          "ko": "적재",
+          "rom": "jeokjae",
+          "en": "stacking, loading",
+          "ex": "적재는 정해진 높이까지만 합니다.",
+          "exEn": "Stack only up to the set height."
+        },
+        {
+          "ko": "붕괴",
+          "rom": "bunggoe",
+          "en": "collapse",
+          "ex": "높이 쌓으면 붕괴 위험이 있습니다.",
+          "exEn": "Stacking high risks a collapse."
+        },
+        {
+          "ko": "가시",
+          "rom": "gasi",
+          "en": "splinter",
+          "ex": "손에 가시가 박혔습니다.",
+          "exEn": "I have a splinter in my hand."
+        },
+        {
+          "ko": "톱밥",
+          "rom": "topbap",
+          "en": "sawdust",
+          "ex": "톱밥은 매일 치웁니다.",
+          "exEn": "Sawdust is cleared away every day."
+        },
+        {
+          "ko": "집진기",
+          "rom": "jipjin-gi",
+          "en": "dust collector",
+          "ex": "집진기를 켜고 작업합니다.",
+          "exEn": "Work with the dust collector on."
+        },
+        {
+          "ko": "건조",
+          "rom": "geonjo",
+          "en": "drying",
+          "ex": "건조에 이틀이 걸립니다.",
+          "exEn": "Drying takes two days."
+        },
+        {
+          "ko": "습기",
+          "rom": "seupgi",
+          "en": "damp, moisture",
+          "ex": "습기가 있으면 종이가 상합니다.",
+          "exEn": "Damp ruins the paper."
+        },
+        {
+          "ko": "접착제",
+          "rom": "jeopchakje",
+          "en": "adhesive, glue",
+          "ex": "접착제 냄새가 심합니다.",
+          "exEn": "The glue smells strongly."
+        },
+        {
+          "ko": "방진마스크",
+          "rom": "bangjin-maseukeu",
+          "en": "dust mask",
+          "ex": "톱밥이 많으니 방진마스크를 쓰십시오.",
+          "exEn": "Wear a dust mask — there is a lot of sawdust."
+        },
+        {
+          "ko": "귀마개",
+          "rom": "gwimagae",
+          "en": "earplugs",
+          "ex": "톱 소리가 크니 귀마개를 낍니다.",
+          "exEn": "The saw is loud, so wear earplugs."
+        },
+        {
+          "ko": "밀대",
+          "rom": "mildae",
+          "en": "push stick",
+          "ex": "짧은 나무는 밀대로 밉니다.",
+          "exEn": "Push short pieces through with a push stick."
+        },
+        {
+          "ko": "받침대",
+          "rom": "batchimdae",
+          "en": "support, stand",
+          "ex": "긴 나무는 받침대를 씁니다.",
+          "exEn": "Use a support for long pieces."
+        },
+        {
+          "ko": "화재",
+          "rom": "hwajae",
+          "en": "fire",
+          "ex": "톱밥은 화재 위험이 큽니다.",
+          "exEn": "Sawdust is a serious fire risk."
+        },
+        {
+          "ko": "지게차",
+          "rom": "jigecha",
+          "en": "forklift",
+          "ex": "지게차 길로 다니지 마십시오.",
+          "exEn": "Do not walk on the forklift route."
+        },
+        {
+          "ko": "창고",
+          "rom": "changgo",
+          "en": "warehouse, store",
+          "ex": "창고에서 자재를 받습니다.",
+          "exEn": "Materials are issued from the store."
+        }
+      ],
+      "items": [
+        {
+          "display": "톱날 주의 — 덮개 열지 마시오",
+          "stem": "이 표지의 뜻으로 맞는 것을 고르십시오.",
+          "options": [
+            "덮개를 열면 위험합니다",
+            "덮개를 자주 엽니다",
+            "덮개를 떼야 합니다",
+            "덮개는 없어도 됩니다"
+          ],
+          "a": 0,
+          "why": "The guard stays on because the blade is behind it.",
+          "tags": [
+            "conditional"
+          ]
+        },
+        {
+          "display": "말림 주의",
+          "stem": "이 표지가 있는 곳에서 조심해야 하는 것은 무엇입니까?",
+          "options": [
+            "손이나 옷이 기계에 딸려 들어가는 것",
+            "물건이 떨어지는 것",
+            "바닥이 미끄러운 것",
+            "불이 나는 것"
+          ],
+          "a": 0,
+          "why": "말리다 — to be drawn in by a roller."
+        },
+        {
+          "display": "적재 높이 2m 이하",
+          "stem": "물건을 얼마나 높이 쌓을 수 있습니까?",
+          "options": [
+            "2미터까지",
+            "2미터보다 높게",
+            "얼마든지",
+            "1미터만"
+          ],
+          "a": 0,
+          "why": "이하 — that height or less."
+        },
+        {
+          "display": "집진기 가동 후 작업",
+          "stem": "일을 시작하기 전에 해야 하는 것은 무엇입니까?",
+          "options": [
+            "집진기를 켭니다",
+            "집진기를 끕니다",
+            "창문을 닫습니다",
+            "불을 켭니다"
+          ],
+          "a": 0,
+          "why": "가동 후 — after starting it."
+        },
+        {
+          "display": "화기 엄금 — 톱밥 보관소",
+          "stem": "이곳에서 절대 하면 안 되는 것은 무엇입니까?",
+          "options": [
+            "담배를 피우는 것",
+            "청소하는 것",
+            "물건을 옮기는 것",
+            "문을 닫는 것"
+          ],
+          "a": 0,
+          "why": "Sawdust catches easily, so no flame of any kind."
+        },
+        {
+          "display": "귀마개 착용 구역",
+          "stem": "이곳에서 반드시 해야 하는 것은 무엇입니까?",
+          "options": [
+            "귀마개를 낍니다",
+            "마스크를 씁니다",
+            "장갑을 낍니다",
+            "안경을 씁니다"
+          ],
+          "a": 0,
+          "why": "귀마개 — earplugs, against the saw noise."
+        },
+        {
+          "stem": "짧은 나무를 자를 때는 손 대신 (   )로 밉니다.",
+          "options": [
+            "밀대",
+            "톱",
+            "장갑",
+            "상자"
+          ],
+          "a": 0,
+          "why": "A push stick keeps the hand away from the blade."
+        },
+        {
+          "stem": "톱밥이 쌓이면 (   ) 위험이 크니 매일 치웁니다.",
+          "options": [
+            "화재",
+            "감전",
+            "미끄럼",
+            "붕괴"
+          ],
+          "a": 0,
+          "why": "Sawdust is a fire hazard first of all."
+        },
+        {
+          "stem": "나무를 만질 때 (   )가 박힐 수 있으니 장갑을 끼십시오.",
+          "options": [
+            "가시",
+            "못",
+            "실",
+            "먼지"
+          ],
+          "a": 0,
+          "why": "가시 — a splinter."
+        },
+        {
+          "stem": "롤러가 돌아갈 때 (   ) 넣으면 손이 말립니다.",
+          "options": [
+            "손을",
+            "나무를",
+            "종이를",
+            "밀대를"
+          ],
+          "a": 0,
+          "why": "The hazard is the hand, not the workpiece."
+        },
+        {
+          "stem": "나무를 너무 높이 쌓으면 (   ) 수 있습니다.",
+          "options": [
+            "무너질",
+            "젖을",
+            "마를",
+            "탈"
+          ],
+          "a": 0,
+          "why": "무너지다 — to collapse."
+        },
+        {
+          "stem": "종이는 (   )가 있으면 상하니까 마른 곳에 둡니다.",
+          "options": [
+            "습기",
+            "먼지",
+            "소리",
+            "빛"
+          ],
+          "a": 0,
+          "why": "습기 — damp."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n톱이 완전히 멈춘 다음에 나무를 치웁니다.",
+          "options": [
+            "톱이 돌 때는 손을 대면 안 됩니다",
+            "톱이 돌 때 치웁니다",
+            "나무는 치우지 않습니다",
+            "톱은 멈추지 않습니다"
+          ],
+          "a": 0,
+          "why": "완전히 멈춘 다음에 — only once it has stopped completely.",
+          "tags": [
+            "obligation",
+            "time-clauses"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n접착제를 쓸 때는 창문을 열어 둡니다.",
+          "options": [
+            "환기를 하면서 접착제를 씁니다",
+            "창문을 닫고 씁니다",
+            "접착제는 쓰지 않습니다",
+            "창문만 엽니다"
+          ],
+          "a": 0,
+          "why": "Opening the window is ventilation.",
+          "tags": [
+            "time-clauses"
+          ]
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n긴 나무는 혼자 들지 말고 받침대를 쓰십시오.",
+          "options": [
+            "긴 나무는 받쳐 놓고 다룹니다",
+            "긴 나무는 혼자 듭니다",
+            "긴 나무는 자릅니다",
+            "받침대는 쓰지 않습니다"
+          ],
+          "a": 0,
+          "why": "받침대 — a support stand."
+        },
+        {
+          "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n지게차가 다니는 길로 걸어 다니지 마십시오.",
+          "options": [
+            "사람은 다른 길로 다녀야 합니다",
+            "지게차 길이 더 빠릅니다",
+            "지게차는 다니지 않습니다",
+            "길은 하나뿐입니다"
+          ],
+          "a": 0,
+          "why": "If you may not walk there, you walk elsewhere.",
+          "tags": [
+            "negation",
+            "obligation"
+          ]
+        },
+        {
+          "passage": "[재단기 사용 규칙]\n\n1. 덮개가 제자리에 있는지 봅니다.\n2. 집진기를 켭니다.\n3. 방진마스크와 귀마개를 착용합니다.\n4. 나무를 받침대에 올리고 천천히 밉니다.\n5. 짧은 나무는 반드시 밀대를 씁니다.\n\n※ 톱이 도는 동안에는 톱밥을 치우지 않습니다.",
+          "stem": "톱밥은 언제 치웁니까?",
+          "options": [
+            "톱이 멈춘 다음에",
+            "톱이 도는 동안에",
+            "작업 중간에",
+            "치우지 않습니다"
+          ],
+          "a": 0,
+          "why": "The note forbids clearing it while the blade turns."
+        },
+        {
+          "passage": "[재단기 사용 규칙]\n\n1. 덮개가 제자리에 있는지 봅니다.\n2. 집진기를 켭니다.\n3. 방진마스크와 귀마개를 착용합니다.\n4. 나무를 받침대에 올리고 천천히 밉니다.\n5. 짧은 나무는 반드시 밀대를 씁니다.\n\n※ 톱이 도는 동안에는 톱밥을 치우지 않습니다.",
+          "stem": "가장 먼저 확인하는 것은 무엇입니까?",
+          "options": [
+            "덮개",
+            "집진기",
+            "마스크",
+            "밀대"
+          ],
+          "a": 0,
+          "why": "Step 1 is the guard."
+        },
+        {
+          "passage": "[목재 창고 안내]\n\n· 목재는 정해진 자리에 2미터 이하로 쌓습니다.\n· 쌓을 때는 아래가 넓고 위가 좁게 합니다.\n· 무너질 것 같은 더미에는 가까이 가지 말고 바로 알립니다.\n· 창고 안에서는 담배를 피울 수 없습니다.\n· 지게차가 들어오면 사람은 통로 밖으로 나갑니다.",
+          "stem": "무너질 것 같은 나무 더미를 보면 어떻게 합니까?",
+          "options": [
+            "가까이 가지 않고 알립니다",
+            "직접 다시 쌓습니다",
+            "밀어서 무너뜨립니다",
+            "그냥 지나갑니다"
+          ],
+          "a": 0,
+          "why": "가까이 가지 말고 바로 알립니다 — keep away and report it."
+        },
+        {
+          "passage": "[목재 창고 안내]\n\n· 목재는 정해진 자리에 2미터 이하로 쌓습니다.\n· 쌓을 때는 아래가 넓고 위가 좁게 합니다.\n· 무너질 것 같은 더미에는 가까이 가지 말고 바로 알립니다.\n· 창고 안에서는 담배를 피울 수 없습니다.\n· 지게차가 들어오면 사람은 통로 밖으로 나갑니다.",
+          "stem": "나무를 어떻게 쌓아야 합니까?",
+          "options": [
+            "아래를 넓게, 위를 좁게",
+            "아래를 좁게, 위를 넓게",
+            "똑같은 넓이로",
+            "옆으로 길게"
+          ],
+          "a": 0,
+          "why": "아래가 넓고 위가 좁게 — wide at the bottom, narrow at the top."
+        }
+      ],
+      "tags": [
+        "industry"
+      ]
+    }
+  ]
+}

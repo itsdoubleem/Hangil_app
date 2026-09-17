@@ -13,3 +13,23 @@ android/.gradle/
 android/keystore.properties
 *.keystore
 *.jks
+
+# The official EPS-TOPIK listening files. 180 MB, and they are 한국산업인력공단's,
+# not ours — a learner should get them from HRD Korea. Re-import them any time
+# with tools/import-eps-audio.py. The manifest that lists them IS committed, so
+# the shelf is described even on a checkout that has no audio in it.
+content/listening/*.mp3
+
+# Build output. `node tools/build.mjs` writes dist/, and build_apk.sh stages a
+# copy of it into the APK — neither is source, both were tracked by accident in
+# the first commit, and dist/ is where the 180 MB of audio reappears under a path
+# the rule above does not match. Committing that would have put 한국산업인력공단's
+# files into this history permanently, which no later fix can undo.
+dist/
+android/app/src/main/assets/www/
+
+# The built APK. Which one this is depends entirely on the last build — 2 MB
+# without the audio, 190 MB with it — so tracking it means the repo's size is
+# decided by whichever command ran last. The APK that ships is committed in the
+# site repo, with its hash published beside it.
+*.apk

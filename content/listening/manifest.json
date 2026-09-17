@@ -1,4 +1,261 @@
 {
-  "note": "Drop official EPS-TOPIK listening files into this folder and list them here. Nothing is shipped with the app; this file starts empty on purpose. See content/listening/README.md.",
-  "sets": []
+  "note": "Official EPS-TOPIK listening files published free by 한국산업인력공단 at epstopik.hrdkorea.or.kr. Used under KOGL Type 3 — attribution required, no derivative works — so every file here is exactly as published: not re-encoded, not trimmed, not split.",
+  "source": "한국산업인력공단 · EPS-TOPIK 한국어 표준교재 듣기파일 (2024)",
+  "licence": "KOGL 제3유형: 출처표시 + 변경금지",
+  "sets": [
+    {
+      "title": "표준교재 1 · 일상생활 한국어",
+      "source": "한국산업인력공단 · EPS-TOPIK 한국어 표준교재 듣기파일 (2024)",
+      "note": "Everyday Korean. The EPS-TOPIK listening set from the end of each unit.",
+      "tracks": [
+        {
+          "title": "Track 032 EPS-TOPIK 듣기 문제",
+          "file": "t1-032.mp3"
+        },
+        {
+          "title": "Track 037 EPS-TOPIK 듣기 문제",
+          "file": "t1-037.mp3"
+        },
+        {
+          "title": "Track 042 EPS-TOPIK 듣기 문제",
+          "file": "t1-042.mp3"
+        },
+        {
+          "title": "Track 047 EPS-TOPIK 듣기 문제",
+          "file": "t1-047.mp3"
+        },
+        {
+          "title": "Track 052 EPS-TOPIK 듣기 문제",
+          "file": "t1-052.mp3"
+        },
+        {
+          "title": "Track 057 EPS-TOPIK 듣기 문제",
+          "file": "t1-057.mp3"
+        },
+        {
+          "title": "Track 062 EPS-TOPIK 듣기 문제",
+          "file": "t1-062.mp3"
+        },
+        {
+          "title": "Track 067 EPS-TOPIK 듣기 문제",
+          "file": "t1-067.mp3"
+        },
+        {
+          "title": "Track 072 EPS-TOPIK 듣기 문제",
+          "file": "t1-072.mp3"
+        },
+        {
+          "title": "Track 077 EPS-TOPIK 듣기 문제",
+          "file": "t1-077.mp3"
+        },
+        {
+          "title": "Track 082 EPS-TOPIK 듣기 문제",
+          "file": "t1-082.mp3"
+        },
+        {
+          "title": "Track 087 EPS-TOPIK 듣기 문제",
+          "file": "t1-087.mp3"
+        },
+        {
+          "title": "Track 092 EPS-TOPIK 듣기 문제",
+          "file": "t1-092.mp3"
+        },
+        {
+          "title": "Track 097 EPS-TOPIK 듣기 문제",
+          "file": "t1-097.mp3"
+        },
+        {
+          "title": "Track 102 EPS-TOPIK 듣기 문제",
+          "file": "t1-102.mp3"
+        },
+        {
+          "title": "Track 107 EPS-TOPIK 듣기 문제",
+          "file": "t1-107.mp3"
+        },
+        {
+          "title": "Track 112 EPS-TOPIK 듣기 문제",
+          "file": "t1-112.mp3"
+        },
+        {
+          "title": "Track 117 EPS-TOPIK 듣기 문제",
+          "file": "t1-117.mp3"
+        },
+        {
+          "title": "Track 122 EPS-TOPIK 듣기 문제",
+          "file": "t1-122.mp3"
+        },
+        {
+          "title": "Track 127 EPS-TOPIK 듣기 문제",
+          "file": "t1-127.mp3"
+        },
+        {
+          "title": "Track 132 EPS-TOPIK 듣기 문제",
+          "file": "t1-132.mp3"
+        },
+        {
+          "title": "Track 137 EPS-TOPIK 듣기 문제",
+          "file": "t1-137.mp3"
+        },
+        {
+          "title": "Track 142 EPS-TOPIK 듣기 문제",
+          "file": "t1-142.mp3"
+        },
+        {
+          "title": "Track 147 EPS-TOPIK 듣기 문제",
+          "file": "t1-147.mp3"
+        },
+        {
+          "title": "Track 152 EPS-TOPIK 듣기 문제",
+          "file": "t1-152.mp3"
+        },
+        {
+          "title": "Track 157 EPS-TOPIK 듣기 문제",
+          "file": "t1-157.mp3"
+        },
+        {
+          "title": "Track 162 EPS-TOPIK 듣기 문제",
+          "file": "t1-162.mp3"
+        },
+        {
+          "title": "Track 167 EPS-TOPIK 듣기 문제",
+          "file": "t1-167.mp3"
+        },
+        {
+          "title": "Track 172 EPS-TOPIK 듣기 문제",
+          "file": "t1-172.mp3"
+        },
+        {
+          "title": "Track 177 EPS-TOPIK 듣기 문제",
+          "file": "t1-177.mp3"
+        }
+      ]
+    },
+    {
+      "title": "표준교재 2 · 직장생활 한국어",
+      "source": "한국산업인력공단 · EPS-TOPIK 한국어 표준교재 듣기파일 (2024)",
+      "note": "Workplace Korean. The EPS-TOPIK listening set from the end of each unit.",
+      "tracks": [
+        {
+          "title": "Track 182 EPS-TOPIK 듣기 문제",
+          "file": "t2-182.mp3"
+        },
+        {
+          "title": "Track 187 EPS-TOPIK 듣기 문제",
+          "file": "t2-187.mp3"
+        },
+        {
+          "title": "Track 192 EPS-TOPIK 듣기 문제",
+          "file": "t2-192.mp3"
+        },
+        {
+          "title": "Track 197 EPS-TOPIK 듣기 문제",
+          "file": "t2-197.mp3"
+        },
+        {
+          "title": "Track 202 EPS-TOPIK 듣기 문제",
+          "file": "t2-202.mp3"
+        },
+        {
+          "title": "Track 207 EPS-TOPIK 듣기 문제",
+          "file": "t2-207.mp3"
+        },
+        {
+          "title": "Track 212 EPS-TOPIK 듣기 문제",
+          "file": "t2-212.mp3"
+        },
+        {
+          "title": "Track 217 EPS-TOPIK 듣기 문제",
+          "file": "t2-217.mp3"
+        },
+        {
+          "title": "Track 222 EPS-TOPIK 듣기 문제",
+          "file": "t2-222.mp3"
+        },
+        {
+          "title": "Track 227 EPS-TOPIK 듣기 문제",
+          "file": "t2-227.mp3"
+        },
+        {
+          "title": "Track 232 EPS-TOPIK 듣기 문제",
+          "file": "t2-232.mp3"
+        },
+        {
+          "title": "Track 237 EPS-TOPIK 듣기 문제",
+          "file": "t2-237.mp3"
+        },
+        {
+          "title": "Track 242 EPS-TOPIK 듣기 문제",
+          "file": "t2-242.mp3"
+        },
+        {
+          "title": "Track 247 EPS-TOPIK 듣기 문제",
+          "file": "t2-247.mp3"
+        },
+        {
+          "title": "Track 252 EPS-TOPIK 듣기 문제",
+          "file": "t2-252.mp3"
+        },
+        {
+          "title": "Track 257 EPS-TOPIK 듣기 문제",
+          "file": "t2-257.mp3"
+        },
+        {
+          "title": "Track 262 EPS-TOPIK 듣기 문제",
+          "file": "t2-262.mp3"
+        },
+        {
+          "title": "Track 267 EPS-TOPIK 듣기 문제",
+          "file": "t2-267.mp3"
+        },
+        {
+          "title": "Track 272 EPS-TOPIK 듣기 문제",
+          "file": "t2-272.mp3"
+        },
+        {
+          "title": "Track 277 EPS-TOPIK 듣기 문제",
+          "file": "t2-277.mp3"
+        },
+        {
+          "title": "Track 282 EPS-TOPIK 듣기 문제",
+          "file": "t2-282.mp3"
+        },
+        {
+          "title": "Track 287 EPS-TOPIK 듣기 문제",
+          "file": "t2-287.mp3"
+        },
+        {
+          "title": "Track 292 EPS-TOPIK 듣기 문제",
+          "file": "t2-292.mp3"
+        },
+        {
+          "title": "Track 297 EPS-TOPIK 듣기 문제",
+          "file": "t2-297.mp3"
+        },
+        {
+          "title": "Track 302 EPS-TOPIK 듣기 문제",
+          "file": "t2-302.mp3"
+        },
+        {
+          "title": "Track 307 EPS-TOPIK 듣기 문제",
+          "file": "t2-307.mp3"
+        },
+        {
+          "title": "Track 312 EPS-TOPIK 듣기 문제",
+          "file": "t2-312.mp3"
+        },
+        {
+          "title": "Track 317 EPS-TOPIK 듣기 문제",
+          "file": "t2-317.mp3"
+        },
+        {
+          "title": "Track 322 EPS-TOPIK 듣기 문제",
+          "file": "t2-322.mp3"
+        },
+        {
+          "title": "Track 327 EPS-TOPIK 듣기 문제",
+          "file": "t2-327.mp3"
+        }
+      ]
+    }
+  ]
 }

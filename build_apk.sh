@@ -45,9 +45,26 @@ python3 tools/icons.py android android/app/src/main/res
 rm -rf android/app/src/main/assets/www
 mkdir -p android/app/src/main/assets/www
 cp -R dist/. android/app/src/main/assets/www/
+# HANGIL_NO_AUDIO=1 builds the APK the website serves: the same app without the
+# ~180 MB of official EPS-TOPIK listening. That audio is 한국산업인력공단's and
+# belongs in a personal build only — see DEPLOY.md. The app copes on its own:
+# with no audio the Listening screen explains where to get it and the card that
+# links to it does not appear.
+if [ -n "$HANGIL_NO_AUDIO" ]; then
+  echo "audio excluded from this APK (HANGIL_NO_AUDIO)"
+  python3 tools/strip-audio.py android/app/src/main/assets/www
+fi
 # The service worker is not used inside the app (see app.js) and shipping it would
 # only invite a stale copy of files that cannot go stale.
 rm -f android/app/src/main/assets/www/sw.js
+
+# Force a full repackage. Gradle packages the APK incrementally: when a file
+# leaves assets/ it rewrites the zip's central directory but leaves the old
+# entry's bytes stranded in the file. Zip readers only follow the directory, so
+# the APK installs and runs correctly — it is just enormous. Dropping the 180 MB
+# of audio for the website build this way produced a 191 MB APK holding 2.6 MB
+# of actual entries, which nothing would have caught except weighing it.
+rm -rf android/app/build/outputs/apk android/app/build/intermediates/apk
 
 GRADLE=$(ls -d "$HOME"/.gradle/wrapper/dists/gradle-*/*/gradle-*/bin/gradle 2>/dev/null | tail -1)
 if [ -z "$GRADLE" ]; then
@@ -69,6 +86,18 @@ fi
 echo
 echo "$OUT  $(wc -c < "$OUT") bytes"
 shasum -a 256 "$OUT"
+
+# Weigh the file against what is actually inside it. A large gap means stranded
+# bytes are back (see the rm above), which is invisible to every other check.
+python3 - "$OUT" <<'PY'
+import sys, zipfile
+p = sys.argv[1]
+on_disk = __import__("os").path.getsize(p)
+packed = sum(i.compress_size for i in zipfile.ZipFile(p).infolist())
+if on_disk > packed * 1.5 + 1_000_000:
+    print(f"WARNING: {on_disk/1048576:.0f} MB on disk but only "
+          f"{packed/1048576:.1f} MB of entries — stranded bytes, not a clean build.")
+PY
 
 APKSIGNER=$(ls "$HOME"/Library/Android/sdk/build-tools/*/apksigner 2>/dev/null | tail -1)
 [ -n "$APKSIGNER" ] && "$APKSIGNER" verify --print-certs "$OUT" 2>/dev/null | head -2 || true

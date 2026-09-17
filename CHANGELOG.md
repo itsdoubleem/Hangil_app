@@ -1,5 +1,442 @@
 # Changelog
 
+## 2026-09-17 — artwork that fills its own frame
+
+The icon is the same crest opened out into a scene: the 태극 rising over a hill,
+the 괘 in the sky, the road running up to it and off the bottom edge. Gold field,
+edge to edge, corners curved.
+
+**This one had to NOT be re-framed, and the pipeline would have done it anyway.**
+Everything before it was a subject sitting in a field of ground — a disc on a
+wall, a crest on cream — so the pipeline trims the margin and re-frames the
+subject to Claude's 0.735. This artwork has no margin. Its content touches all
+four edges, measured gap zero on every side. Re-framing it would have centred the
+whole scene inside a fresh gold square, adding a border that was never drawn and
+lifting the road away from the bottom edge it was drawn to run off. The result
+would have looked like a mistake nobody could name.
+
+So `_bleeds` asks whether the content reaches the frame, and artwork that does is
+left exactly as drawn — full bleed, like Claude's coral filling its own tile. The
+three inset files still re-frame; this one does not, and nothing had to be told
+which was which.
+
+That is the third thing this pipeline now measures rather than assumes, after
+where the artwork is and whether it has holes. The pattern holds: every one of
+them was a constant that would have been silently wrong on the next file.
+
+## 2026-09-17 — the crest, and holes that are not holes
+
+The icon is new artwork again: a flat crest — gold disc inside a heavy navy rim,
+the 태극 and 괘 across the top, the road running up into it, on cream.
+
+**It keeps its own ground, and that is the point.** The tint step exists to put
+artwork on a coloured tile, and the obvious move was to put this on the navy that
+the medallion had been given. It was the wrong move. This artwork arrives with a
+ground somebody chose, and a heavy navy rim that already does the job a coloured
+tile was doing — supplying the hard edge that stops the icon dissolving into a
+pale home screen. Cream is a tint; it is simply a light one. So `none` became a
+real answer for `tools/tint-icon.py` rather than a way of switching it off.
+
+**Keying the inside would have quietly damaged it.** The medallion is cut metal:
+its road, 괘 and lower field are holes with the wall showing through, so the tint
+has to reach inside the disc or they stay white while everything around them
+turns. This crest has no holes at all — every part of it is drawn, and its 괘 are
+drawn *white*. White sits only about 40 from cream, close enough that a ramp
+tuned for holes catches it: tinting this artwork the old way came out with the 괘
+dimmed and muddy, for no reason and with nothing to indicate it had happened.
+
+So the tool measures instead of assuming, asking how much of the subject actually
+reads as ground. The cut-metal medallion scores 17.0%; this crest scores 3.4%,
+and that 3.4% is its antialiased rim rather than anything intended. The line sits
+at 8%, between two measurements rather than near either.
+
+The check sheet is the reason this was caught before it shipped — `icons.py
+check` renders at 192 down to 32, and a dimmed 괘 is invisible at full size.
+
+## 2026-09-17 — a tinted tile, and the holes are part of the artwork
+
+The medallion now sits on a deep navy tile (`#15304F`) instead of the wall it was
+photographed on, the way Claude's mark sits on coral.
+
+**The holes were the whole problem.** The medallion is cut metal: the road, the
+괘 and the entire lower field are not drawn, they are absences with the white wall
+showing through. Colouring the area around the disc would have left every one of
+them white, the cut-out would have read as white paint, and the effect the
+artwork is built on would have been lost. So the wall is replaced everywhere it
+appears — around the disc and inside every hole.
+
+The tile also keeps the wall's own light. The replacement is the tint multiplied
+by how bright the wall was at each pixel, so the vignette and the soft drop
+shadow survive as shading in the colour instead of becoming a grey smudge lying
+on a flat tile.
+
+**The obvious tint was the wrong one.** The app's own accent `#C2410C` looked
+like the principled choice — it is HANGIL's colour and it is in the same family
+as Claude's coral. On screen it was mud: bronze and burnt orange sit at nearly
+the same value, and below about 64px the disc stopped separating from its tile at
+all. What makes Claude's icon work is not the hue, it is the size of the contrast
+step between mark and tile, and that is the thing worth copying. Navy gives the
+bronze something to be metal against and lets the 태극 red stay the brightest
+thing in the icon. `#0E7490` was the runner-up.
+
+This arrived as a new tool rather than a flag on `icons.py`. Recolouring is
+inventing appearance, and `icons.py` not inventing appearance is the rule that
+ended several rounds of the icon drifting away from what was asked for. So
+`tools/tint-icon.py` owns it, `src/icon-artwork.png` keeps the untouched supplied
+file, and `src/icon-source.png` is now an output rather than something to edit.
+
+One more thing worth writing down: the Samsung **App info** screen draws every
+icon inside its own white chip, so it cannot tell a white-tiled icon from a navy
+one. Only the launcher can.
+
+## 2026-09-17 — the medallion, and a threshold that finds itself
+
+The icon is a photograph of a laser-cut metal medallion: the 태극 and two 괘 in
+bronze across the top, the road cut clean through the lower half so the wall
+shows through it. Zoomed to match Claude's icon, corners curved.
+
+**"The same zoom as Claude's logo" is a number, so it was measured.** Claude's
+macOS icon puts a 606px mark inside an 824px tile — the mark fills **0.735** of
+it. That is now `CONTENT`, with the `sips` one-liner to re-derive it left in the
+comment. The corner needed nothing: Claude's curve starts 0.303 of the way along
+the top edge, and since that is a continuous squircle rather than a circular arc,
+the equivalent plain radius is about 0.237 — near enough to the 0.235 already
+there that changing it would have been noise.
+
+**The threshold for "where is the artwork" now finds itself.** It could not stay
+a fixed number, because a photograph breaks every rule a vector file follows. The
+medallion sits on a lit wall: it has a soft drop shadow, and the wall vignettes
+towards the corners. At the cutoff that was correct for the flat emblem, the
+measured content came out as **97% of the frame** — shadow and vignette included
+— when the disc itself is 46%. Framing to that would have produced a small disc
+marooned in a large square, and the zoom that was asked for would not have
+happened at all. Nothing would have errored.
+
+So the cutoff is swept rather than chosen. The artwork's extent is measured at
+each step, and the lowest threshold whose measurement has stopped moving is
+taken. Real edges are steep, so past them the measurement settles; shadows,
+washes and vignettes fade gradually and keep shrinking the box. Across the three
+files this icon has had, it picks 16, 6 and 40 — none of them written down.
+
+The ground colour is now the median of a border ring rather than one corner
+pixel, for the same reason: on a photographed wall the corner is the darkest part
+of a vignette, and extending the frame with it leaves a visible seam.
+
+## 2026-09-17 — the exam items are tagged by grammar too
+
+Grammar tags used to come only from the unit that taught them, so a grammar weak
+spot practised that unit's six exercises and nothing else. The 292 drill, trade
+and paper items carried a *shape* tag but nothing about which grammar point they
+turned on. They do now, and the practice sets are a different thing for it:
+
+    obligation     6 -> 32 items   (course 6, drills 4, trades 22)
+    negation       6 -> 28
+    time-clauses   6 -> 20
+    ability        6 -> 17
+    conditional    6 -> 17
+
+A weak spot on 아/어야 되다 now pulls from a plastics sign, a woodworking
+instruction and the course unit in the same twelve questions, which is what makes
+it a weak spot rather than one bad afternoon on one screen.
+
+`tools/propose-grammar-tags.py` did the first pass and stays in the repo. It is a
+proposer, not an authority: every one of its suggestions was read before being
+written, and the ones it got wrong are in its `OVERRIDE` map rather than papered
+over by bending a rule until it fits one item and breaks three.
+
+**What an item tests depends on its shape**, and getting that wrong was the whole
+difficulty. A first attempt scanned each item's text for grammar and put
+`conditional` on 33% of the app and `negation` on 31% — the `safety` mistake
+again, a tag so broad it means nothing. The rule that worked splits by shape: for
+a **gap-fill** what is tested is whatever goes in the gap, so only the options
+count; for a **meaning-equivalence** item it is the prompt sentence you have to
+re-express; a **sign** is two words on a wall so the work is in the answer; and a
+**passage or multi-line dialogue is comprehension**, so it gets no grammar tag at
+all. Nothing then exceeded 10%.
+
+**A bug that was invisible until the proposals were read by hand.** ㄹ and ㄴ
+batchim are *composed* into the syllable — 할, 쓸, 한 are single code points — so
+a pattern like `ㄹ 때` never matches 할 때 or 쓸 때, and `어야` never matches 써야.
+Nothing errored; the counts were just quietly far too low. `ability` was finding
+one item in 292. Building character classes of every syllable ending in ㄹ and ㄴ
+took it to fifteen, and `time-clauses` from ten to sixteen.
+
+Four false positives were found the same way and fixed: 어떻게 되세요 is a fixed
+polite formula and not 게 되다; 조입니다 is 조이다 + ㅂ니다 and not the copula, which
+no regex can see; a 없 belonging to ㄹ 수 없다 was also being counted as plain
+없다; and 에서 is the ordinary locative in nearly every one of these sentences, so
+`place-particles` was marking items without being what they turn on — it is left
+to unit g05, where the 에/에서 choice is the actual question.
+
+## 2026-09-17 — the app now knows what you do not know
+
+The review deck has always scheduled **items**. An item is a key, so the deck
+could bring back the four questions you missed but could not tell you that all
+four were about 에 against 에서. Tags are the other half of that, and they turn
+the deck from a timer into something that can name a weak spot out loud.
+
+**Tags are declared once and inherited.** A unit, drill, trade or vocabulary set
+carries `tags`; every item inside inherits them. Writing a tag onto each of 841
+items would have been 841 chances to forget one, and what a unit teaches is a
+property of the unit, not of its sixth exercise. On top of that each item gets a
+**shape** tag worked out from its own fields — a stem with a gap in it is a
+gap-fill wherever it lives — derived rather than authored, because it is already
+knowable from the data and asking a person to restate it only creates a way to
+be wrong. 52 containers were tagged by hand; 841 items ended up tagged.
+
+**`#/weak` orders them worst first** and says the useful thing: *에 against 에서 —
+three of twelve right, 25%*. Each row practises 12 items drawn from everywhere
+that tag appears, which is the point: a passage weakness pulls from the drills,
+the trades and the papers at once, not from one screen you had a bad afternoon
+on. The home screen surfaces the single worst one, and only once there is one —
+a list of failings on the home screen is a reason to close the app.
+
+Three rules keep it honest.
+
+- **Nothing appears below six answers.** Two wrong out of two is a small sample,
+  not a weak spot. Naming it would be inventing a finding, which is the same
+  fault as printing a pass mark.
+- **A blank on a paper is not counted.** `mock.js` records only questions that
+  were actually answered. Running out of time is not the same as not knowing,
+  and counting it as one puts the blame in the wrong place.
+- **A tag has to be worth acting on.** "Particles" is useless advice. "에 against
+  에서" is a thing you can fix in ten minutes.
+
+**A bug caught by looking at the numbers.** The trades were first tagged
+`["industry", "safety"]`, which put `safety` on 376 items and quietly turned it
+into a synonym for "the trades" — a weak spot nobody could act on. Nothing
+errored; it just would have been useless. Safety now sits only where safety is
+genuinely the subject: the safety word set and the signs drill.
+
+**The checker got teeth.** `check-content.mjs` now fails on a tag used but not
+declared in `tags.json` **and** on one declared but not used. A typo in a tag id
+is otherwise invisible: it makes a new tag that never aggregates with anything
+and never appears on any screen. Verified by introducing `coplua` and watching it
+fail from both ends.
+
+**Known gap, written down rather than half-fixed.** Grammar tags come from the
+unit, so a grammar weak spot practises that unit's six exercises. The 292 exam
+drill, trade and paper items are tagged by shape, not by which grammar point they
+test. Tagging those by grammar is a real content pass and would make these
+practice sets much richer — it is the next thing to do here.
+
+## 2026-09-17 — the course now teaches, instead of presenting
+
+A grammar unit used to be one long page: the explanation, a table, five
+sentences, the mistakes people make, then a button to a quiz. That is a good
+*reference* and a poor *lesson*. Everything arrives at once, nothing makes you
+stop, and the English sits beside every Korean sentence so the Korean never has
+to be read.
+
+There is now a **walk-through** — one idea per card, tapped through — and the
+page stays exactly where it was, for looking things up. Three ideas drive it.
+
+**The example comes before the rule.** You are shown a real sentence, and then
+told what it was doing. `unitCards()` zips the sentences against the explanation
+paragraphs in that order on purpose. Rule-first teaching hands you an abstraction
+and asks you to hold it with nothing yet to hang it on.
+
+**The English is behind one tap.** A translation next to the Korean gets read
+instead of the Korean. One tap is a small enough price to make you try first, and
+trying first is the part that sticks. The vocabulary list got the same thing as a
+**Cover the English** toggle — and covering a word's gloss also covers its example
+sentence's translation, because leaving that visible puts the answer one line
+below the cover and makes the exercise pointless.
+
+**Minimal pairs do the teaching, and this is the real change.** Every one of the
+24 units now carries a `pairs[]` field: the same sentence twice, differing by one
+thing.
+
+    공장에 있어요.     I'm at the factory.
+    공장에서 일해요.   I work at the factory.
+
+Two characters apart, and the note underneath says why. Where a unit teaches a
+set rather than an addition, the pair contrasts two members of the set instead —
+있어요 against 없어요, 안 가요 against 가지 않아요. Either way the rule is the
+same: hold everything constant but the one thing, so the change in meaning has
+only one possible cause. Forty-eight of them, written by hand. A pair whose sides
+differ in more than one way teaches nothing, which is why this took the longest.
+
+**The alphabet got a chart.** Forty letters on one page, and the columns are the
+point: ㄱ, then ㅋ underneath it, then ㄲ under that. Read down a column and you
+are reading a family — plain, plus a puff of air, doubled. 한글 was designed that
+way, and laying it out flat as a list throws away the single fact that makes it
+learnable in a week. Tapping any letter now opens what it is built from, how it
+is said, and one real word it turns up in: 여권 for ㅕ, 잔업 for ㅈ, 끼임 for ㄲ.
+Every one of the forty has an example word and appears exactly once in the chart,
+in its own family's column.
+
+**The vocabulary sets got a walk-through too** — Korean first, audio, then the
+meaning and the example on request, before the drill.
+
+**A colour bug, found by looking.** The deck pinned itself to the course violet,
+so the vocabulary walk-through came out purple on a pink screen. `head()` already
+sets the section colour per screen; the deck just had to inherit it rather than
+declare its own. The floor now sits on `html, body` and every screen overrides it.
+
+### Where this came from
+
+The shape is borrowed from Bunpo, which the owner of this build uses, and the
+borrowing is of *method* only — how a lesson is paced, that examples precede
+rules, that translations hide, that pairs isolate. Every Korean sentence, every
+pair, every note and every example word here was written for this app, the same
+as the rest of `data/`. That is rule 4 at the top of CLAUDE.md and it did not
+bend for this.
+
+## 2026-09-17 — 업종별: the eight job groups, and a second paper
+
+The app was missing the part of the EPS-TOPIK that is hardest to revise for
+without material: the **job-related questions**. It now has them.
+
+**What the exam actually does.** Worth writing down, because it is the thing most
+easily got wrong. The ordinary paper is forty questions: **32 common and 8
+job-related**. The job-related eight are drawn from one of **eight job groups**,
+they sit in the **reading** half, and they apply **only to applicants for
+manufacturing work** — agriculture, fishing, construction and service applicants
+get common questions in their place. You pick your group when you apply, not in
+the exam room. The Special EPS-TOPIK, the round for former workers returning to
+Korea, carries a larger share of them. HRD Korea publishes the job-related bank
+in advance, which is unusual and is the single most useful fact about them: those
+questions are meant to be studied rather than guessed at.
+
+So the trade is **optional**, and the app is built that way throughout. Nothing
+assumes one is set, the home screen shows no trade card until you choose, and the
+trades screen opens by telling you who does *not* need it. An app that made every
+user declare an industry would be asking most of them to answer a question that
+does not apply to them.
+
+**The content.** `data/trades-1..2.json` — eight groups, each with 26 words and 20
+questions, 208 words and 160 questions in total. 고무·플라스틱, 전기·전자,
+금속·재료, 기계·금형, 식품가공, 섬유·의복, 화학·제약, 펄프·종이·목재. Written for
+this app in the shapes the paper uses, like everything else in `data/`: the sign
+on the wall, the work order, the line on the drum, the notice about the cold
+room. Each word carries a sentence it would really appear in.
+
+**The paper now changes shape when you set a trade.** `readingFor()` in `mock.js`
+swaps eight of the short reading items for eight of your trade's, giving 32 + 8 —
+the real split. It deliberately leaves the passages alone, because a passage
+carries two or three questions and pulling one out of the middle strands the
+rest. With no trade set nothing happens and you sit the twenty common reading
+questions, which is the paper a non-manufacturing applicant actually gets. The
+job-related ones are not marked during the paper — the real one does not mark
+them either — but they are tagged 업종별 in the walk-through afterwards.
+
+**A second practice paper.** One paper gets memorised. `exam-mock-2.json` leans on
+the life around the job rather than the machine in front of you — the wage slip,
+the dormitory, the bank, the fire drill, the clinic — because that is where the
+real reading half spends its second twenty minutes. There is a wage slip in it
+that you have to read the deductions out of, which is a thing worth being able to
+do for reasons well beyond the exam.
+
+**A guide.** Six short reads on the exam itself: what the paper is, the
+job-related questions, the question shapes, how it is marked, where the fifty
+minutes go, and what actually moves a score. It says plainly that the app will
+not tell you whether you passed and why — the cut score is set per round and
+differs by industry, so any pass mark written into an app is a number invented to
+sound useful.
+
+**A content checker, and what it caught.** `tools/check-content.mjs` walks every
+question in `data/` and fails on a duplicated option, an answer that is not in
+first place, a missing explanation, or a `pic` id with no drawing behind it. All
+four are invisible on screen: a duplicated option just looks like a hard
+question. Run against the existing content it immediately found one — `g01`
+exercise 2 in `course-1.json` had its answer second. The answer was right and
+`mix()` shuffles anyway, so nothing was broken on screen; but the whole point of
+the answer-first convention is that a person can proof-read a file by reading
+down the first option, and one file quietly opting out defeats that. Fixed.
+
+**The trade colour.** A new section colour, since every section owns one: #1D4ED8
+light, #6FA8FF dark. The hue matters — it sits at 224, between the 한글 cyan at
+193 and the course violet at 250, so it is not mistaken for either on the home
+grid where all three appear together. 6.7:1 as text on white; white on the dark
+pastel is 2.41:1, which is exactly why `--hero-ink` flips, and it was checked
+rather than assumed.
+
+**The offline check now covers the new files.** `offline-check.mjs` in the site
+repo walked three screens; it walks seven, one per content file. A file added to
+`data/` but left out of the precache list fails there and nowhere else — the app
+still loads, and only the screen that needed it comes up empty.
+
+## 2026-09-16 — new artwork, and the icon now frames itself
+
+The icon is new artwork: a flat 2D 태극 in a thin black ring with the road
+running up into it, the four 괘 around it, on a light grey ground (#EAECEB).
+Corners curved, as asked. A shaded, brushed-metal version was tried first and
+dropped — at 48px the modelling turned to mud, and the flat one holds its shapes.
+
+Two things were fixed in the process, both of which would have bitten the next
+person to drop in a new file.
+
+**The artwork now gets re-framed to the tile.** Artwork is drawn to be looked at,
+not to be 48 pixels on a home screen. The metal file arrived with about 15% of
+blank ground on every side; on the launcher the emblem swam in its own padding
+and read small beside apps that fill their tile. `tools/icons.py` now measures
+where the artwork actually is and re-frames it, so a replacement file needs
+nobody to eyeball a crop. The flat file came framed tighter — 0.876 of its width
+— and needed almost none of it, which is the point: the script found that out
+rather than being told.
+
+**But it cannot simply be trimmed to a chosen width.** The guaranteed-visible
+area of an adaptive icon is a *circle*, and the four 괘 sit on the diagonals.
+On the metal version they reached 1.21x the emblem's half-width, so filling a
+sensible-looking 84% of the tile put their tips outside that circle and a round
+launcher sliced them off — precisely what that file's generous margin had been
+avoiding. So the fill is derived from how far the artwork reaches rather than
+how wide it is.
+
+That measurement is why swapping in the flat version cost nothing: it is wider
+and flatter, reaches only 1.096x, and its circular limit came out at 0.91 — so
+the 0.84 ceiling governs, with room to spare. The same two lines handled two
+quite differently shaped files without anyone eyeballing a crop.
+
+A smaller trap underneath both: **what counts as blank has to be measured too.**
+The metal file carried an invisible off-white wash over its lower half, and any
+threshold low enough to keep a drop shadow also kept the wash — which made the
+trim a no-op and the reach measurement nonsense. The flat file has no wash but
+does have faint edge noise, enough that a naive cutoff reads it as filling 99.7%
+of the canvas and again trims nothing. So the cutoff is sampled from a border
+ring and set just above whatever it finds: 10 on one file, 21 on the other, and
+neither number written down anywhere.
+
+## 2026-09-16 — the website was shipping an APK of 191 MB holding 2.6 MB
+
+The website's build is the app without 한국산업인력공단's 180 MB of listening
+audio. Removing the audio and rebuilding produced an APK that was still 191 MB.
+
+Gradle packages the APK incrementally: when a file leaves `assets/` it rewrites
+the zip's central directory but leaves the old entry's bytes stranded in the
+file. Zip readers only follow the directory, so the APK installed and ran
+correctly and every check passed — the file was just 189 MB of dead weight that
+nothing would have caught except putting it on the scales. `build_apk.sh` now
+forces a full repackage and warns when the file is far larger than its entries.
+
+The same pass found that stripping the audio left `manifest.json` still listing
+all sixty tracks. The app reads the manifest, not the folder, so the Exam screen
+advertised "60 tracks" and the Listening screen drew sixty players pointing at
+files that were not there — the app's own well-written empty state never fired.
+`tools/strip-audio.py` now empties the manifest alongside the audio, and both the
+APK and the website copy go through it.
+
+## 2026-09-16 — the 한글 card showed a syllable that does not exist
+
+The Today screen's 한글 card carried an icon drawn as SVG strokes — three lines
+and a box that together formed a syllable-shaped block. It was meant to read as
+"some Hangul". It read as a word, and the word was nonsense.
+
+That is a bad thing to put in front of somebody who is being taught, on the next
+screen along, how syllable blocks are assembled. A learner does not see an
+abstract mark; they see a block and try to read it, and fail, and wonder what
+they missed. Reported by the person actually using the app, which is the only
+way this kind of thing gets found.
+
+The card now shows the real character **가** — the first syllable of the 가나다
+chart and the first thing anyone learning 한글 meets — set as text in the Korean
+font rather than drawn.
+
+**The rule that falls out of it:** never draw Hangul with strokes. Set it as
+text. A glyph built out of paths is a glyph nobody proofread, and in a language
+app the one thing that must never be wrong is the language.
+
 ## 2026-09-15 — the icon zooms out, anchored to the bottom
 
 `ZOOM` is the one dial: how much of the finished icon the artwork fills. It

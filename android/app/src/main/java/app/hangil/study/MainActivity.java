@@ -240,8 +240,13 @@ public class MainActivity extends Activity {
 
     private void applyInsets() {
         if (web == null) return;
-        final String js = "document.documentElement.style.setProperty('--sat','" + insetTop + "px');"
-                        + "document.documentElement.style.setProperty('--sab','" + insetBottom + "px');";
+        // Insets can arrive before there is a document to set them on, which
+        // threw an uncaught TypeError into the console on every launch. Harmless
+        // — onPageFinished calls this again — but noise in a log is noise you
+        // stop reading.
+        final String js = "if(document.documentElement){"
+                        + "document.documentElement.style.setProperty('--sat','" + insetTop + "px');"
+                        + "document.documentElement.style.setProperty('--sab','" + insetBottom + "px');}";
         web.post(() -> web.evaluateJavascript(js, null));
     }
 

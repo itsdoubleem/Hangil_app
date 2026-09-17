@@ -9,7 +9,8 @@ configure.
 cd ~/Hangil_app
 node tools/build.mjs                         # -> dist/  (prints a version hash)
 rm -rf ~/doubleem-site/public/hangil
-cp -R dist/. ~/doubleem-site/public/hangil/
+rsync -a --exclude='*.mp3' --exclude='*.m4a' --exclude='*.ogg' --exclude='*.wav' \
+      dist/ ~/doubleem-site/public/hangil/
 cd ~/doubleem-site
 npm run build                                # site builds it into dist/
 git add -A && git commit -m "hangil: …" && git push
@@ -17,6 +18,58 @@ git add -A && git commit -m "hangil: …" && git push
 
 Pushing to `main` deploys the site via `.github/workflows/deploy.yml`. The app is
 then live at **https://itsdoubleem.github.io/hangil/**.
+
+## The official listening audio never goes to the website
+
+`content/listening/` may hold ~180 MB of EPS-TOPIK audio imported with
+`tools/import-eps-audio.py`. It belongs in the phone build and nowhere else:
+
+- it is 한국산업인력공단's material, and a learner should get it from HRD Korea;
+- 180 MB is a permanent weight in a git repo and a 180 MB APK for every worker
+  who taps download.
+
+Strip it with the tool rather than by hand:
+
+```bash
+rsync -a --delete ~/Hangil_app/dist/ ~/doubleem-site/public/hangil/
+python3 ~/Hangil_app/tools/strip-audio.py ~/doubleem-site/public/hangil
+```
+
+**Deleting the mp3s is only half of it.** `content/listening/manifest.json` lists
+every track, and the app reads the manifest, not the folder — so deleting the
+audio alone left the Exam screen advertising "60 tracks" and the Listening screen
+drawing sixty players pointing at 404s. `strip-audio.py` empties the manifest's
+`sets` too, which is what puts the app into the empty state it already handles
+well: the Listening screen explains what the files are and where 한국산업인력공단
+publishes them, and the card that links to it does not appear at all. The source
+and licence stay in the manifest — they are the attribution for material the
+reader is being pointed at.
+
+`build_apk.sh` runs the same tool when `HANGIL_NO_AUDIO=1` is set, so the APK the
+website serves and the website itself agree.
+
+Check after copying, every time — and check it against the running app, not just
+the folder:
+
+```bash
+find ~/doubleem-site/public/hangil -name '*.mp3' | wc -l    # must print 0
+```
+
+Then open `/hangil/#/listening` and confirm it shows the empty state rather than
+a wall of dead players.
+
+## Weigh the APK against what is inside it
+
+Gradle packages the APK incrementally. When a file leaves `assets/` it rewrites
+the zip's central directory but leaves the old entry's bytes stranded in the
+file. Every zip reader follows the directory, so the APK installs and runs
+perfectly — it is simply enormous. Dropping the 180 MB of audio for the website
+build this way produced a **191 MB APK holding 2.6 MB of actual entries**, and
+nothing catches that except weighing it.
+
+`build_apk.sh` now deletes `android/app/build/outputs/apk` before assembling to
+force a full repackage, and warns if the file on disk is far larger than its
+entries. Do not remove either.
 
 ## After any change to a screen that appears on the website
 

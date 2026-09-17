@@ -7,12 +7,72 @@
       "titleKo": "기본 모음",
       "blurb": "A long line with a short mark on it. The short mark points at where the sound goes.",
       "letters": [
-        { "ch": "ㅏ", "rom": "a", "say": "아", "hint": "like the a in father" },
-        { "ch": "ㅓ", "rom": "eo", "say": "어", "hint": "like the u in cup" },
-        { "ch": "ㅗ", "rom": "o", "say": "오", "hint": "like the o in note, lips round" },
-        { "ch": "ㅜ", "rom": "u", "say": "우", "hint": "like the oo in moon" },
-        { "ch": "ㅡ", "rom": "eu", "say": "으", "hint": "lips flat and wide, like the last sound in roses" },
-        { "ch": "ㅣ", "rom": "i", "say": "이", "hint": "like the ee in see" }
+        {
+          "ch": "ㅏ",
+          "rom": "a",
+          "say": "아",
+          "hint": "like the a in father",
+          "ex": {
+            "ko": "사람",
+            "rom": "saram",
+            "en": "person"
+          }
+        },
+        {
+          "ch": "ㅓ",
+          "rom": "eo",
+          "say": "어",
+          "hint": "like the u in cup",
+          "ex": {
+            "ko": "버스",
+            "rom": "beoseu",
+            "en": "bus"
+          }
+        },
+        {
+          "ch": "ㅗ",
+          "rom": "o",
+          "say": "오",
+          "hint": "like the o in note, lips round",
+          "ex": {
+            "ko": "오늘",
+            "rom": "oneul",
+            "en": "today"
+          }
+        },
+        {
+          "ch": "ㅜ",
+          "rom": "u",
+          "say": "우",
+          "hint": "like the oo in moon",
+          "ex": {
+            "ko": "우유",
+            "rom": "uyu",
+            "en": "milk"
+          }
+        },
+        {
+          "ch": "ㅡ",
+          "rom": "eu",
+          "say": "으",
+          "hint": "lips flat and wide, like the last sound in roses",
+          "ex": {
+            "ko": "은행",
+            "rom": "eunhaeng",
+            "en": "bank"
+          }
+        },
+        {
+          "ch": "ㅣ",
+          "rom": "i",
+          "say": "이",
+          "hint": "like the ee in see",
+          "ex": {
+            "ko": "시간",
+            "rom": "sigan",
+            "en": "time"
+          }
+        }
       ]
     },
     {
@@ -21,14 +81,102 @@
       "titleKo": "이중 모음",
       "blurb": "Add a second short mark and a y slides in front of the sound.",
       "letters": [
-        { "ch": "ㅑ", "rom": "ya", "say": "야", "hint": "ㅏ with a y in front" },
-        { "ch": "ㅕ", "rom": "yeo", "say": "여", "hint": "ㅓ with a y in front" },
-        { "ch": "ㅛ", "rom": "yo", "say": "요", "hint": "ㅗ with a y in front" },
-        { "ch": "ㅠ", "rom": "yu", "say": "유", "hint": "ㅜ with a y in front" },
-        { "ch": "ㅐ", "rom": "ae", "say": "애", "hint": "like the e in bed" },
-        { "ch": "ㅔ", "rom": "e", "say": "에", "hint": "also like the e in bed — modern Korean barely separates ㅐ and ㅔ" },
-        { "ch": "ㅒ", "rom": "yae", "say": "얘", "hint": "ㅐ with a y in front" },
-        { "ch": "ㅖ", "rom": "ye", "say": "예", "hint": "ㅔ with a y in front" }
+        {
+          "ch": "ㅑ",
+          "rom": "ya",
+          "say": "야",
+          "hint": "ㅏ with a y in front",
+          "ex": {
+            "ko": "야채",
+            "rom": "yachae",
+            "en": "vegetables"
+          },
+          "from": "ㅏ"
+        },
+        {
+          "ch": "ㅕ",
+          "rom": "yeo",
+          "say": "여",
+          "hint": "ㅓ with a y in front",
+          "ex": {
+            "ko": "여권",
+            "rom": "yeogwon",
+            "en": "passport"
+          },
+          "from": "ㅓ"
+        },
+        {
+          "ch": "ㅛ",
+          "rom": "yo",
+          "say": "요",
+          "hint": "ㅗ with a y in front",
+          "ex": {
+            "ko": "요리",
+            "rom": "yori",
+            "en": "cooking"
+          },
+          "from": "ㅗ"
+        },
+        {
+          "ch": "ㅠ",
+          "rom": "yu",
+          "say": "유",
+          "hint": "ㅜ with a y in front",
+          "ex": {
+            "ko": "휴가",
+            "rom": "hyuga",
+            "en": "leave, holiday"
+          },
+          "from": "ㅜ"
+        },
+        {
+          "ch": "ㅐ",
+          "rom": "ae",
+          "say": "애",
+          "hint": "like the e in bed",
+          "ex": {
+            "ko": "내일",
+            "rom": "naeil",
+            "en": "tomorrow"
+          },
+          "from": "ㅏ"
+        },
+        {
+          "ch": "ㅔ",
+          "rom": "e",
+          "say": "에",
+          "hint": "also like the e in bed — modern Korean barely separates ㅐ and ㅔ",
+          "ex": {
+            "ko": "세탁",
+            "rom": "setak",
+            "en": "laundry"
+          },
+          "from": "ㅓ"
+        },
+        {
+          "ch": "ㅒ",
+          "rom": "yae",
+          "say": "얘",
+          "hint": "ㅐ with a y in front",
+          "ex": {
+            "ko": "얘기",
+            "rom": "yaegi",
+            "en": "a talk"
+          },
+          "from": "ㅐ"
+        },
+        {
+          "ch": "ㅖ",
+          "rom": "ye",
+          "say": "예",
+          "hint": "ㅔ with a y in front",
+          "ex": {
+            "ko": "예약",
+            "rom": "yeyak",
+            "en": "a booking"
+          },
+          "from": "ㅔ"
+        }
       ]
     },
     {
@@ -37,13 +185,90 @@
       "titleKo": "합성 모음",
       "blurb": "Two vowels written side by side. You say them as one slide.",
       "letters": [
-        { "ch": "ㅘ", "rom": "wa", "say": "와", "hint": "ㅗ + ㅏ" },
-        { "ch": "ㅚ", "rom": "oe", "say": "외", "hint": "ㅗ + ㅣ, said like we" },
-        { "ch": "ㅙ", "rom": "wae", "say": "왜", "hint": "ㅗ + ㅐ" },
-        { "ch": "ㅝ", "rom": "wo", "say": "워", "hint": "ㅜ + ㅓ" },
-        { "ch": "ㅟ", "rom": "wi", "say": "위", "hint": "ㅜ + ㅣ" },
-        { "ch": "ㅞ", "rom": "we", "say": "웨", "hint": "ㅜ + ㅔ" },
-        { "ch": "ㅢ", "rom": "ui", "say": "의", "hint": "ㅡ + ㅣ, slid together fast" }
+        {
+          "ch": "ㅘ",
+          "rom": "wa",
+          "say": "와",
+          "hint": "ㅗ + ㅏ",
+          "ex": {
+            "ko": "과일",
+            "rom": "gwail",
+            "en": "fruit"
+          },
+          "from": "ㅗ"
+        },
+        {
+          "ch": "ㅚ",
+          "rom": "oe",
+          "say": "외",
+          "hint": "ㅗ + ㅣ, said like we",
+          "ex": {
+            "ko": "회사",
+            "rom": "hoesa",
+            "en": "company"
+          },
+          "from": "ㅗ"
+        },
+        {
+          "ch": "ㅙ",
+          "rom": "wae",
+          "say": "왜",
+          "hint": "ㅗ + ㅐ",
+          "ex": {
+            "ko": "왜",
+            "rom": "wae",
+            "en": "why"
+          },
+          "from": "ㅗ"
+        },
+        {
+          "ch": "ㅝ",
+          "rom": "wo",
+          "say": "워",
+          "hint": "ㅜ + ㅓ",
+          "ex": {
+            "ko": "병원",
+            "rom": "byeongwon",
+            "en": "hospital"
+          },
+          "from": "ㅜ"
+        },
+        {
+          "ch": "ㅟ",
+          "rom": "wi",
+          "say": "위",
+          "hint": "ㅜ + ㅣ",
+          "ex": {
+            "ko": "위험",
+            "rom": "wiheom",
+            "en": "danger"
+          },
+          "from": "ㅜ"
+        },
+        {
+          "ch": "ㅞ",
+          "rom": "we",
+          "say": "웨",
+          "hint": "ㅜ + ㅔ",
+          "ex": {
+            "ko": "스웨터",
+            "rom": "seuweteo",
+            "en": "sweater"
+          },
+          "from": "ㅜ"
+        },
+        {
+          "ch": "ㅢ",
+          "rom": "ui",
+          "say": "의",
+          "hint": "ㅡ + ㅣ, slid together fast",
+          "ex": {
+            "ko": "의사",
+            "rom": "uisa",
+            "en": "doctor"
+          },
+          "from": "ㅡ"
+        }
       ]
     },
     {
@@ -52,16 +277,116 @@
       "titleKo": "기본 자음",
       "blurb": "Each shape is a drawing of the mouth making the sound. ㄱ is the back of the tongue, ㄴ is the tip behind the teeth, ㅁ is the closed lips.",
       "letters": [
-        { "ch": "ㄱ", "rom": "g / k", "say": "기역", "hint": "g at the start of a word, k at the end" },
-        { "ch": "ㄴ", "rom": "n", "say": "니은", "hint": "n as in no" },
-        { "ch": "ㄷ", "rom": "d / t", "say": "디귿", "hint": "d at the start, t at the end" },
-        { "ch": "ㄹ", "rom": "r / l", "say": "리을", "hint": "between r and l — tongue taps once" },
-        { "ch": "ㅁ", "rom": "m", "say": "미음", "hint": "m as in mother" },
-        { "ch": "ㅂ", "rom": "b / p", "say": "비읍", "hint": "b at the start, p at the end" },
-        { "ch": "ㅅ", "rom": "s", "say": "시옷", "hint": "s, but sh before ㅣ and ㅟ" },
-        { "ch": "ㅇ", "rom": "silent / ng", "say": "이응", "hint": "silent at the front of a block, ng at the bottom" },
-        { "ch": "ㅈ", "rom": "j", "say": "지읒", "hint": "j as in jeep" },
-        { "ch": "ㅎ", "rom": "h", "say": "히읗", "hint": "h as in hat" }
+        {
+          "ch": "ㄱ",
+          "rom": "g / k",
+          "say": "기역",
+          "hint": "g at the start of a word, k at the end",
+          "ex": {
+            "ko": "공장",
+            "rom": "gongjang",
+            "en": "factory"
+          }
+        },
+        {
+          "ch": "ㄴ",
+          "rom": "n",
+          "say": "니은",
+          "hint": "n as in no",
+          "ex": {
+            "ko": "나라",
+            "rom": "nara",
+            "en": "country"
+          }
+        },
+        {
+          "ch": "ㄷ",
+          "rom": "d / t",
+          "say": "디귿",
+          "hint": "d at the start, t at the end",
+          "ex": {
+            "ko": "도장",
+            "rom": "dojang",
+            "en": "a stamp"
+          }
+        },
+        {
+          "ch": "ㄹ",
+          "rom": "r / l",
+          "say": "리을",
+          "hint": "between r and l — tongue taps once",
+          "ex": {
+            "ko": "다리",
+            "rom": "dari",
+            "en": "leg, bridge"
+          }
+        },
+        {
+          "ch": "ㅁ",
+          "rom": "m",
+          "say": "미음",
+          "hint": "m as in mother",
+          "ex": {
+            "ko": "문",
+            "rom": "mun",
+            "en": "door"
+          }
+        },
+        {
+          "ch": "ㅂ",
+          "rom": "b / p",
+          "say": "비읍",
+          "hint": "b at the start, p at the end",
+          "ex": {
+            "ko": "밥",
+            "rom": "bap",
+            "en": "rice, a meal"
+          }
+        },
+        {
+          "ch": "ㅅ",
+          "rom": "s",
+          "say": "시옷",
+          "hint": "s, but sh before ㅣ and ㅟ",
+          "ex": {
+            "ko": "사무실",
+            "rom": "samusil",
+            "en": "office"
+          }
+        },
+        {
+          "ch": "ㅇ",
+          "rom": "silent / ng",
+          "say": "이응",
+          "hint": "silent at the front of a block, ng at the bottom",
+          "ex": {
+            "ko": "안경",
+            "rom": "an-gyeong",
+            "en": "glasses"
+          }
+        },
+        {
+          "ch": "ㅈ",
+          "rom": "j",
+          "say": "지읒",
+          "hint": "j as in jeep",
+          "ex": {
+            "ko": "잔업",
+            "rom": "janeop",
+            "en": "overtime"
+          }
+        },
+        {
+          "ch": "ㅎ",
+          "rom": "h",
+          "say": "히읗",
+          "hint": "h as in hat",
+          "ex": {
+            "ko": "한국",
+            "rom": "han-guk",
+            "en": "Korea"
+          }
+        }
       ]
     },
     {
@@ -70,10 +395,54 @@
       "titleKo": "격음",
       "blurb": "One extra stroke on the plain letter. That stroke is a puff of air — hold your hand in front of your mouth and you should feel it.",
       "letters": [
-        { "ch": "ㅋ", "rom": "k", "say": "키읔", "hint": "ㄱ plus air" },
-        { "ch": "ㅌ", "rom": "t", "say": "티읕", "hint": "ㄷ plus air" },
-        { "ch": "ㅍ", "rom": "p", "say": "피읖", "hint": "ㅂ plus air" },
-        { "ch": "ㅊ", "rom": "ch", "say": "치읓", "hint": "ㅈ plus air" }
+        {
+          "ch": "ㅋ",
+          "rom": "k",
+          "say": "키읔",
+          "hint": "ㄱ plus air",
+          "ex": {
+            "ko": "커피",
+            "rom": "keopi",
+            "en": "coffee"
+          },
+          "from": "ㄱ"
+        },
+        {
+          "ch": "ㅌ",
+          "rom": "t",
+          "say": "티읕",
+          "hint": "ㄷ plus air",
+          "ex": {
+            "ko": "토요일",
+            "rom": "toyoil",
+            "en": "Saturday"
+          },
+          "from": "ㄷ"
+        },
+        {
+          "ch": "ㅍ",
+          "rom": "p",
+          "say": "피읖",
+          "hint": "ㅂ plus air",
+          "ex": {
+            "ko": "팔",
+            "rom": "pal",
+            "en": "arm; eight"
+          },
+          "from": "ㅂ"
+        },
+        {
+          "ch": "ㅊ",
+          "rom": "ch",
+          "say": "치읓",
+          "hint": "ㅈ plus air",
+          "ex": {
+            "ko": "차",
+            "rom": "cha",
+            "en": "car; tea"
+          },
+          "from": "ㅈ"
+        }
       ]
     },
     {
@@ -82,11 +451,66 @@
       "titleKo": "경음",
       "blurb": "The letter written twice. No puff of air at all — the throat squeezes and the sound comes out short and hard. This pair is what separates 자요 (sleeps) from 짜요 (salty).",
       "letters": [
-        { "ch": "ㄲ", "rom": "kk", "say": "쌍기역", "hint": "tight ㄱ" },
-        { "ch": "ㄸ", "rom": "tt", "say": "쌍디귿", "hint": "tight ㄷ" },
-        { "ch": "ㅃ", "rom": "pp", "say": "쌍비읍", "hint": "tight ㅂ" },
-        { "ch": "ㅆ", "rom": "ss", "say": "쌍시옷", "hint": "tight ㅅ" },
-        { "ch": "ㅉ", "rom": "jj", "say": "쌍지읒", "hint": "tight ㅈ" }
+        {
+          "ch": "ㄲ",
+          "rom": "kk",
+          "say": "쌍기역",
+          "hint": "tight ㄱ",
+          "ex": {
+            "ko": "끼임",
+            "rom": "kkiim",
+            "en": "getting caught"
+          },
+          "from": "ㄱ"
+        },
+        {
+          "ch": "ㄸ",
+          "rom": "tt",
+          "say": "쌍디귿",
+          "hint": "tight ㄷ",
+          "ex": {
+            "ko": "딸",
+            "rom": "ttal",
+            "en": "daughter"
+          },
+          "from": "ㄷ"
+        },
+        {
+          "ch": "ㅃ",
+          "rom": "pp",
+          "say": "쌍비읍",
+          "hint": "tight ㅂ",
+          "ex": {
+            "ko": "빵",
+            "rom": "ppang",
+            "en": "bread"
+          },
+          "from": "ㅂ"
+        },
+        {
+          "ch": "ㅆ",
+          "rom": "ss",
+          "say": "쌍시옷",
+          "hint": "tight ㅅ",
+          "ex": {
+            "ko": "쓰다",
+            "rom": "sseuda",
+            "en": "to use, to write"
+          },
+          "from": "ㅅ"
+        },
+        {
+          "ch": "ㅉ",
+          "rom": "jj",
+          "say": "쌍지읒",
+          "hint": "tight ㅈ",
+          "ex": {
+            "ko": "짜다",
+            "rom": "jjada",
+            "en": "to be salty"
+          },
+          "from": "ㅈ"
+        }
       ]
     }
   ],
@@ -111,15 +535,247 @@
     }
   ],
   "drills": [
-    { "ko": "가", "rom": "ga" }, { "ko": "너", "rom": "neo" }, { "ko": "도", "rom": "do" },
-    { "ko": "루", "rom": "ru" }, { "ko": "므", "rom": "meu" }, { "ko": "비", "rom": "bi" },
-    { "ko": "사", "rom": "sa" }, { "ko": "여", "rom": "yeo" }, { "ko": "조", "rom": "jo" },
-    { "ko": "후", "rom": "hu" }, { "ko": "캐", "rom": "kae" }, { "ko": "테", "rom": "te" },
-    { "ko": "파", "rom": "pa" }, { "ko": "처", "rom": "cheo" }, { "ko": "꼬", "rom": "kko" },
-    { "ko": "따", "rom": "tta" }, { "ko": "빠", "rom": "ppa" }, { "ko": "쓰", "rom": "sseu" },
-    { "ko": "짜", "rom": "jja" }, { "ko": "밥", "rom": "bap" }, { "ko": "문", "rom": "mun" },
-    { "ko": "한", "rom": "han" }, { "ko": "길", "rom": "gil" }, { "ko": "옷", "rom": "ot" },
-    { "ko": "꽃", "rom": "kkot" }, { "ko": "앞", "rom": "ap" }, { "ko": "국", "rom": "guk" },
-    { "ko": "방", "rom": "bang" }, { "ko": "물", "rom": "mul" }, { "ko": "손", "rom": "son" }
-  ]
+    {
+      "ko": "가",
+      "rom": "ga"
+    },
+    {
+      "ko": "너",
+      "rom": "neo"
+    },
+    {
+      "ko": "도",
+      "rom": "do"
+    },
+    {
+      "ko": "루",
+      "rom": "ru"
+    },
+    {
+      "ko": "므",
+      "rom": "meu"
+    },
+    {
+      "ko": "비",
+      "rom": "bi"
+    },
+    {
+      "ko": "사",
+      "rom": "sa"
+    },
+    {
+      "ko": "여",
+      "rom": "yeo"
+    },
+    {
+      "ko": "조",
+      "rom": "jo"
+    },
+    {
+      "ko": "후",
+      "rom": "hu"
+    },
+    {
+      "ko": "캐",
+      "rom": "kae"
+    },
+    {
+      "ko": "테",
+      "rom": "te"
+    },
+    {
+      "ko": "파",
+      "rom": "pa"
+    },
+    {
+      "ko": "처",
+      "rom": "cheo"
+    },
+    {
+      "ko": "꼬",
+      "rom": "kko"
+    },
+    {
+      "ko": "따",
+      "rom": "tta"
+    },
+    {
+      "ko": "빠",
+      "rom": "ppa"
+    },
+    {
+      "ko": "쓰",
+      "rom": "sseu"
+    },
+    {
+      "ko": "짜",
+      "rom": "jja"
+    },
+    {
+      "ko": "밥",
+      "rom": "bap"
+    },
+    {
+      "ko": "문",
+      "rom": "mun"
+    },
+    {
+      "ko": "한",
+      "rom": "han"
+    },
+    {
+      "ko": "길",
+      "rom": "gil"
+    },
+    {
+      "ko": "옷",
+      "rom": "ot"
+    },
+    {
+      "ko": "꽃",
+      "rom": "kkot"
+    },
+    {
+      "ko": "앞",
+      "rom": "ap"
+    },
+    {
+      "ko": "국",
+      "rom": "guk"
+    },
+    {
+      "ko": "방",
+      "rom": "bang"
+    },
+    {
+      "ko": "물",
+      "rom": "mul"
+    },
+    {
+      "ko": "손",
+      "rom": "son"
+    }
+  ],
+  "chart": {
+    "note": "Read it down a column, not across. Each column is one family: the plain letter on the top row, then what happens when you add a stroke, add a y, or write it twice. That alignment is the whole point of the chart — 한글 was designed this way, and once you see the families there are far fewer than forty shapes to learn. Tap any letter to hear it.",
+    "sections": [
+      {
+        "title": "Vowels",
+        "titleKo": "모음",
+        "rowLabels": [
+          "plain",
+          "+ y",
+          "+ ㅣ",
+          "+ y + ㅣ"
+        ],
+        "rows": [
+          [
+            "ㅏ",
+            "ㅓ",
+            "ㅗ",
+            "ㅜ",
+            "ㅡ",
+            "ㅣ"
+          ],
+          [
+            "ㅑ",
+            "ㅕ",
+            "ㅛ",
+            "ㅠ",
+            null,
+            null
+          ],
+          [
+            "ㅐ",
+            "ㅔ",
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "ㅒ",
+            "ㅖ",
+            null,
+            null,
+            null,
+            null
+          ]
+        ]
+      },
+      {
+        "title": "Consonants",
+        "titleKo": "자음",
+        "rowLabels": [
+          "plain",
+          "+ air",
+          "doubled"
+        ],
+        "rows": [
+          [
+            "ㄱ",
+            "ㄴ",
+            "ㄷ",
+            "ㄹ",
+            "ㅁ",
+            "ㅂ",
+            "ㅅ",
+            "ㅇ",
+            "ㅈ",
+            "ㅎ"
+          ],
+          [
+            "ㅋ",
+            null,
+            "ㅌ",
+            null,
+            null,
+            "ㅍ",
+            null,
+            null,
+            "ㅊ",
+            null
+          ],
+          [
+            "ㄲ",
+            null,
+            "ㄸ",
+            null,
+            null,
+            "ㅃ",
+            "ㅆ",
+            null,
+            "ㅉ",
+            null
+          ]
+        ]
+      },
+      {
+        "title": "Vowels made of two vowels",
+        "titleKo": "합성 모음",
+        "rowLabels": [
+          "from ㅗ",
+          "from ㅜ",
+          "from ㅡ"
+        ],
+        "rows": [
+          [
+            "ㅘ",
+            "ㅚ",
+            "ㅙ"
+          ],
+          [
+            "ㅝ",
+            "ㅟ",
+            "ㅞ"
+          ],
+          [
+            "ㅢ",
+            null,
+            null
+          ]
+        ]
+      }
+    ]
+  }
 }

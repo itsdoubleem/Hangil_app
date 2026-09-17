@@ -52,6 +52,10 @@
   --c-hangeul:  #0E7490;  --cw-hangeul:  #E6F4F8;
   --c-vocab:    #BE185D;  --cw-vocab:    #FCEBF2;
   --c-review:   #15803D;  --cw-review:   #E9F6ED;
+  /* The trades. A true blue, sat between the hangeul cyan (hue 193) and the
+     course violet (hue 250) so it is not mistaken for either: 224, 6.7:1 on
+     white. Measured, like the rest. */
+  --c-trade:    #1D4ED8;  --cw-trade:    #E8EEFD;
 
   --good:      #15803D;  --good-wash: #E9F6ED;  --good-edge: #A7DCB8;
   --bad:       #B3261E;  --bad-wash:  #FDECEA;  --bad-edge:  #F3C2BD;
@@ -93,6 +97,7 @@
     --c-hangeul:#4CC7E0;--cw-hangeul:#10272E;
     --c-vocab:#F58BB8;  --cw-vocab:#2E1522;
     --c-review:#5FD98B; --cw-review:#122A1B;
+    --c-trade:#6FA8FF;  --cw-trade:#111A33;
     --good:#5FD98B; --good-wash:#122A1B; --good-edge:#1F4630;
     --bad:#FF8F84;  --bad-wash:#2A1614;  --bad-edge:#4A2420;
     --e1: 0 1px 2px rgba(0,0,0,.5);
@@ -111,6 +116,7 @@
   --c-hangeul:#4CC7E0;--cw-hangeul:#10272E;
   --c-vocab:#F58BB8;  --cw-vocab:#2E1522;
   --c-review:#5FD98B; --cw-review:#122A1B;
+  --c-trade:#6FA8FF;  --cw-trade:#111A33;
   --good:#5FD98B; --good-wash:#122A1B; --good-edge:#1F4630;
   --bad:#FF8F84;  --bad-wash:#2A1614;  --bad-edge:#4A2420;
   --e1: 0 1px 2px rgba(0,0,0,.5);
@@ -119,7 +125,12 @@
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html, body { margin: 0; padding: 0; }
+html, body {
+  /* The floor for the section colour. head() overrides --c/--cw on #app for any
+     screen that names a tone, and everything inside follows from there. */
+  --c: var(--c-today); --cw: var(--cw-today);
+  margin: 0; padding: 0;
+}
 body {
   background: var(--ground);
   color: var(--ink);
@@ -214,6 +225,9 @@ p  { margin: 0 0 var(--s3); max-width: 36rem; }
   background: var(--cw, var(--sunk)); color: var(--c, var(--ink));
   display: flex; align-items: center; justify-content: center;
 }
+/* The 한글 card carries a real character instead of an icon. Sized by eye to sit
+   at the same weight as the 26px icons beside it. */
+.card__icon .glyph { font: 600 27px/1 var(--ko); letter-spacing: 0; }
 .card__icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .card__body { flex: 1; min-width: 0; }
 .card__title { display: block; font: 700 17.5px/1.3 var(--sans); letter-spacing: -0.025em; margin: 0; }
@@ -528,3 +542,104 @@ code { font: 600 13.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; back
 .field input[type=range] { width: 100%; accent-color: var(--accent); min-height: 44px; }
 details summary { cursor: pointer; padding: var(--s3) 0; font-weight: 700; }
 audio { width: 100%; margin-top: var(--s3); }
+
+/* One official listening track. A plain block, deliberately not a `.card` —
+   `.card` is a flex row with an icon slot, and putting a title and a player
+   inside one lays them out side by side as columns of vertical text. */
+.track {
+  background: var(--surface); border-radius: var(--r-md);
+  padding: var(--s4); margin: 0 0 var(--s3); box-shadow: var(--e1);
+}
+.track__name { margin: 0; font: 700 16px/1.3 var(--sans); letter-spacing: -0.02em; }
+.track__file { margin: 3px 0 0; font: 500 13.5px/1.4 var(--ko); color: var(--ink-faint); }
+.track audio { margin-top: var(--s3); }
+
+/* ---- the walk-through -------------------------------------------------- */
+/* One idea per card. The card is tall and mostly empty on purpose: what is on
+   it is the only thing being asked of you, and the empty space is what makes
+   that legible at arm's length. */
+/* No --c here: head() sets it per screen from the section's tone, and the deck
+   follows whatever screen it is on. The floor is on body. */
+.deck__count { font: 600 12px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-faint); margin: var(--s3) 0 var(--s4); }
+.deck__card {
+  background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--e2);
+  padding: var(--s5); min-height: 46vh; display: flex; align-items: flex-start;
+  animation: rise .34s var(--ease) both;
+}
+.deck__body { width: 100%; }
+.deck__body--mid { margin: auto 0; text-align: center; }
+.deck__label { font: 700 11px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--c); margin: 0 0 var(--s4); }
+.deck__form { font: 700 30px/1.25 var(--ko); color: var(--c); margin: 0 0 var(--s4); }
+.deck__goal { font-size: 19px; line-height: 1.5; color: var(--ink); margin: 0; }
+.deck__text { font-size: 17px; line-height: 1.65; color: var(--ink); margin: 0; }
+.deck__note { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin: var(--s5) 0 0;
+  padding-left: var(--s4); border-left: 3px solid var(--c); }
+.deck__ko { display: flex; align-items: center; gap: var(--s3);
+  font: 600 24px/1.45 var(--ko); color: var(--ink); }
+.deck__rom { font-size: 14px; color: var(--ink-faint); margin: var(--s1) 0 0; }
+.deck__nav { display: flex; gap: var(--s3); margin-top: var(--s5); }
+.deck__nav .btn--wide { flex: 1; width: auto; }
+
+/* The English, behind one tap. Sized and coloured like the answer it is, so an
+   unrevealed card never looks like a card that is missing something. */
+.reveal {
+  display: block; width: 100%; text-align: left; margin-top: var(--s3);
+  min-height: var(--tap); padding: var(--s3) var(--s4);
+  border: 0; border-radius: var(--r-sm); background: var(--sunk);
+  font: 400 17px/1.5 var(--sans); color: var(--ink); cursor: pointer;
+}
+.reveal__hint { font: 600 13px/1 var(--sans); letter-spacing: .04em; color: var(--ink-faint); }
+.reveal[data-on="1"] { background: var(--cw); color: var(--ink); cursor: default; }
+.reveal--sm { font-size: 15px; min-height: 40px; margin-top: var(--s2); }
+
+/* The minimal pair: the same sentence twice, with the arrow marking the step. */
+.pair { display: grid; gap: var(--s2); }
+.pair__side { padding: var(--s4); border-radius: var(--r-md); background: var(--sunk); }
+.pair__side--b { background: var(--cw); }
+.pair__mark { display: flex; justify-content: center; color: var(--c); }
+.pair__mark svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---- the 한글 chart ---------------------------------------------------- */
+/* Columns line up across rows so a family reads DOWN: ㄱ, then ㅋ, then ㄲ.
+   That alignment is the content, which is why the empty cells are kept rather
+   than collapsed. */
+.chart { display: grid; grid-template-columns: auto 1fr; gap: var(--s2) var(--s3);
+  align-items: center; margin-bottom: var(--s5); }
+.chart__lab { font: 600 11px/1.2 var(--sans); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-faint); text-align: right; }
+.chart__row { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: var(--s2); }
+.chart__cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  min-height: 52px; padding: var(--s2) 2px; border: 0; border-radius: var(--r-sm);
+  background: var(--cw-hangeul); cursor: pointer;
+}
+.chart__cell b { font: 600 22px/1 var(--ko); color: var(--c-hangeul); }
+.chart__cell span { font: 600 10px/1 var(--sans); color: var(--ink-faint); }
+.chart__gap { min-height: 52px; border-radius: var(--r-sm); background: var(--sunk); opacity: .4; }
+
+/* What a letter opens into, under the chart it was tapped in. */
+.detail:empty { display: none; }
+.sheetcard { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--e2);
+  padding: var(--s5); margin: var(--s4) 0; animation: rise .3s var(--ease) both; }
+.sheetcard__glyph { font: 600 64px/1 var(--ko); color: var(--c-hangeul); text-align: center; }
+.sheetcard__rom { text-align: center; font: 600 15px/1 var(--sans); color: var(--ink-soft);
+  margin: var(--s3) 0 var(--s4); }
+
+@media (max-width: 380px) {
+  .chart__cell b { font-size: 19px; }
+  .chart__cell { min-height: 46px; }
+}
+
+/* ---- weak spots -------------------------------------------------------- */
+/* The bar is the whole story, so it is full width and the number sits under it
+   rather than competing with the title. The card's colour comes from the score
+   itself — red-ish under 60, amber under 80, green above — which is the one
+   place in the app a colour is a judgement rather than a section. */
+.weak { display: block; }
+.weak__title { font: 700 18px/1.3 var(--sans); color: var(--ink); margin: 0 0 var(--s1); }
+.weak__ko { font: 600 15px/1.4 var(--ko); color: var(--c); margin: 0 0 var(--s4); }
+.weak__pct { font: 700 13px/1 var(--sans); color: var(--ink-soft); margin: var(--s2) 0 0; }
+.weak .bar i { background: var(--c); }

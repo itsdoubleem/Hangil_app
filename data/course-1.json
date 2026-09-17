@@ -1,7 +1,9 @@
 {
   "units": [
     {
-      "id": "g01", "level": "L1", "order": 1,
+      "id": "g01",
+      "level": "L1",
+      "order": 1,
       "title": "Saying what something is",
       "form": "이에요 / 예요",
       "goal": "Point at a thing or a person and say what it is.",
@@ -11,34 +13,167 @@
         "The sentence needs no other words. 학생이에요 on its own is a complete Korean sentence."
       ],
       "table": {
-        "head": ["The noun ends in", "Add", "Example"],
+        "head": [
+          "The noun ends in",
+          "Add",
+          "Example"
+        ],
         "rows": [
-          ["a consonant — 학생, 사람, 한국", "이에요", "학생이에요 — it is a student"],
-          ["a vowel — 의사, 친구, 저", "예요", "의사예요 — it is a doctor"]
+          [
+            "a consonant — 학생, 사람, 한국",
+            "이에요",
+            "학생이에요 — it is a student"
+          ],
+          [
+            "a vowel — 의사, 친구, 저",
+            "예요",
+            "의사예요 — it is a doctor"
+          ]
         ]
       },
       "examples": [
-        { "ko": "저는 필리핀 사람이에요.", "rom": "jeoneun Pillipin saramieyo.", "en": "I'm Filipino." },
-        { "ko": "이거 제 여권이에요.", "rom": "igeo je yeogwonieyo.", "en": "This is my passport." },
-        { "ko": "제 친구예요.", "rom": "je chinguyeyo.", "en": "This is my friend." },
-        { "ko": "여기가 기숙사예요.", "rom": "yeogiga gisuksayeyo.", "en": "This is the dormitory." },
-        { "ko": "오늘은 월요일이에요.", "rom": "oneureun woryoirieyo.", "en": "Today is Monday." }
+        {
+          "ko": "저는 필리핀 사람이에요.",
+          "rom": "jeoneun Pillipin saramieyo.",
+          "en": "I'm Filipino."
+        },
+        {
+          "ko": "이거 제 여권이에요.",
+          "rom": "igeo je yeogwonieyo.",
+          "en": "This is my passport."
+        },
+        {
+          "ko": "제 친구예요.",
+          "rom": "je chinguyeyo.",
+          "en": "This is my friend."
+        },
+        {
+          "ko": "여기가 기숙사예요.",
+          "rom": "yeogiga gisuksayeyo.",
+          "en": "This is the dormitory."
+        },
+        {
+          "ko": "오늘은 월요일이에요.",
+          "rom": "oneureun woryoirieyo.",
+          "en": "Today is Monday."
+        }
       ],
       "notes": [
         "To ask a question, change nothing but your voice — 학생이에요? with the tone rising. Korean does not reorder the sentence for questions.",
         "The negative is a separate word: 아니에요. 저는 학생이 아니에요 — I am not a student. Notice the noun takes 이/가 in front of 아니에요."
       ],
       "exercises": [
-        { "type": "choice", "q": "저는 회사원___.", "qEn": "I'm an office worker. (회사원 ends in ㄴ)", "options": ["이에요", "예요", "이예요", "에요"], "a": 0, "why": "회사원 ends in a consonant, so 이에요." },
-        { "type": "choice", "q": "이거 커피___.", "qEn": "This is coffee.", "options": ["이에요", "예요", "이이에요", "커피에요"], "a": 1, "why": "커피 ends in the vowel ㅣ, so 예요." },
-        { "type": "build", "qEn": "I'm a friend of Minsu.", "tiles": ["저는", "민수", "친구예요"], "a": ["저는", "민수", "친구예요"] },
-        { "type": "listen", "ko": "제 여권이에요.", "q": "What did you hear?", "options": ["It's my passport.", "It's my phone.", "It's my company.", "It's my friend."], "a": 0 },
-        { "type": "choice", "q": "저는 의사가 ___.", "qEn": "I am not a doctor.", "options": ["아니에요", "이에요", "예요", "없어요"], "a": 0, "why": "The negative of 이에요/예요 is the separate word 아니에요, and the noun in front takes 가." },
-        { "type": "match", "pairs": [["학생이에요", "It's a student"], ["친구예요", "It's a friend"], ["아니에요", "It is not"], ["뭐예요?", "What is it?"]] }
+        {
+          "type": "choice",
+          "q": "저는 회사원___.",
+          "qEn": "I'm an office worker. (회사원 ends in ㄴ)",
+          "options": [
+            "이에요",
+            "예요",
+            "이예요",
+            "에요"
+          ],
+          "a": 0,
+          "why": "회사원 ends in a consonant, so 이에요."
+        },
+        {
+          "type": "choice",
+          "q": "이거 커피___.",
+          "qEn": "This is coffee.",
+          "options": [
+            "예요",
+            "이에요",
+            "이이에요",
+            "커피에요"
+          ],
+          "a": 0,
+          "why": "커피 ends in the vowel ㅣ, so 예요."
+        },
+        {
+          "type": "build",
+          "qEn": "I'm a friend of Minsu.",
+          "tiles": [
+            "저는",
+            "민수",
+            "친구예요"
+          ],
+          "a": [
+            "저는",
+            "민수",
+            "친구예요"
+          ]
+        },
+        {
+          "type": "listen",
+          "ko": "제 여권이에요.",
+          "q": "What did you hear?",
+          "options": [
+            "It's my passport.",
+            "It's my phone.",
+            "It's my company.",
+            "It's my friend."
+          ],
+          "a": 0
+        },
+        {
+          "type": "choice",
+          "q": "저는 의사가 ___.",
+          "qEn": "I am not a doctor.",
+          "options": [
+            "아니에요",
+            "이에요",
+            "예요",
+            "없어요"
+          ],
+          "a": 0,
+          "why": "The negative of 이에요/예요 is the separate word 아니에요, and the noun in front takes 가."
+        },
+        {
+          "type": "match",
+          "pairs": [
+            [
+              "학생이에요",
+              "It's a student"
+            ],
+            [
+              "친구예요",
+              "It's a friend"
+            ],
+            [
+              "아니에요",
+              "It is not"
+            ],
+            [
+              "뭐예요?",
+              "What is it?"
+            ]
+          ]
+        }
+      ],
+      "pairs": [
+        {
+          "a": "학생",
+          "aEn": "student — just the word, on its own",
+          "b": "학생이에요.",
+          "bEn": "It's a student.",
+          "note": "Nothing was added but the ending, and a bare noun became a whole sentence. Korean needs no separate word for is."
+        },
+        {
+          "a": "친구예요.",
+          "aEn": "It's a friend.",
+          "b": "친구이에요.",
+          "bEn": "— not Korean.",
+          "note": "친구 ends in the vowel ㅜ, so it can only take 예요. The consonant-or-vowel question decides almost every ending in this course."
+        }
+      ],
+      "tags": [
+        "copula"
       ]
     },
     {
-      "id": "g02", "level": "L1", "order": 2,
+      "id": "g02",
+      "level": "L1",
+      "order": 2,
       "title": "Marking what the sentence is about",
       "form": "은 / 는",
       "goal": "Introduce yourself, and compare one thing against another.",
@@ -48,34 +183,166 @@
         "It does two jobs at once, and the second one surprises people. Besides naming the topic, 은/는 quietly sets that topic against something else. 김치는 매워요 does not only say kimchi is spicy — it hints kimchi, unlike the other thing we were discussing. Koreans hear that contrast even when nobody says it out loud, which is why 저는 sounds natural at the start of a conversation and slightly pointed in the middle of one."
       ],
       "table": {
-        "head": ["The noun ends in", "Add", "Example"],
+        "head": [
+          "The noun ends in",
+          "Add",
+          "Example"
+        ],
         "rows": [
-          ["a consonant — 이름, 오늘, 집", "은", "이름은"],
-          ["a vowel — 저, 회사, 날씨", "는", "저는"]
+          [
+            "a consonant — 이름, 오늘, 집",
+            "은",
+            "이름은"
+          ],
+          [
+            "a vowel — 저, 회사, 날씨",
+            "는",
+            "저는"
+          ]
         ]
       },
       "examples": [
-        { "ko": "저는 마이클이에요.", "rom": "jeoneun Maikeurieyo.", "en": "I'm Michael." },
-        { "ko": "제 이름은 마이클이에요.", "rom": "je ireumeun Maikeurieyo.", "en": "My name is Michael." },
-        { "ko": "오늘은 쉬는 날이에요.", "rom": "oneureun swineun narieyo.", "en": "Today is a day off." },
-        { "ko": "한국어는 어려워요.", "rom": "hangugeoneun eoryeowoyo.", "en": "Korean is hard." },
-        { "ko": "저는 베트남 사람이에요. 친구는 네팔 사람이에요.", "rom": "jeoneun Beteunam saramieyo. chinguneun Nepal saramieyo.", "en": "I'm Vietnamese. My friend is Nepali." }
+        {
+          "ko": "저는 마이클이에요.",
+          "rom": "jeoneun Maikeurieyo.",
+          "en": "I'm Michael."
+        },
+        {
+          "ko": "제 이름은 마이클이에요.",
+          "rom": "je ireumeun Maikeurieyo.",
+          "en": "My name is Michael."
+        },
+        {
+          "ko": "오늘은 쉬는 날이에요.",
+          "rom": "oneureun swineun narieyo.",
+          "en": "Today is a day off."
+        },
+        {
+          "ko": "한국어는 어려워요.",
+          "rom": "hangugeoneun eoryeowoyo.",
+          "en": "Korean is hard."
+        },
+        {
+          "ko": "저는 베트남 사람이에요. 친구는 네팔 사람이에요.",
+          "rom": "jeoneun Beteunam saramieyo. chinguneun Nepal saramieyo.",
+          "en": "I'm Vietnamese. My friend is Nepali."
+        }
       ],
       "notes": [
         "저 is the humble I, used with anyone senior to you or anyone you have just met. 나 is the casual one, for close friends. At work, use 저.",
         "Korean drops the topic the moment it is obvious. After 저는 한국에 왔어요, the next five sentences will have no 저 in them at all. Repeating it sounds like you are insisting."
       ],
       "exercises": [
-        { "type": "choice", "q": "제 이름___ 흐엉이에요.", "qEn": "My name is Huong.", "options": ["은", "는", "이", "가"], "a": 0, "why": "이름 ends in the consonant ㅁ, so 은." },
-        { "type": "choice", "q": "저___ 태국 사람이에요.", "qEn": "I'm Thai.", "options": ["는", "은", "가", "를"], "a": 0, "why": "저 ends in a vowel, so 는." },
-        { "type": "build", "qEn": "Today is a day off.", "tiles": ["오늘은", "쉬는", "날이에요"], "a": ["오늘은", "쉬는", "날이에요"] },
-        { "type": "listen", "ko": "제 이름은 마이클이에요.", "q": "What did you hear?", "options": ["My name is Michael.", "My friend is Michael.", "This is Michael's.", "Michael is not here."], "a": 0 },
-        { "type": "choice", "q": "Which one would a worker use to introduce themselves to a manager?", "options": ["저는", "나는", "우리는", "너는"], "a": 0, "why": "저 is the humble form. 나 is for friends your own age or younger." },
-        { "type": "match", "pairs": [["저는", "as for me"], ["오늘은", "as for today"], ["회사는", "as for the company"], ["이름은", "as for the name"]] }
+        {
+          "type": "choice",
+          "q": "제 이름___ 흐엉이에요.",
+          "qEn": "My name is Huong.",
+          "options": [
+            "은",
+            "는",
+            "이",
+            "가"
+          ],
+          "a": 0,
+          "why": "이름 ends in the consonant ㅁ, so 은."
+        },
+        {
+          "type": "choice",
+          "q": "저___ 태국 사람이에요.",
+          "qEn": "I'm Thai.",
+          "options": [
+            "는",
+            "은",
+            "가",
+            "를"
+          ],
+          "a": 0,
+          "why": "저 ends in a vowel, so 는."
+        },
+        {
+          "type": "build",
+          "qEn": "Today is a day off.",
+          "tiles": [
+            "오늘은",
+            "쉬는",
+            "날이에요"
+          ],
+          "a": [
+            "오늘은",
+            "쉬는",
+            "날이에요"
+          ]
+        },
+        {
+          "type": "listen",
+          "ko": "제 이름은 마이클이에요.",
+          "q": "What did you hear?",
+          "options": [
+            "My name is Michael.",
+            "My friend is Michael.",
+            "This is Michael's.",
+            "Michael is not here."
+          ],
+          "a": 0
+        },
+        {
+          "type": "choice",
+          "q": "Which one would a worker use to introduce themselves to a manager?",
+          "options": [
+            "저는",
+            "나는",
+            "우리는",
+            "너는"
+          ],
+          "a": 0,
+          "why": "저 is the humble form. 나 is for friends your own age or younger."
+        },
+        {
+          "type": "match",
+          "pairs": [
+            [
+              "저는",
+              "as for me"
+            ],
+            [
+              "오늘은",
+              "as for today"
+            ],
+            [
+              "회사는",
+              "as for the company"
+            ],
+            [
+              "이름은",
+              "as for the name"
+            ]
+          ]
+        }
+      ],
+      "pairs": [
+        {
+          "a": "커피 좋아해요.",
+          "aEn": "I like coffee.",
+          "b": "커피는 좋아해요.",
+          "bEn": "Coffee I do like… (but something else, not so much)",
+          "note": "는 does not mean anything you can translate. It lifts 커피 out and sets it against something unsaid — you can hear the but coming."
+        },
+        {
+          "a": "저 베트남 사람이에요.",
+          "aEn": "I'm Vietnamese.",
+          "b": "저는 베트남 사람이에요.",
+          "bEn": "As for me, I'm Vietnamese.",
+          "note": "Both are correct. 는 announces what the sentence is about, which matters most when you are answering a question about someone else."
+        }
+      ],
+      "tags": [
+        "topic-subject"
       ]
     },
     {
-      "id": "g03", "level": "L1", "order": 3,
+      "id": "g03",
+      "level": "L1",
+      "order": 3,
       "title": "Saying something exists, or does not",
       "form": "있어요 / 없어요",
       "goal": "Say what you have, what is here, and what is missing.",
@@ -85,36 +352,176 @@
         "You will use 없어요 constantly. It is the honest answer to most questions in your first month — 시간 없어요, 돈 없어요, 잘 모르겠어요."
       ],
       "table": {
-        "head": ["Meaning", "Word", "Example"],
+        "head": [
+          "Meaning",
+          "Word",
+          "Example"
+        ],
         "rows": [
-          ["there is / I have", "있어요", "시간 있어요 — I have time"],
-          ["there is not / I don't have", "없어요", "시간 없어요 — I don't have time"],
-          ["subject marker, after a consonant", "이", "돈이 없어요"],
-          ["subject marker, after a vowel", "가", "친구가 있어요"]
+          [
+            "there is / I have",
+            "있어요",
+            "시간 있어요 — I have time"
+          ],
+          [
+            "there is not / I don't have",
+            "없어요",
+            "시간 없어요 — I don't have time"
+          ],
+          [
+            "subject marker, after a consonant",
+            "이",
+            "돈이 없어요"
+          ],
+          [
+            "subject marker, after a vowel",
+            "가",
+            "친구가 있어요"
+          ]
         ]
       },
       "examples": [
-        { "ko": "시간 있어요?", "rom": "sigan isseoyo?", "en": "Do you have time?" },
-        { "ko": "지금 돈이 없어요.", "rom": "jigeum doni eopseoyo.", "en": "I don't have money right now." },
-        { "ko": "화장실이 어디에 있어요?", "rom": "hwajangsiri eodie isseoyo?", "en": "Where is the toilet?" },
-        { "ko": "여기 사람이 많이 있어요.", "rom": "yeogi sarami mani isseoyo.", "en": "There are a lot of people here." },
-        { "ko": "오늘 일이 없어요.", "rom": "oneul iri eopseoyo.", "en": "There's no work today." }
+        {
+          "ko": "시간 있어요?",
+          "rom": "sigan isseoyo?",
+          "en": "Do you have time?"
+        },
+        {
+          "ko": "지금 돈이 없어요.",
+          "rom": "jigeum doni eopseoyo.",
+          "en": "I don't have money right now."
+        },
+        {
+          "ko": "화장실이 어디에 있어요?",
+          "rom": "hwajangsiri eodie isseoyo?",
+          "en": "Where is the toilet?"
+        },
+        {
+          "ko": "여기 사람이 많이 있어요.",
+          "rom": "yeogi sarami mani isseoyo.",
+          "en": "There are a lot of people here."
+        },
+        {
+          "ko": "오늘 일이 없어요.",
+          "rom": "oneul iri eopseoyo.",
+          "en": "There's no work today."
+        }
       ],
       "notes": [
         "In speech the particle 이/가 is often dropped: 시간 있어요? is what you will actually hear. Write it, but do not be confused when it goes missing.",
         "맛있어요 (delicious) and 재미있어요 (fun) are 있어요 hiding inside a longer word — literally has taste and has interest. Their opposites are 맛없어요 and 재미없어요."
       ],
       "exercises": [
-        { "type": "choice", "q": "지금 시간 ___?", "qEn": "Do you have time now?", "options": ["있어요", "없어요", "이에요", "해요"], "a": 0, "why": "있어요 — do you have it." },
-        { "type": "choice", "q": "돈___ 없어요.", "qEn": "I don't have money.", "options": ["이", "가", "은", "를"], "a": 0, "why": "돈 ends in the consonant ㄴ, so 이." },
-        { "type": "build", "qEn": "Where is the toilet?", "tiles": ["화장실이", "어디에", "있어요"], "a": ["화장실이", "어디에", "있어요"] },
-        { "type": "listen", "ko": "오늘 일이 없어요.", "q": "What did you hear?", "options": ["There's no work today.", "There's a lot of work today.", "Work finishes today.", "I'm working today."], "a": 0 },
-        { "type": "choice", "q": "What does 맛없어요 mean?", "options": ["It doesn't taste good", "It's delicious", "There's no food", "I'm not hungry"], "a": 0, "why": "맛 (taste) + 없어요 (there is none)." },
-        { "type": "match", "pairs": [["있어요", "there is / I have"], ["없어요", "there isn't / I don't have"], ["맛있어요", "it's delicious"], ["재미없어요", "it's boring"]] }
+        {
+          "type": "choice",
+          "q": "지금 시간 ___?",
+          "qEn": "Do you have time now?",
+          "options": [
+            "있어요",
+            "없어요",
+            "이에요",
+            "해요"
+          ],
+          "a": 0,
+          "why": "있어요 — do you have it."
+        },
+        {
+          "type": "choice",
+          "q": "돈___ 없어요.",
+          "qEn": "I don't have money.",
+          "options": [
+            "이",
+            "가",
+            "은",
+            "를"
+          ],
+          "a": 0,
+          "why": "돈 ends in the consonant ㄴ, so 이."
+        },
+        {
+          "type": "build",
+          "qEn": "Where is the toilet?",
+          "tiles": [
+            "화장실이",
+            "어디에",
+            "있어요"
+          ],
+          "a": [
+            "화장실이",
+            "어디에",
+            "있어요"
+          ]
+        },
+        {
+          "type": "listen",
+          "ko": "오늘 일이 없어요.",
+          "q": "What did you hear?",
+          "options": [
+            "There's no work today.",
+            "There's a lot of work today.",
+            "Work finishes today.",
+            "I'm working today."
+          ],
+          "a": 0
+        },
+        {
+          "type": "choice",
+          "q": "What does 맛없어요 mean?",
+          "options": [
+            "It doesn't taste good",
+            "It's delicious",
+            "There's no food",
+            "I'm not hungry"
+          ],
+          "a": 0,
+          "why": "맛 (taste) + 없어요 (there is none)."
+        },
+        {
+          "type": "match",
+          "pairs": [
+            [
+              "있어요",
+              "there is / I have"
+            ],
+            [
+              "없어요",
+              "there isn't / I don't have"
+            ],
+            [
+              "맛있어요",
+              "it's delicious"
+            ],
+            [
+              "재미없어요",
+              "it's boring"
+            ]
+          ]
+        }
+      ],
+      "pairs": [
+        {
+          "a": "시간이 있어요.",
+          "aEn": "I have time.",
+          "b": "시간이 없어요.",
+          "bEn": "I don't have time.",
+          "note": "These are two different words, not one word negated. There is no 안 있어요 — you must learn 없다 as its own verb."
+        },
+        {
+          "a": "화장실이 어디에 있어요?",
+          "aEn": "Where is the toilet?",
+          "b": "화장실이 없어요.",
+          "bEn": "There is no toilet.",
+          "note": "있다 covers both there is and I have. Which one it means comes from the rest of the sentence, not from the verb."
+        }
+      ],
+      "tags": [
+        "existence"
       ]
     },
     {
-      "id": "g04", "level": "L1", "order": 4,
+      "id": "g04",
+      "level": "L1",
+      "order": 4,
       "title": "The everyday verb ending",
       "form": "아요 / 어요 / 해요",
       "goal": "Say what you do, using the ending that covers almost every conversation you will have.",
@@ -124,37 +531,182 @@
         "This one ending covers the present and the near future at once. 가요 is I go, I am going and I will go in a minute. Korean lets context do that work."
       ],
       "table": {
-        "head": ["Dictionary form", "Last stem vowel", "Becomes"],
+        "head": [
+          "Dictionary form",
+          "Last stem vowel",
+          "Becomes"
+        ],
         "rows": [
-          ["가다 — to go", "ㅏ", "가요"],
-          ["먹다 — to eat", "ㅓ", "먹어요"],
-          ["보다 — to see", "ㅗ", "봐요"],
-          ["마시다 — to drink", "ㅣ", "마셔요"],
-          ["일하다 — to work", "하다", "일해요"]
+          [
+            "가다 — to go",
+            "ㅏ",
+            "가요"
+          ],
+          [
+            "먹다 — to eat",
+            "ㅓ",
+            "먹어요"
+          ],
+          [
+            "보다 — to see",
+            "ㅗ",
+            "봐요"
+          ],
+          [
+            "마시다 — to drink",
+            "ㅣ",
+            "마셔요"
+          ],
+          [
+            "일하다 — to work",
+            "하다",
+            "일해요"
+          ]
         ]
       },
       "examples": [
-        { "ko": "저는 공장에서 일해요.", "rom": "jeoneun gongjangeseo ilhaeyo.", "en": "I work at a factory." },
-        { "ko": "아침 일곱 시에 가요.", "rom": "achim ilgop sie gayo.", "en": "I go at seven in the morning." },
-        { "ko": "점심 먹었어요? 지금 먹어요.", "rom": "jeomsim meogeosseoyo? jigeum meogeoyo.", "en": "Have you had lunch? I'm eating now." },
-        { "ko": "물 좀 마셔요.", "rom": "mul jom masyeoyo.", "en": "Drink some water." },
-        { "ko": "오늘 잔업 해요.", "rom": "oneul janeop haeyo.", "en": "I'm doing overtime today." }
+        {
+          "ko": "저는 공장에서 일해요.",
+          "rom": "jeoneun gongjangeseo ilhaeyo.",
+          "en": "I work at a factory."
+        },
+        {
+          "ko": "아침 일곱 시에 가요.",
+          "rom": "achim ilgop sie gayo.",
+          "en": "I go at seven in the morning."
+        },
+        {
+          "ko": "점심 먹었어요? 지금 먹어요.",
+          "rom": "jeomsim meogeosseoyo? jigeum meogeoyo.",
+          "en": "Have you had lunch? I'm eating now."
+        },
+        {
+          "ko": "물 좀 마셔요.",
+          "rom": "mul jom masyeoyo.",
+          "en": "Drink some water."
+        },
+        {
+          "ko": "오늘 잔업 해요.",
+          "rom": "oneul janeop haeyo.",
+          "en": "I'm doing overtime today."
+        }
       ],
       "notes": [
         "Some stems squash together when the ending is added: 보 + 아요 becomes 봐요, 마시 + 어요 becomes 마셔요, 주 + 어요 becomes 줘요. Say them out loud and the reason is obvious — the short way is easier to pronounce.",
         "Drop the 요 and you have the casual form used with close friends: 가, 먹어, 해. At work, keep the 요 on. It costs one syllable and it is the difference between sounding polite and sounding blunt."
       ],
       "exercises": [
-        { "type": "choice", "q": "먹다 → ___", "qEn": "to eat → polite present", "options": ["먹어요", "먹아요", "먹해요", "먹이에요"], "a": 0, "why": "The stem vowel ㅓ is not ㅏ or ㅗ, so 어요." },
-        { "type": "choice", "q": "일하다 → ___", "qEn": "to work → polite present", "options": ["일해요", "일하아요", "일하어요", "일하요"], "a": 0, "why": "All 하다 verbs become 해요." },
-        { "type": "build", "qEn": "I work at a factory.", "tiles": ["저는", "공장에서", "일해요"], "a": ["저는", "공장에서", "일해요"] },
-        { "type": "listen", "ko": "오늘 잔업 해요.", "q": "What did you hear?", "options": ["I'm doing overtime today.", "I finished work today.", "I'm off today.", "I started work today."], "a": 0 },
-        { "type": "choice", "q": "보다 → ___", "qEn": "to see → polite present", "options": ["봐요", "보아요", "보요", "보해요"], "a": 0, "why": "보 + 아요 contracts to 봐요." },
-        { "type": "match", "pairs": [["가요", "I go"], ["먹어요", "I eat"], ["마셔요", "I drink"], ["일해요", "I work"]] }
+        {
+          "type": "choice",
+          "q": "먹다 → ___",
+          "qEn": "to eat → polite present",
+          "options": [
+            "먹어요",
+            "먹아요",
+            "먹해요",
+            "먹이에요"
+          ],
+          "a": 0,
+          "why": "The stem vowel ㅓ is not ㅏ or ㅗ, so 어요."
+        },
+        {
+          "type": "choice",
+          "q": "일하다 → ___",
+          "qEn": "to work → polite present",
+          "options": [
+            "일해요",
+            "일하아요",
+            "일하어요",
+            "일하요"
+          ],
+          "a": 0,
+          "why": "All 하다 verbs become 해요."
+        },
+        {
+          "type": "build",
+          "qEn": "I work at a factory.",
+          "tiles": [
+            "저는",
+            "공장에서",
+            "일해요"
+          ],
+          "a": [
+            "저는",
+            "공장에서",
+            "일해요"
+          ]
+        },
+        {
+          "type": "listen",
+          "ko": "오늘 잔업 해요.",
+          "q": "What did you hear?",
+          "options": [
+            "I'm doing overtime today.",
+            "I finished work today.",
+            "I'm off today.",
+            "I started work today."
+          ],
+          "a": 0
+        },
+        {
+          "type": "choice",
+          "q": "보다 → ___",
+          "qEn": "to see → polite present",
+          "options": [
+            "봐요",
+            "보아요",
+            "보요",
+            "보해요"
+          ],
+          "a": 0,
+          "why": "보 + 아요 contracts to 봐요."
+        },
+        {
+          "type": "match",
+          "pairs": [
+            [
+              "가요",
+              "I go"
+            ],
+            [
+              "먹어요",
+              "I eat"
+            ],
+            [
+              "마셔요",
+              "I drink"
+            ],
+            [
+              "일해요",
+              "I work"
+            ]
+          ]
+        }
+      ],
+      "pairs": [
+        {
+          "a": "가다",
+          "aEn": "to go — the dictionary form",
+          "b": "가요.",
+          "bEn": "I go. / I'm going.",
+          "note": "The dictionary form is what you look up; it is not what you say. Every verb you meet has to be turned into 아요/어요 before it leaves your mouth."
+        },
+        {
+          "a": "먹어요.",
+          "aEn": "I eat.",
+          "b": "해요.",
+          "bEn": "I do.",
+          "note": "먹 has the vowel ㅓ, so 어요. 하다 is irregular and becomes 해요 — it is the one you will say most, so learn it as its own word."
+        }
+      ],
+      "tags": [
+        "verb-endings"
       ]
     },
     {
-      "id": "g05", "level": "L1", "order": 5,
+      "id": "g05",
+      "level": "L1",
+      "order": 5,
       "title": "Where things happen, and where they are",
       "form": "에 / 에서",
       "goal": "Tell someone where you are going and where you work — and stop mixing the two up.",
@@ -164,37 +716,182 @@
         "The test is the verb. 가다, 오다, 있다 and 없다 take 에. Almost everything else — 일하다, 먹다, 만나다, 사다 — takes 에서. 에서 also means from: 베트남에서 왔어요 I came from Vietnam."
       ],
       "table": {
-        "head": ["Use", "Marker", "Example"],
+        "head": [
+          "Use",
+          "Marker",
+          "Example"
+        ],
         "rows": [
-          ["going to a place", "에", "회사에 가요"],
-          ["being at a place", "에", "집에 있어요"],
-          ["a clock time", "에", "여섯 시에 끝나요"],
-          ["doing something at a place", "에서", "식당에서 먹어요"],
-          ["coming from a place", "에서", "캄보디아에서 왔어요"]
+          [
+            "going to a place",
+            "에",
+            "회사에 가요"
+          ],
+          [
+            "being at a place",
+            "에",
+            "집에 있어요"
+          ],
+          [
+            "a clock time",
+            "에",
+            "여섯 시에 끝나요"
+          ],
+          [
+            "doing something at a place",
+            "에서",
+            "식당에서 먹어요"
+          ],
+          [
+            "coming from a place",
+            "에서",
+            "캄보디아에서 왔어요"
+          ]
         ]
       },
       "examples": [
-        { "ko": "저는 인도네시아에서 왔어요.", "rom": "jeoneun Indonesiaeseo wasseoyo.", "en": "I came from Indonesia." },
-        { "ko": "여덟 시에 회사에 가요.", "rom": "yeodeol sie hoesae gayo.", "en": "I go to the company at eight." },
-        { "ko": "기숙사에서 자요.", "rom": "gisuksaeseo jayo.", "en": "I sleep at the dormitory." },
-        { "ko": "지금 어디에 있어요?", "rom": "jigeum eodie isseoyo?", "en": "Where are you now?" },
-        { "ko": "식당에서 점심을 먹어요.", "rom": "sikdangeseo jeomsimeul meogeoyo.", "en": "I eat lunch at the canteen." }
+        {
+          "ko": "저는 인도네시아에서 왔어요.",
+          "rom": "jeoneun Indonesiaeseo wasseoyo.",
+          "en": "I came from Indonesia."
+        },
+        {
+          "ko": "여덟 시에 회사에 가요.",
+          "rom": "yeodeol sie hoesae gayo.",
+          "en": "I go to the company at eight."
+        },
+        {
+          "ko": "기숙사에서 자요.",
+          "rom": "gisuksaeseo jayo.",
+          "en": "I sleep at the dormitory."
+        },
+        {
+          "ko": "지금 어디에 있어요?",
+          "rom": "jigeum eodie isseoyo?",
+          "en": "Where are you now?"
+        },
+        {
+          "ko": "식당에서 점심을 먹어요.",
+          "rom": "sikdangeseo jeomsimeul meogeoyo.",
+          "en": "I eat lunch at the canteen."
+        }
       ],
       "notes": [
         "어디에 있어요? asks where something is. 어디에서 일해요? asks where you do something. Both are common and they are not interchangeable.",
         "에서 is often shortened to 서 in speech: 어디서 왔어요?"
       ],
       "exercises": [
-        { "type": "choice", "q": "저는 공장___ 일해요.", "qEn": "I work at a factory.", "options": ["에서", "에", "은", "를"], "a": 0, "why": "일하다 is an action done at a place, so 에서." },
-        { "type": "choice", "q": "여덟 시___ 회사___ 가요.", "qEn": "I go to the company at eight.", "options": ["에 / 에", "에서 / 에서", "에 / 에서", "에서 / 에"], "a": 0, "why": "A clock time takes 에, and 가다 takes 에." },
-        { "type": "build", "qEn": "I came from Nepal.", "tiles": ["저는", "네팔에서", "왔어요"], "a": ["저는", "네팔에서", "왔어요"] },
-        { "type": "listen", "ko": "지금 어디에 있어요?", "q": "What did you hear?", "options": ["Where are you now?", "Where are you going now?", "What are you doing now?", "When are you coming?"], "a": 0 },
-        { "type": "choice", "q": "집___ 있어요.", "qEn": "I'm at home.", "options": ["에", "에서", "를", "도"], "a": 0, "why": "있다 takes 에." },
-        { "type": "match", "pairs": [["회사에 가요", "I go to the company"], ["회사에서 일해요", "I work at the company"], ["어디에서 왔어요?", "Where did you come from?"], ["어디에 있어요?", "Where is it?"]] }
+        {
+          "type": "choice",
+          "q": "저는 공장___ 일해요.",
+          "qEn": "I work at a factory.",
+          "options": [
+            "에서",
+            "에",
+            "은",
+            "를"
+          ],
+          "a": 0,
+          "why": "일하다 is an action done at a place, so 에서."
+        },
+        {
+          "type": "choice",
+          "q": "여덟 시___ 회사___ 가요.",
+          "qEn": "I go to the company at eight.",
+          "options": [
+            "에 / 에",
+            "에서 / 에서",
+            "에 / 에서",
+            "에서 / 에"
+          ],
+          "a": 0,
+          "why": "A clock time takes 에, and 가다 takes 에."
+        },
+        {
+          "type": "build",
+          "qEn": "I came from Nepal.",
+          "tiles": [
+            "저는",
+            "네팔에서",
+            "왔어요"
+          ],
+          "a": [
+            "저는",
+            "네팔에서",
+            "왔어요"
+          ]
+        },
+        {
+          "type": "listen",
+          "ko": "지금 어디에 있어요?",
+          "q": "What did you hear?",
+          "options": [
+            "Where are you now?",
+            "Where are you going now?",
+            "What are you doing now?",
+            "When are you coming?"
+          ],
+          "a": 0
+        },
+        {
+          "type": "choice",
+          "q": "집___ 있어요.",
+          "qEn": "I'm at home.",
+          "options": [
+            "에",
+            "에서",
+            "를",
+            "도"
+          ],
+          "a": 0,
+          "why": "있다 takes 에."
+        },
+        {
+          "type": "match",
+          "pairs": [
+            [
+              "회사에 가요",
+              "I go to the company"
+            ],
+            [
+              "회사에서 일해요",
+              "I work at the company"
+            ],
+            [
+              "어디에서 왔어요?",
+              "Where did you come from?"
+            ],
+            [
+              "어디에 있어요?",
+              "Where is it?"
+            ]
+          ]
+        }
+      ],
+      "pairs": [
+        {
+          "a": "공장에 있어요.",
+          "aEn": "I'm at the factory.",
+          "b": "공장에서 일해요.",
+          "bEn": "I work at the factory.",
+          "note": "에 marks where something simply IS. 에서 marks where something HAPPENS. One letter of difference, and putting it the wrong way round is the commonest mistake at this level."
+        },
+        {
+          "a": "집에 가요.",
+          "aEn": "I'm going home.",
+          "b": "집에서 쉬어요.",
+          "bEn": "I rest at home.",
+          "note": "Going TO a place is 에. Doing something AT a place is 에서."
+        }
+      ],
+      "tags": [
+        "place-particles"
       ]
     },
     {
-      "id": "g06", "level": "L1", "order": 6,
+      "id": "g06",
+      "level": "L1",
+      "order": 6,
       "title": "The two sets of numbers",
       "form": "하나 둘 셋 / 일 이 삼",
       "goal": "Say a time, a price and a phone number without freezing.",
@@ -204,21 +901,65 @@
         "Money is always Sino, and it is counted in units of ten thousand: 만 원 is 10,000 won, 십만 원 is 100,000, 백만 원 is a million. A monthly wage is usually said in 만 — 이백오십만 원 is 2,500,000 won."
       ],
       "table": {
-        "head": ["Number", "Native", "Sino"],
+        "head": [
+          "Number",
+          "Native",
+          "Sino"
+        ],
         "rows": [
-          ["1 / 2 / 3", "하나 둘 셋", "일 이 삼"],
-          ["4 / 5 / 6", "넷 다섯 여섯", "사 오 육"],
-          ["7 / 8 / 9", "일곱 여덟 아홉", "칠 팔 구"],
-          ["10 / 20 / 30", "열 스물 서른", "십 이십 삼십"],
-          ["Used for", "hours, ages, counting things", "minutes, money, dates, phone numbers"]
+          [
+            "1 / 2 / 3",
+            "하나 둘 셋",
+            "일 이 삼"
+          ],
+          [
+            "4 / 5 / 6",
+            "넷 다섯 여섯",
+            "사 오 육"
+          ],
+          [
+            "7 / 8 / 9",
+            "일곱 여덟 아홉",
+            "칠 팔 구"
+          ],
+          [
+            "10 / 20 / 30",
+            "열 스물 서른",
+            "십 이십 삼십"
+          ],
+          [
+            "Used for",
+            "hours, ages, counting things",
+            "minutes, money, dates, phone numbers"
+          ]
         ]
       },
       "examples": [
-        { "ko": "지금 몇 시예요? 두 시 십 분이에요.", "rom": "jigeum myeot siyeyo? du si sip bunieyo.", "en": "What time is it? It's ten past two." },
-        { "ko": "여섯 시에 끝나요.", "rom": "yeoseot sie kkeunnayo.", "en": "It finishes at six." },
-        { "ko": "한 개 주세요.", "rom": "han gae juseyo.", "en": "One, please." },
-        { "ko": "이거 얼마예요? 만 오천 원이에요.", "rom": "igeo eolmayeyo? man ocheon wonieyo.", "en": "How much is this? 15,000 won." },
-        { "ko": "제 번호는 공일공 이삼사오에 육칠팔구예요.", "rom": "je beonhoneun gongilgong isamsaoe yukchilpalguyeyo.", "en": "My number is 010-2345-6789." }
+        {
+          "ko": "지금 몇 시예요? 두 시 십 분이에요.",
+          "rom": "jigeum myeot siyeyo? du si sip bunieyo.",
+          "en": "What time is it? It's ten past two."
+        },
+        {
+          "ko": "여섯 시에 끝나요.",
+          "rom": "yeoseot sie kkeunnayo.",
+          "en": "It finishes at six."
+        },
+        {
+          "ko": "한 개 주세요.",
+          "rom": "han gae juseyo.",
+          "en": "One, please."
+        },
+        {
+          "ko": "이거 얼마예요? 만 오천 원이에요.",
+          "rom": "igeo eolmayeyo? man ocheon wonieyo.",
+          "en": "How much is this? 15,000 won."
+        },
+        {
+          "ko": "제 번호는 공일공 이삼사오에 육칠팔구예요.",
+          "rom": "je beonhoneun gongilgong isamsaoe yukchilpalguyeyo.",
+          "en": "My number is 010-2345-6789."
+        }
       ],
       "notes": [
         "하나, 둘, 셋, 넷 shorten before a counter: 한 개, 두 시, 세 명, 네 번. Never 하나 개.",
@@ -226,12 +967,110 @@
         "몇 means how many and pairs with a counter: 몇 시 what time, 몇 명 how many people, 몇 개 how many pieces."
       ],
       "exercises": [
-        { "type": "choice", "q": "지금 ___ 시예요.", "qEn": "It's three o'clock.", "options": ["세", "삼", "셋", "삼십"], "a": 0, "why": "Hours use the native set, and 셋 shortens to 세 before 시." },
-        { "type": "choice", "q": "___ 분이에요.", "qEn": "It's thirty minutes past.", "options": ["삼십", "서른", "셋십", "세십"], "a": 0, "why": "Minutes use the Sino set: 삼십 분." },
-        { "type": "build", "qEn": "It finishes at six.", "tiles": ["여섯", "시에", "끝나요"], "a": ["여섯", "시에", "끝나요"] },
-        { "type": "listen", "ko": "만 오천 원이에요.", "q": "How much?", "options": ["15,000 won", "5,000 won", "50,000 won", "1,500 won"], "a": 0 },
-        { "type": "choice", "q": "How is 010 said in a phone number?", "options": ["공일공", "영일영", "제로일제로", "하나열하나"], "a": 0, "why": "Zero in a phone number is 공, and each digit is said separately." },
-        { "type": "match", "pairs": [["한 개", "one piece"], ["두 시", "two o'clock"], ["세 명", "three people"], ["만 원", "10,000 won"]] }
+        {
+          "type": "choice",
+          "q": "지금 ___ 시예요.",
+          "qEn": "It's three o'clock.",
+          "options": [
+            "세",
+            "삼",
+            "셋",
+            "삼십"
+          ],
+          "a": 0,
+          "why": "Hours use the native set, and 셋 shortens to 세 before 시."
+        },
+        {
+          "type": "choice",
+          "q": "___ 분이에요.",
+          "qEn": "It's thirty minutes past.",
+          "options": [
+            "삼십",
+            "서른",
+            "셋십",
+            "세십"
+          ],
+          "a": 0,
+          "why": "Minutes use the Sino set: 삼십 분."
+        },
+        {
+          "type": "build",
+          "qEn": "It finishes at six.",
+          "tiles": [
+            "여섯",
+            "시에",
+            "끝나요"
+          ],
+          "a": [
+            "여섯",
+            "시에",
+            "끝나요"
+          ]
+        },
+        {
+          "type": "listen",
+          "ko": "만 오천 원이에요.",
+          "q": "How much?",
+          "options": [
+            "15,000 won",
+            "5,000 won",
+            "50,000 won",
+            "1,500 won"
+          ],
+          "a": 0
+        },
+        {
+          "type": "choice",
+          "q": "How is 010 said in a phone number?",
+          "options": [
+            "공일공",
+            "영일영",
+            "제로일제로",
+            "하나열하나"
+          ],
+          "a": 0,
+          "why": "Zero in a phone number is 공, and each digit is said separately."
+        },
+        {
+          "type": "match",
+          "pairs": [
+            [
+              "한 개",
+              "one piece"
+            ],
+            [
+              "두 시",
+              "two o'clock"
+            ],
+            [
+              "세 명",
+              "three people"
+            ],
+            [
+              "만 원",
+              "10,000 won"
+            ]
+          ]
+        }
+      ],
+      "pairs": [
+        {
+          "a": "세 시",
+          "aEn": "three o'clock",
+          "b": "삼 층",
+          "bEn": "the third floor",
+          "note": "Same number, two systems. Hours take the native set, floors take the Sino set. There is no rule you can reason out — it is learned per counter."
+        },
+        {
+          "a": "두 시 이십 분",
+          "aEn": "2:20",
+          "b": "스무 살",
+          "bEn": "twenty years old",
+          "note": "A clock time uses both in one breath: native for the hour, Sino for the minutes. Age goes back to native."
+        }
+      ],
+      "tags": [
+        "numbers"
       ]
     }
   ]

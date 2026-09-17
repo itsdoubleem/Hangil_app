@@ -1,0 +1,71 @@
+{
+  "note": "What the exam is and how it is built. Everything here describes the shape of the paper, not the result: this app does not say whether you passed, does not predict a score, and is not affiliated with HRD Korea or the EPS programme. Where a number changes from round to round it is named as such rather than written down.",
+  "sections": [
+    {
+      "id": "g-what",
+      "title": "What the paper is",
+      "icon": "exam",
+      "body": [
+        "The EPS-TOPIK is the Korean test taken to enter the Employment Permit System — the route by which workers from the sending countries come to Korea on an E-9 visa. It is not the academic TOPIK and the two do not substitute for each other.",
+        "The paper is forty questions in fifty minutes: twenty listening (듣기) and twenty reading (읽기), twenty-five minutes each. It is sat on a computer or a tablet rather than on paper.",
+        "What it tests is stated plainly by HRD Korea: everyday Korean, the Korean you need in industry, and an understanding of how a Korean workplace works. That is why so much of the vocabulary is about shifts, wages, safety signs and the clinic."
+      ]
+    },
+    {
+      "id": "g-trade",
+      "title": "The job-related questions",
+      "icon": "trade",
+      "body": [
+        "Some of the questions are drawn from one of eight job groups rather than from the common pool. Which group is not a choice you make in the exam room: you pick it when you apply, and every job-related question on your paper comes from that one.",
+        "This only applies to people applying for manufacturing work. An applicant for agriculture, fishing, construction or service work gets common questions in place of them — so if that is you, the trades section here is optional reading rather than something you have to revise.",
+        "The eight groups are 고무·플라스틱, 전기·전자, 금속·재료, 기계·금형, 식품가공, 섬유·의복, 화학·제약 and 펄프·종이·목재. HRD Korea publishes the job-related question bank in advance, which is unusual and worth knowing: those questions are meant to be studied rather than guessed at.",
+        "The Special EPS-TOPIK — the round for former workers returning to Korea — carries a larger share of job-related questions than the ordinary round does."
+      ]
+    },
+    {
+      "id": "g-shapes",
+      "title": "The question shapes",
+      "icon": "target",
+      "body": [
+        "Listening opens with pictures: you hear a word or a sentence and choose the drawing that matches. Then short exchanges — someone says one line and you pick the natural reply — and then conversations of two to four turns with a question about what was said or what has to be done.",
+        "Reading opens the same way, with a picture or a sign: 출입 금지, 손 조심, 안전모 착용. Then vocabulary and grammar in a gapped sentence, then 'choose the sentence that means the same', then a notice or a short passage with two or three questions hanging off it.",
+        "The passages are workplace documents more often than they are stories: a shift notice, a health-check announcement, a set of safety rules, a contract. Reading one quickly is a skill of its own and it is most of what the second half of the reading paper asks for."
+      ]
+    },
+    {
+      "id": "g-score",
+      "title": "Marking, and what this app will not tell you",
+      "icon": "check",
+      "body": [
+        "Each question carries equal weight and the two halves are worth the same as each other.",
+        "This app does not tell you whether a practice score is a pass. The cut score is set per round and differs by industry, and the number of people taking it changes what it lands on — so any pass mark written into an app is a number invented to sound useful.",
+        "What a practice paper here does give you is the list of questions you got wrong, with the reason. That is the part worth acting on.",
+        "For anything official — dates, eligibility, results, what your own cut score was — go to HRD Korea's own EPS-TOPIK site. This app has no connection to them and does not know your registration."
+      ]
+    },
+    {
+      "id": "g-how",
+      "title": "How to use the fifty minutes",
+      "icon": "clock",
+      "body": [
+        "The clock does not stop between sections in practice here, and running out of time is a more common way to lose marks than not knowing the answer.",
+        "In listening you hear each item on its own schedule, so the discipline is to decide and move on: a question you are still weighing when the next one starts costs you two, not one.",
+        "In reading, the passages are at the end and take the longest. Getting to them with ten minutes left is worth more than getting every gap-fill right.",
+        "Answer everything. Nothing is deducted for a wrong answer, so a blank is strictly worse than a guess.",
+        "The practice paper in this app is deliberately unforgiving about this — it marks nothing until you hand it in, because finding out at the end is the thing you are practising for."
+      ]
+    },
+    {
+      "id": "g-study",
+      "title": "What actually moves the score",
+      "icon": "spark",
+      "body": [
+        "Signs and notices. They are free marks, there are a limited number of them in ordinary use, and they turn up in both halves of the paper. The 유형별 drills in this app start here for that reason.",
+        "Numbers and time. Hours, dates, wages, quantities — Korean runs two number systems and the exam leans on the join between them. Mishearing 두 시 for 열두 시 costs a question you otherwise understood.",
+        "The formal register. The paper is written in -습니다/-십시오 throughout. If the Korean you hear at work is casual, the exam's register will feel oddly stiff, and that unfamiliarity is worth practising away.",
+        "Your own trade's vocabulary, if you are applying for manufacturing work. It is a small, closed list and it is published in advance.",
+        "Little and often beats a long session. The review deck here exists for that: it brings back what you got wrong at widening gaps, which is the one study habit with good evidence behind it."
+      ]
+    }
+  ]
+}

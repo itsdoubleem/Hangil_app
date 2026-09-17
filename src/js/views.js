@@ -1,10 +1,11 @@
 import { h, clear, shuffle, icon, today } from './util.js';
 import * as store from './store.js';
 import * as tts from './tts.js';
-import { load, data, LEVELS, unitKey, vocabKey, drillKey, resolve } from './data.js';
+import { load, data, LEVELS, unitKey, vocabKey, drillKey, tradeKey, resolve } from './data.js';
 import { Quiz, fromExercise, fromExamItem, fromWord, speakBtn } from './quiz.js';
 import { t } from './i18n.js';
 import { runMock } from './mock.js';
+import { Deck, unitCards, hidden } from './deck.js';
 
 const nav = (to) => { location.hash = to; };
 
@@ -12,10 +13,12 @@ function head(root, title, opts = {}) {
   if (opts.tone) root.style.setProperty('--c', `var(--c-${opts.tone})`);
   if (opts.tone) root.style.setProperty('--cw', `var(--cw-${opts.tone})`);
   const bar = h('div', { class: 'topbar' });
+  // No wordmark. The app's name is on the icon you tapped to get here, and
+  // repeating it above every screen only pushes the thing you came for further
+  // down. Screens that can go back get the back button; the rest get nothing on
+  // the left, and the bar stays for its height and the safe-area padding.
   if (opts.back) {
     bar.append(h('button', { class: 'back', 'aria-label': t('back'), onclick: () => nav(opts.back) }, icon('back')));
-  } else {
-    bar.append(h('h1', {}, 'HANGIL'), h('span', { class: 'sub ko' }, '한길'));
   }
   bar.append(h('span', { class: 'spacer' }));
   if (opts.right) bar.append(opts.right);
@@ -31,13 +34,19 @@ function head(root, title, opts = {}) {
  * an icon tile in the section's colour, a title, an optional subtitle, and a
  * chevron. `tone` sets --c and --cw so everything inside follows one colour.
  */
-function tile({ tone = 'today', icon: ic, meta, title, sub, subKo, desc, onclick, hero, i, progress }) {
+function tile({ tone = 'today', icon: ic, glyph, meta, title, sub, subKo, desc, onclick, hero, i, progress }) {
   const el = h('button', {
     class: `card pressable${hero ? ' card--hero' : ''}`,
     style: `--c: var(--c-${tone}); --cw: var(--cw-${tone}); --i:${i ?? 0}`,
     onclick,
   });
-  if (ic && !hero) {
+  // A glyph rather than an icon, for the one card where the subject IS a
+  // letter. Set as real text in the Korean font: drawn as SVG strokes it comes
+  // out as a syllable that does not exist, which is exactly the thing a learner
+  // of 한글 should never be shown.
+  if (glyph && !hero) {
+    el.append(h('span', { class: 'card__icon' }, h('span', { class: 'glyph ko' }, glyph)));
+  } else if (ic && !hero) {
     const box = h('span', { class: 'card__icon' });
     box.append(icon(ic));
     el.append(box);
@@ -84,6 +93,31 @@ function row({ num, done, title, sub, subMuted, onclick }) {
       h('span', { class: 'row__title' }, title),
       sub ? h('span', { class: subMuted ? 'row__sub row__sub--muted' : 'row__sub ko' }, sub) : null),
     (() => { const s = icon('chev'); s.setAttribute('class', 'row__chev'); return s; })());
+}
+
+// The word list, shared by the vocabulary sets and the trades. Both show the
+// same four things — the Korean with a speaker, the romanization if it is
+// switched on, the English, and one example sentence.
+function wordList(words, { hide = false } = {}) {
+  const list = h('div');
+  for (const w of words) {
+    list.append(h('div', { class: 'word' },
+      h('div', { class: 'word__ko ko' }, w.ko, speakBtn(w.ko)),
+      (w.rom && store.get().rom) ? h('div', { class: 'word__rom' }, w.rom) : null,
+      // Covered, the English is something you ask for; uncovered it is something
+      // you read instead of the Korean. Which one this is, is the learner's call.
+      hide ? hidden(w.en, { cls: 'reveal reveal--sm' }) : h('div', { class: 'word__en' }, w.en),
+      // The example's English has to go behind the same tap. Covering only the
+      // gloss leaves the answer sitting one line below it, which makes the whole
+      // exercise pointless — the Korean still never has to be read.
+      w.ex
+        ? (hide
+            ? h('div', { class: 'word__ex' }, h('b', { class: 'ko' }, w.ex), hidden(w.exEn, { cls: 'reveal reveal--sm' }))
+            : h('div', { class: 'word__ex' }, h('b', { class: 'ko' }, w.ex), ' — ', w.exEn))
+        : null,
+    ));
+  }
+  return list;
 }
 
 /* ---------------- today ---------------- */
@@ -138,19 +172,49 @@ export async function home(root) {
 
   const grid2 = h('div', { class: 'grid2', style: '--i:4' });
   grid2.append(
-    tile({ tone: 'hangeul', icon: 'hangeul', title: t('letters'), meta: '한글',
+    tile({ tone: 'hangeul', glyph: '가', title: t('letters'), meta: '한글',
            sub: 'Start here if you cannot read yet.', onclick: () => nav('#/hangeul') }),
     tile({ tone: 'vocab', icon: 'vocab', title: t('vocab'), meta: `${words} words`,
            sub: 'Work, safety, money, the body.', onclick: () => nav('#/vocab') }),
   );
   wrap.append(grid2);
 
-  wrap.append(h('h3', { style: '--i:5' }, 'Your progress'));
-  const ringRow = h('div', { class: 'card', style: '--i:6; --c: var(--c-course); display:block; padding: var(--s5)' });
+  // Only once a trade is set. Before that it is one of eight groups most people
+  // do not need, and it belongs behind the exam screen rather than on the home
+  // page competing with the course.
+  const myTrade = s.trade ? d.tradeById[s.trade] : null;
+  // The stagger delay is --i * 42ms, so the indices from here down have to stay
+  // contiguous whether or not the trade card is there — a gap reads as a stutter.
+  let i = 5;
+  if (myTrade) {
+    wrap.append(tile({
+      tone: 'trade', icon: myTrade.icon || 'trade', i: i++,
+      meta: `${myTrade.titleKo} · ${t('trade')}`,
+      title: myTrade.title, sub: myTrade.blurb,
+      onclick: () => nav(`#/trade/${myTrade.id}`),
+    }));
+  }
+
+  // Only once it can name something, and only the single worst — a list of
+  // failings on the home screen is a reason to close the app.
+  const spots = store.tagStats();
+  const top = spots.find(x => d.tags[x.id] && x.pct < 0.8);
+  if (top) {
+    wrap.append(tile({
+      tone: 'review', icon: 'target', i: i++,
+      meta: `${Math.round(top.pct * 100)}% right · ${top.n} answers`,
+      title: 'Weak spot: ' + d.tags[top.id].label,
+      sub: 'The app has been counting what each question was about. This is the one you miss most.',
+      onclick: () => nav('#/weak'),
+    }));
+  }
+
+  wrap.append(h('h3', { style: `--i:${i++}` }, 'Your progress'));
+  const ringRow = h('div', { class: 'card', style: `--i:${i++}; --c: var(--c-course); display:block; padding: var(--s5)` });
   ringRow.append(ring(doneCount, d.units.length, 'units finished'));
   wrap.append(ringRow);
 
-  const stats = h('div', { class: 'stats', style: '--i:7' });
+  const stats = h('div', { class: 'stats', style: `--i:${i++}` });
   stats.append(
     h('div', { class: 'stat', style: '--c: var(--c-review)' }, h('b', {}, s.answered.right), h('span', {}, t('correct'))),
     h('div', { class: 'stat', style: '--c: var(--c-today)' }, h('b', {}, s.streak.best || 0), h('span', {}, t('best'))),
@@ -159,15 +223,65 @@ export async function home(root) {
   wrap.append(stats);
 
   const warn = tts.missingVoiceNote();
-  if (warn) wrap.append(h('div', { class: 'note', style: '--i:8; --c: var(--c-exam); margin-top: var(--s5)' }, warn));
+  if (warn) wrap.append(h('div', { class: 'note', style: `--i:${i++}; --c: var(--c-exam); margin-top: var(--s5)` }, warn));
 }
 
 /* ---------------- hangeul ---------------- */
 
+// Every letter, by its character, so a chart cell can find its own detail.
+function letterIndex(d) {
+  const m = {};
+  for (const g of d.hangeul.groups) for (const L of g.letters) m[L.ch] = L;
+  return m;
+}
+
+/* What a letter opens into.
+ *
+ * A tile that only plays a sound teaches the sound and nothing else. This shows
+ * the three things that actually make a letter stick: what it is built from,
+ * what it sounds like, and one real word you will meet it in.
+ */
+function letterSheet(L, idx) {
+  const wrap = h('div', { class: 'sheetcard' });
+  wrap.append(h('div', { class: 'sheetcard__glyph ko' }, L.ch));
+  wrap.append(h('p', { class: 'sheetcard__rom' }, L.rom));
+  if (L.say) {
+    wrap.append(h('div', { class: 'btnrow' },
+      h('button', { class: 'btn btn--ghost', onclick: () => tts.say(L.say || L.ch) },
+        'Say it — ', h('span', { class: 'ko' }, L.say))));
+  }
+  wrap.append(h('p', { class: 'deck__text' }, L.hint));
+  if (L.from && idx[L.from]) {
+    wrap.append(h('p', { class: 'tiny' },
+      'Built from ', h('b', { class: 'ko' }, L.from), ` — ${idx[L.from].rom}.`));
+  }
+  if (L.ex) {
+    wrap.append(h('hr', { class: 'hr' }));
+    wrap.append(h('p', { class: 'deck__label' }, 'In a word'));
+    wrap.append(h('div', { class: 'deck__ko ko' }, h('span', {}, L.ex.ko), speakBtn(L.ex.ko)));
+    if (store.get().rom) wrap.append(h('p', { class: 'deck__rom' }, L.ex.rom));
+    wrap.append(h('p', { class: 'deck__text' }, L.ex.en));
+  }
+  return wrap;
+}
+
 export async function hangeul(root) {
   const d = await load();
-  head(root, t('letters'), { back: '#/' });
+  head(root, t('letters'), { back: '#/', tone: 'hangeul' });
   root.append(h('p', { class: 'lead' }, d.hangeul.intro));
+
+  if (d.hangeul.chart) {
+    root.append(tile({
+      tone: 'hangeul', glyph: '한', hero: true,
+      meta: '40 letters, one page',
+      title: 'The chart',
+      desc: 'Every letter laid out by family, so you can see which ones are the same shape with something added.',
+      onclick: () => nav('#/hangeul/chart'),
+    }));
+  }
+
+  const idx = letterIndex(d);
+  const detail = h('div', { class: 'detail' });
 
   for (const g of d.hangeul.groups) {
     root.append(h('h3', {}, `${g.title} · `, h('span', { class: 'ko' }, g.titleKo)));
@@ -176,11 +290,12 @@ export async function hangeul(root) {
     for (const L of g.letters) {
       tiles.append(h('button', {
         class: 'tile', type: 'button', title: L.hint,
-        onclick: () => tts.say(L.say || L.ch),
+        onclick: () => { tts.say(L.say || L.ch); clear(detail).append(letterSheet(L, idx)); detail.scrollIntoView({ block: 'nearest' }); },
       }, h('b', {}, L.ch), h('span', {}, L.rom)));
     }
     root.append(tiles);
   }
+  root.append(detail);
 
   for (const b of d.hangeul.blocks) {
     root.append(h('h3', {}, b.title));
@@ -192,6 +307,44 @@ export async function hangeul(root) {
   store.markSeen('hangeul');
 }
 
+export async function hangeulChart(root) {
+  const d = await load();
+  const ch = d.hangeul.chart;
+  if (!ch) return nav('#/hangeul');
+  head(root, 'The chart', { back: '#/hangeul', tone: 'hangeul' });
+  root.append(h('p', { class: 'lead' }, ch.note));
+
+  const idx = letterIndex(d);
+  const detail = h('div', { class: 'detail' });
+
+  for (const sec of ch.sections) {
+    root.append(h('h3', {}, `${sec.title} · `, h('span', { class: 'ko' }, sec.titleKo)));
+    const grid = h('div', { class: 'chart' });
+    sec.rows.forEach((row, r) => {
+      grid.append(h('div', { class: 'chart__lab' }, sec.rowLabels[r] || ''));
+      const line = h('div', { class: 'chart__row', style: `--cols:${row.length}` });
+      for (const c of row) {
+        if (!c) { line.append(h('span', { class: 'chart__gap' })); continue; }
+        const L = idx[c];
+        line.append(h('button', {
+          class: 'chart__cell', type: 'button', title: L ? L.hint : c,
+          onclick: () => {
+            tts.say((L && L.say) || c);
+            clear(detail).append(letterSheet(L || { ch: c, rom: '', hint: '' }, idx));
+            detail.scrollIntoView({ block: 'nearest' });
+          },
+        }, h('b', { class: 'ko' }, c), h('span', {}, L ? L.rom : '')));
+      }
+      grid.append(line);
+    });
+    root.append(grid);
+  }
+
+  root.append(detail);
+  root.append(h('div', { class: 'btnrow' },
+    h('button', { class: 'btn btn--wide', onclick: () => nav('#/hangeul/drill') }, 'Read these out loud')));
+}
+
 export async function hangeulDrill(root) {
   const d = await load();
   head(root, null, { back: '#/hangeul' });
@@ -201,7 +354,7 @@ export async function hangeulDrill(root) {
     const wrong = shuffle(d.hangeul.drills.filter(y => y.rom !== x.rom)).slice(0, 3);
     const opts = shuffle([x, ...wrong]);
     return {
-      key: `h:${x.ko}`, type: 'choice', audio: x.ko,
+      key: `h:${x.ko}`, tags: ['hangeul-reading'], type: 'choice', audio: x.ko,
       stem: x.ko, stemEn: 'How is this said?',
       options: opts.map(o => o.rom), answer: opts.indexOf(x),
     };
@@ -245,6 +398,14 @@ export async function lesson(root, id) {
   const box = h('div', { class: 'lesson' });
   box.append(h('p', { class: 'lesson__form ko' }, u.form));
   box.append(h('p', { class: 'lead' }, u.goal));
+
+  // The walk-through is the way in; this page stays as the reference you come
+  // back to. Both exist because they are for different moments — meeting the
+  // grammar, and looking it up again three weeks later.
+  box.append(h('div', { class: 'btnrow' },
+    h('button', { class: 'btn btn--accent btn--wide', onclick: () => nav(`#/course/${id}/learn`) },
+      'Walk me through it')));
+
   for (const p of u.explain) box.append(h('p', {}, p));
 
   if (u.table) {
@@ -252,6 +413,19 @@ export async function lesson(root, id) {
     tb.append(h('thead', {}, h('tr', {}, ...u.table.head.map(x => h('th', {}, x)))));
     tb.append(h('tbody', {}, ...u.table.rows.map(r => h('tr', {}, ...r.map(c => h('td', {}, c))))));
     box.append(h('div', { class: 'tablewrap' }, tb));
+  }
+
+  if (u.pairs && u.pairs.length) {
+    box.append(h('h3', {}, 'What changes'));
+    for (const pr of u.pairs) {
+      box.append(h('div', { class: 'ex' },
+        h('div', { class: 'ex__ko ko' }, h('span', {}, pr.a), speakBtn(pr.a)),
+        h('div', { class: 'ex__en' }, pr.aEn),
+        h('div', { class: 'ex__ko ko' }, h('span', {}, pr.b), speakBtn(pr.b)),
+        h('div', { class: 'ex__en' }, pr.bEn),
+        h('p', { class: 'tiny' }, pr.note),
+      ));
+    }
   }
 
   box.append(h('h3', {}, 'Sentences'));
@@ -271,6 +445,18 @@ export async function lesson(root, id) {
   box.append(h('div', { class: 'btnrow' },
     h('button', { class: 'btn btn--wide', onclick: () => nav(`#/course/${id}/practice`) }, t('practice'))));
   root.append(box);
+}
+
+export async function lessonLearn(root, id) {
+  const d = await load();
+  const u = d.unitById[id];
+  if (!u) return nav('#/course');
+  store.setLast(`#/course/${id}/learn`, u.title);
+  head(root, null, { back: `#/course/${id}`, tone: 'course' });
+  root.append(h('p', { class: 'kicker' }, u.title));
+  const box = h('div', { class: 'deck' });
+  root.append(box);
+  new Deck(box, unitCards(u), { onDone: () => nav(`#/course/${id}/practice`) });
 }
 
 export async function lessonPractice(root, id) {
@@ -312,19 +498,39 @@ export async function vocabSet(root, id) {
   head(root, s.title, { back: '#/vocab' });
   root.append(h('p', { class: 'kicker ko' }, s.titleKo));
   root.append(h('div', { class: 'btnrow' },
+    h('button', { class: 'btn btn--accent btn--wide', onclick: () => nav(`#/vocab/${id}/learn`) }, 'Learn these')));
+  root.append(h('div', { class: 'btnrow' },
     h('button', { class: 'btn', onclick: () => nav(`#/vocab/${id}/drill`) }, 'Drill these'),
     h('button', { class: 'btn btn--ghost', onclick: () => nav(`#/vocab/${id}/listen`) }, 'Listening drill')));
-  const list = h('div');
-  for (const w of s.words) {
-    list.append(h('div', { class: 'word' },
-      h('div', { class: 'word__ko ko' }, w.ko, speakBtn(w.ko)),
-      (w.rom && store.get().rom) ? h('div', { class: 'word__rom' }, w.rom) : null,
-      h('div', { class: 'word__en' }, w.en),
-      w.ex ? h('div', { class: 'word__ex' }, h('b', { class: 'ko' }, w.ex), ' — ', w.exEn) : null,
-    ));
-  }
-  root.append(list);
+
+  // Redrawn rather than toggled with a class, because the covered English is a
+  // button and the shown one is not — they are different elements, not one
+  // element in two states.
+  const listBox = h('div');
+  let covered = false;
+  const toggle = h('button', { class: 'btn btn--ghost' });
+  const paint = () => {
+    clear(listBox).append(wordList(s.words, { hide: covered }));
+    clear(toggle).append(h('span', {}, covered ? 'Show the English' : 'Cover the English'));
+  };
+  toggle.addEventListener('click', () => { covered = !covered; paint(); });
+  paint();
+  root.append(h('div', { class: 'btnrow' }, toggle));
+  root.append(listBox);
   store.markSeen(s.id);
+}
+
+export async function vocabLearn(root, id) {
+  const d = await load();
+  const set = d.setById[id];
+  if (!set) return nav('#/vocab');
+  store.setLast(`#/vocab/${id}/learn`, set.title);
+  head(root, null, { back: `#/vocab/${id}`, tone: 'vocab' });
+  root.append(h('p', { class: 'kicker' }, set.title));
+  const box = h('div', { class: 'deck' });
+  root.append(box);
+  const cards = set.words.map(w => ({ kind: 'word', word: w }));
+  new Deck(box, cards, { onDone: () => nav(`#/vocab/${id}/drill`), doneLabel: 'Drill them' });
 }
 
 export async function vocabDrill(root, id, mode) {
@@ -347,6 +553,16 @@ export async function exam(root) {
   head(root, t('exam'), { back: '#/', tone: 'exam' });
   root.append(h('p', { class: 'lead' }, 'The EPS-TOPIK paper is forty questions — twenty listening, twenty reading — at five points each. Learn the shapes first, then sit a whole paper against the clock.'));
 
+  if (d.guide.sections.length) {
+    root.append(tile({
+      tone: 'exam', icon: 'clock',
+      meta: `${d.guide.sections.length} short reads`,
+      title: t('guide'),
+      sub: 'What is on the paper, how it is marked, and where the fifty minutes go.',
+      onclick: () => nav('#/guide'),
+    }));
+  }
+
   root.append(h('h3', {}, t('paper')));
   d.mocks.forEach((m, n) => {
     const prev = s.mocks.find(x => x.id === m.id);
@@ -357,6 +573,33 @@ export async function exam(root) {
       onclick: () => nav(`#/exam/paper/${m.id}`),
     }));
   });
+
+  if (d.listening.length) {
+    const n = d.listening.reduce((a, x) => a + (x.tracks || []).length, 0);
+    root.append(h('h3', {}, t('listening')));
+    root.append(tile({
+      tone: 'exam', icon: 'sound',
+      meta: `${n} ${n === 1 ? 'track' : 'tracks'} · 한국산업인력공단`,
+      title: 'Official listening files',
+      sub: 'The EPS-TOPIK listening set from every unit of the standard textbook, as published.',
+      onclick: () => nav('#/listening'),
+    }));
+  }
+
+  if (d.trades.length) {
+    const mine = s.trade ? d.tradeById[s.trade] : null;
+    const qs = d.trades.reduce((a, x) => a + x.items.length, 0);
+    root.append(h('h3', {}, `${t('trades')} · 업종별`));
+    root.append(tile({
+      tone: 'trade', icon: mine ? (mine.icon || 'trade') : 'trade',
+      meta: mine ? `${mine.titleKo} — ${t('trade')}` : `${d.trades.length} groups · ${qs} ${t('questions')}`,
+      title: mine ? mine.title : 'The eight job groups',
+      sub: mine
+        ? 'Your trade. The practice paper adds questions from it.'
+        : 'Manufacturing applicants answer job-related questions from one of these. Pick yours in Settings.',
+      onclick: () => nav('#/trades'),
+    }));
+  }
 
   root.append(h('h3', {}, t('drills')));
   d.drills.forEach((dr, n) => {
@@ -400,6 +643,215 @@ export async function examPaper(root, id) {
   runMock(root, m, { head, nav });
 }
 
+/* ---------------- trades (업종별) ---------------- */
+
+/* The eight job groups the exam draws its job-related questions from.
+ *
+ * Choosing one is optional and the app never nags for it: only manufacturing
+ * applicants get these questions at all, and someone going into agriculture or
+ * construction would be revising the wrong thing. When a trade IS chosen it is
+ * shown first here and its questions are added to the practice paper, which is
+ * the arrangement the real paper has.
+ */
+export async function trades(root) {
+  const d = await load();
+  const s = store.get();
+  head(root, t('trades'), { back: '#/exam', tone: 'trade' });
+  root.append(h('p', { class: 'lead' },
+    'Eight job groups. An applicant for manufacturing work picks one when they apply, and the job-related questions on their paper come from that one — so revise yours and leave the rest.'));
+  root.append(h('div', { class: 'note', style: '--c: var(--c-trade)' },
+    'If you are applying for agriculture, fishing, construction or service work, these questions do not appear on your paper: you get common questions in their place. The vocabulary is still worth having if you end up on a factory floor.'));
+
+  const mine = s.trade ? d.tradeById[s.trade] : null;
+  if (mine) {
+    root.append(h('h3', {}, 'Yours'));
+    root.append(tradeTile(mine, 0, true));
+  }
+
+  root.append(h('h3', {}, mine ? 'The others' : 'The eight groups'));
+  d.trades.filter(x => !mine || x.id !== mine.id).forEach((tr, n) => root.append(tradeTile(tr, n + 1, false)));
+
+  root.append(h('hr', { class: 'hr' }));
+  root.append(h('p', { class: 'tiny' },
+    'You set your trade in Settings. Nothing here depends on it — it only decides which one is shown first, and which questions the practice paper adds.'));
+}
+
+function tradeTile(tr, i, hero) {
+  const s = store.get();
+  const done = tr.items.filter((_, n) => s.srs[tradeKey(tr.id, n)]).length;
+  return tile({
+    tone: 'trade', icon: tr.icon || 'trade', hero, i,
+    meta: `${tr.titleKo} · ${tr.words.length} ${t('words')} · ${tr.items.length} ${t('questions')}`,
+    title: tr.title,
+    desc: hero ? tr.about : tr.blurb,
+    progress: done / tr.items.length,
+    onclick: () => nav(`#/trade/${tr.id}`),
+  });
+}
+
+export async function trade(root, id) {
+  const d = await load();
+  const tr = d.tradeById[id];
+  if (!tr) return nav('#/trades');
+  const s = store.get();
+  store.setLast(`#/trade/${id}`, tr.title);
+
+  head(root, null, { back: '#/trades', tone: 'trade' });
+  root.append(h('p', { class: 'kicker ko' }, tr.titleKo));
+  root.append(h('h2', {}, tr.title));
+  root.append(h('p', { class: 'lead' }, tr.about));
+
+  if (s.trade !== tr.id) {
+    root.append(h('div', { class: 'btnrow' },
+      h('button', { class: 'btn btn--ghost', onclick: () => { store.set({ trade: tr.id }); trade(clear(root), id); } },
+        'This is my trade')));
+  } else {
+    root.append(h('div', { class: 'note', style: '--c: var(--c-trade)' },
+      'This is the trade you have set. The practice paper adds questions from it, the way the real paper does.'));
+  }
+
+  root.append(h('div', { class: 'btnrow' },
+    h('button', { class: 'btn btn--accent btn--wide', onclick: () => nav(`#/trade/${id}/drill`) }, t('tradeDrill'))));
+
+  root.append(h('h3', {}, t('tradeWords')));
+  root.append(h('div', { class: 'btnrow' },
+    h('button', { class: 'btn btn--ghost', onclick: () => nav(`#/trade/${id}/words`) }, `Drill the ${tr.words.length} words`)));
+  root.append(wordList(tr.words));
+}
+
+export async function tradeDrill(root, id) {
+  const d = await load();
+  const tr = d.tradeById[id];
+  if (!tr) return nav('#/trades');
+  head(root, null, { back: `#/trade/${id}`, tone: 'trade' });
+  root.append(h('p', { class: 'kicker' }, tr.title));
+  const box = h('div', { class: 'q' });
+  root.append(box);
+  const qs = tr.items.map((it, i) => fromExamItem(it, tradeKey(tr.id, i)));
+  new Quiz(box, shuffle(qs), { title: tr.title, onDone: () => nav(`#/trade/${id}`) });
+}
+
+export async function tradeWords(root, id) {
+  const d = await load();
+  const tr = d.tradeById[id];
+  if (!tr) return nav('#/trades');
+  head(root, null, { back: `#/trade/${id}`, tone: 'trade' });
+  root.append(h('p', { class: 'kicker' }, tr.title));
+  const box = h('div', { class: 'q' });
+  root.append(box);
+  const qs = shuffle(tr.words.map(w => fromWord(w, tr.words, vocabKey(w.ko), Math.random() < 0.3 ? 'listen' : 'recall')));
+  new Quiz(box, qs, { title: tr.title, onDone: () => nav(`#/trade/${id}`) });
+}
+
+/* ---------------- the guide ---------------- */
+
+export async function guide(root) {
+  const d = await load();
+  head(root, t('guide'), { back: '#/exam', tone: 'exam' });
+  if (!d.guide.sections.length) {
+    root.append(h('div', { class: 'empty' }, h('p', {}, 'The guide is not in this build.')));
+    return;
+  }
+  root.append(h('p', { class: 'lead' }, 'What the paper is, how it is put together, and where the fifty minutes go.'));
+  d.guide.sections.forEach((sec, i) => {
+    const card = h('div', { class: 'card', style: `--c: var(--c-exam); --cw: var(--cw-exam); --i:${i}; display:block` });
+    card.append(h('p', { class: 'card__meta' }, sec.title));
+    for (const para of sec.body) card.append(h('p', {}, para));
+    root.append(card);
+  });
+  root.append(h('div', { class: 'note', style: '--c: var(--c-exam)' }, d.guide.note));
+}
+
+/* ---------------- weak spots ---------------- */
+
+/* What you actually get wrong, named.
+ *
+ * The review deck already brings back the items you missed. It cannot tell you
+ * WHY you missed them, because it works on items and an item is just a key. This
+ * works on tags, and a tag is a thing you can go and fix: not "you got 14 wrong"
+ * but "에 against 에서, four right out of eleven".
+ *
+ * Two rules keep it honest. Nothing appears until there are enough answers
+ * behind it to mean anything — see MIN_ATTEMPTS — and the app never calls a
+ * number good or bad, it shows the number and orders the list by it.
+ */
+export async function weak(root) {
+  const d = await load();
+  head(root, 'Weak spots', { back: '#/', tone: 'review' });
+
+  const stats = store.tagStats();
+  const named = stats.filter(x => d.tags[x.id]);
+
+  if (!named.length) {
+    root.append(h('div', { class: 'empty' },
+      h('p', {}, 'Not enough answers yet to say anything useful.'),
+      h('p', {}, `Every question you answer is counted against what it was about — the grammar it tested, the kind of question it was, the words it used. Once a topic has ${store.MIN_ATTEMPTS} answers behind it, it shows up here with your score on it. Anything less than that is a small sample, not a weak spot.`),
+      h('div', { class: 'btnrow' },
+        h('button', { class: 'btn btn--wide', onclick: () => nav('#/course') }, 'Go and answer some')),
+    ));
+    return;
+  }
+
+  const worst = named.filter(x => x.pct < 0.8);
+  root.append(h('p', { class: 'lead' }, worst.length
+    ? `${worst.length === 1 ? 'One topic is' : `${worst.length} topics are`} costing you more than the rest. They are ordered worst first.`
+    : 'Nothing is standing out as a weak spot. The list is ordered worst first anyway.'));
+
+  const KIND = { grammar: 'Grammar', shape: 'Question type', topic: 'Vocabulary' };
+  for (const x of named) {
+    const meta = d.tags[x.id];
+    const pct = Math.round(x.pct * 100);
+    const keys = (d.byTag && d.byTag[x.id]) ? d.byTag[x.id] : [];
+    const card = h('div', {
+      class: 'card weak',
+      style: `--c: var(--c-${x.pct < 0.6 ? 'exam' : x.pct < 0.8 ? 'today' : 'review'})`,
+    });
+    card.append(h('p', { class: 'card__meta' }, `${KIND[meta.kind] || ''} · ${x.right} of ${x.n} right`));
+    card.append(h('p', { class: 'weak__title' }, meta.label));
+    if (meta.ko) card.append(h('p', { class: 'weak__ko ko' }, meta.ko));
+    card.append(h('div', { class: 'bar' }, h('i', { style: `width:${pct}%` })));
+    card.append(h('p', { class: 'weak__pct' }, `${pct}%`));
+    if (keys.length) {
+      card.append(h('div', { class: 'btnrow' },
+        h('button', { class: 'btn btn--ghost', onclick: () => nav(`#/weak/${x.id}`) },
+          `Practise ${Math.min(keys.length, 12)} of these`)));
+    }
+    root.append(card);
+  }
+
+  root.append(h('hr', { class: 'hr' }));
+  root.append(h('p', { class: 'tiny' }, `Only topics with at least ${store.MIN_ATTEMPTS} answers behind them appear here. A paper counts too, except for questions you left blank — running out of time is not the same as not knowing the answer, and counting it as one would put the blame in the wrong place.`));
+}
+
+export async function weakDrill(root, id) {
+  const d = await load();
+  const meta = d.tags[id];
+  const keys = (d.byTag && d.byTag[id]) ? d.byTag[id] : [];
+  if (!meta || !keys.length) return nav('#/weak');
+  head(root, null, { back: '#/weak', tone: 'review' });
+  root.append(h('p', { class: 'kicker' }, meta.label));
+
+  // Drawn from everywhere that tag appears — a unit exercise, an exam drill, a
+  // trade question, a word — because that is what makes it a weak spot rather
+  // than one bad afternoon on one screen.
+  const qs = [];
+  for (const k of shuffle(keys.slice())) {
+    if (qs.length >= 12) break;
+    const r = resolve(k);
+    if (!r) continue;
+    if (r.kind === 'u') qs.push({ ...fromExercise(r.ex, k), from: r.from });
+    else if (r.kind === 'w') qs.push({ ...fromWord(r.word, r.set.words, k, Math.random() < 0.3 ? 'listen' : 'recall'), from: r.from });
+    else if (r.kind === 'd' || r.kind === 't') qs.push({ ...fromExamItem(r.item, k), from: r.from });
+  }
+  if (!qs.length) {
+    root.append(h('div', { class: 'empty' }, h('p', {}, 'Nothing to practise here any more.')));
+    return;
+  }
+  const box = h('div', { class: 'q' });
+  root.append(box);
+  new Quiz(box, qs, { title: meta.label, onDone: () => nav('#/weak') });
+}
+
 /* ---------------- review ---------------- */
 
 export async function review(root) {
@@ -419,7 +871,7 @@ export async function review(root) {
     if (!r) continue;
     if (r.kind === 'u') qs.push({ ...fromExercise(r.ex, k), from: r.from });
     else if (r.kind === 'w') qs.push({ ...fromWord(r.word, r.set.words, k, Math.random() < 0.3 ? 'listen' : 'recall'), from: r.from });
-    else if (r.kind === 'd') qs.push({ ...fromExamItem(r.item, k), from: r.from });
+    else if (r.kind === 'd' || r.kind === 't') qs.push({ ...fromExamItem(r.item, k), from: r.from });
   }
   if (!qs.length) {
     root.append(h('div', { class: 'empty' }, h('p', {}, 'Nothing to show — the items due came from content that is no longer here.')));
@@ -434,26 +886,43 @@ export async function review(root) {
 
 export async function listening(root) {
   const d = await load();
-  head(root, t('listening'), { back: '#/' });
+  head(root, t('listening'), { back: '#/exam', tone: 'exam' });
+
   if (!d.listening.length) {
     root.append(h('div', { class: 'empty' },
-      h('p', {}, 'No audio files have been added to this build.'),
-      h('p', {}, 'Every Korean sentence elsewhere in the app is spoken by your phone, so you do not need these to study. This shelf is for official EPS-TOPIK listening material, which HRD Korea publishes free on the EPS programme site.'),
-      h('p', {}, 'To add some: put the audio files in ', h('code', {}, 'content/listening/'), ' and list them in ', h('code', {}, 'content/listening/manifest.json'), '. The format is in the README.'),
+      h('p', {}, 'No official audio is in this build.'),
+      h('p', {}, 'Every Korean sentence elsewhere in the app is spoken by your phone, so you do not need these to study. This shelf is for the EPS-TOPIK listening files, which 한국산업인력공단 publishes free at epstopik.hrdkorea.or.kr.'),
+      h('p', {}, 'Download 표준교재 1 and 2 듣기파일, then run ', h('code', {}, 'python3 tools/import-eps-audio.py <folder>'), ' and rebuild.'),
     ));
     return;
   }
-  for (const s of d.listening) {
-    const card = h('div', { class: 'card' },
-      h('p', { class: 'card__meta' }, s.source || 'audio'),
-      h('p', { class: 'card__title' }, s.title),
-      s.note ? h('p', { class: 'card__desc' }, s.note) : null);
-    for (const tr of (s.tracks || [])) {
-      const audio = h('audio', { controls: true, preload: 'none', src: `content/listening/${tr.file}`, style: 'width:100%;margin-top:8px' });
-      card.append(h('p', { class: 'tiny', style: 'margin:10px 0 0' }, tr.title), audio);
-      if (tr.script) card.append(h('details', {}, h('summary', { class: 'tiny' }, 'Script'), h('div', { class: 'q__passage' }, tr.script)));
-    }
-    root.append(card);
+
+  const meta = d.listeningMeta || {};
+  root.append(h('p', { class: 'lead' },
+    'Published by 한국산업인력공단 and used exactly as published — not re-cut, not re-encoded.'));
+  if (meta.source) {
+    root.append(h('p', { class: 'tiny' }, `${meta.source}${meta.licence ? ' · ' + meta.licence : ''}`));
+  }
+
+  for (const set of d.listening) {
+    root.append(h('h3', {}, set.title));
+    if (set.note) root.append(h('p', { class: 'tiny' }, set.note));
+
+    // Each track is its own block. It used to be built inside a `.card`, which
+    // became a flex ROW in the redesign — so every title and player laid itself
+    // out as a column and the screen turned into unreadable vertical text.
+    (set.tracks || []).forEach((tr, n) => {
+      const row = h('div', { class: 'track' });
+      row.append(h('p', { class: 'track__name' }, `Unit ${n + 1}`));
+      row.append(h('p', { class: 'track__file ko' }, tr.title));
+      row.append(h('audio', { controls: true, preload: 'none', src: `content/listening/${tr.file}` }));
+      if (tr.script) {
+        row.append(h('details', {},
+          h('summary', { class: 'tiny' }, 'Script'),
+          h('div', { class: 'q__passage' }, tr.script)));
+      }
+      root.append(row);
+    });
   }
 }
 
@@ -469,6 +938,18 @@ export async function me(root, { onLang, onTheme }) {
       h('option', { value: 'en', selected: s.lang === 'en' }, 'English'),
       h('option', { value: 'ko', selected: s.lang === 'ko' }, '한국어'))));
   root.append(h('p', { class: 'tiny' }, 'This switches the app’s own buttons and headings. The grammar explanations are written in English — they were written by hand, and a machine translation of a grammar explanation is worse than none.'));
+
+  // Optional, and it says so. Only manufacturing applicants answer job-related
+  // questions, so a required picker here would be asking most people to declare
+  // something that does not apply to them.
+  if (data().trades.length) {
+    root.append(h('label', { class: 'field' }, h('span', {}, `${t('trade')} — 업종`),
+      h('select', { onchange: e => { store.set({ trade: e.target.value }); } },
+        h('option', { value: '', selected: !s.trade }, t('noTrade')),
+        ...data().trades.map(tr => h('option', { value: tr.id, selected: s.trade === tr.id },
+          `${tr.titleKo} — ${tr.title}`)))));
+    root.append(h('p', { class: 'tiny' }, 'If you are applying for a manufacturing job you choose one of these eight groups on your application, and the job-related questions on your paper come from it. Set the same one here and the practice paper will do likewise. Leave it unset for any other kind of work — those papers use common questions instead.'));
+  }
 
   root.append(h('label', { class: 'field' }, h('span', {}, 'Theme'),
     h('select', { onchange: e => onTheme(e.target.value) },

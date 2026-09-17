@@ -1,0 +1,245 @@
+{
+  "note": "The controlled vocabulary the weak-spot screen aggregates on. A tag has to be worth acting on: 'particles' would be useless advice, '에 vs 에서' is a thing you can go and fix in ten minutes. Add a tag only when you would be willing to put its name on a screen and say 'this is your weak spot'. Tags are declared once on a unit, drill, trade or vocabulary set and inherited by everything inside it — see `tagsFor` in data.js.",
+  "tags": {
+    "copula": {
+      "label": "Saying what something is",
+      "ko": "이에요 / 예요",
+      "kind": "grammar"
+    },
+    "topic-subject": {
+      "label": "은/는 and 이/가",
+      "ko": "은 / 는",
+      "kind": "grammar"
+    },
+    "existence": {
+      "label": "있다 and 없다",
+      "ko": "있어요 / 없어요",
+      "kind": "grammar"
+    },
+    "verb-endings": {
+      "label": "The everyday verb ending",
+      "ko": "아요 / 어요 / 해요",
+      "kind": "grammar"
+    },
+    "place-particles": {
+      "label": "에 against 에서",
+      "ko": "에 / 에서",
+      "kind": "grammar"
+    },
+    "numbers": {
+      "label": "The two number systems",
+      "ko": "하나 둘 / 일 이",
+      "kind": "grammar"
+    },
+    "negation": {
+      "label": "Saying no",
+      "ko": "안 / 지 않아요",
+      "kind": "grammar"
+    },
+    "past": {
+      "label": "The past tense",
+      "ko": "았어요 / 었어요",
+      "kind": "grammar"
+    },
+    "desire-joining": {
+      "label": "Wanting, and joining verbs",
+      "ko": "고 싶어요 / 고",
+      "kind": "grammar"
+    },
+    "polite-requests": {
+      "label": "Telling someone politely",
+      "ko": "(으)세요",
+      "kind": "grammar"
+    },
+    "future": {
+      "label": "Plans and the future",
+      "ko": "(으)ㄹ 거예요",
+      "kind": "grammar"
+    },
+    "favours": {
+      "label": "Asking a favour",
+      "ko": "아/어 주세요",
+      "kind": "grammar"
+    },
+    "ability": {
+      "label": "Can and cannot",
+      "ko": "(으)ㄹ 수 있다",
+      "kind": "grammar"
+    },
+    "obligation": {
+      "label": "Must, and must not",
+      "ko": "아/어야 되다",
+      "kind": "grammar"
+    },
+    "conditional": {
+      "label": "If, and when",
+      "ko": "(으)면",
+      "kind": "grammar"
+    },
+    "time-clauses": {
+      "label": "Before, after, while",
+      "ko": "기 전에 / (으)ㄴ 후에",
+      "kind": "grammar"
+    },
+    "setup-clauses": {
+      "label": "Setting the scene",
+      "ko": "는데 / (으)ㄴ데",
+      "kind": "grammar"
+    },
+    "formal-register": {
+      "label": "The formal register",
+      "ko": "습니다 / (으)시",
+      "kind": "grammar"
+    },
+    "modifiers": {
+      "label": "Describing with a whole clause",
+      "ko": "(으)ㄴ / 는 / (으)ㄹ",
+      "kind": "grammar"
+    },
+    "becoming": {
+      "label": "Becoming, and being made to",
+      "ko": "아/어지다 / 게 되다",
+      "kind": "grammar"
+    },
+    "reported-speech": {
+      "label": "Reporting what was said",
+      "ko": "다고 / 냐고 하다",
+      "kind": "grammar"
+    },
+    "feeling-endings": {
+      "label": "Where the feeling lives",
+      "ko": "네요 / 잖아요",
+      "kind": "grammar"
+    },
+    "hedging": {
+      "label": "Conceding and regretting",
+      "ko": "기는 하지만 / 았더라면",
+      "kind": "grammar"
+    },
+    "written-style": {
+      "label": "Written Korean",
+      "ko": "ㄴ다 / 되다 / 에 따라",
+      "kind": "grammar"
+    },
+    "reading-sign": {
+      "label": "Signs and notices",
+      "ko": "표지",
+      "kind": "shape"
+    },
+    "reading-blank": {
+      "label": "The missing word",
+      "ko": "빈칸",
+      "kind": "shape"
+    },
+    "reading-meaning": {
+      "label": "Same meaning, other words",
+      "ko": "같은 뜻",
+      "kind": "shape"
+    },
+    "reading-passage": {
+      "label": "Reading a passage",
+      "ko": "독해",
+      "kind": "shape"
+    },
+    "reading-picture": {
+      "label": "Picture to word",
+      "ko": "그림",
+      "kind": "shape"
+    },
+    "listening-picture": {
+      "label": "Hear it, pick the picture",
+      "ko": "듣고 그림 고르기",
+      "kind": "shape"
+    },
+    "listening-reply": {
+      "label": "Choosing the natural reply",
+      "ko": "이어지는 말",
+      "kind": "shape"
+    },
+    "listening-dialogue": {
+      "label": "Following a conversation",
+      "ko": "대화 듣기",
+      "kind": "shape"
+    },
+    "safety": {
+      "label": "Safety words",
+      "ko": "안전",
+      "kind": "topic"
+    },
+    "workplace": {
+      "label": "Workplace words",
+      "ko": "직장",
+      "kind": "topic"
+    },
+    "tools": {
+      "label": "Machines and tools",
+      "ko": "기계와 도구",
+      "kind": "topic"
+    },
+    "money-wages": {
+      "label": "Money and wages",
+      "ko": "돈과 월급",
+      "kind": "topic"
+    },
+    "body-health": {
+      "label": "The body and the clinic",
+      "ko": "몸과 병원",
+      "kind": "topic"
+    },
+    "documents": {
+      "label": "Documents and status",
+      "ko": "서류와 체류",
+      "kind": "topic"
+    },
+    "daily-life": {
+      "label": "Home and daily life",
+      "ko": "생활",
+      "kind": "topic"
+    },
+    "food": {
+      "label": "Food and eating",
+      "ko": "음식",
+      "kind": "topic"
+    },
+    "transport": {
+      "label": "Getting around",
+      "ko": "교통",
+      "kind": "topic"
+    },
+    "time-dates": {
+      "label": "Time and dates",
+      "ko": "시간과 날짜",
+      "kind": "topic"
+    },
+    "people": {
+      "label": "Greetings and people",
+      "ko": "인사와 사람",
+      "kind": "topic"
+    },
+    "farm-sea": {
+      "label": "Farm, livestock and sea",
+      "ko": "농업·축산·어업",
+      "kind": "topic"
+    },
+    "industry": {
+      "label": "Your trade's words",
+      "ko": "업종별",
+      "kind": "topic"
+    },
+    "hangeul-reading": {
+      "label": "Reading 한글 out loud",
+      "ko": "한글 읽기",
+      "kind": "topic"
+    },
+    "word-order": {
+      "label": "Putting a sentence in order",
+      "ko": "어순",
+      "kind": "shape"
+    },
+    "listening-word": {
+      "label": "Hearing a single line",
+      "ko": "듣기",
+      "kind": "shape"
+    }
+  }
+}

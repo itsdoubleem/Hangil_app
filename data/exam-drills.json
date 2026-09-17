@@ -18,7 +18,10 @@
             "여기에서 기다리십시오"
           ],
           "a": 0,
-          "why": "출입 is entry and 금지 is prohibition."
+          "why": "출입 is entry and 금지 is prohibition.",
+          "tags": [
+            "obligation"
+          ]
         },
         {
           "display": "안전모 착용",
@@ -30,7 +33,10 @@
             "안전모가 없습니다"
           ],
           "a": 0,
-          "why": "착용 means wearing or putting on."
+          "why": "착용 means wearing or putting on.",
+          "tags": [
+            "obligation"
+          ]
         },
         {
           "display": "미끄럼 주의",
@@ -54,7 +60,10 @@
             "식당"
           ],
           "a": 0,
-          "why": "비상 is emergency, 구 is an exit or opening."
+          "why": "비상 is emergency, 구 is an exit or opening.",
+          "tags": [
+            "time-clauses"
+          ]
         },
         {
           "display": "고장",
@@ -66,7 +75,10 @@
             "수리가 끝났습니다"
           ],
           "a": 0,
-          "why": "고장 means the machine has broken down."
+          "why": "고장 means the machine has broken down.",
+          "tags": [
+            "ability"
+          ]
         },
         {
           "display": "관계자 외 출입 금지",
@@ -104,6 +116,10 @@
           "a": 0,
           "why": "제일 means first, in the sense of most important."
         }
+      ],
+      "tags": [
+        "reading-sign",
+        "safety"
       ]
     },
     {
@@ -201,6 +217,9 @@
           "a": 0,
           "why": "전원 is the power supply; 끄다 is to switch off."
         }
+      ],
+      "tags": [
+        "reading-blank"
       ]
     },
     {
@@ -219,7 +238,11 @@
             "내일까지 일합니다"
           ],
           "a": 0,
-          "why": "쉬는 날 is a day of rest — no work."
+          "why": "쉬는 날 is a day of rest — no work.",
+          "tags": [
+            "copula",
+            "negation"
+          ]
         },
         {
           "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n월급이 아직 안 나왔습니다.",
@@ -230,7 +253,10 @@
             "월급을 안 받습니다"
           ],
           "a": 0,
-          "why": "나오다 here means to be paid out; 아직 안 means not yet."
+          "why": "나오다 here means to be paid out; 아직 안 means not yet.",
+          "tags": [
+            "negation"
+          ]
         },
         {
           "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n이 기계는 위험하니까 혼자 쓰지 마십시오.",
@@ -241,7 +267,11 @@
             "기계를 고쳐야 합니다"
           ],
           "a": 0,
-          "why": "Do not use it alone implies someone else must be there."
+          "why": "Do not use it alone implies someone else must be there.",
+          "tags": [
+            "negation",
+            "obligation"
+          ]
         },
         {
           "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n비가 와서 오늘 작업이 취소됐습니다.",
@@ -252,7 +282,10 @@
             "작업이 내일 시작합니다"
           ],
           "a": 0,
-          "why": "취소되다 means to be cancelled."
+          "why": "취소되다 means to be cancelled.",
+          "tags": [
+            "negation"
+          ]
         },
         {
           "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n점심시간은 12시부터 1시까지입니다.",
@@ -263,7 +296,10 @@
             "점심시간이 두 시간입니다"
           ],
           "a": 0,
-          "why": "From 12 to 1 is one hour."
+          "why": "From 12 to 1 is one hour.",
+          "tags": [
+            "copula"
+          ]
         },
         {
           "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n안전화를 신지 않으면 작업장에 들어갈 수 없습니다.",
@@ -274,8 +310,16 @@
             "안전화를 작업장에서 줍니다"
           ],
           "a": 0,
-          "why": "A negative condition restated as a positive requirement."
+          "why": "A negative condition restated as a positive requirement.",
+          "tags": [
+            "ability",
+            "conditional",
+            "negation"
+          ]
         }
+      ],
+      "tags": [
+        "reading-meaning"
       ]
     },
     {
@@ -300,7 +344,10 @@
             "네, 잔업을 했어요."
           ],
           "a": 0,
-          "why": "The question asks about ability, so the answer uses 할 수 있어요."
+          "why": "The question asks about ability, so the answer uses 할 수 있어요.",
+          "tags": [
+            "ability"
+          ]
         },
         {
           "lines": [
@@ -334,7 +381,10 @@
             "두 장이에요."
           ],
           "a": 0,
-          "why": "언제까지 asks for a deadline."
+          "why": "언제까지 asks for a deadline.",
+          "tags": [
+            "obligation"
+          ]
         },
         {
           "lines": [
@@ -387,6 +437,9 @@
           "a": 0,
           "why": "They asked you to repeat, so you agree to say it again."
         }
+      ],
+      "tags": [
+        "listening-reply"
       ]
     },
     {
@@ -522,6 +575,9 @@
           "a": 0,
           "why": "The work is in the morning and water returns around two."
         }
+      ],
+      "tags": [
+        "listening-dialogue"
       ]
     },
     {
@@ -579,6 +635,10 @@
           "a": 0,
           "why": "The washing machine is available until 10pm."
         }
+      ],
+      "tags": [
+        "reading-passage",
+        "workplace"
       ]
     },
     {
@@ -684,6 +744,9 @@
           "a": 0,
           "why": "씻다 is to wash."
         }
+      ],
+      "tags": [
+        "reading-picture"
       ]
     },
     {
@@ -765,6 +828,9 @@
           "a": 0,
           "why": "담배를 피우다 is to smoke, so the no-smoking sign."
         }
+      ],
+      "tags": [
+        "listening-picture"
       ]
     }
   ]

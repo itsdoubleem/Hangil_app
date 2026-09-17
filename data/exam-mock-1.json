@@ -33,7 +33,10 @@
         "12시 30분"
       ],
       "a": 0,
-      "why": "두 시 is native for the hour, 삼십 분 is Sino for the minutes."
+      "why": "두 시 is native for the hour, 삼십 분 is Sino for the minutes.",
+      "tags": [
+        "copula"
+      ]
     },
     {
       "audio": "저는 공장에서 일합니다.",
@@ -62,7 +65,11 @@
         "교육을 받습니다"
       ],
       "a": 0,
-      "why": "쉬는 날 — a day off."
+      "why": "쉬는 날 — a day off.",
+      "tags": [
+        "copula",
+        "negation"
+      ]
     },
     {
       "lines": [
@@ -96,7 +103,11 @@
         "맛있어요."
       ],
       "a": 0,
-      "why": "A yes-or-no about having eaten."
+      "why": "A yes-or-no about having eaten.",
+      "tags": [
+        "negation",
+        "past"
+      ]
     },
     {
       "lines": [
@@ -130,7 +141,10 @@
         "여덟 시에 와요."
       ],
       "a": 0,
-      "why": "왜 asks for a reason in the past."
+      "why": "왜 asks for a reason in the past.",
+      "tags": [
+        "negation"
+      ]
     },
     {
       "lines": [
@@ -331,7 +345,10 @@
         "기계 수리"
       ],
       "a": 0,
-      "why": "An electrical inspection at the second plant."
+      "why": "An electrical inspection at the second plant.",
+      "tags": [
+        "ability"
+      ]
     },
     {
       "lines": [
@@ -348,7 +365,10 @@
         "세 시에 쉽니다"
       ],
       "a": 0,
-      "why": "평소대로 — as usual."
+      "why": "평소대로 — as usual.",
+      "tags": [
+        "ability"
+      ]
     },
     {
       "lines": [
@@ -432,7 +452,10 @@
         "눈을 조심합니다"
       ],
       "a": 0,
-      "why": "손 is the hand."
+      "why": "손 is the hand.",
+      "tags": [
+        "negation"
+      ]
     },
     {
       "display": "직원 외 사용 금지",
@@ -511,7 +534,11 @@
         "안전화를 회사에서 삽니다"
       ],
       "a": 0,
-      "why": "반드시 — without fail."
+      "why": "반드시 — without fail.",
+      "tags": [
+        "ability",
+        "obligation"
+      ]
     },
     {
       "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n이 일은 처음이라서 아직 익숙하지 않습니다.",
@@ -522,7 +549,10 @@
         "일을 그만두었습니다"
       ],
       "a": 0,
-      "why": "Not yet used to it, because it is new."
+      "why": "Not yet used to it, because it is new.",
+      "tags": [
+        "negation"
+      ]
     },
     {
       "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n월급날은 매달 십 일입니다.",
@@ -533,7 +563,10 @@
         "십 일에 쉽니다"
       ],
       "a": 0,
-      "why": "매달 십 일 — the tenth of every month."
+      "why": "매달 십 일 — the tenth of every month.",
+      "tags": [
+        "copula"
+      ]
     },
     {
       "stem": "다음과 같은 뜻의 문장을 고르십시오.\n\n기숙사에서 회사까지 걸어서 십 분 걸립니다.",

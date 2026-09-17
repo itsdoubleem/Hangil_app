@@ -24,12 +24,32 @@ async function walk(dir, base = dir, out = []) {
 await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
 
-await cp(join(ROOT, 'src'), DIST, { recursive: true });
+// The icon pipeline's inputs live in src/ but are not runtime files: the supplied
+// artwork, the copy the tint step writes, and the note recording which tint. They
+// were being copied into every build and served to the world — icon-source.png
+// alone was the single largest asset in the APK, larger than the app's code.
+// Only the generated icon-NNN.png files are needed at runtime.
+const ICON_INPUTS = ['icon-artwork.png', 'icon-source.png', 'icon-tint.json'];
+
+await cp(join(ROOT, 'src'), DIST, {
+  recursive: true,
+  filter: (src) => !ICON_INPUTS.includes(src.split('/').pop()),
+});
 await cp(join(ROOT, 'data'), join(DIST, 'data'), { recursive: true });
 await cp(join(ROOT, 'content'), join(DIST, 'content'), { recursive: true });
 
-const files = (await walk(DIST))
-  .filter(f => f !== 'sw.js' && !f.endsWith('.md'))
+// Audio is deliberately NOT precached. The service worker installs by fetching
+// this whole list at once, and the official EPS listening set is ~180 MB — a
+// browser asked to swallow that on first visit either stalls or gives up, and
+// the install failing means the app does not go offline AT ALL. sw.js already
+// caches anything under /content/ the first time it is played, so a track a
+// learner has actually listened to is available offline afterwards. That is the
+// right trade: the app itself works offline from the first load, and the audio
+// follows whoever uses it.
+const AUDIO = /\.(mp3|m4a|ogg|wav)$/i;
+const all = await walk(DIST);
+const files = all
+  .filter(f => f !== 'sw.js' && !f.endsWith('.md') && !AUDIO.test(f))
   .sort();
 
 // The version is a hash of everything that ships, so a build with no changes
@@ -82,13 +102,15 @@ try {
   if (e.code !== 'ENOENT') throw e;
 }
 
-const bytes = (await Promise.all(files.map(async f => (await stat(join(DIST, f))).size)))
+const bytes = (await Promise.all(all.map(async f => (await stat(join(DIST, f))).size)))
   .reduce((a, b) => a + b, 0);
 
 console.log(`HANGIL build ${version}`);
 console.log(`${files.length} files, ${(bytes / 1024).toFixed(0)} KB`);
-const audio = files.filter(f => /\.(mp3|m4a|ogg|wav)$/i.test(f));
-console.log(audio.length ? `${audio.length} audio file(s) in content/listening` : 'no audio in content/listening (the app does not need any)');
+const audio = all.filter(f => AUDIO.test(f));
+console.log(audio.length
+  ? `${audio.length} audio file(s) in content/listening, cached on first play rather than precached`
+  : 'no audio in content/listening (the app does not need any)');
 console.log(imageCount
   ? `${imageCount} official picture(s) in content/images, replacing the drawings of the same id`
   : 'no official pictures in content/images (the app uses its own drawings)');

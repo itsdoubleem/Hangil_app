@@ -102,7 +102,7 @@ export function mixPics(picOptions, answer) {
 
 
 export function fromExercise(ex, key) {
-  const base = { key, why: ex.why || null };
+  const base = { key, tags: ex.tags || [], why: ex.why || null };
   if (ex.type === 'build') {
     return { ...base, type: 'build', stemEn: ex.qEn, tiles: ex.tiles, answer: ex.a };
   }
@@ -117,7 +117,7 @@ export function fromExercise(ex, key) {
 
 export function fromExamItem(item, key) {
   return {
-    key, type: 'choice',
+    key, tags: item.tags || [], type: 'choice',
     stem: item.stem, display: item.display, passage: item.passage,
     lines: item.lines || null,
     audio: item.audio || (item.lines ? null : undefined),
@@ -130,13 +130,17 @@ export function fromExamItem(item, key) {
 export function fromWord(word, siblings, key, mode) {
   const pool = siblings.filter(w => w.ko !== word.ko);
   const wrong = shuffle(pool).slice(0, 3);
+  // A word asked by ear is a listening question as well as a vocabulary one, so
+  // the shape tag is added here rather than in the data — the same word is both,
+  // depending on how it was asked.
+  const tags = word.tags || [];
   if (mode === 'listen') {
     const opts = shuffle([word, ...wrong]);
-    return { key, type: 'choice', audio: word.ko, stemEn: 'What did you hear?',
+    return { key, tags: [...tags, 'listening-word'], type: 'choice', audio: word.ko, stemEn: 'What did you hear?',
       options: opts.map(w => w.en), answer: opts.indexOf(word), why: `${word.ko} — ${word.en}` };
   }
   const opts = shuffle([word, ...wrong]);
-  return { key, type: 'choice', stemEn: word.en, hint: word.exEn ? null : undefined,
+  return { key, tags, type: 'choice', stemEn: word.en, hint: word.exEn ? null : undefined,
     options: opts.map(w => w.ko), answer: opts.indexOf(word),
     why: word.ex ? `${word.ex} — ${word.exEn}` : null };
 }
@@ -157,6 +161,7 @@ export class Quiz {
   answer(ok, q) {
     if (ok) this.right += 1; else this.wrong.push(q);
     if (q.key) store.schedule(q.key, ok);
+    store.recordTags(q.tags, ok);
   }
 
   next() {
