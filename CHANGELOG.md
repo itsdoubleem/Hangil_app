@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-09-18 — the same scene, drawn flat on white
+
+New artwork: the 태극 rising over the hill with the road running up to it and off
+the bottom edge, as before, but drawn flat — a white sky, the 괘 in black, the
+road and the hill's ridge in the flag's blue. Replaces the gold-field version.
+
+Nothing in the pipeline had to be told anything. The file bleeds on all four
+edges, so `_bleeds` left it exactly as drawn rather than re-framing it; the tint
+on record is `none`, and this artwork arrives with a ground somebody chose, so it
+stays `none`. Corners at `CORNER` — Claude's 0.235 — as they have been.
+
+**`ic_bg` was still the old gold.** The adaptive icon's background colour had
+been `#CAA96E`, sampled from artwork that no longer exists, and nothing would
+have shown it: `foreground()` writes an opaque square that covers the background
+layer entirely. It is now `#FFFFFF`, which is what the artwork's own ground
+measures. A colour that is covered is still a colour on record, and a wrong one
+is a trap for whoever next makes the foreground anything but opaque.
+
+**The thing to weigh: a white ground has no edge of its own.** Every previous
+file supplied its own hard edge — the crest's navy rim, the medallion's navy
+tile, the gold field — and that was deliberate, because a pale icon dissolves
+into a pale home screen. This one's sky is the home screen's colour. The emblem
+still reads at 48px and the check sheet's circular crop is clean, but on a white
+launcher the tile has no visible boundary, and Samsung's icon frames put a white
+squircle behind it either way. That is the artwork's own decision, not the
+pipeline's, so nothing here overrides it — but it is what to look at first on the
+phone.
+
 ## 2026-09-17 — artwork that fills its own frame
 
 The icon is the same crest opened out into a scene: the 태극 rising over a hill,
