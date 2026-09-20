@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-09-20 — new artwork, same scene, a sky that is not quite white
+
+Replaced `src/icon-artwork.png` with the supplied file as it arrived — 3072px,
+the same 태극 over the hill with the road running off the bottom, but redrawn:
+the hill's field is now white, the road and ridge sit lower and read heavier, and
+the sky is `#F0F3F6` rather than pure white.
+
+The pipeline needed no instruction again. The file bleeds on all four edges, so
+`_bleeds` left it as drawn instead of re-framing; the tint on record is still
+`none`, which is right for artwork that arrives with a ground somebody chose;
+corners stay at `CORNER`, Claude's 0.235. The circular-crop check is clean at
+192, 120, 72 and 48 — nothing of the 괘 or the road leaves the safe circle.
+
+**`ic_bg` moved with the artwork: `#FFFFFF` -> `#F0F3F6`.** It is what
+`ground_of` measures on the new file, and the same reasoning as last time
+applies — the background layer is covered by an opaque foreground today, but a
+colour on record that does not match the artwork is a trap for whoever makes the
+foreground anything but opaque.
+
+**The pale-ground caveat from the last entry still stands**, and slightly less
+so: `#F0F3F6` is a faint step away from a white launcher rather than none at all,
+and the white field below the ridge now gives the scene an internal edge it did
+not have. It is still the artwork's own decision, not the pipeline's.
+
 ## 2026-09-18 — the same scene, drawn flat on white
 
 New artwork: the 태극 rising over the hill with the road running up to it and off
