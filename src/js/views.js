@@ -1209,6 +1209,32 @@ export async function me(root, { onLang, onTheme }) {
     drawVoices();
     tts.onVoicesChanged(drawVoices);
     root.append(voiceBox);
+  } else if (tts.available()) {
+    // The same choice in a browser. On-device voices first; online ones are
+    // listed after them and say plainly what choosing them means.
+    const voiceBox = h('div');
+    const drawWeb = () => {
+      clear(voiceBox);
+      const list = tts.webVoices();
+      const chosen = tts.webVoiceChoice();
+      if (list.length) {
+        const label = (v) => `${v.name.replace(/\s*\(Korean.*\)$/, '')}${tts.isOnline(v) ? ' — online' : ''}`;
+        voiceBox.append(h('label', { class: 'field' }, h('span', {}, 'Korean voice'),
+          h('select', { onchange: e => { store.set({ webVoice: e.target.value }); drawWeb(); setTimeout(() => tts.say('안녕하세요. 오늘도 수고하셨습니다.'), 150); } },
+            h('option', { value: '', selected: !chosen }, 'The best voice on this device'),
+            ...list.map(v => h('option', { value: v.voiceURI, selected: !!chosen && chosen.voiceURI === v.voiceURI }, label(v))))));
+        voiceBox.append(h('p', { class: 'tiny' }, chosen && tts.isOnline(chosen)
+          ? 'This is an online voice. It sounds better because it runs on Google\u2019s or Microsoft\u2019s servers — which means every sentence the app speaks is sent there, and it goes silent without a connection. Your progress is never sent; the sentences are. Choose "The best voice on this device" to keep everything here.'
+          : 'Picking one plays it. Voices marked online sound best but send each sentence to Google or Microsoft to be spoken and need a connection, so the app never picks one for you.'));
+      }
+      if (tts.onlyNovelty()) {
+        voiceBox.append(h('div', { class: 'note' },
+          'The only Korean voices on this device are novelty ones, which are not fit to learn from. On a Mac, add Yuna: System Settings › Accessibility › Spoken Content › System voice › Manage Voices › Korean — the Premium version sounds best. Then reload this page.'));
+      }
+    };
+    drawWeb();
+    tts.onVoicesChanged(drawWeb);
+    root.append(voiceBox);
   }
 
   root.append(h('label', { class: 'field' }, h('span', {}, `Speech speed — ${s.rate.toFixed(2)}×`),

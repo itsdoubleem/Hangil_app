@@ -10,6 +10,7 @@ const FRESH = {
   theme: 'auto',
   rate: 1,             // speech speed — see the migration note below
   rom: true,           // show romanization
+  webVoice: '',        // a browser voice picked in Settings, by voiceURI; '' = the best on-device one
   trade: '',           // the 업종 chosen in Settings, or '' for none. Optional on
                        // purpose: only manufacturing applicants get job-related
                        // questions, so the app must work with no trade set.

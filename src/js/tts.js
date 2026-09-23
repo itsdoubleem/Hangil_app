@@ -59,6 +59,8 @@ let warned = false;
 
 function refresh() {
   try { voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : []; } catch { voices = []; }
+  // Browsers fill the list late, so Settings redraws when it arrives.
+  if (!native) listeners.forEach(fn => { try { fn(); } catch {} });
 }
 if (window.speechSynthesis) {
   refresh();
@@ -66,16 +68,73 @@ if (window.speechSynthesis) {
 }
 
 export function korean() {
-  return voices.filter(v => (v.lang || '').toLowerCase().startsWith('ko'));
+  return voices.filter(v => (v.lang || '').toLowerCase().replace('_', '-').startsWith('ko'));
 }
 
 export const available = () => !!native || !!window.speechSynthesis;
 export const hasKorean = () => native ? native.koreanAvailable() : korean().length > 0;
 
+/* Which browser voice speaks.
+ *
+ * This used to be simply the FIRST Korean voice the browser listed. On a Mac
+ * that list is alphabetical and opens with Eddy, Flo, Grandma, Grandpa — Apple's
+ * novelty voices, built to sound like cartoon characters — while Yuna, the real
+ * Korean voice, sits at the end. So the web app read every sentence in a joke
+ * voice and gave the second speaker another one.
+ *
+ * Now the voices are ranked. Novelty voices are never chosen. Of the rest, a
+ * voice sold as premium, enhanced, neural or natural beats a plain one.
+ *
+ * And an ONLINE voice is never chosen for you. Chrome's "Google 한국의" and
+ * Edge's "Online (Natural)" voices sound good because they run on Google's or
+ * Microsoft's servers — every sentence is sent there to be spoken, and they go
+ * silent offline. The app promises nothing leaves the device, so those are
+ * offered in Settings, labelled for what they are, and used only if picked.
+ */
+const NOVELTY = /^(Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley)\b/i;
+export const isNovelty = (v) => NOVELTY.test(v.name || '');
+export const isOnline = (v) => v.localService === false;
+
+function score(v) {
+  const n = v.name || '';
+  let s = 0;
+  if (/premium/i.test(n)) s += 40;
+  else if (/enhanced|neural|natural/i.test(n)) s += 30;
+  if (v.default) s += 2;
+  return s;
+}
+
+// Every Korean voice worth offering, best first: on-device ones, then online.
+export function webVoices() {
+  return korean().filter(v => !isNovelty(v))
+    .sort((a, b) => (isOnline(a) - isOnline(b)) || score(b) - score(a));
+}
+
+// What speaks when nobody has chosen: the best on-device voice. If the only
+// Korean voices on the device are novelty ones, one of those still beats
+// silence — and Settings says how to install a real one.
+function automatic() {
+  const good = webVoices().filter(v => !isOnline(v));
+  if (good.length) return good;
+  return korean().filter(v => !isOnline(v));
+}
+
+export const webVoiceChoice = () => {
+  const want = get().webVoice;
+  return want ? korean().find(v => v.voiceURI === want) || null : null;
+};
+
+// Only novelty voices on this device (and perhaps online ones): worth saying so.
+export const onlyNovelty = () => !native && korean().length > 0 && !korean().some(v => !isNovelty(v) && !isOnline(v));
+
+// The narrator is voice 0; a dialogue's second speaker is voice 1 — a
+// different good voice where there is one, and otherwise the same voice, never
+// a novelty one drafted in just to sound different.
 function pick(nth = 0) {
-  const ko = korean();
-  if (!ko.length) return null;
-  return ko[nth % ko.length];
+  const first = webVoiceChoice() || automatic()[0] || null;
+  if (!first || nth % 2 === 0) return first;
+  const other = automatic().find(v => v.voiceURI !== first.voiceURI && !isNovelty(v));
+  return other || first;
 }
 
 // Bumped by anything that should silence what came before — a new line, a
