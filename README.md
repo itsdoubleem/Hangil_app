@@ -1,5 +1,7 @@
 # 한길 HANGIL
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-c2410c.svg)](LICENSE)
+
 Korean for the EPS-TOPIK, and for after it.
 
 **[Open it →](https://itsdoubleem.github.io/hangil/)** ·
@@ -82,9 +84,14 @@ python3 tools/icons.py src   # only when the icon changes
 ```
 
 No framework, no bundler, no dependencies. `dist/` is a static folder any host can
-serve. See `CLAUDE.md` for how to add content and `DEPLOY.md` for how it ships.
+serve. How it ships is in [`DEPLOY.md`](DEPLOY.md), and what changed and why in
+[`CHANGELOG.md`](CHANGELOG.md).
 
 ## Licence
 
-MIT for the code. The Korean course text, vocabulary and practice questions in
-`data/` were written for this app and are published under the same licence.
+[MIT](LICENSE), © 2026 DOUBLEEM — for the code, and for the Korean course text,
+vocabulary and practice questions in `data/`, which were written for this app.
+
+The Android app links a few Apache-2.0 libraries, and a personal build can carry
+HRD Korea's official listening files, which are theirs and never part of a public
+build. Both are set out in [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).

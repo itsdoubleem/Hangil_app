@@ -12,6 +12,7 @@ const S = {
     trades:'Your trade', trade:'Trade', guide:'How the exam works',
     tradeWords:'The words', tradeDrill:'Practise this trade', noTrade:'Not chosen',
     back:'Back', done:'Done', locked:'Read the unit first',
+    about:'About', madeBy:'Made by %n',
   },
   ko: {
     today:'오늘', course:'공부', exam:'시험', review:'복습', me:'설정',
@@ -24,6 +25,7 @@ const S = {
     trades:'업종별', trade:'업종', guide:'시험 안내',
     tradeWords:'단어', tradeDrill:'이 업종 연습하기', noTrade:'선택 안 함',
     back:'뒤로', done:'완료', locked:'먼저 설명을 읽으세요',
+    about:'정보', madeBy:'만든 사람 %n',
   },
 };
 let lang = 'en';

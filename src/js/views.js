@@ -10,6 +10,10 @@ import { Deck, unitCards, hidden } from './deck.js';
 
 const nav = (to) => { location.hash = to; };
 
+// Who made it — the copyright holder in LICENSE. One place, so the credit on
+// screen and the licence can never name two different people.
+const AUTHOR = 'DOUBLEEM';
+
 function head(root, title, opts = {}) {
   if (opts.tone) root.style.setProperty('--c', `var(--c-${opts.tone})`);
   if (opts.tone) root.style.setProperty('--cw', `var(--cw-${opts.tone})`);
@@ -1299,7 +1303,13 @@ export async function me(root, { onLang, onTheme }) {
   root.append(said);
 
   root.append(h('hr', { class: 'hr' }));
-  root.append(h('h3', {}, 'About'));
+  root.append(h('h3', {}, t('about')));
+  // The credit, as LOGGER has it: the app's name, then who made it, in plain
+  // type. The name is a proper noun and is never translated; the sentence
+  // around it follows the app's language. (LOGGER tried the brand mark here and
+  // went back to the word — a logo under a logo is one too many.)
+  root.append(h('p', { style: 'margin:0; font-weight:700' }, '한길 HANGIL'));
+  root.append(h('p', { class: 'tiny', style: 'margin-top:2px' }, t('madeBy', AUTHOR)));
   root.append(h('p', { class: 'tiny' }, 'HANGIL is free and stays free. The practice questions were written for this app in the shapes the EPS-TOPIK paper uses; it is not affiliated with HRD Korea, the EPS programme, or any exam body, and it cannot tell you whether you will pass.'));
   root.append(h('p', { class: 'tiny' }, 'If a document affects your pay or your visa, understanding the sentence is not the same as advice: 고용노동부 고객상담센터 ☎ 1350 is free and has interpreters.'));
   root.append(h('p', { class: 'tiny' }, h('a', { href: 'https://itsdoubleem.github.io', style: 'color:var(--accent)' }, 'itsdoubleem.github.io')));
