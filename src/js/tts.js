@@ -55,6 +55,7 @@ if (native) {
 }
 
 let voices = [];
+let current = null;   // the utterance being spoken — see speak()
 let warned = false;
 
 function refresh() {
@@ -82,42 +83,49 @@ export const hasKorean = () => native ? native.koreanAvailable() : korean().leng
  * Korean voice, sits at the end. So the web app read every sentence in a joke
  * voice and gave the second speaker another one.
  *
- * Now the voices are ranked. Novelty voices are never chosen. Of the rest, a
- * voice sold as premium, enhanced, neural or natural beats a plain one.
- *
- * And an ONLINE voice is never chosen for you. Chrome's "Google 한국의" and
- * Edge's "Online (Natural)" voices sound good because they run on Google's or
- * Microsoft's servers — every sentence is sent there to be spoken, and they go
- * silent offline. The app promises nothing leaves the device, so those are
- * offered in Settings, labelled for what they are, and used only if picked.
+ * Now the voices are ranked, and the best one speaks without anyone having to
+ * find a setting. Novelty voices are never chosen. With a connection, an online
+ * voice ranks first — Chrome's "Google 한국의", Edge's "Online (Natural)" ones —
+ * because they are plainly the best Korean a browser can produce. That is a
+ * decision with a cost, made knowingly: an online voice works by sending each
+ * sentence to Google's or Microsoft's servers to be spoken. The sentences are the
+ * app's own Korean, never anything about the learner, and Settings says so.
+ * Offline, or if an online voice fails, the best on-device voice takes over.
+ * Safari and Android browsers only have on-device voices, so nothing changes
+ * there.
  */
 const NOVELTY = /^(Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley)\b/i;
 export const isNovelty = (v) => NOVELTY.test(v.name || '');
 export const isOnline = (v) => v.localService === false;
+const connected = () => navigator.onLine !== false;
 
 function score(v) {
   const n = v.name || '';
   let s = 0;
+  if (isOnline(v)) s += connected() ? 100 : -100;
   if (/premium/i.test(n)) s += 40;
   else if (/enhanced|neural|natural/i.test(n)) s += 30;
   if (v.default) s += 2;
   return s;
 }
 
-// Every Korean voice worth offering, best first: on-device ones, then online.
+// Every Korean voice worth offering, best first.
 export function webVoices() {
-  return korean().filter(v => !isNovelty(v))
-    .sort((a, b) => (isOnline(a) - isOnline(b)) || score(b) - score(a));
+  return korean().filter(v => !isNovelty(v)).sort((a, b) => score(b) - score(a));
 }
 
-// What speaks when nobody has chosen: the best on-device voice. If the only
-// Korean voices on the device are novelty ones, one of those still beats
-// silence — and Settings says how to install a real one.
+// What speaks when nobody has chosen. If the only Korean voices on the device
+// are novelty ones, one of those still beats silence — and Settings says how to
+// install a real one.
 function automatic() {
-  const good = webVoices().filter(v => !isOnline(v));
+  const good = webVoices().filter(v => connected() || !isOnline(v));
   if (good.length) return good;
   return korean().filter(v => !isOnline(v));
 }
+
+// The best voice that does not need a connection — what an online voice falls
+// back to when it cannot be reached.
+const bestLocal = () => webVoices().find(v => !isOnline(v)) || korean().find(v => !isOnline(v)) || null;
 
 export const webVoiceChoice = () => {
   const want = get().webVoice;
@@ -131,7 +139,9 @@ export const onlyNovelty = () => !native && korean().length > 0 && !korean().som
 // different good voice where there is one, and otherwise the same voice, never
 // a novelty one drafted in just to sound different.
 function pick(nth = 0) {
-  const first = webVoiceChoice() || automatic()[0] || null;
+  let first = webVoiceChoice() || automatic()[0] || null;
+  // A chosen online voice cannot speak offline; do not leave the app mute.
+  if (first && isOnline(first) && !connected()) first = bestLocal() || first;
   if (!first || nth % 2 === 0) return first;
   const other = automatic().find(v => v.voiceURI !== first.voiceURI && !isNovelty(v));
   return other || first;
@@ -187,14 +197,28 @@ function utter(text, { voiceIndex = 0, rate } = {}) {
 
   return new Promise(resolve => {
     hush();
-    const u = new SpeechSynthesisUtterance(text);
-    const v = pick(voiceIndex);
-    if (v) u.voice = v;
-    u.lang = 'ko-KR';
-    u.rate = rate ?? get().rate ?? 0.85;
-    u.onend = () => resolve(true);
-    u.onerror = () => resolve(false);
-    try { window.speechSynthesis.speak(u); } catch { resolve(false); }
+    const speak = (voice, retry) => {
+      const u = new SpeechSynthesisUtterance(text);
+      if (voice) u.voice = voice;
+      u.lang = 'ko-KR';
+      u.rate = rate ?? get().rate ?? 1;
+      // Held on purpose: Chrome can garbage-collect an utterance nobody
+      // references and stop it mid-sentence.
+      current = u;
+      u.onend = () => resolve(true);
+      u.onerror = (e) => {
+        // An online voice that cannot be reached says so with an error rather
+        // than silence; the sentence is said again by the device's own voice.
+        // Being cut off by the next sentence is not a failure.
+        if (retry && voice && isOnline(voice) && e.error !== 'interrupted' && e.error !== 'canceled') {
+          const local = bestLocal();
+          if (local) return speak(local, false);
+        }
+        resolve(false);
+      };
+      try { window.speechSynthesis.speak(u); } catch { resolve(false); }
+    };
+    speak(pick(voiceIndex), true);
   });
 }
 

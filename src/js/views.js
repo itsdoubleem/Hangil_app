@@ -1210,8 +1210,8 @@ export async function me(root, { onLang, onTheme }) {
     tts.onVoicesChanged(drawVoices);
     root.append(voiceBox);
   } else if (tts.available()) {
-    // The same choice in a browser. On-device voices first; online ones are
-    // listed after them and say plainly what choosing them means.
+    // The same choice in a browser. Automatic is the right answer for nearly
+    // everyone, and the note under it says what automatic actually does.
     const voiceBox = h('div');
     const drawWeb = () => {
       clear(voiceBox);
@@ -1221,11 +1221,12 @@ export async function me(root, { onLang, onTheme }) {
         const label = (v) => `${v.name.replace(/\s*\(Korean.*\)$/, '')}${tts.isOnline(v) ? ' — online' : ''}`;
         voiceBox.append(h('label', { class: 'field' }, h('span', {}, 'Korean voice'),
           h('select', { onchange: e => { store.set({ webVoice: e.target.value }); drawWeb(); setTimeout(() => tts.say('안녕하세요. 오늘도 수고하셨습니다.'), 150); } },
-            h('option', { value: '', selected: !chosen }, 'The best voice on this device'),
+            h('option', { value: '', selected: !chosen }, `Automatic — ${list[0] ? list[0].name.replace(/\s*\(Korean.*\)$/, '') : 'the best available'}`),
             ...list.map(v => h('option', { value: v.voiceURI, selected: !!chosen && chosen.voiceURI === v.voiceURI }, label(v))))));
-        voiceBox.append(h('p', { class: 'tiny' }, chosen && tts.isOnline(chosen)
-          ? 'This is an online voice. It sounds better because it runs on Google\u2019s or Microsoft\u2019s servers — which means every sentence the app speaks is sent there, and it goes silent without a connection. Your progress is never sent; the sentences are. Choose "The best voice on this device" to keep everything here.'
-          : 'Picking one plays it. Voices marked online sound best but send each sentence to Google or Microsoft to be spoken and need a connection, so the app never picks one for you.'));
+        const speaking = chosen || list[0];
+        voiceBox.append(h('p', { class: 'tiny' }, speaking && tts.isOnline(speaking)
+          ? 'This is an online voice, the best Korean this browser has. It works by sending each sentence the app speaks to Google\u2019s or Microsoft\u2019s servers — the app\u2019s own Korean, never anything about you or your progress. Without a connection, a voice on this device takes over. Pick a voice without "online" to keep even the sentences here.'
+          : 'Automatic picks the best voice this browser has, so you should not need to change it. Picking one plays it.'));
       }
       if (tts.onlyNovelty()) {
         voiceBox.append(h('div', { class: 'note' },
