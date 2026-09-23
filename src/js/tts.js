@@ -78,18 +78,37 @@ function pick(nth = 0) {
   return ko[nth % ko.length];
 }
 
-export function stop() {
-  if (native) { try { native.stop(); } catch {} return; }
+// Bumped by anything that should silence what came before — a new line, a
+// new dialogue, leaving the question. A dialogue checks it between lines, so
+// moving on stops the conversation rather than just the sentence in progress.
+let gen = 0;
+
+// Flushing the engine cuts the utterance off without an onDone, so whoever was
+// waiting on it is told now instead of after the four-second fallback.
+function hush() {
+  if (native) {
+    try { native.stop(); } catch {}
+    for (const done of waiting.values()) done(false);
+    waiting.clear();
+    return;
+  }
   try { window.speechSynthesis.cancel(); } catch {}
 }
 
+export function stop() { gen += 1; hush(); }
+
 // Speak one Korean string. `voiceIndex` lets a two-speaker dialogue use two
 // different voices when the phone has more than one installed.
-export function say(text, { voiceIndex = 0, rate } = {}) {
+export function say(text, opts = {}) {
+  gen += 1;
+  return utter(text, opts);
+}
+
+function utter(text, { voiceIndex = 0, rate } = {}) {
   if (!available()) return Promise.resolve(false);
 
   if (native) {
-    stop();
+    hush();
     return new Promise(resolve => {
       const id = 'u' + (++seq);
       waiting.set(id, resolve);
@@ -108,7 +127,7 @@ export function say(text, { voiceIndex = 0, rate } = {}) {
   }
 
   return new Promise(resolve => {
-    stop();
+    hush();
     const u = new SpeechSynthesisUtterance(text);
     const v = pick(voiceIndex);
     if (v) u.voice = v;
@@ -122,10 +141,12 @@ export function say(text, { voiceIndex = 0, rate } = {}) {
 
 // Speak a dialogue, one line after another, alternating voice per speaker.
 export async function sayLines(lines, opts = {}) {
+  const mine = ++gen;
   const spk = [];
   for (const line of lines) {
+    if (gen !== mine) return;
     if (!spk.includes(line.spk)) spk.push(line.spk);
-    await say(line.text, { ...opts, voiceIndex: spk.indexOf(line.spk) });
+    await utter(line.text, { ...opts, voiceIndex: spk.indexOf(line.spk) });
   }
 }
 

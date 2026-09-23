@@ -231,6 +231,11 @@
       "ko": "한글 읽기",
       "kind": "topic"
     },
+    "sound-changes": {
+      "label": "Sound changes where blocks meet",
+      "ko": "발음 규칙",
+      "kind": "topic"
+    },
     "word-order": {
       "label": "Putting a sentence in order",
       "ko": "어순",

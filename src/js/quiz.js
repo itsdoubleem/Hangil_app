@@ -154,6 +154,7 @@ export class Quiz {
     this.i = 0;
     this.right = 0;
     this.wrong = [];
+    this.first = null;         // the score before any retry — the honest one
     this.opts = opts;          // { title, onDone(result), review: bool }
     this.render();
   }
@@ -162,9 +163,15 @@ export class Quiz {
     if (ok) this.right += 1; else this.wrong.push(q);
     if (q.key) store.schedule(q.key, ok);
     store.recordTags(q.tags, ok);
+    // A reading question is answered from the page, so the sound comes after:
+    // hearing it before would give the answer away, and never hearing it would
+    // leave the learner not knowing whether they read it right in their head.
+    if (q.sayAfter) tts.say(q.sayAfter);
   }
 
   next() {
+    // A dialogue still playing belongs to the question just left.
+    tts.stop();
     this.i += 1;
     if (this.i >= this.qs.length) this.finish(); else this.render();
   }
@@ -174,6 +181,9 @@ export class Quiz {
   // colour that tells you how it went before you read the number.
   finish() {
     const total = this.qs.length;
+    // Retrying the missed ones replays a smaller set, and its score is not the
+    // lesson's score: 2 out of 2 on a retry would otherwise overwrite 4 out of 6.
+    if (!this.first) this.first = { right: this.right, total };
     const pct = Math.round((this.right / total) * 100);
     const tone = pct === 100 ? 'review' : pct >= 60 ? 'course' : 'exam';
     const R = 54, C = 2 * Math.PI * R;
@@ -200,7 +210,7 @@ export class Quiz {
           : 'These come back at longer and longer gaps from here.'),
       ),
       h('div', { class: 'btnrow' },
-        h('button', { class: 'btn btn--accent btn--wide', onclick: () => this.opts.onDone && this.opts.onDone({ right: this.right, total }) }, 'Carry on'),
+        h('button', { class: 'btn btn--accent btn--wide', onclick: () => { tts.stop(); this.opts.onDone && this.opts.onDone(this.first); } }, 'Carry on'),
         this.wrong.length ? h('button', {
           class: 'btn btn--ghost btn--wide',
           onclick: () => { this.qs = this.wrong; this.wrong = []; this.right = 0; this.i = 0; this.render(); }

@@ -6,6 +6,7 @@ import * as store from './store.js';
 import { setLang, t } from './i18n.js';
 import * as tts from './tts.js';
 import * as V from './views.js';
+import { isKoreanKey, isExamKey } from './data.js';
 
 const root = document.getElementById('app');
 
@@ -27,7 +28,9 @@ function bar() {
   const nav = h('nav', { class: 'nav', 'aria-label': 'Sections' });
   for (const [href, key, ic] of TABS) {
     const on = href === '#/' ? here === '#/' || here === '' : here.startsWith(href);
-    const badge = key === 'review' ? store.dueCount() : 0;
+    // Each deck is counted on its own tab: the Korean on Review, exam practice
+    // on Exam — the same split the two review screens make.
+    const badge = key === 'review' ? store.dueCount(isKoreanKey) : key === 'exam' ? store.dueCount(isExamKey) : 0;
     const link = h('a', { href, 'aria-current': on ? 'page' : null }, icon(ic), h('span', {}, t(key)));
     if (badge) link.append(h('span', { class: 'dot', 'aria-label': `${badge} due` }, badge > 99 ? '99+' : badge));
     nav.append(link);
@@ -41,6 +44,8 @@ const ROUTES = [
   [/^#\/hangeul$/,               () => V.hangeul(root)],
   [/^#\/hangeul\/chart$/,        () => V.hangeulChart(root)],
   [/^#\/hangeul\/drill$/,        () => V.hangeulDrill(root)],
+  [/^#\/hangeul\/lesson\/([\w-]+)$/,          (m) => V.hangeulLesson(root, m[1])],
+  [/^#\/hangeul\/lesson\/([\w-]+)\/practice$/, (m) => V.hangeulPractice(root, m[1])],
   [/^#\/course$/,                () => V.course(root)],
   [/^#\/course\/([\w-]+)$/,      (m) => V.lesson(root, m[1])],
   [/^#\/course\/([\w-]+)\/learn$/, (m) => V.lessonLearn(root, m[1])],
@@ -51,6 +56,7 @@ const ROUTES = [
   [/^#\/vocab\/([\w-]+)\/drill$/,  (m) => V.vocabDrill(root, m[1], 'recall')],
   [/^#\/vocab\/([\w-]+)\/listen$/, (m) => V.vocabDrill(root, m[1], 'listen')],
   [/^#\/exam$/,                  () => V.exam(root)],
+  [/^#\/exam\/review$/,           () => V.examReview(root)],
   [/^#\/exam\/drill\/([\w-]+)$/, (m) => V.examDrill(root, m[1])],
   [/^#\/exam\/paper\/([\w-]+)$/, (m) => V.examPaper(root, m[1])],
   [/^#\/trades$/,                () => V.trades(root)],
@@ -70,6 +76,7 @@ const ROUTES = [
 
 async function route() {
   const hash = location.hash || '#/';
+  tts.stop();
   clear(root);
   window.scrollTo(0, 0);
   for (const [re, fn] of ROUTES) {

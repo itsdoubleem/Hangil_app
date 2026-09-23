@@ -84,6 +84,37 @@ const RENDER = {
     h('p', { class: 'deck__text' }, c.text)),
 
   // A vocabulary card: the Korean first, everything else on request.
+  // One letter of the alphabet: big, its sound, a button to hear it, and one
+  // real word it turns up in — the word's English behind a tap, as everywhere.
+  letter: (c) => {
+    const L = c.letter;
+    const box = h('div', { class: 'deck__body' });
+    box.append(h('div', { class: 'sheetcard__glyph ko' }, L.ch));
+    box.append(h('p', { class: 'sheetcard__rom' }, L.rom));
+    box.append(h('div', { class: 'btnrow', style: 'justify-content:center' },
+      h('span', { class: 'deck__ko ko', style: 'margin:0' }, h('span', {}, L.say), speakBtn(L.say))));
+    box.append(h('p', { class: 'deck__text' }, L.hint));
+    if (L.from) box.append(h('p', { class: 'deck__note' }, 'Built from ', h('b', { class: 'ko' }, L.from), '.'));
+    if (L.ex) {
+      box.append(h('hr', { class: 'hr' }));
+      box.append(h('p', { class: 'deck__label' }, 'In a word'));
+      box.append(ko(L.ex.ko));
+      if (store.get().rom) box.append(h('p', { class: 'deck__rom' }, L.ex.rom));
+      box.append(hidden(L.ex.en));
+    }
+    return box;
+  },
+
+  // A block to read. How it is said is behind the tap: try it first.
+  syllable: (c) => {
+    const box = h('div', { class: 'deck__body' });
+    box.append(h('p', { class: 'deck__label' }, 'Read it, then check'));
+    box.append(h('div', { class: 'sheetcard__glyph ko' }, c.ko));
+    box.append(h('div', { class: 'btnrow', style: 'justify-content:center' }, speakBtn(c.ko)));
+    box.append(hidden(`${c.rom} — ${c.note}`));
+    return box;
+  },
+
   word: (c) => {
     const box = h('div', { class: 'deck__body' });
     box.append(ko(c.word.ko));

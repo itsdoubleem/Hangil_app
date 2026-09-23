@@ -13,7 +13,9 @@ const FRESH = {
   trade: '',           // the 업종 chosen in Settings, or '' for none. Optional on
                        // purpose: only manufacturing applicants get job-related
                        // questions, so the app must work with no trade set.
-  done: {},            // lessonId -> { at, score }
+  done: {},            // unitId -> { at, score } — the course units only
+  letters: {},         // alphabet lessonId -> { at, score }
+  drills: {},          // exam drillId -> { at, best, total } — the paper's question types
   srs: {},             // itemKey -> { due, ivl, ease, reps, lapses }
   seen: {},            // vocab set / letter group -> at
   streak: { last: null, count: 0, best: 0 },
@@ -40,11 +42,33 @@ function load() {
 }
 
 let pending = 0;
+function write() {
+  clearTimeout(pending); pending = 0;
+  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {}
+}
 function save() {
   clearTimeout(pending);
-  pending = setTimeout(() => {
-    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {}
-  }, 120);
+  pending = setTimeout(write, 120);
+}
+// An answer given in the last 120ms before the app is swiped away would
+// otherwise never be written. Going to the background is the moment to flush.
+document.addEventListener('visibilitychange', () => { if (document.hidden && pending) write(); });
+window.addEventListener('pagehide', () => { if (pending) write(); });
+
+// Every due date written before `dates: 2` came out of an addDays() that worked
+// in UTC, and east of Greenwich that landed each one a day early — an item meant
+// for tomorrow was due the same day. Push them back to where they were meant to
+// be, once. West of Greenwich the old arithmetic happened to be right, so
+// nothing moves there. Items missed on the day (ivl 0) were never scheduled
+// forward and stay as they are.
+if (!state.dates) {
+  if (new Date().getTimezoneOffset() < 0) {
+    for (const it of Object.values(state.srs)) {
+      if (it && it.ivl > 0 && it.due) it.due = addDays(it.due, 1);
+    }
+  }
+  state.dates = 2;
+  save();
 }
 
 export const get = () => state;
@@ -62,6 +86,20 @@ export function touchDay() {
 export function markLesson(id, score) {
   state.done[id] = { at: today(), score };
   touchDay();
+  save();
+}
+
+export function markLetters(id, score) {
+  state.letters[id] = { at: today(), score };
+  touchDay();
+  save();
+}
+
+// The best first-attempt score on each exam drill, so the exam screen can show
+// which of the paper's question types still needs work.
+export function recordDrill(id, right, total) {
+  const prev = state.drills[id];
+  state.drills[id] = { at: today(), total, best: Math.max(right, prev ? prev.best : 0) };
   save();
 }
 
@@ -95,19 +133,27 @@ export function schedule(key, right) {
   return it;
 }
 
-export function dueKeys(limit = 40) {
+// `which` picks a deck — see isKoreanKey / isExamKey in data.js. Without it,
+// both.
+export function dueKeys(limit = 40, which = () => true) {
   const t = today();
   return Object.entries(state.srs)
-    .filter(([, v]) => v.due <= t)
-    .sort((a, b) => (a[1].due < b[1].due ? -1 : 1) || a[1].ivl - b[1].ivl)
+    .filter(([k, v]) => v.due <= t && which(k))
+    .sort((a, b) => a[1].due.localeCompare(b[1].due) || a[1].ivl - b[1].ivl)
     .slice(0, limit)
     .map(([k]) => k);
 }
 
-export const dueCount = () => {
+// A key whose content has gone — a unit renumbered, a question removed — can
+// never be shown, so it must not sit in the deck inflating the due count.
+export function forget(key) { if (state.srs[key]) { delete state.srs[key]; save(); } }
+
+export const dueCount = (which = () => true) => {
   const t = today();
-  return Object.values(state.srs).filter(v => v.due <= t).length;
+  return Object.entries(state.srs).filter(([k, v]) => v.due <= t && which(k)).length;
 };
+
+export const deckCount = (which = () => true) => Object.keys(state.srs).filter(which).length;
 
 /* Every answer, counted against whatever the question was about.
  *

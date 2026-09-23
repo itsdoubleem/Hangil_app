@@ -2,9 +2,11 @@ package app.hangil.study;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Insets;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +15,10 @@ import android.speech.tts.UtteranceProgressListener;
 import android.speech.tts.Voice;
 import android.view.KeyEvent;
 import android.view.WindowInsets;
+import android.widget.Toast;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -25,6 +30,8 @@ import androidx.webkit.WebViewAssetLoader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -65,6 +72,12 @@ public class MainActivity extends Activity {
     // pitch of one voice to fake a second speaker is what made the audio sound
     // synthetic — a neural voice stops sounding human the moment you bend it.
     private final Voice[] picked = new Voice[2];
+
+    // Backups. A WebView on its own has no file picker and does nothing with a
+    // download link, so Save and Restore in Settings silently did nothing here.
+    private static final int PICK_FILE = 1, SAVE_FILE = 2;
+    private ValueCallback<Uri[]> pickCallback;
+    private String pendingSave;
 
     @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
     @Override
@@ -135,6 +148,23 @@ public class MainActivity extends Activity {
             insetBottom = Math.round(bottom / d);
             applyInsets();
             return insets;
+        });
+
+        // Without a WebChromeClient, <input type=file> never opens anything.
+        web.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onShowFileChooser(WebView view, ValueCallback<Uri[]> cb, FileChooserParams params) {
+                if (pickCallback != null) pickCallback.onReceiveValue(null);
+                pickCallback = cb;
+                Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                // Not filtered to JSON: file managers often hand a saved .json
+                // back as octet-stream, and a filter would hide the backup.
+                i.setType("*/*");
+                try { startActivityForResult(i, PICK_FILE); }
+                catch (Exception e) { pickCallback = null; cb.onReceiveValue(null); }
+                return true;
+            }
         });
 
         web.addJavascriptInterface(new Bridge(), "HangilNative");
@@ -280,6 +310,20 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface public void stop() { if (tts != null) tts.stop(); }
 
+        /** Save text through the system's save-as sheet, so the user picks where. */
+        @JavascriptInterface
+        public void saveFile(String name, String text) {
+            runOnUiThread(() -> {
+                pendingSave = text;
+                Intent i = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                i.setType("application/json");
+                i.putExtra(Intent.EXTRA_TITLE, name);
+                try { startActivityForResult(i, SAVE_FILE); }
+                catch (Exception e) { pendingSave = null; }
+            });
+        }
+
         /**
          * Speech engines to offer. getEngines() alone is not enough — on One UI
          * it returns only the system default even though Samsung's engine is
@@ -367,6 +411,27 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onKeyDown(code, e);
+    }
+
+    @Override
+    protected void onActivityResult(int req, int res, Intent data) {
+        super.onActivityResult(req, res, data);
+        if (req == PICK_FILE) {
+            if (pickCallback != null) {
+                pickCallback.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(res, data));
+                pickCallback = null;
+            }
+        } else if (req == SAVE_FILE) {
+            String text = pendingSave;
+            pendingSave = null;
+            if (res != RESULT_OK || data == null || data.getData() == null || text == null) return;
+            try (OutputStream out = getContentResolver().openOutputStream(data.getData(), "wt")) {
+                out.write(text.getBytes(StandardCharsets.UTF_8));
+                Toast.makeText(this, "Backup saved", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(this, "The backup could not be saved", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override protected void onSaveInstanceState(Bundle out) { super.onSaveInstanceState(out); web.saveState(out); }

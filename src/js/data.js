@@ -103,6 +103,13 @@ export const vocabKey = (word) => `w:${word}`;
 export const drillKey = (drillId, i) => `d:${drillId}:${i}`;
 export const tradeKey = (tradeId, i) => `t:${tradeId}:${i}`;
 
+// Two decks share one store. Exam practice — the question-type drills and the
+// trade questions — is reviewed inside the exam section; everything else is
+// the Korean itself and is what the Review tab holds. A learner working on the
+// language should not have the paper's question formats mixed into that.
+export const isExamKey = (key) => key.startsWith('d:') || key.startsWith('t:');
+export const isKoreanKey = (key) => !isExamKey(key);
+
 
 /* ---- tags ---------------------------------------------------------------
 
@@ -205,6 +212,25 @@ export function resolve(key) {
     const tr = d.tradeById[a];
     if (!tr || !tr.items[+b]) return null;
     return { key, kind, item: tr.items[+b], trade: tr, from: tr.title };
+  }
+  if (kind === 'h') {
+    // A block from the alphabet lessons. Any syllable can be rebuilt from its
+    // key, because the question is composed from the syllable, not looked up.
+    if (!a || a.length !== 1 || a < '가' || a > '힣') return null;
+    return { key, kind, syl: a, from: '한글' };
+  }
+  if (kind === 's') {
+    // A word from the sound-changes lesson.
+    for (const l of (d.hangeul && d.hangeul.lessons) || []) {
+      for (const c of (l.changes || [])) if (c.words.some(w => w.ko === a)) return { key, kind, ko: a, from: '한글 · 발음' };
+    }
+    return null;
+  }
+  if (kind === 'l') {
+    for (const g of (d.hangeul ? d.hangeul.groups : [])) {
+      if (g.letters.some(L => L.ch === a)) return { key, kind, ch: a, from: '한글' };
+    }
+    return null;
   }
   if (kind === 'd') {
     const dr = d.drillById[a];

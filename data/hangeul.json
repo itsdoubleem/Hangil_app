@@ -777,5 +777,545 @@
         ]
       }
     ]
-  }
+  },
+  "lessons": [
+    {
+      "id": "a1",
+      "title": "The six plain vowels",
+      "titleKo": "기본 모음",
+      "groups": [
+        "vowels-basic"
+      ],
+      "intro": [
+        "Korean is written in square blocks, one block per syllable. Each block is built from letters, and there are only about forty of them.",
+        "Start with the vowels, because every block has one. Six of them are enough to read a surprising amount."
+      ],
+      "rules": [
+        "Every block starts with a consonant. When the sound starts with a vowel, the letter ㅇ holds the empty seat and says nothing: 아 is just a.",
+        "A tall vowel (ㅏ ㅓ ㅣ) sits to the right of the consonant. A wide vowel (ㅗ ㅜ ㅡ) sits underneath it."
+      ],
+      "examples": [
+        {
+          "ko": "아",
+          "note": "ㅇ + ㅏ. The ㅇ is silent."
+        },
+        {
+          "ko": "오",
+          "note": "ㅇ + ㅗ. A wide vowel goes underneath."
+        },
+        {
+          "ko": "이",
+          "note": "ㅇ + ㅣ"
+        }
+      ]
+    },
+    {
+      "id": "a2",
+      "title": "The ten plain consonants",
+      "titleKo": "기본 자음",
+      "groups": [
+        "cons-plain"
+      ],
+      "intro": [
+        "Each consonant is a drawing of the mouth making it: ㄱ is the back of the tongue lifting, ㄴ is the tip touching behind the teeth, ㅁ is the closed lips.",
+        "Put one in front of a vowel and you have a syllable. With these ten and the six vowels you can already read most of the blocks on a sign."
+      ],
+      "rules": [
+        "ㄱ ㄷ ㅂ sound softer at the start of a word (g, d, b) and harder at the end of a block (k, t, p). Korean ears hear them as one sound.",
+        "ㄹ is one quick tap of the tongue — between r and l. Before a vowel it leans r, at the bottom of a block it leans l."
+      ],
+      "examples": [
+        {
+          "ko": "가",
+          "note": "ㄱ + ㅏ"
+        },
+        {
+          "ko": "나",
+          "note": "ㄴ + ㅏ"
+        },
+        {
+          "ko": "고",
+          "note": "ㄱ + ㅗ, the vowel underneath"
+        },
+        {
+          "ko": "무",
+          "note": "ㅁ + ㅜ"
+        },
+        {
+          "ko": "시",
+          "note": "ㅅ + ㅣ — ㅅ leans towards sh before ㅣ"
+        },
+        {
+          "ko": "하",
+          "note": "ㅎ + ㅏ"
+        }
+      ]
+    },
+    {
+      "id": "a3",
+      "title": "The y vowels, and ㅐ ㅔ",
+      "titleKo": "이중 모음",
+      "groups": [
+        "vowels-y"
+      ],
+      "intro": [
+        "Add a second short stroke to a vowel and a y slides in front of it: ㅏ becomes ㅑ, ㅓ becomes ㅕ.",
+        "ㅐ and ㅔ look different and were once said differently. Today almost nobody separates them — you tell them apart by knowing the word, not by hearing it."
+      ],
+      "rules": [],
+      "examples": [
+        {
+          "ko": "야",
+          "note": "ㅇ + ㅑ"
+        },
+        {
+          "ko": "여",
+          "note": "ㅇ + ㅕ"
+        },
+        {
+          "ko": "요",
+          "note": "ㅇ + ㅛ"
+        },
+        {
+          "ko": "내",
+          "note": "ㄴ + ㅐ"
+        },
+        {
+          "ko": "세",
+          "note": "ㅅ + ㅔ"
+        }
+      ]
+    },
+    {
+      "id": "a4",
+      "title": "Consonants with a puff of air",
+      "titleKo": "격음",
+      "groups": [
+        "cons-aspirated"
+      ],
+      "intro": [
+        "One extra stroke on ㄱ ㄷ ㅂ ㅈ gives ㅋ ㅌ ㅍ ㅊ. The extra stroke is a puff of air.",
+        "Hold your hand in front of your mouth: 카 should push air on your palm, 가 hardly any. On the listening paper this is often the whole difference between two answers."
+      ],
+      "rules": [],
+      "examples": [
+        {
+          "ko": "가",
+          "note": "plain — very little air"
+        },
+        {
+          "ko": "카",
+          "note": "with a puff of air"
+        },
+        {
+          "ko": "자",
+          "note": "plain"
+        },
+        {
+          "ko": "차",
+          "note": "with a puff of air"
+        }
+      ]
+    },
+    {
+      "id": "a5",
+      "title": "Tight consonants",
+      "titleKo": "경음",
+      "groups": [
+        "cons-tense"
+      ],
+      "intro": [
+        "Write a plain consonant twice and it becomes tight: ㄱ → ㄲ, ㅈ → ㅉ. No puff of air at all — the throat squeezes and the sound comes out short and hard.",
+        "Korean has three versions of several sounds, and they change the word: 자요 is sleeps, 차요 is kicks, 짜요 is salty."
+      ],
+      "rules": [],
+      "examples": [
+        {
+          "ko": "자",
+          "note": "plain"
+        },
+        {
+          "ko": "차",
+          "note": "a puff of air"
+        },
+        {
+          "ko": "짜",
+          "note": "tight, no air"
+        },
+        {
+          "ko": "다",
+          "note": "plain"
+        },
+        {
+          "ko": "따",
+          "note": "tight"
+        }
+      ]
+    },
+    {
+      "id": "a6",
+      "title": "Vowels that slide",
+      "titleKo": "합성 모음",
+      "groups": [
+        "vowels-w"
+      ],
+      "intro": [
+        "Two vowels written side by side and said as one slide: ㅗ + ㅏ is ㅘ, wa. ㅜ + ㅓ is ㅝ, wo.",
+        "These are the rarest letters, which is why they come last. You will meet 회사 (company), 병원 (hospital) and 위험 (danger) at work, so they are worth knowing."
+      ],
+      "rules": [
+        "ㅢ is said ui at the start of a word, as in 의사. After a consonant it is usually just i: 희 is closer to hi."
+      ],
+      "examples": [
+        {
+          "ko": "와",
+          "note": "ㅗ + ㅏ slid together"
+        },
+        {
+          "ko": "워",
+          "note": "ㅜ + ㅓ"
+        },
+        {
+          "ko": "회",
+          "note": "ㅎ + ㅚ — said hwe"
+        },
+        {
+          "ko": "위",
+          "note": "ㅜ + ㅣ"
+        }
+      ]
+    },
+    {
+      "id": "a7",
+      "title": "Closing sounds",
+      "titleKo": "받침",
+      "groups": [],
+      "intro": [
+        "A consonant can sit at the bottom of a block. It is called 받침, and it closes the syllable: 바 + ㅂ = 밥.",
+        "This is where reading Korean gets tricky, because the letter at the bottom is not always the sound you say."
+      ],
+      "rules": [
+        "Any consonant can close a block, but only seven sounds ever come out: k, n, t, l, m, p, ng.",
+        "ㅅ ㅆ ㅈ ㅊ ㅌ ㅎ at the bottom are all said as a stopped t: 옷 is said ot, not os. 꽃 is kkot.",
+        "ㅋ ㄲ at the bottom are said k. ㅍ at the bottom is said p: 앞 is ap.",
+        "When the next block starts with ㅇ, the closing sound slides across into it: 한국어 is said 한구거. That comes later, in real words — for now, read one block at a time."
+      ],
+      "examples": [
+        {
+          "ko": "밥",
+          "note": "ㅂ closes it — bap"
+        },
+        {
+          "ko": "문",
+          "note": "ㄴ closes it"
+        },
+        {
+          "ko": "방",
+          "note": "ㅇ at the bottom is ng"
+        },
+        {
+          "ko": "옷",
+          "note": "ㅅ at the bottom is said t"
+        },
+        {
+          "ko": "꽃",
+          "note": "ㅊ at the bottom is said t"
+        },
+        {
+          "ko": "앞",
+          "note": "ㅍ at the bottom is said p"
+        }
+      ],
+      "kind": "finals"
+    },
+    {
+      "id": "a8",
+      "kind": "changes",
+      "title": "How blocks change each other",
+      "titleKo": "발음 규칙",
+      "groups": [],
+      "intro": [
+        "You can now read every block. But Korean is not said one block at a time — the blocks run together, and where they meet, the sounds change.",
+        "This is why 한국어 is said 한구거, and why a sentence you can read perfectly can still sound like nothing you recognise. Six rules cover almost all of it. Each one is shown on a word first; read it, tap to check, then read the rule."
+      ],
+      "rules": [],
+      "examples": [],
+      "changes": [
+        {
+          "name": "Linking",
+          "nameKo": "연음",
+          "rule": "When a block ends in a consonant and the next one starts with ㅇ, the consonant moves across and starts the next block. The empty ㅇ gets filled. Notice that it moves as the LETTER it is, not as its closing sound: 옷 on its own is ot, but 옷을 is 오슬.",
+          "words": [
+            {
+              "ko": "한국어",
+              "said": "한구거",
+              "wrong": [
+                "한구커",
+                "항구거"
+              ]
+            },
+            {
+              "ko": "음악",
+              "said": "으막",
+              "wrong": [
+                "으악",
+                "은막"
+              ]
+            },
+            {
+              "ko": "직업",
+              "said": "지겁",
+              "wrong": [
+                "지컵",
+                "직컵"
+              ]
+            },
+            {
+              "ko": "옷을",
+              "said": "오슬",
+              "wrong": [
+                "오들",
+                "옫들"
+              ]
+            },
+            {
+              "ko": "있어요",
+              "said": "이써요",
+              "wrong": [
+                "이서요",
+                "이더요"
+              ]
+            },
+            {
+              "ko": "월요일",
+              "said": "워료일",
+              "wrong": [
+                "워로일",
+                "월료일"
+              ]
+            },
+            {
+              "ko": "발음",
+              "said": "바름",
+              "wrong": [
+                "바음",
+                "발름"
+              ]
+            },
+            {
+              "ko": "꽃이",
+              "said": "꼬치",
+              "wrong": [
+                "꼬디",
+                "꼬시"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ㅎ goes quiet",
+          "nameKo": "ㅎ 탈락",
+          "rule": "ㅎ at the bottom of a block, before a vowel, is not said at all. 좋아요 is 조아요 — which is why a word you know on paper can be hard to catch by ear.",
+          "words": [
+            {
+              "ko": "좋아요",
+              "said": "조아요",
+              "wrong": [
+                "조하요",
+                "조타요"
+              ]
+            },
+            {
+              "ko": "괜찮아요",
+              "said": "괜차나요",
+              "wrong": [
+                "괜찬하요",
+                "괜차카요"
+              ]
+            },
+            {
+              "ko": "많이",
+              "said": "마니",
+              "wrong": [
+                "만히",
+                "만치"
+              ]
+            },
+            {
+              "ko": "넣어요",
+              "said": "너어요",
+              "wrong": [
+                "너허요",
+                "너터요"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ㅎ adds a puff of air",
+          "nameKo": "격음화",
+          "rule": "When ㅎ meets ㄱ ㄷ ㅂ ㅈ, from either side, the two merge into the breathy letter: ㄱ + ㅎ is ㅋ, ㄷ + ㅎ is ㅌ, ㅂ + ㅎ is ㅍ. 축하 is 추카.",
+          "words": [
+            {
+              "ko": "축하",
+              "said": "추카",
+              "wrong": [
+                "추가",
+                "축까"
+              ]
+            },
+            {
+              "ko": "좋다",
+              "said": "조타",
+              "wrong": [
+                "조다",
+                "조따"
+              ]
+            },
+            {
+              "ko": "입학",
+              "said": "이팍",
+              "wrong": [
+                "이박",
+                "입팍"
+              ]
+            },
+            {
+              "ko": "많다",
+              "said": "만타",
+              "wrong": [
+                "만다",
+                "만따"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Stops become nasal",
+          "nameKo": "비음화",
+          "rule": "A closing k, t or p sound, followed by ㄴ or ㅁ, turns into the nasal made in the same place: k becomes ng, t becomes n, p becomes m. This is why every 합니다 you hear is 함니다.",
+          "words": [
+            {
+              "ko": "합니다",
+              "said": "함니다",
+              "wrong": [
+                "한니다",
+                "합미다"
+              ]
+            },
+            {
+              "ko": "입니다",
+              "said": "임니다",
+              "wrong": [
+                "인니다",
+                "입미다"
+              ]
+            },
+            {
+              "ko": "작년",
+              "said": "장년",
+              "wrong": [
+                "잔년",
+                "장연"
+              ]
+            },
+            {
+              "ko": "국물",
+              "said": "궁물",
+              "wrong": [
+                "군물",
+                "굼물"
+              ]
+            },
+            {
+              "ko": "한국말",
+              "said": "한궁말",
+              "wrong": [
+                "한군말",
+                "항궁말"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sounds tighten",
+          "nameKo": "경음화",
+          "rule": "After a closing k, t or p sound, a following ㄱ ㄷ ㅂ ㅅ ㅈ is said tight: 학교 is 학꾜, 식당 is 식땅. The spelling never shows it, so it has to be known.",
+          "words": [
+            {
+              "ko": "학교",
+              "said": "학꾜",
+              "wrong": [
+                "하교",
+                "학쿄"
+              ]
+            },
+            {
+              "ko": "식당",
+              "said": "식땅",
+              "wrong": [
+                "시당",
+                "식탕"
+              ]
+            },
+            {
+              "ko": "숙제",
+              "said": "숙쩨",
+              "wrong": [
+                "수제",
+                "숙체"
+              ]
+            },
+            {
+              "ko": "약국",
+              "said": "약꾹",
+              "wrong": [
+                "야국",
+                "약쿡"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ㄴ becomes ㄹ",
+          "nameKo": "유음화",
+          "rule": "When ㄴ and ㄹ meet, in either order, the ㄴ turns into ㄹ and both are said as a long l. 연락 is 열락; 설날 is 설랄.",
+          "words": [
+            {
+              "ko": "연락",
+              "said": "열락",
+              "wrong": [
+                "연낙",
+                "열낙"
+              ]
+            },
+            {
+              "ko": "신라",
+              "said": "실라",
+              "wrong": [
+                "신나",
+                "싱라"
+              ]
+            },
+            {
+              "ko": "설날",
+              "said": "설랄",
+              "wrong": [
+                "선날",
+                "설난"
+              ]
+            },
+            {
+              "ko": "편리",
+              "said": "펼리",
+              "wrong": [
+                "편니",
+                "펼니"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

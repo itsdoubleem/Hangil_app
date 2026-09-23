@@ -29,16 +29,24 @@ export function shuffle(arr) {
   return a;
 }
 
-export const today = () => new Date().toISOString().slice(0, 10);
+// Dates are the phone's own calendar day, never UTC. Both helpers used to go
+// through toISOString(), which is UTC: in Korea that made "today" yesterday
+// until 9am, and made addDays(t, 1) return t itself — local midnight tomorrow
+// is still today in UTC — so every item answered right for the first time was
+// due again the moment it was answered, and the review deck kept serving the
+// same questions back. Every other interval came out a day short.
+const iso = (d) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+export const today = () => iso(new Date());
 
 export function daysBetween(a, b) {
   return Math.round((Date.parse(b) - Date.parse(a)) / 86400000);
 }
 
-export function addDays(iso, n) {
-  const d = new Date(iso + 'T00:00:00');
-  d.setDate(d.getDate() + n);
-  return d.toISOString().slice(0, 10);
+export function addDays(date, n) {
+  const [y, m, d] = date.split('-').map(Number);
+  return iso(new Date(y, m - 1, d + n));
 }
 
 export function mmss(sec) {

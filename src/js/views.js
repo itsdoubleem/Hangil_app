@@ -1,8 +1,9 @@
 import { h, clear, shuffle, icon, today } from './util.js';
 import * as store from './store.js';
 import * as tts from './tts.js';
-import { load, data, LEVELS, unitKey, vocabKey, drillKey, tradeKey, resolve } from './data.js';
+import { load, data, LEVELS, unitKey, vocabKey, drillKey, tradeKey, isExamKey, isKoreanKey, resolve } from './data.js';
 import { Quiz, fromExercise, fromExamItem, fromWord, speakBtn } from './quiz.js';
+import { lessons as alphabetLessons, lessonCards, lessonQuestions, letterQuestion, readQuestion, syllableQuestion, changeQuestion, syllableKey } from './alphabet.js';
 import { t } from './i18n.js';
 import { runMock } from './mock.js';
 import { Deck, unitCards, hidden } from './deck.js';
@@ -122,12 +123,53 @@ function wordList(words, { hide = false } = {}) {
 
 /* ---------------- today ---------------- */
 
+/* The path through the app.
+ *
+ * Alphabet, then the course, then the exam. Nothing is locked — someone who
+ * can already read can go straight to unit one — but the home screen always
+ * names ONE next thing, because "what do I do now?" is the question a tired
+ * learner opening the app actually has. The alphabet comes first because every
+ * other screen is written in it.
+ */
+function nextStep(d, s) {
+  const ls = alphabetLessons(d);
+  const n = ls.findIndex(l => !s.letters[l.id]);
+  if (n >= 0) {
+    return {
+      tone: 'hangeul', route: `#/hangeul/lesson/${ls[n].id}`,
+      meta: `The alphabet · lesson ${n + 1} of ${ls.length}`,
+      title: ls[n].title,
+      desc: n === 0
+        ? 'Start here. Every other screen in this app is written in 한글, and a few short lessons are enough to read it.'
+        : 'Finish the alphabet and the rest of the app opens up.',
+    };
+  }
+  const u = d.units.find(x => !s.done[x.id]);
+  if (u) {
+    return {
+      tone: 'course', route: `#/course/${u.id}`,
+      meta: `Course · unit ${u.order} of ${d.units.length}`,
+      title: u.title, desc: u.goal,
+    };
+  }
+  return {
+    tone: 'exam', route: '#/exam',
+    meta: 'The course is done',
+    title: 'Practise for the paper',
+    desc: 'The question types, then a full paper against the clock.',
+  };
+}
+
 export async function home(root) {
   const d = await load();
   const s = store.get();
-  const due = store.dueCount();
-  const doneCount = Object.keys(s.done).length;
+  const due = store.dueCount(isKoreanKey);
+  const doneCount = d.units.filter(u => s.done[u.id]).length;
+  const ls = alphabetLessons(d);
+  const lettersDone = ls.filter(l => s.letters[l.id]).length;
   const words = d.sets.reduce((n, x) => n + x.words.length, 0);
+  const examDue = store.dueCount(isExamKey);
+  const next = nextStep(d, s);
 
   head(root, null, {
     right: s.streak.count
@@ -138,44 +180,66 @@ export async function home(root) {
   const wrap = h('div', { class: 'stagger' });
   root.append(wrap);
 
-  wrap.append(h('h2', { style: '--i:0' }, due ? t('reviewNow', due) : 'What shall we do today?'));
+  const fresh = !lettersDone && !doneCount && !Object.keys(s.srs).length;
+  wrap.append(h('h2', { style: '--i:0' }, due ? t('reviewNow', due) : fresh ? '어서 오세요 — welcome' : 'What shall we do today?'));
   wrap.append(h('p', { class: 'lead', style: '--i:1' }, due
     ? 'These are the things you got wrong, or learned a while ago. Five minutes here is worth an hour of new material.'
-    : 'Nothing is due for review. Pick up where you left off, or start something new.'));
+    : fresh
+      ? 'Start with the alphabet, then the course. The exam practice is there when you are ready for it.'
+      : 'Nothing is due for review. Here is the next thing to learn.'));
 
   if (due) {
     wrap.append(tile({
       tone: 'review', hero: true, i: 2,
       meta: `${due} ${due === 1 ? 'item' : 'items'} due`,
       title: 'Review now',
-      desc: 'The deck brings back what you missed, at widening gaps.',
+      desc: 'What you have learned, brought back at widening gaps.',
       onclick: () => nav('#/review'),
     }));
-  } else if (s.last) {
+  }
+  // With a review waiting, that is the hero and the next lesson waits its turn
+  // as an ordinary card — two heroes is no hero.
+  wrap.append(tile({
+    tone: next.tone, hero: !due, i: 2,
+    icon: due ? (next.tone === 'hangeul' ? null : next.tone) : null,
+    glyph: due && next.tone === 'hangeul' ? '가' : null,
+    meta: `Next · ${next.meta}`, title: next.title,
+    desc: due ? null : next.desc, sub: due ? next.desc : null,
+    onclick: () => nav(next.route),
+  }));
+  // "Carry on" is for somewhere you left off. An alphabet lesson already
+  // finished is not that — it is where you last WERE, which is not the same.
+  const lastLesson = s.last && s.last.route.match(/^#\/hangeul\/lesson\/([\w-]+)$/);
+  const stale = lastLesson && s.letters[lastLesson[1]];
+  if (s.last && s.last.route !== next.route && !stale) {
     wrap.append(tile({
-      tone: 'course', hero: true, i: 2,
+      tone: 'today', icon: 'play', i: 2,
       meta: t('carryOn'), title: s.last.label,
       onclick: () => nav(s.last.route),
     }));
   }
 
+  // In the order they are meant to be learned.
   const grid = h('div', { class: 'grid2', style: '--i:3' });
   grid.append(
+    tile({ tone: 'hangeul', glyph: '가', title: t('letters'),
+           meta: `${lettersDone} of ${ls.length} lessons`,
+           sub: lettersDone === ls.length ? 'Done. The chart is there to look things up.' : 'Learn to read first.',
+           onclick: () => nav('#/hangeul') }),
     tile({ tone: 'course', icon: 'course', title: t('course'),
            meta: `${doneCount} of ${d.units.length} units`, sub: 'Grammar, first sentence to contract.',
            onclick: () => nav('#/course') }),
-    tile({ tone: 'exam', icon: 'exam', title: t('exam'),
-           meta: 'EPS-TOPIK', sub: 'The paper\u2019s question types, and a timed paper.',
-           onclick: () => nav('#/exam') }),
   );
   wrap.append(grid);
 
   const grid2 = h('div', { class: 'grid2', style: '--i:4' });
   grid2.append(
-    tile({ tone: 'hangeul', glyph: '가', title: t('letters'), meta: '한글',
-           sub: 'Start here if you cannot read yet.', onclick: () => nav('#/hangeul') }),
     tile({ tone: 'vocab', icon: 'vocab', title: t('vocab'), meta: `${words} words`,
            sub: 'Work, safety, money, the body.', onclick: () => nav('#/vocab') }),
+    tile({ tone: 'exam', icon: 'exam', title: 'EPS-TOPIK',
+           meta: examDue ? `${examDue} to go over` : 'Exam practice',
+           sub: 'The paper\u2019s question types, and timed papers.',
+           onclick: () => nav('#/exam') }),
   );
   wrap.append(grid2);
 
@@ -267,8 +331,31 @@ function letterSheet(L, idx) {
 
 export async function hangeul(root) {
   const d = await load();
+  const s = store.get();
   head(root, t('letters'), { back: '#/', tone: 'hangeul' });
   root.append(h('p', { class: 'lead' }, d.hangeul.intro));
+
+  // The lessons come first: they are how the alphabet is learned. Everything
+  // below them — the chart, the families, the rules — is for looking things up.
+  const ls = alphabetLessons(d);
+  if (ls.length) {
+    const done = ls.filter(l => s.letters[l.id]).length;
+    const nextIdx = ls.findIndex(l => !s.letters[l.id]);
+    root.append(h('h3', {}, `Lessons · ${done} of ${ls.length}`));
+    root.append(h('div', { class: 'bar', style: '--c: var(--c-hangeul)' }, h('i', { style: `width:${(done / ls.length) * 100}%` })));
+    ls.forEach((l, n) => {
+      const rec = s.letters[l.id];
+      const first = (d.hangeul.groups.find(g => g.id === l.groups[0]) || {}).letters;
+      root.append(tile({
+        tone: 'hangeul', i: n, hero: n === nextIdx,
+        glyph: first && first.length ? first[0].ch : l.kind === 'changes' ? '음' : '받',
+        meta: `Lesson ${n + 1}${rec ? ` · done · ${Math.round(rec.score * 100)}%` : n === nextIdx ? ' · up next' : ''}`,
+        title: l.title, subKo: l.titleKo,
+        onclick: () => nav(`#/hangeul/lesson/${l.id}`),
+      }));
+    });
+    root.append(h('h3', {}, 'Look it up'));
+  }
 
   if (d.hangeul.chart) {
     root.append(tile({
@@ -303,8 +390,43 @@ export async function hangeul(root) {
   }
 
   root.append(h('div', { class: 'btnrow' },
-    h('button', { class: 'btn btn--wide', onclick: () => nav('#/hangeul/drill') }, 'Read these out loud')));
+    h('button', { class: 'btn btn--wide', onclick: () => nav('#/hangeul/drill') }, 'Mixed reading practice')));
   store.markSeen('hangeul');
+}
+
+export async function hangeulLesson(root, id) {
+  const d = await load();
+  const ls = alphabetLessons(d);
+  const n = ls.findIndex(l => l.id === id);
+  if (n < 0) return nav('#/hangeul');
+  const l = ls[n];
+  store.setLast(`#/hangeul/lesson/${id}`, `${t('letters')} · ${l.title}`);
+  head(root, null, { back: '#/hangeul', tone: 'hangeul' });
+  root.append(h('p', { class: 'kicker' }, `Lesson ${n + 1} of ${ls.length}`));
+  const box = h('div', { class: 'deck' });
+  root.append(box);
+  new Deck(box, lessonCards(d, l), { onDone: () => nav(`#/hangeul/lesson/${id}/practice`) });
+}
+
+export async function hangeulPractice(root, id) {
+  const d = await load();
+  const ls = alphabetLessons(d);
+  const n = ls.findIndex(l => l.id === id);
+  if (n < 0) return nav('#/hangeul');
+  head(root, null, { back: `#/hangeul/lesson/${id}`, tone: 'hangeul' });
+  root.append(h('p', { class: 'kicker' }, ls[n].title));
+  const box = h('div', { class: 'q' });
+  root.append(box);
+  new Quiz(box, lessonQuestions(d, n), {
+    title: ls[n].title,
+    onDone: (r) => {
+      store.markLetters(id, r.right / r.total);
+      // Straight on to the next lesson's walk-through; after the last one,
+      // back to the alphabet page, where the course is the next thing named.
+      const next = ls[n + 1];
+      nav(next ? `#/hangeul/lesson/${next.id}` : '#/hangeul');
+    },
+  });
 }
 
 export async function hangeulChart(root) {
@@ -350,15 +472,7 @@ export async function hangeulDrill(root) {
   head(root, null, { back: '#/hangeul' });
   const box = h('div', { class: 'q' });
   root.append(box);
-  const qs = shuffle(d.hangeul.drills).slice(0, 12).map((x, n) => {
-    const wrong = shuffle(d.hangeul.drills.filter(y => y.rom !== x.rom)).slice(0, 3);
-    const opts = shuffle([x, ...wrong]);
-    return {
-      key: `h:${x.ko}`, tags: ['hangeul-reading'], type: 'choice', audio: x.ko,
-      stem: x.ko, stemEn: 'How is this said?',
-      options: opts.map(o => o.rom), answer: opts.indexOf(x),
-    };
-  });
+  const qs = shuffle(d.hangeul.drills).slice(0, 12).map(x => readQuestion(d, x.ko, syllableKey(x.ko))).filter(Boolean);
   new Quiz(box, qs, { title: 'Reading practice', onDone: () => nav('#/hangeul') });
 }
 
@@ -369,6 +483,29 @@ export async function course(root) {
   const s = store.get();
   head(root, t('course'), { back: '#/', tone: 'course' });
   root.append(h('p', { class: 'lead' }, 'Twenty-four units. Each one is a short explanation, five real sentences, then practice. Work through them in order — later units lean on earlier ones.'));
+
+  // Not a lock. Someone who reads already can start at unit one; someone who
+  // cannot should be told plainly where to begin.
+  const ls = alphabetLessons(d);
+  const lettersLeft = ls.filter(l => !s.letters[l.id]).length;
+  if (lettersLeft) {
+    root.append(tile({
+      tone: 'hangeul', glyph: '가',
+      meta: 'Before unit 1',
+      title: 'Learn to read 한글 first',
+      sub: `Every sentence here is in 한글. ${lettersLeft === ls.length ? `${ls.length} short lessons` : `${lettersLeft} lesson${lettersLeft === 1 ? '' : 's'} left`} — skip this if you can already read it.`,
+      onclick: () => nav('#/hangeul'),
+    }));
+  }
+  const upNext = d.units.find(u => !s.done[u.id]);
+  if (upNext && !lettersLeft) {
+    root.append(tile({
+      tone: 'course', hero: true,
+      meta: `Up next · unit ${upNext.order}`,
+      title: upNext.title, desc: upNext.goal,
+      onclick: () => nav(`#/course/${upNext.id}`),
+    }));
+  }
 
   for (const lv of LEVELS) {
     const units = d.units.filter(u => u.level === lv.id);
@@ -479,11 +616,15 @@ export async function lessonPractice(root, id) {
 export async function vocab(root) {
   const d = await load();
   head(root, t('vocab'), { back: '#/' });
-  root.append(h('p', { class: 'lead' }, 'Grouped by where you will hear them. Tap a word to hear it; tap the set to drill it.'));
+  const st = store.get();
+  root.append(h('p', { class: 'lead' }, 'Grouped by where you will hear them. Learn a set alongside the course — the first few are the ones a workplace needs soonest.'));
   d.sets.forEach((set, n) => {
+    // A word counts once it has been answered: that is when it enters review.
+    const met = set.words.filter(w => st.srs[vocabKey(w.ko)]).length;
     root.append(tile({
-      tone: 'vocab', i: n, icon: 'vocab',
-      meta: `${set.words.length} ${t('words')}`,
+      tone: 'vocab', i: n, icon: met === set.words.length ? 'check' : 'vocab',
+      meta: `${set.words.length} ${t('words')}${met ? ` · ${met} practised` : ''}`,
+      progress: met ? met / set.words.length : undefined,
       title: set.title, subKo: set.titleKo,
       onclick: () => nav(`#/vocab/${set.id}`),
     }));
@@ -547,11 +688,36 @@ export async function vocabDrill(root, id, mode) {
 
 /* ---------------- exam ---------------- */
 
+/* The exam section is a different job from the course.
+ *
+ * The course teaches Korean. This teaches the PAPER: its question types, its
+ * timing, the job-related questions. So it is laid out as exam preparation —
+ * the shapes first, then whole papers — and what you get wrong here is gone
+ * over here, not mixed into the Review tab with the language itself.
+ */
 export async function exam(root) {
   const d = await load();
   const s = store.get();
-  head(root, t('exam'), { back: '#/', tone: 'exam' });
-  root.append(h('p', { class: 'lead' }, 'The EPS-TOPIK paper is forty questions — twenty listening, twenty reading — at five points each. Learn the shapes first, then sit a whole paper against the clock.'));
+  head(root, 'EPS-TOPIK', { back: '#/', tone: 'exam' });
+  root.append(h('p', { class: 'lead' }, 'Practice for the paper itself: forty questions, twenty listening and twenty reading, in fifty minutes. The Korean is taught in the course; this is where you learn the test.'));
+
+  const ls = alphabetLessons(d);
+  if (ls.some(l => !s.letters[l.id])) {
+    root.append(h('div', { class: 'note', style: '--c: var(--c-hangeul)' },
+      'The paper is written entirely in 한글, with no English and no romanization. If you cannot read it yet, the alphabet lessons come first.',
+      h('div', { class: 'btnrow' }, h('button', { class: 'btn btn--ghost', onclick: () => nav('#/hangeul') }, 'Go to the alphabet'))));
+  }
+
+  const due = store.dueCount(isExamKey);
+  if (due) {
+    root.append(tile({
+      tone: 'exam', hero: true,
+      meta: `${due} ${due === 1 ? 'question' : 'questions'} to go over`,
+      title: 'Go over what you missed',
+      desc: 'Exam questions you got wrong, or answered a while ago, come back here at widening gaps.',
+      onclick: () => nav('#/exam/review'),
+    }));
+  }
 
   if (d.guide.sections.length) {
     root.append(tile({
@@ -563,28 +729,20 @@ export async function exam(root) {
     }));
   }
 
-  root.append(h('h3', {}, t('paper')));
-  d.mocks.forEach((m, n) => {
-    const prev = s.mocks.find(x => x.id === m.id);
+  // Step 1: the question types, each with your best score so far.
+  const tried = d.drills.filter(dr => s.drills[dr.id]).length;
+  root.append(h('h3', {}, `1 · ${t('drills')}`));
+  root.append(h('p', { class: 'tiny' }, `Every question on the paper is one of these ${d.drills.length} shapes. ${tried ? `You have tried ${tried} of them.` : 'Learn each shape before sitting a whole paper.'}`));
+  d.drills.forEach((dr, n) => {
+    const rec = s.drills[dr.id];
     root.append(tile({
-      tone: 'exam', hero: true, i: n,
-      meta: `40 ${t('questions')} · ${m.minutes} ${t('minutes')}${prev ? ` · last ${prev.score}/${prev.max}` : ''}`,
-      title: m.title, desc: 'A full paper against a clock that does not stop.',
-      onclick: () => nav(`#/exam/paper/${m.id}`),
+      tone: 'exam', i: n,
+      icon: rec && rec.best === rec.total ? 'check' : dr.section === 'listening' ? 'sound' : 'target',
+      meta: `${dr.section === 'listening' ? '듣기 listening' : '읽기 reading'} · ${dr.items.length}${rec ? ` · best ${rec.best}/${rec.total}` : ''}`,
+      title: dr.title, sub: dr.blurb,
+      onclick: () => nav(`#/exam/drill/${dr.id}`),
     }));
   });
-
-  if (d.listening.length) {
-    const n = d.listening.reduce((a, x) => a + (x.tracks || []).length, 0);
-    root.append(h('h3', {}, t('listening')));
-    root.append(tile({
-      tone: 'exam', icon: 'sound',
-      meta: `${n} ${n === 1 ? 'track' : 'tracks'} · 한국산업인력공단`,
-      title: 'Official listening files',
-      sub: 'The EPS-TOPIK listening set from every unit of the standard textbook, as published.',
-      onclick: () => nav('#/listening'),
-    }));
-  }
 
   if (d.trades.length) {
     const mine = s.trade ? d.tradeById[s.trade] : null;
@@ -596,27 +754,40 @@ export async function exam(root) {
       title: mine ? mine.title : 'The eight job groups',
       sub: mine
         ? 'Your trade. The practice paper adds questions from it.'
-        : 'Manufacturing applicants answer job-related questions from one of these. Pick yours in Settings.',
+        : 'Only for manufacturing applicants, who answer job-related questions from one of these. Pick yours in Settings.',
       onclick: () => nav('#/trades'),
     }));
   }
 
-  root.append(h('h3', {}, t('drills')));
-  d.drills.forEach((dr, n) => {
+  // Step 2: whole papers, against the clock.
+  root.append(h('h3', {}, `2 · ${t('paper')}`));
+  d.mocks.forEach((m, n) => {
+    const prev = s.mocks.find(x => x.id === m.id);
     root.append(tile({
-      tone: 'exam', i: n,
-      icon: dr.section === 'listening' ? 'sound' : 'target',
-      meta: `${dr.section === 'listening' ? '듣기 listening' : '읽기 reading'} · ${dr.items.length}`,
-      title: dr.title, sub: dr.blurb,
-      onclick: () => nav(`#/exam/drill/${dr.id}`),
+      tone: 'exam', hero: true, i: n,
+      meta: `40 ${t('questions')} · ${m.minutes} ${t('minutes')}${prev ? ` · last ${prev.score}/${prev.max}` : ''}`,
+      title: m.title, desc: 'A full paper against a clock that does not stop.',
+      onclick: () => nav(`#/exam/paper/${m.id}`),
     }));
   });
 
   if (s.mocks.length) {
-    root.append(h('h3', {}, 'Your papers'));
+    root.append(h('p', { class: 'kicker', style: 'margin-top: var(--s5)' }, 'Your papers'));
     for (const m of s.mocks.slice(0, 8)) {
       root.append(h('p', { class: 'tiny' }, `${m.at} — ${m.score}/${m.max} (listening ${m.listening}/100, reading ${m.reading}/100)`));
     }
+  }
+
+  if (d.listening.length) {
+    const n = d.listening.reduce((a, x) => a + (x.tracks || []).length, 0);
+    root.append(h('h3', {}, t('listening')));
+    root.append(tile({
+      tone: 'exam', icon: 'sound',
+      meta: `${n} ${n === 1 ? 'track' : 'tracks'} · 한국산업인력공단`,
+      title: 'Official listening files',
+      sub: 'The EPS-TOPIK listening set from every unit of the standard textbook, as published.',
+      onclick: () => nav('#/listening'),
+    }));
   }
 
   root.append(h('hr', { class: 'hr' }));
@@ -633,7 +804,7 @@ export async function examDrill(root, id) {
   const box = h('div', { class: 'q' });
   root.append(box);
   const qs = dr.items.map((it, i) => fromExamItem(it, drillKey(dr.id, i)));
-  new Quiz(box, qs, { title: dr.title, onDone: () => nav('#/exam') });
+  new Quiz(box, qs, { title: dr.title, onDone: (r) => { store.recordDrill(dr.id, r.right, r.total); nav('#/exam'); } });
 }
 
 export async function examPaper(root, id) {
@@ -762,6 +933,21 @@ export async function guide(root) {
   root.append(h('div', { class: 'note', style: '--c: var(--c-exam)' }, d.guide.note));
 }
 
+/* ---------------- building a question from a review key ---------------- */
+
+// One place that turns a stored key back into a question, for the review deck
+// and the weak-spot practice alike. `key` is what the answer is scheduled
+// under; pass null to ask the question without touching the deck.
+function questionFor(r, key) {
+  if (r.kind === 'u') return { ...fromExercise(r.ex, key), from: r.from };
+  if (r.kind === 'w') return { ...fromWord(r.word, r.set.words, key, Math.random() < 0.3 ? 'listen' : 'recall'), from: r.from };
+  if (r.kind === 'd' || r.kind === 't') return { ...fromExamItem(r.item, key), from: r.from };
+  if (r.kind === 'h') { const q = syllableQuestion(data(), r.syl, key); return q && { ...q, from: r.from }; }
+  if (r.kind === 'l') { const q = letterQuestion(data(), r.ch, key); return q && { ...q, from: r.from }; }
+  if (r.kind === 's') { const q = changeQuestion(data(), r.ko, key); return q && { ...q, from: r.from }; }
+  return null;
+}
+
 /* ---------------- weak spots ---------------- */
 
 /* What you actually get wrong, named.
@@ -834,14 +1020,21 @@ export async function weakDrill(root, id) {
   // Drawn from everywhere that tag appears — a unit exercise, an exam drill, a
   // trade question, a word — because that is what makes it a weak spot rather
   // than one bad afternoon on one screen.
+  //
+  // Items you have already met come first, and only those are rescheduled.
+  // Anything new is asked for practice but kept OUT of the review deck: this
+  // screen used to enrol every item it showed, which is how exam and trade
+  // questions turned up in the review of someone who had never opened either.
+  const srs = store.get().srs;
+  const met = shuffle(keys.filter(k => srs[k]));
+  const unmet = shuffle(keys.filter(k => !srs[k]));
   const qs = [];
-  for (const k of shuffle(keys.slice())) {
+  for (const k of [...met, ...unmet]) {
     if (qs.length >= 12) break;
     const r = resolve(k);
     if (!r) continue;
-    if (r.kind === 'u') qs.push({ ...fromExercise(r.ex, k), from: r.from });
-    else if (r.kind === 'w') qs.push({ ...fromWord(r.word, r.set.words, k, Math.random() < 0.3 ? 'listen' : 'recall'), from: r.from });
-    else if (r.kind === 'd' || r.kind === 't') qs.push({ ...fromExamItem(r.item, k), from: r.from });
+    const q = questionFor(r, srs[k] ? k : null);
+    if (q) qs.push(q);
   }
   if (!qs.length) {
     root.append(h('div', { class: 'empty' }, h('p', {}, 'Nothing to practise here any more.')));
@@ -854,24 +1047,23 @@ export async function weakDrill(root, id) {
 
 /* ---------------- review ---------------- */
 
-export async function review(root) {
+// One runner for both decks. `which` says whose keys it takes.
+async function runReview(root, { which, back, title, empty }) {
   await load();
-  head(root, t('review'), { back: '#/' });
-  const keys = store.dueKeys(30);
+  head(root, title, { back });
+  const keys = store.dueKeys(30, which);
   if (!keys.length) {
-    root.append(h('div', { class: 'empty' },
-      h('p', {}, 'Nothing is due today.'),
-      h('p', {}, 'The review deck fills itself: every question you answer here goes into it, and comes back at a widening gap — one day, three, a week, a fortnight. Get one wrong and it starts again from today.'),
-    ));
+    root.append(h('div', { class: 'empty' }, ...empty.map(p => h('p', {}, p))));
     return;
   }
   const qs = [];
   for (const k of keys) {
     const r = resolve(k);
-    if (!r) continue;
-    if (r.kind === 'u') qs.push({ ...fromExercise(r.ex, k), from: r.from });
-    else if (r.kind === 'w') qs.push({ ...fromWord(r.word, r.set.words, k, Math.random() < 0.3 ? 'listen' : 'recall'), from: r.from });
-    else if (r.kind === 'd' || r.kind === 't') qs.push({ ...fromExamItem(r.item, k), from: r.from });
+    // Content that has gone can never be shown; drop it rather than let it
+    // hold the due count up for ever.
+    if (!r) { store.forget(k); continue; }
+    const q = questionFor(r, k);
+    if (q) qs.push(q);
   }
   if (!qs.length) {
     root.append(h('div', { class: 'empty' }, h('p', {}, 'Nothing to show — the items due came from content that is no longer here.')));
@@ -879,7 +1071,27 @@ export async function review(root) {
   }
   const box = h('div', { class: 'q' });
   root.append(box);
-  new Quiz(box, shuffle(qs), { title: 'Review', onDone: () => nav('#/') });
+  new Quiz(box, shuffle(qs), { title, onDone: () => nav(back) });
+}
+
+// The Korean: alphabet, course and vocabulary. Exam practice is kept apart —
+// see exam() — so this deck is only ever the language you have been learning.
+export function review(root) {
+  return runReview(root, {
+    which: isKoreanKey, back: '#/', title: t('review'),
+    empty: [
+      'Nothing is due today.',
+      'Everything you answer in the alphabet, the course and the vocabulary comes back here at a widening gap — one day, three, a week, a fortnight. Get one wrong and it starts again from today.',
+      'Exam practice is kept separately, on the EPS-TOPIK screen.',
+    ],
+  });
+}
+
+export function examReview(root) {
+  return runReview(root, {
+    which: isExamKey, back: '#/exam', title: 'Go over what you missed',
+    empty: ['Nothing to go over today.', 'Exam questions you answer come back here at widening gaps, apart from your Korean review.'],
+  });
 }
 
 /* ---------------- listening library ---------------- */
@@ -1020,26 +1232,44 @@ export async function me(root, { onLang, onTheme }) {
   root.append(h('hr', { class: 'hr' }));
   root.append(h('h3', {}, 'Your progress'));
   root.append(h('p', { class: 'tiny' }, 'Everything this app knows about you is in this browser, on this device. There is no account and no server: nothing is uploaded, because there is nowhere to upload it to. The trade-off is that clearing this browser’s data deletes your progress, so take a backup.'));
+  // Said on the page rather than with alert()/confirm(): the Android app has
+  // no dialogs, so there both returned at once and did nothing — a failed
+  // restore said nothing, and Erase everything could never be confirmed.
+  const said = h('p', { class: 'tiny', role: 'status' });
   root.append(h('div', { class: 'btnrow' },
     h('button', { class: 'btn btn--ghost', onclick: () => {
+      const name = `hangil-backup-${today()}.json`;
+      // A download link means nothing inside the app; the phone's own
+      // save-as sheet is asked for instead, so the file lands where you choose.
+      if (tts.isNative() && window.HangilNative.saveFile) {
+        window.HangilNative.saveFile(name, store.exportAll());
+        return;
+      }
       const blob = new Blob([store.exportAll()], { type: 'application/json' });
-      const a = h('a', { href: URL.createObjectURL(blob), download: `hangil-backup-${today()}.json` });
+      const a = h('a', { href: URL.createObjectURL(blob), download: name });
       document.body.append(a); a.click(); a.remove();
     } }, 'Save a backup'),
     h('button', { class: 'btn btn--ghost', onclick: () => {
-      const input = h('input', { type: 'file', accept: 'application/json' });
+      const input = h('input', { type: 'file', accept: 'application/json,.json' });
       input.addEventListener('change', async () => {
         const f = input.files[0]; if (!f) return;
         try { store.importAll(await f.text()); location.reload(); }
-        catch (err) { alert(err.message); }
+        catch (err) { said.textContent = `That file could not be restored: ${err.message}`; }
       });
       input.click();
     } }, 'Restore a backup'),
   ));
-  root.append(h('div', { class: 'btnrow' },
-    h('button', { class: 'btn btn--ghost', onclick: () => {
-      if (confirm('Delete all progress on this device? This cannot be undone.')) { store.wipe(); location.reload(); }
-    } }, 'Erase everything')));
+  const erase = h('button', { class: 'btn btn--ghost', type: 'button' }, 'Erase everything');
+  let disarm = 0;
+  erase.addEventListener('click', () => {
+    if (erase.dataset.armed === '1') { clearTimeout(disarm); store.wipe(); location.reload(); return; }
+    erase.dataset.armed = '1';
+    erase.textContent = 'Tap again to erase all progress';
+    said.textContent = 'This deletes everything on this device and cannot be undone.';
+    disarm = setTimeout(() => { erase.dataset.armed = '0'; erase.textContent = 'Erase everything'; said.textContent = ''; }, 5000);
+  });
+  root.append(h('div', { class: 'btnrow' }, erase));
+  root.append(said);
 
   root.append(h('hr', { class: 'hr' }));
   root.append(h('h3', {}, 'About'));

@@ -52,7 +52,7 @@ const VOCAB = (await read('tags.json')).tags;
 const DERIVED = new Set([
   'reading-sign', 'reading-blank', 'reading-meaning', 'reading-passage', 'reading-picture',
   'listening-picture', 'listening-reply', 'listening-dialogue', 'listening-word',
-  'word-order', 'hangeul-reading',
+  'word-order', 'hangeul-reading', 'sound-changes',
 ]);
 const usedTags = new Set();
 function checkTags(where, obj) {
@@ -113,6 +113,60 @@ for (const f of (await readdir(DATA)).sort()) {
         for (const o of ex.options || []) { if (seen.has(o)) bad(`${f} ${u.id} ex ${i + 1}`, `duplicate option "${o}"`); seen.add(o); }
       }
     });
+  }
+}
+
+/* The alphabet lessons. Each letter family must be taught in exactly one
+   lesson — a family left out is a set of letters the app never teaches, and
+   nothing on screen would show it — and every example has to be a single
+   block the romanizer can read, because its pronunciation is worked out from
+   the block, not written down. */
+{
+  const { romanize } = await import(new URL('../src/js/hangul.js', import.meta.url));
+  const hg = await read('hangeul.json');
+  const families = new Map(hg.groups.map(g => [g.id, 0]));
+  const ids = new Set();
+  for (const l of hg.lessons || []) {
+    const where = `hangeul.json lesson ${l.id}`;
+    if (ids.has(l.id)) bad(where, 'duplicate lesson id');
+    ids.add(l.id);
+    for (const k of ['title', 'titleKo', 'intro', 'rules', 'examples', 'groups']) if (l[k] === undefined) bad(where, `missing ${k}`);
+    if (!l.groups.length && !['finals', 'changes'].includes(l.kind)) bad(where, 'teaches no letters, so needs kind "finals" or "changes"');
+    // A sound-change item is a real pronunciation question: the right answer
+    // must differ from the spelling (or there is no change to learn), and no
+    // wrong answer may BE the right one.
+    for (const c of l.changes || []) {
+      if (!c.name || !c.nameKo || !c.rule) bad(where, `change ${c.name || '?'} needs name, nameKo and rule`);
+      if ((c.words || []).length < 3) bad(where, `change ${c.name}: needs at least 3 words to practise`);
+      for (const w of c.words || []) {
+        if (w.said === w.ko) bad(where, `${w.ko} is said as written — nothing changes`);
+        if ((w.wrong || []).length < 2) bad(where, `${w.ko}: needs two wrong pronunciations`);
+        if ((w.wrong || []).includes(w.said)) bad(where, `${w.ko}: the right answer is also listed as wrong`);
+        if (w.said.length !== w.ko.length) bad(where, `${w.ko} → [${w.said}]: a sound change never adds or loses a block`);
+      }
+    }
+    for (const g of l.groups || []) {
+      if (!families.has(g)) bad(where, `letter family "${g}" does not exist`);
+      else families.set(g, families.get(g) + 1);
+    }
+    for (const ex of l.examples || []) {
+      if (!ex.note) bad(where, `example ${ex.ko} has no note`);
+      if (!ex.ko || ex.ko.length !== 1 || !romanize(ex.ko)) bad(where, `example "${ex.ko}" is not one Hangul block`);
+    }
+  }
+  const allWords = (hg.lessons || []).flatMap(l => (l.changes || []).flatMap(c => c.words || []));
+  const seenWords = new Set();
+  for (const w of allWords) {
+    if (seenWords.has(w.ko)) bad('hangeul.json lessons', `${w.ko} appears twice — its review key would be ambiguous`);
+    seenWords.add(w.ko);
+  }
+  if ((hg.lessons || []).length) {
+    for (const [g, n] of families) if (n !== 1) bad('hangeul.json lessons', `letter family "${g}" is taught in ${n} lessons, expected 1`);
+  }
+  // The hand-written reading drill must agree with the romanizer, or a
+  // review of one of its syllables would mark the drill's own answer wrong.
+  for (const x of hg.drills || []) {
+    if (x.ko && x.rom && romanize(x.ko) !== x.rom) bad('hangeul.json drills', `${x.ko} is "${x.rom}" here but romanizes as "${romanize(x.ko)}"`);
   }
 }
 

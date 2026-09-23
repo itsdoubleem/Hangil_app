@@ -47,11 +47,21 @@ export function runMock(root, m, { head, nav }) {
     ...reading.map((it, i) => ({ ...it, ...shuffled(it), section: 'reading', n: m.listening.length + i + 1 })),
   ];
   const answers = new Array(items.length).fill(null);
-  let i = 0, left = m.minutes * 60, tick = null;
+  let i = 0, left = m.minutes * 60, tick = null, deadline = 0, handing = 0;
 
   intro();
 
-  function stop() { clearInterval(tick); tts.stop(); }
+  function stop() {
+    clearInterval(tick); tick = null;
+    clearTimeout(handing);
+    window.removeEventListener('hashchange', leave);
+    tts.stop();
+  }
+
+  // Leaving the paper — the bottom bar, the phone's back button — abandons it.
+  // The clock used to carry on regardless and, when it ran out, drew the
+  // results over whatever screen you had gone to.
+  function leave() { stop(); }
 
   function intro() {
     clear(root);
@@ -70,8 +80,13 @@ export function runMock(root, m, { head, nav }) {
   }
 
   function start() {
+    // Counted against the wall clock, not by ticks: a phone throttles timers
+    // while the screen is off, and a clock that stops when you look away is
+    // not the clock the real paper has.
+    deadline = Date.now() + left * 1000;
+    window.addEventListener('hashchange', leave);
     tick = setInterval(() => {
-      left -= 1;
+      left = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
       const el = document.getElementById('clock');
       if (el) { el.textContent = mmss(left); el.dataset.low = left <= 300 ? '1' : '0'; }
       if (left <= 0) { stop(); submit(true); }
@@ -132,7 +147,7 @@ export function runMock(root, m, { head, nav }) {
       h('button', { class: 'btn btn--ghost', disabled: i === 0, onclick: () => { i--; draw(); } }, 'Back'),
       h('button', { class: 'btn btn--ghost', disabled: i >= items.length - 1, onclick: () => { i++; draw(); } }, 'Skip'),
       h('span', { style: 'flex:1' }),
-      h('button', { class: 'btn btn--accent', onclick: () => { if (confirm('Hand in the paper now?')) { stop(); submit(false); } } }, 'Hand in'),
+      handIn(),
     ));
 
     const sheet = h('div', { class: 'sheet' });
@@ -145,6 +160,20 @@ export function runMock(root, m, { head, nav }) {
       }, String(x.n)));
     });
     root.append(h('p', { class: 'kicker', style: 'margin-top:20px' }, 'Answer sheet'), sheet);
+  }
+
+  // Two taps rather than confirm(): the Android app has no dialog to show, so
+  // confirm() there quietly returned false and the paper could never be
+  // handed in before the clock ran out.
+  function handIn() {
+    const b = h('button', { class: 'btn btn--accent', type: 'button' }, 'Hand in');
+    b.addEventListener('click', () => {
+      if (b.dataset.armed === '1') { stop(); submit(false); return; }
+      b.dataset.armed = '1';
+      b.textContent = 'Tap again to hand in';
+      handing = setTimeout(() => { b.dataset.armed = '0'; b.textContent = 'Hand in'; }, 4000);
+    });
+    return b;
   }
 
   function submit(ranOut) {
