@@ -2,15 +2,22 @@
 # Build the sideloadable APK.
 #
 #   ./build_apk.sh              -> hangil-debug.apk    (debug-signed, for your phone)
-#   ./build_apk.sh release      -> hangil-release.apk  (unsigned unless a key is set up)
+#   ./build_apk.sh release      -> hangil-release.apk  (signed with the release key)
 #   ./build_apk.sh install      -> build the debug APK and adb install it
 #
 # Runs tools/build.mjs first and stages dist/ into the APK's assets, so the APK
-# and the website always carry the same build. Debug-signed with
-# ~/.android/debug.keystore: fine for sideloading onto your own phone, not a
-# Play Store artifact.
+# and the website always carry the same build. The debug APK is signed with
+# ~/.android/debug.keystore and is debuggable: fine for your own phone, never
+# the one the website offers. That one is `HANGIL_NO_AUDIO=1 ./build_apk.sh
+# release`, which needs android/keystore.properties — see DEPLOY.md.
 set -e
 cd "$(dirname "$0")"
+
+if [ "$1" = release ] && [ ! -f android/keystore.properties ]; then
+  echo "No android/keystore.properties, so there is no release key to sign with." >&2
+  echo "An unsigned APK will not install on any phone. See DEPLOY.md, 'The release key'." >&2
+  exit 1
+fi
 
 case "$1" in
   release) TASK=assembleRelease; OUT=hangil-release.apk

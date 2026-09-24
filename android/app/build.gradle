@@ -2,6 +2,16 @@ plugins {
     id 'com.android.application'
 }
 
+// The release key. android/keystore.properties is gitignored and names a
+// keystore kept OUTSIDE the repo, backed up somewhere safe: storeFile (an
+// absolute path), storePassword, keyAlias, keyPassword. Every update has to be
+// signed with this same key or it will not install over the app already on a
+// phone — and with allowBackup off, uninstalling to get round that loses the
+// learner's progress. See DEPLOY.md.
+def keyFile = rootProject.file('keystore.properties')
+def keyProps = new Properties()
+if (keyFile.exists()) keyFile.withInputStream { keyProps.load(it) }
+
 android {
     namespace 'app.hangil.study'
     compileSdk 37
@@ -12,6 +22,17 @@ android {
         targetSdk 36
         versionCode 1
         versionName '1.0'
+    }
+
+    signingConfigs {
+        if (keyFile.exists()) {
+            release {
+                storeFile file(keyProps['storeFile'])
+                storePassword keyProps['storePassword']
+                keyAlias keyProps['keyAlias']
+                keyPassword keyProps['keyPassword']
+            }
+        }
     }
 
     buildTypes {
@@ -28,6 +49,7 @@ android {
             // catch, because there are no tests on this side.
             minifyEnabled false
             shrinkResources false
+            if (keyFile.exists()) signingConfig signingConfigs.release
         }
     }
 
