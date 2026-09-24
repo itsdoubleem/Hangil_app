@@ -1,0 +1,777 @@
+{
+  "sets": [
+    {
+      "id": "v19",
+      "title": "The phone and messages",
+      "titleKo": "전화와 연락",
+      "order": 19,
+      "words": [
+        {
+          "ko": "전화",
+          "rom": "jeonhwa",
+          "en": "phone call, telephone",
+          "ex": "나중에 다시 전화할게요.",
+          "exEn": "I'll call you back later."
+        },
+        {
+          "ko": "전화번호",
+          "rom": "jeonhwabeonho",
+          "en": "phone number",
+          "ex": "전화번호 좀 알려 주세요.",
+          "exEn": "Can I have your phone number?"
+        },
+        {
+          "ko": "문자",
+          "rom": "munja",
+          "en": "text message",
+          "ex": "문자로 보내 주세요.",
+          "exEn": "Send it by text, please."
+        },
+        {
+          "ko": "연락",
+          "rom": "yeollak",
+          "en": "contact, getting in touch",
+          "ex": "무슨 일 있으면 연락 주세요.",
+          "exEn": "Get in touch if anything comes up."
+        },
+        {
+          "ko": "받다",
+          "rom": "batda",
+          "en": "to receive, to answer (the phone)",
+          "ex": "전화를 안 받아요.",
+          "exEn": "They're not picking up."
+        },
+        {
+          "ko": "걸다",
+          "rom": "geolda",
+          "en": "to make (a call)",
+          "ex": "고향에 전화를 걸었어요.",
+          "exEn": "I rang home."
+        },
+        {
+          "ko": "충전",
+          "rom": "chungjeon",
+          "en": "charging (a battery)",
+          "ex": "휴대폰 좀 충전해도 돼요?",
+          "exEn": "Can I charge my phone?"
+        },
+        {
+          "ko": "배터리",
+          "rom": "baeteori",
+          "en": "battery",
+          "ex": "배터리가 거의 없어요.",
+          "exEn": "My battery's almost dead."
+        },
+        {
+          "ko": "요금제",
+          "rom": "yogeumje",
+          "en": "phone plan",
+          "ex": "더 싼 요금제로 바꿨어요.",
+          "exEn": "I switched to a cheaper plan."
+        },
+        {
+          "ko": "데이터",
+          "rom": "deiteo",
+          "en": "mobile data",
+          "ex": "이번 달 데이터를 다 썼어요.",
+          "exEn": "I've used up this month's data."
+        },
+        {
+          "ko": "와이파이",
+          "rom": "waipai",
+          "en": "wifi",
+          "ex": "기숙사에 와이파이가 있어요?",
+          "exEn": "Is there wifi in the dorm?"
+        },
+        {
+          "ko": "비밀번호",
+          "rom": "bimilbeonho",
+          "en": "password, PIN",
+          "ex": "와이파이 비밀번호가 뭐예요?",
+          "exEn": "What's the wifi password?"
+        },
+        {
+          "ko": "앱",
+          "rom": "aep",
+          "en": "app",
+          "ex": "이 앱으로 버스 시간을 봐요.",
+          "exEn": "I check bus times on this app."
+        },
+        {
+          "ko": "사진",
+          "rom": "sajin",
+          "en": "photo",
+          "ex": "고장 난 부분을 사진으로 찍었어요.",
+          "exEn": "I took a photo of the broken part."
+        },
+        {
+          "ko": "영상통화",
+          "rom": "yeongsangtonghwa",
+          "en": "video call",
+          "ex": "밤마다 가족하고 영상통화를 해요.",
+          "exEn": "I video-call my family every night."
+        },
+        {
+          "ko": "번역기",
+          "rom": "beonyeokgi",
+          "en": "translator (app or device)",
+          "ex": "번역기를 자주 써요.",
+          "exEn": "I use a translation app a lot."
+        },
+        {
+          "ko": "알람",
+          "rom": "allam",
+          "en": "alarm",
+          "ex": "알람을 여섯 시에 맞췄어요.",
+          "exEn": "I set my alarm for six."
+        }
+      ],
+      "tags": [
+        "phone"
+      ]
+    },
+    {
+      "id": "v20",
+      "title": "The dormitory and housing",
+      "titleKo": "기숙사와 집",
+      "order": 20,
+      "words": [
+        {
+          "ko": "집주인",
+          "rom": "jipjuin",
+          "en": "landlord",
+          "ex": "집주인한테 연락했어요.",
+          "exEn": "I got in touch with the landlord."
+        },
+        {
+          "ko": "룸메이트",
+          "rom": "rummeiteu",
+          "en": "roommate",
+          "ex": "룸메이트가 베트남 사람이에요.",
+          "exEn": "My roommate is Vietnamese."
+        },
+        {
+          "ko": "이사",
+          "rom": "isa",
+          "en": "moving house",
+          "ex": "다음 달에 이사해요.",
+          "exEn": "I'm moving next month."
+        },
+        {
+          "ko": "관리비",
+          "rom": "gwallibi",
+          "en": "maintenance fee, service charge",
+          "ex": "관리비는 월급에서 빠져요.",
+          "exEn": "The maintenance fee comes out of my wages."
+        },
+        {
+          "ko": "열쇠",
+          "rom": "yeolsoe",
+          "en": "key",
+          "ex": "열쇠를 잃어버렸어요.",
+          "exEn": "I've lost my key."
+        },
+        {
+          "ko": "창문",
+          "rom": "changmun",
+          "en": "window",
+          "ex": "창문이 안 닫혀요.",
+          "exEn": "The window won't shut."
+        },
+        {
+          "ko": "화장실",
+          "rom": "hwajangsil",
+          "en": "toilet, bathroom",
+          "ex": "화장실이 밖에 있어요.",
+          "exEn": "The toilet is outside."
+        },
+        {
+          "ko": "샤워",
+          "rom": "syawo",
+          "en": "shower",
+          "ex": "샤워는 몇 시까지 할 수 있어요?",
+          "exEn": "Until what time can we shower?"
+        },
+        {
+          "ko": "부엌",
+          "rom": "bueok",
+          "en": "kitchen",
+          "ex": "부엌이 좁아요.",
+          "exEn": "The kitchen is cramped."
+        },
+        {
+          "ko": "냉장고",
+          "rom": "naengjanggo",
+          "en": "fridge",
+          "ex": "냉장고에 넣기 전에 이름을 쓰세요.",
+          "exEn": "Put your name on it before it goes in the fridge."
+        },
+        {
+          "ko": "에어컨",
+          "rom": "eeokeon",
+          "en": "air conditioner",
+          "ex": "에어컨 좀 켜도 돼요?",
+          "exEn": "Can I put the air conditioning on?"
+        },
+        {
+          "ko": "이불",
+          "rom": "ibul",
+          "en": "duvet, bedding",
+          "ex": "이불을 빨았어요.",
+          "exEn": "I washed my duvet."
+        },
+        {
+          "ko": "가스",
+          "rom": "gaseu",
+          "en": "gas",
+          "ex": "가스 냄새가 나요!",
+          "exEn": "I can smell gas!"
+        },
+        {
+          "ko": "곰팡이",
+          "rom": "gompangi",
+          "en": "mould",
+          "ex": "벽에 곰팡이가 생겼어요.",
+          "exEn": "Mould has appeared on the wall."
+        },
+        {
+          "ko": "벌레",
+          "rom": "beolle",
+          "en": "insect, bug",
+          "ex": "방에 벌레가 많아요.",
+          "exEn": "There are a lot of insects in my room."
+        },
+        {
+          "ko": "고치다",
+          "rom": "gochida",
+          "en": "to fix, to mend",
+          "ex": "집주인이 문을 고쳐 줬어요.",
+          "exEn": "The landlord fixed the door."
+        },
+        {
+          "ko": "시끄럽다",
+          "rom": "sikkeureopda",
+          "en": "to be noisy",
+          "ex": "옆방이 너무 시끄러워요.",
+          "exEn": "The room next door is really noisy."
+        }
+      ],
+      "tags": [
+        "daily-life"
+      ]
+    },
+    {
+      "id": "v21",
+      "title": "The bank and sending money home",
+      "titleKo": "은행과 송금",
+      "order": 21,
+      "words": [
+        {
+          "ko": "계좌",
+          "rom": "gyejwa",
+          "en": "bank account",
+          "ex": "은행에서 계좌를 만들었어요.",
+          "exEn": "I opened an account at the bank."
+        },
+        {
+          "ko": "계좌번호",
+          "rom": "gyejwabeonho",
+          "en": "account number",
+          "ex": "회사에 계좌번호를 냈어요.",
+          "exEn": "I gave the company my account number."
+        },
+        {
+          "ko": "입금",
+          "rom": "ipgeum",
+          "en": "deposit, money paid in",
+          "ex": "월급이 입금됐어요.",
+          "exEn": "My wages have gone in."
+        },
+        {
+          "ko": "출금",
+          "rom": "chulgeum",
+          "en": "withdrawal",
+          "ex": "편의점 ATM에서 출금했어요.",
+          "exEn": "I took money out at the ATM in the convenience store."
+        },
+        {
+          "ko": "이체",
+          "rom": "iche",
+          "en": "transfer (between accounts)",
+          "ex": "친구한테 십만 원을 이체했어요.",
+          "exEn": "I transferred 100,000 won to a friend."
+        },
+        {
+          "ko": "환율",
+          "rom": "hwanyul",
+          "en": "exchange rate",
+          "ex": "오늘 환율이 좋아요.",
+          "exEn": "The exchange rate is good today."
+        },
+        {
+          "ko": "수수료",
+          "rom": "susuryo",
+          "en": "fee, commission",
+          "ex": "송금 수수료가 얼마예요?",
+          "exEn": "How much is the fee for sending money?"
+        },
+        {
+          "ko": "잔액",
+          "rom": "janaek",
+          "en": "balance (in an account)",
+          "ex": "잔액이 부족합니다.",
+          "exEn": "Insufficient balance."
+        },
+        {
+          "ko": "체크카드",
+          "rom": "chekeukadeu",
+          "en": "debit card",
+          "ex": "체크카드를 새로 만들었어요.",
+          "exEn": "I got a new debit card."
+        },
+        {
+          "ko": "신분증",
+          "rom": "sinbunjeung",
+          "en": "ID card",
+          "ex": "신분증을 가져오세요.",
+          "exEn": "Bring your ID."
+        },
+        {
+          "ko": "창구",
+          "rom": "changgu",
+          "en": "counter, window (at a bank)",
+          "ex": "3번 창구로 가세요.",
+          "exEn": "Go to counter 3."
+        },
+        {
+          "ko": "번호표",
+          "rom": "beonhopyo",
+          "en": "queue ticket, number ticket",
+          "ex": "번호표를 뽑고 기다리세요.",
+          "exEn": "Take a number and wait."
+        },
+        {
+          "ko": "달러",
+          "rom": "dalleo",
+          "en": "dollar",
+          "ex": "원을 달러로 바꿨어요.",
+          "exEn": "I changed won into dollars."
+        },
+        {
+          "ko": "보내다",
+          "rom": "bonaeda",
+          "en": "to send",
+          "ex": "매달 고향에 돈을 보내요.",
+          "exEn": "I send money home every month."
+        },
+        {
+          "ko": "찾다",
+          "rom": "chatda",
+          "en": "to find; to withdraw (money)",
+          "ex": "은행에서 돈을 찾았어요.",
+          "exEn": "I took some money out at the bank."
+        },
+        {
+          "ko": "출국만기보험",
+          "rom": "chulgungmangiboheom",
+          "en": "departure guarantee insurance",
+          "ex": "출국만기보험은 한국을 떠날 때 받아요.",
+          "exEn": "You receive your departure guarantee insurance when you leave Korea."
+        }
+      ],
+      "tags": [
+        "money-wages"
+      ]
+    },
+    {
+      "id": "v22",
+      "title": "Holidays and time off",
+      "titleKo": "명절과 휴가",
+      "order": 22,
+      "words": [
+        {
+          "ko": "공휴일",
+          "rom": "gonghyuil",
+          "en": "public holiday",
+          "ex": "공휴일에도 공장이 돌아가요.",
+          "exEn": "The factory keeps running even on public holidays."
+        },
+        {
+          "ko": "대체공휴일",
+          "rom": "daechegonghyuil",
+          "en": "substitute holiday",
+          "ex": "월요일이 대체공휴일이에요.",
+          "exEn": "Monday is a substitute holiday."
+        },
+        {
+          "ko": "명절",
+          "rom": "myeongjeol",
+          "en": "traditional holiday",
+          "ex": "명절에는 기숙사가 조용해요.",
+          "exEn": "The dorm is quiet over the holidays."
+        },
+        {
+          "ko": "설날",
+          "rom": "seollal",
+          "en": "Lunar New Year",
+          "ex": "설날에 떡국을 먹었어요.",
+          "exEn": "I had rice-cake soup at Lunar New Year."
+        },
+        {
+          "ko": "추석",
+          "rom": "chuseok",
+          "en": "Chuseok, the harvest festival",
+          "ex": "추석에는 송편을 먹어요.",
+          "exEn": "At Chuseok people eat songpyeon."
+        },
+        {
+          "ko": "연휴",
+          "rom": "yeonhyu",
+          "en": "a run of days off, long weekend",
+          "ex": "연휴에 친구들하고 부산에 가요.",
+          "exEn": "I'm going to Busan with friends over the long weekend."
+        },
+        {
+          "ko": "연차",
+          "rom": "yeoncha",
+          "en": "annual leave",
+          "ex": "연차를 하루 쓰고 싶어요.",
+          "exEn": "I'd like to take a day of annual leave."
+        },
+        {
+          "ko": "병가",
+          "rom": "byeongga",
+          "en": "sick leave",
+          "ex": "진단서를 내고 병가를 썼어요.",
+          "exEn": "I handed in a medical certificate and took sick leave."
+        },
+        {
+          "ko": "조퇴",
+          "rom": "jotoe",
+          "en": "leaving work early",
+          "ex": "몸이 안 좋아서 조퇴했어요.",
+          "exEn": "I wasn't feeling well, so I left early."
+        },
+        {
+          "ko": "결근",
+          "rom": "gyeolgeun",
+          "en": "absence from work",
+          "ex": "연락 없이 결근하면 안 돼요.",
+          "exEn": "You mustn't miss work without letting anyone know."
+        },
+        {
+          "ko": "휴무",
+          "rom": "hyumu",
+          "en": "closed, a day off",
+          "ex": "이번 토요일은 휴무예요.",
+          "exEn": "We're off this Saturday."
+        },
+        {
+          "ko": "쉬는 날",
+          "rom": "swineun nal",
+          "en": "day off",
+          "ex": "쉬는 날에 뭐 해요?",
+          "exEn": "What do you do on your days off?"
+        },
+        {
+          "ko": "여행",
+          "rom": "yeohaeng",
+          "en": "trip, travel",
+          "ex": "휴가 때 제주도로 여행 갔어요.",
+          "exEn": "I went to Jeju on my holiday."
+        },
+        {
+          "ko": "고향",
+          "rom": "gohyang",
+          "en": "home town, home country",
+          "ex": "3년 만에 고향에 가요.",
+          "exEn": "I'm going home for the first time in three years."
+        },
+        {
+          "ko": "비행기표",
+          "rom": "bihaenggipyo",
+          "en": "plane ticket",
+          "ex": "고향 가는 비행기표를 샀어요.",
+          "exEn": "I bought a plane ticket home."
+        },
+        {
+          "ko": "선물",
+          "rom": "seonmul",
+          "en": "present, gift",
+          "ex": "사장님이 추석 선물을 주셨어요.",
+          "exEn": "The boss gave us Chuseok presents."
+        },
+        {
+          "ko": "달력",
+          "rom": "dallyeok",
+          "en": "calendar",
+          "ex": "달력에 휴일을 표시했어요.",
+          "exEn": "I marked the days off on the calendar."
+        }
+      ],
+      "tags": [
+        "holidays-leave"
+      ]
+    },
+    {
+      "id": "v23",
+      "title": "The contract and the rules",
+      "titleKo": "근로계약과 규칙",
+      "order": 23,
+      "words": [
+        {
+          "ko": "근로계약서",
+          "rom": "geullogyeyakseo",
+          "en": "employment contract",
+          "ex": "근로계약서를 꼭 한 부 받으세요.",
+          "exEn": "Make sure you get a copy of your employment contract."
+        },
+        {
+          "ko": "근로자",
+          "rom": "geulloja",
+          "en": "worker, employee",
+          "ex": "외국인 근로자도 같은 법의 보호를 받아요.",
+          "exEn": "Foreign workers are protected by the same law."
+        },
+        {
+          "ko": "사업주",
+          "rom": "saeopju",
+          "en": "employer",
+          "ex": "사업주는 근로자에게 계약서를 꼭 줘야 합니다.",
+          "exEn": "The employer must give the worker a contract."
+        },
+        {
+          "ko": "임금",
+          "rom": "imgeum",
+          "en": "wages, pay",
+          "ex": "임금이 두 달째 안 나왔어요.",
+          "exEn": "My wages haven't been paid for two months."
+        },
+        {
+          "ko": "최저임금",
+          "rom": "choejeoimgeum",
+          "en": "minimum wage",
+          "ex": "최저임금은 매년 바뀌어요.",
+          "exEn": "The minimum wage changes every year."
+        },
+        {
+          "ko": "근로시간",
+          "rom": "geullosigan",
+          "en": "working hours",
+          "ex": "계약서에 근로시간이 나와 있어요.",
+          "exEn": "Your working hours are written in the contract."
+        },
+        {
+          "ko": "휴게시간",
+          "rom": "hyugesigan",
+          "en": "rest break (in working hours)",
+          "ex": "휴게시간은 근로시간에 들어가지 않아요.",
+          "exEn": "Break time doesn't count as working hours."
+        },
+        {
+          "ko": "연장근로",
+          "rom": "yeonjanggeullo",
+          "en": "overtime work",
+          "ex": "연장근로는 근로자가 동의해야 돼요.",
+          "exEn": "Overtime needs the worker's agreement."
+        },
+        {
+          "ko": "동의",
+          "rom": "dongui",
+          "en": "agreement, consent",
+          "ex": "동의하지 않으면 사인하지 마세요.",
+          "exEn": "If you don't agree, don't sign."
+        },
+        {
+          "ko": "퇴직금",
+          "rom": "toejikgeum",
+          "en": "severance pay",
+          "ex": "일 년 이상 일하면 퇴직금을 받아요.",
+          "exEn": "If you work for a year or more, you get severance pay."
+        },
+        {
+          "ko": "규칙",
+          "rom": "gyuchik",
+          "en": "rule",
+          "ex": "회사 규칙이 새로 생겼어요.",
+          "exEn": "There's a new company rule."
+        },
+        {
+          "ko": "지키다",
+          "rom": "jikida",
+          "en": "to keep, to follow (a rule)",
+          "ex": "출근 시간을 꼭 지키세요.",
+          "exEn": "Always be on time for work."
+        },
+        {
+          "ko": "위반",
+          "rom": "wiban",
+          "en": "violation, breach",
+          "ex": "그건 법 위반이에요.",
+          "exEn": "That's against the law."
+        },
+        {
+          "ko": "수습",
+          "rom": "suseup",
+          "en": "probation, trial period",
+          "ex": "제 수습 기간은 석 달이에요.",
+          "exEn": "My probation period is three months."
+        },
+        {
+          "ko": "계약 기간",
+          "rom": "gyeyak gigan",
+          "en": "contract period",
+          "ex": "계약 기간이 끝나면 어떻게 돼요?",
+          "exEn": "What happens when the contract period ends?"
+        },
+        {
+          "ko": "해고",
+          "rom": "haego",
+          "en": "dismissal",
+          "ex": "이유 없이 해고하면 안 돼요.",
+          "exEn": "They can't dismiss you without a reason."
+        },
+        {
+          "ko": "서명",
+          "rom": "seomyeong",
+          "en": "signature",
+          "ex": "내용을 이해한 후에 서명하세요.",
+          "exEn": "Sign only after you understand what it says."
+        }
+      ],
+      "tags": [
+        "work-rights"
+      ]
+    },
+    {
+      "id": "v24",
+      "title": "Asking for help, reporting a problem",
+      "titleKo": "도움 요청과 신고",
+      "order": 24,
+      "words": [
+        {
+          "ko": "도움",
+          "rom": "doum",
+          "en": "help",
+          "ex": "도움이 필요해요.",
+          "exEn": "I need help."
+        },
+        {
+          "ko": "도와주다",
+          "rom": "dowajuda",
+          "en": "to help",
+          "ex": "혼자 할 수 없어요. 좀 도와주세요.",
+          "exEn": "I can't do it on my own. Please help."
+        },
+        {
+          "ko": "부탁",
+          "rom": "butak",
+          "en": "a favour, a request",
+          "ex": "부탁이 하나 있어요.",
+          "exEn": "Can I ask you a favour?"
+        },
+        {
+          "ko": "설명",
+          "rom": "seolmyeong",
+          "en": "explanation",
+          "ex": "천천히 다시 설명해 주세요.",
+          "exEn": "Could you explain it again slowly?"
+        },
+        {
+          "ko": "이해하다",
+          "rom": "ihaehada",
+          "en": "to understand",
+          "ex": "말이 너무 빨라서 이해를 못 했어요.",
+          "exEn": "It was too fast for me to understand."
+        },
+        {
+          "ko": "모르다",
+          "rom": "moreuda",
+          "en": "not to know",
+          "ex": "모르면 꼭 물어보세요.",
+          "exEn": "If you don't know, always ask."
+        },
+        {
+          "ko": "물어보다",
+          "rom": "mureoboda",
+          "en": "to ask (a question)",
+          "ex": "반장님한테 물어볼게요.",
+          "exEn": "I'll ask the team leader."
+        },
+        {
+          "ko": "문제",
+          "rom": "munje",
+          "en": "problem",
+          "ex": "기계에 문제가 있어요.",
+          "exEn": "There's a problem with the machine."
+        },
+        {
+          "ko": "신고",
+          "rom": "singo",
+          "en": "report (to the authorities)",
+          "ex": "사고가 나면 바로 신고하세요.",
+          "exEn": "Report any accident straight away."
+        },
+        {
+          "ko": "경찰",
+          "rom": "gyeongchal",
+          "en": "police",
+          "ex": "경찰을 불러 주세요!",
+          "exEn": "Call the police!"
+        },
+        {
+          "ko": "상담",
+          "rom": "sangdam",
+          "en": "counselling, advice",
+          "ex": "1350에 전화해서 상담을 받았어요.",
+          "exEn": "I called 1350 and got advice."
+        },
+        {
+          "ko": "괴롭힘",
+          "rom": "goerophim",
+          "en": "harassment, bullying",
+          "ex": "직장 내 괴롭힘은 법으로 금지돼 있어요.",
+          "exEn": "Bullying at work is against the law."
+        },
+        {
+          "ko": "차별",
+          "rom": "chabyeol",
+          "en": "discrimination",
+          "ex": "외국인이라고 차별하면 안 돼요.",
+          "exEn": "No one may treat you worse for being a foreigner."
+        },
+        {
+          "ko": "폭언",
+          "rom": "pogeon",
+          "en": "verbal abuse",
+          "ex": "반장님이 자주 폭언을 해요.",
+          "exEn": "The team leader often yells abuse at us."
+        },
+        {
+          "ko": "증거",
+          "rom": "jeunggeo",
+          "en": "evidence",
+          "ex": "녹음이나 사진이 증거가 돼요.",
+          "exEn": "Recordings and photos count as evidence."
+        },
+        {
+          "ko": "억울하다",
+          "rom": "eogulhada",
+          "en": "to feel wronged",
+          "ex": "제 잘못이 아닌데 억울해요.",
+          "exEn": "It wasn't my fault. It's so unfair."
+        },
+        {
+          "ko": "참다",
+          "rom": "chamda",
+          "en": "to put up with, to hold back",
+          "ex": "혼자 참지 마세요.",
+          "exEn": "Don't just put up with it on your own."
+        }
+      ],
+      "tags": [
+        "getting-help"
+      ]
+    }
+  ]
+}

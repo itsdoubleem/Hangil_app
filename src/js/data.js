@@ -5,7 +5,7 @@ const FILES = {
   hangeul: ['data/hangeul.json'],
   pictures: ['data/pictures.json'],
   course:  ['data/course-1.json', 'data/course-2.json', 'data/course-3.json', 'data/course-4.json'],
-  vocab:   ['data/vocab-1.json', 'data/vocab-2.json'],
+  vocab:   ['data/vocab-1.json', 'data/vocab-2.json', 'data/vocab-3.json', 'data/vocab-4.json'],
   drills:  ['data/exam-drills.json'],
   trades:  ['data/trades-1.json', 'data/trades-2.json'],
   guide:   ['data/guide.json'],

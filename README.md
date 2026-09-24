@@ -50,7 +50,7 @@ behind it, because less than that is a small sample and not a weak spot.
 
 Also: a 한글 trainer for absolute beginners — including a chart of all forty
 letters laid out by family, so ㄱ, ㅋ and ㄲ sit in one column and you can see
-that Korean has far fewer shapes than it first appears. 405 words grouped by
+that Korean has far fewer shapes than it first appears. 612 words grouped by
 where you hear them, six short reads on what the paper is and how it is marked,
 and a shelf for official EPS listening files you download yourself.
 

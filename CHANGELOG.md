@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-09-25 — twelve more vocabulary sets
+
+**Vocabulary: 24 sets, 404 words**, up from 12 and 197. The new sets, v13–v24,
+are in `data/vocab-3.json` and `data/vocab-4.json`, easiest first: describing
+things, where things are, actions at work, weather and seasons, feelings,
+shopping, the phone, the dormitory, the bank and sending money home, holidays
+and time off, the contract and the rules, and asking for help or reporting a
+problem. With the trades that makes 612 words in the app.
+
+Every headword is new: none repeats a word in v01–v12 or in either trades file,
+checked by script rather than by eye. Each has an example sentence in the
+grammar the course has taught by that point, so the early sets stay in the
+present tense and 세요, and the contract and help sets are where 아야 돼요,
+(으)면 안 돼요 and the formal register turn up.
+
+**Ten new topic tags, and two reused.** The dormitory set is tagged
+`daily-life` and the bank set `money-wages`, because they are the same subject as
+v08 and v06 — a weak spot in paying rent is a weak spot in home and daily life.
+The other ten sets each get their own.
+
+**Romanization follows the existing sets where Revised Romanization is
+ambiguous.** A stop before ㅎ keeps the h, as 막히다 *makhida* already does:
+깨끗하다 *kkaekkeuthada*, 따뜻하다 *ttatteuthada*, 시작하다 *sijakhada*. Strict RR
+would write the aspiration instead for a verb or adjective. Compounds are written
+as one word without hyphens, the way 외국인등록증 is, and not the way the trades
+files hyphenate them.
+
 ## v1.0.1 — 2026-09-24 — tests, and four faults from a full review
 
 **Tests.** `node --test 'tests/*.test.mjs'` — Node's own runner, nothing to
