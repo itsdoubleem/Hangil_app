@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — tests, and four faults from a full review
+## v1.0.1 — 2026-09-24 — tests, and four faults from a full review
 
 **Tests.** `node --test 'tests/*.test.mjs'` — Node's own runner, nothing to
 install. They cover the syllable arithmetic in `hangul.js` (every one of the
