@@ -1,5 +1,43 @@
 # Changelog
 
+## 2026-09-25 — six romanizations corrected, and a check that keeps them right
+
+**Six `rom` values were wrong, and are fixed.** A learner memorises the
+romanization exactly as it is printed, so a wrong one teaches the wrong sound:
+
+- 주의 `jui` → `juui` — ㅢ is always *ui*.
+- 체류 `chelyu` → `cheryu` — ㄹ before a vowel is *r*.
+- 그라인더 `geurainedeo` → `geuraindeo` — a typo.
+- 월급명세서 `wolgeup…` → `wolgeum…`, 화학물질 `hwahak-` → `hwahang-`, and
+  방독마스크 `bangdok-` → `bangdong-`. A stop before ㄴ or ㅁ is said as a nasal,
+  and Revised Romanization writes it that way, as 작년 *jangnyeon* already did.
+
+**`tools/romanize.mjs` romanizes a whole word**, where `hangul.js` does one
+syllable said on its own. It applies the RR rules that work across a syllable
+boundary: 연음, ㄹ as *r* or *l*, 비음화, ㄹ after a consonant, 구개음화, and
+ㅎ's aspiration. Like RR, it leaves tensification unwritten. It is a checker
+only, and nothing in `src/` imports it, so the app is unchanged.
+
+**`check-content.mjs` now fails on any `rom` that disagrees with it.** That
+covers all 742 `rom` values that sit beside a `ko`: words, the alphabet
+examples, the reading drills and the course's sentences. The 40 letters' own
+`rom` values are left out, because a letter is not a word. Case is ignored
+because RR capitalises names, and a hyphen inside a word is allowed because RR
+permits one where a reading could be confused.
+
+**Seven words are exceptions, listed one per line with a reason:**
+
+- The house convention of keeping the h where ㅎ meets a stop: 막히다,
+  깨끗하다, 따뜻하다 and 시작하다. Strict RR would write *makida*. This is a
+  choice still to be made, not a fact, so the romanizer stays strict and the
+  exceptions stay visible.
+- Two nouns, 낙하 and 괴롭힘, where RR itself keeps the h.
+- 밥하고, which is undecided.
+
+The check also fails on an exception that is no longer needed, so the list
+cannot quietly go stale. Tests for the romanizer are in
+`tests/romanize.test.mjs`.
+
 ## 2026-09-25 — twelve more vocabulary sets
 
 **Vocabulary: 24 sets, 404 words**, up from 12 and 197. The new sets, v13–v24,

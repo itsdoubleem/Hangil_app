@@ -170,6 +170,57 @@ for (const f of (await readdir(DATA)).sort()) {
   }
 }
 
+/* Romanization. Every `rom` beside a `ko` — words, the alphabet lessons'
+   examples, the course's sentences — has to agree with tools/romanize.mjs,
+   which applies the Revised Romanization rules that work across syllables.
+   A wrong `rom` is invisible on screen and gets memorised exactly as written:
+   주의 was `jui` and 체류 `chelyu` for months before anything looked.
+
+   Case is ignored, because RR capitalises names (Pillipin) and the romanizer
+   cannot know which words are names. A hyphen inside a word is allowed, because
+   RR allows one where a reading could be confused (안경 an-gyeong); everything
+   else, spaces and punctuation included, must match. */
+{
+  const { romanizeWord } = await import(new URL('./romanize.mjs', import.meta.url));
+  // Where the data is right and the romanizer is not, or is right by a rule
+  // the romanizer cannot see. One line each, with the reason. Do not add a
+  // word here to make a typo pass — fix the typo.
+  const ROM_EXCEPTIONS = {
+    // House convention: the h is kept where ㅎ meets ㄱ ㄷ ㅂ, even in a verb or
+    // adjective, where strict RR writes the aspiration instead (makida).
+    '막히다': ['makhida', 'house convention: h kept after ㄱ'],
+    '깨끗하다': ['kkaekkeuthada', 'house convention: h kept after ㅅ said as ㄷ'],
+    '따뜻하다': ['ttatteuthada', 'house convention: h kept after ㅅ said as ㄷ'],
+    '시작하다': ['sijakhada', 'house convention: h kept after ㄱ'],
+    // RR itself keeps the h in a noun (its own example: 묵호 Mukho), and the
+    // romanizer cannot tell a noun from a verb.
+    '낙하': ['nakha', 'a noun: RR keeps the h'],
+    '괴롭힘': ['goerophim', 'a noun: RR keeps the h'],
+    // Unsettled: a noun and the particle 하고. Left as written until decided.
+    '밥하고': ['baphago', 'noun + particle 하고: noun rule or verb rule, undecided'],
+  };
+  const usedExceptions = new Set();
+  const expected = (ko) => ko.replace(/[가-힣]+/g, (w) => {
+    const r = romanizeWord(w);
+    if (ROM_EXCEPTIONS[w] && ROM_EXCEPTIONS[w][0] !== r) { usedExceptions.add(w); return ROM_EXCEPTIONS[w][0]; }
+    return r;
+  });
+  const norm = (s) => s.toLowerCase().replace(/(?<=[a-z])-(?=[a-z])/g, '');
+  const visit = (f, o) => {
+    if (Array.isArray(o)) return o.forEach(x => visit(f, x));
+    if (!o || typeof o !== 'object') return;
+    if (typeof o.ko === 'string' && typeof o.rom === 'string') {
+      const want = expected(o.ko);
+      if (norm(o.rom) !== norm(want)) bad(`${f} ${o.ko}`, `rom is "${o.rom}" but romanizes as "${want}"`);
+    }
+    for (const v of Object.values(o)) visit(f, v);
+  };
+  for (const f of (await readdir(DATA)).sort()) if (f.endsWith('.json')) visit(f, await read(f));
+  for (const w of Object.keys(ROM_EXCEPTIONS)) {
+    if (!usedExceptions.has(w)) bad('check-content.mjs', `romanization exception "${w}" is no longer needed — remove it`);
+  }
+}
+
 for (const t of Object.keys(VOCAB)) {
   if (!usedTags.has(t)) bad('tags.json', `"${t}" is declared but nothing uses it`);
 }
