@@ -78,6 +78,7 @@ backup file in Settings.
 
 ```bash
 node tools/check-content.mjs   # proof-reads data/ — run this first
+node --test 'tests/*.test.mjs' # the code's own tests; Node's built-in runner, nothing to install
 node tools/build.mjs      # -> dist/  (the web app)
 ./build_apk.sh install    # -> hangil-debug.apk, installed on a connected phone
 python3 tools/icons.py src   # only when the icon changes
