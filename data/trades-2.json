@@ -905,7 +905,7 @@
       "words": [
         {
           "ko": "화학물질",
-          "rom": "hwahak-muljil",
+          "rom": "hwahang-muljil",
           "en": "chemical substance",
           "ex": "화학물질은 이름을 확인하고 씁니다.",
           "exEn": "Check the name before using a chemical."
@@ -975,7 +975,7 @@
         },
         {
           "ko": "방독마스크",
-          "rom": "bangdok-maseukeu",
+          "rom": "bangdong-maseukeu",
           "en": "respirator, gas mask",
           "ex": "방독마스크를 쓰고 들어가십시오.",
           "exEn": "Put a respirator on before going in."
