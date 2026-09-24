@@ -10,7 +10,7 @@
 // has not taught.
 
 import { shuffle } from './util.js';
-import { compose, romanize, naive, neighbours, parts, VOWELS } from './hangul.js';
+import { compose, romanize, said, naive, neighbours, parts, VOWELS } from './hangul.js';
 
 // Closing letters the 받침 lesson practises: the seven sounds, plus the letters
 // that are NOT said as they look, which is the point of the lesson.
@@ -122,12 +122,12 @@ function confusable(syl, have) {
         return [...sameTop, ...all.filter(x => !sameTop.includes(x))];
       })()
     : all;
-  // One per SOUND. 밋, 밑 and 믿 are all said mit, and two options that sound
-  // alike cannot be told apart by ear — nor be two different answers to
-  // "how is this said?".
-  const seen = new Set(), out = [];
+  // One per SOUND. 밋, 밑 and 믿 are all said mit, and 내 and 네 are both said
+  // ne; two options that sound alike cannot be told apart by ear — nor be two
+  // different answers to "how is this said?".
+  const seen = new Set([said(syl)]), out = [];
   for (const x of ordered) {
-    const r = romanize(x);
+    const r = said(x);
     if (seen.has(r)) continue;
     seen.add(r); out.push(x);
     if (out.length === 3) break;

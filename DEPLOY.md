@@ -115,13 +115,49 @@ behaviour and is not worth engineering around for a study app.
 ## The Android app
 
 ```bash
-./build_apk.sh              # -> hangil-debug.apk, and prints its SHA-256
-./build_apk.sh install      # the same, then adb install to a connected phone
+./build_apk.sh                          # -> hangil-debug.apk, for your own phone
+./build_apk.sh install                  # the same, then adb install to a connected phone
+HANGIL_NO_AUDIO=1 ./build_apk.sh release   # -> hangil-release.apk, the one the website offers
 ```
 
 It runs `tools/build.mjs` first and stages `dist/` into the APK's assets, so the
-APK and the website always carry the same build. Debug-signed with
-`~/.android/debug.keystore`: fine for sideloading, not a Play Store artifact.
+APK and the website always carry the same build, and prints the SHA-256 and the
+signing certificate.
+
+**The debug APK never goes on the website.** It is debuggable — anyone with a
+cable and adb can read or rewrite a learner's progress through `run-as`, and the
+WebView can be inspected — and it is signed with `~/.android/debug.keystore`,
+which is this Mac's and is regenerated if lost.
+
+### The release key
+
+Android installs an update only if it is signed with the same key as the app
+already on the phone. Lose the key and nobody can update; they have to
+uninstall, and because the app sets `allowBackup=false`, uninstalling deletes
+their progress. So the key is made once, kept outside every repo, and backed up.
+
+```bash
+keytool -genkeypair -keystore ~/keys/hangil-release.jks -alias hangil \
+  -keyalg RSA -keysize 4096 -validity 10000
+```
+
+Then write `android/keystore.properties` (gitignored — never commit it):
+
+```properties
+storeFile=/Users/<you>/keys/hangil-release.jks
+storePassword=…
+keyAlias=hangil
+keyPassword=…
+```
+
+Without that file `./build_apk.sh release` stops rather than produce an
+unsigned APK, which no phone will install.
+
+**Moving from the debug key is a one-time break.** APKs published before the
+release key existed were debug-signed, and a release-signed APK will not install
+over one. Anyone who installed the old one has to export a backup from Settings,
+uninstall, install the new APK and restore the backup. Say so on the download
+page when the first release-signed APK goes up.
 
 The APK is **not** just the web build in a box. It has the phone's speech engine
 behind the play buttons, which a browser cannot reach, and it ships with no
@@ -132,6 +168,6 @@ same commit — `apps/hangil.md` prints one and the site README prints the other
 and a stale hash is worse than no hash:
 
 ```bash
-cp hangil-debug.apk ~/doubleem-site/public/downloads/hangil.apk
+cp hangil-release.apk ~/doubleem-site/public/downloads/hangil.apk
 shasum -a 256 ~/doubleem-site/public/downloads/*.apk
 ```

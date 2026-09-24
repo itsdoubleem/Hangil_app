@@ -1,5 +1,32 @@
 # Changelog
 
+## Unreleased — tests, and four faults from a full review
+
+**Tests.** `node --test 'tests/*.test.mjs'` — Node's own runner, nothing to
+install. They cover the syllable arithmetic in `hangul.js` (every one of the
+11,172 syllables round-trips), the review schedule, the two decks staying apart,
+`MIN_ATTEMPTS`, backup and restore, every review key resolving to its content,
+and the alphabet lessons' generated questions.
+
+**A failed download no longer deletes review history.** The review screens
+forgot any key that did not resolve, assuming its content had been removed. But
+a file that failed to download was quietly left out and cached that way for the
+session, so one bad request for `course-3.json` erased the schedule of six units.
+`load()` now names what did not arrive and tries again next time, and a key is
+only forgotten when `gone()` says so after a complete load.
+
+**Alphabet listening questions no longer offer two options said alike.** Wrong
+options were kept apart by romanization, which spells vowels modern Korean has
+merged — 재 and 제, 괘 and 궤, 져 and 저. `said()` in `hangul.js` keys a syllable
+by how it sounds, and one option per sound is kept.
+
+**Android 7–9 has a theme again.** `DayNight` is API 29; below that the theme's
+parent did not exist. Android 10 and later are unchanged.
+
+**The release APK is signed with a real key.** The website had been serving the
+debuggable, debug-signed build. See DEPLOY.md, *The release key* — including the
+one-time uninstall-and-restore for anyone on the old APK.
+
 ## 2026-09-20 — new artwork, same scene, a sky that is not quite white
 
 Replaced `src/icon-artwork.png` with the supplied file as it arrived — 3072px,
