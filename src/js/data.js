@@ -22,30 +22,40 @@ export const LEVELS = [
   { id: 'L4', title: 'Going further',   titleKo: '더 깊이', blurb: 'Where the exam stops and real Korean carries on — clauses, reported speech, nuance, documents.' },
 ];
 
+// The two shelves the owner of a build fills themselves. They ship empty, so a
+// build without them is normal and not a failed load.
+const OPTIONAL = new Set([...FILES.listening, ...FILES.images]);
+
 let cache = null;
 
-async function grab(path) {
+async function grab(path, failed) {
   try {
     const r = await fetch(path, { cache: 'no-cache' });
-    if (!r.ok) return null;
-    return await r.json();
-  } catch { return null; }
+    if (r.ok) return await r.json();
+  } catch {}
+  if (!OPTIONAL.has(path)) failed.push(path);
+  return null;
 }
 
+// A load with a file missing is still used — the screens that do not need that
+// file work — but it is not kept: the next load() tries again, rather than the
+// whole session running on one bad request.
 export async function load() {
-  if (cache) return cache;
+  if (cache && !cache.missing.length) return cache;
+  const failed = [];
+  const get = (p) => grab(p, failed);
   const [hangeul, pictures, course, vocab, drills, mocks, listening, images, trades, guide, tags] = await Promise.all([
-    Promise.all(FILES.hangeul.map(grab)),
-    Promise.all(FILES.pictures.map(grab)),
-    Promise.all(FILES.course.map(grab)),
-    Promise.all(FILES.vocab.map(grab)),
-    Promise.all(FILES.drills.map(grab)),
-    Promise.all(FILES.mocks.map(grab)),
-    Promise.all(FILES.listening.map(grab)),
-    Promise.all(FILES.images.map(grab)),
-    Promise.all(FILES.trades.map(grab)),
-    Promise.all(FILES.guide.map(grab)),
-    Promise.all(FILES.tags.map(grab)),
+    Promise.all(FILES.hangeul.map(get)),
+    Promise.all(FILES.pictures.map(get)),
+    Promise.all(FILES.course.map(get)),
+    Promise.all(FILES.vocab.map(get)),
+    Promise.all(FILES.drills.map(get)),
+    Promise.all(FILES.mocks.map(get)),
+    Promise.all(FILES.listening.map(get)),
+    Promise.all(FILES.images.map(get)),
+    Promise.all(FILES.trades.map(get)),
+    Promise.all(FILES.guide.map(get)),
+    Promise.all(FILES.tags.map(get)),
   ]);
 
   const units = course.filter(Boolean).flatMap(f => f.units).sort((a, b) => a.order - b.order);
@@ -59,6 +69,9 @@ export async function load() {
   const trds = trades.filter(Boolean).flatMap(f => f.trades).sort((a, b) => a.order - b.order);
 
   cache = {
+    // Required files that did not arrive. While this is not empty, a key that
+    // fails to resolve may only be waiting for its file — see gone().
+    missing: failed,
     hangeul: hangeul[0],
     pics: (pictures[0] && pictures[0].pics) ? pictures[0].pics : {},
     // Official pictures the owner of this build dropped into content/images.
@@ -193,6 +206,11 @@ function stampTags(d) {
 
   d.byTag = Object.fromEntries(Object.entries(by).map(([k, v]) => [k, [...v]]));
 }
+
+// True only when a key's content has really been removed from the app. A key
+// that fails to resolve because its file did not load this time is NOT gone,
+// and forgetting it would throw away its review history for good.
+export const gone = (key) => !!cache && !cache.missing.length && resolve(key) === null;
 
 export function resolve(key) {
   const d = cache;

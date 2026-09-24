@@ -1,7 +1,7 @@
 import { h, clear, shuffle, icon, today } from './util.js';
 import * as store from './store.js';
 import * as tts from './tts.js';
-import { load, data, LEVELS, unitKey, vocabKey, drillKey, tradeKey, isExamKey, isKoreanKey, resolve } from './data.js';
+import { load, data, LEVELS, unitKey, vocabKey, drillKey, tradeKey, isExamKey, isKoreanKey, resolve, gone } from './data.js';
 import { Quiz, fromExercise, fromExamItem, fromWord, speakBtn } from './quiz.js';
 import { lessons as alphabetLessons, lessonCards, lessonQuestions, letterQuestion, readQuestion, syllableQuestion, changeQuestion, syllableKey } from './alphabet.js';
 import { t } from './i18n.js';
@@ -1064,8 +1064,9 @@ async function runReview(root, { which, back, title, empty }) {
   for (const k of keys) {
     const r = resolve(k);
     // Content that has gone can never be shown; drop it rather than let it
-    // hold the due count up for ever.
-    if (!r) { store.forget(k); continue; }
+    // hold the due count up for ever. Content that merely failed to load this
+    // time is kept — it will be back on the next load.
+    if (!r) { if (gone(k)) store.forget(k); continue; }
     const q = questionFor(r, k);
     if (q) qs.push(q);
   }

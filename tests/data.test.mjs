@@ -6,6 +6,7 @@ const D = await import('../src/js/data.js');
 const d = await D.load();
 
 test('every content file loads', () => {
+  assert.deepEqual(d.missing, []);
   assert.equal(d.units.length, 24);
   assert.ok(d.sets.length >= 12);
   assert.equal(d.trades.length, 8); // the EPS-TOPIK's own eight — never a ninth
