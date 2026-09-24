@@ -66,8 +66,8 @@
           "ko": "요금제",
           "rom": "yogeumje",
           "en": "phone plan",
-          "ex": "더 싼 요금제로 바꿨어요.",
-          "exEn": "I switched to a cheaper plan."
+          "ex": "요금제를 바꿨어요. 이제 더 싸요.",
+          "exEn": "I changed my phone plan. It's cheaper now."
         },
         {
           "ko": "데이터",
@@ -101,8 +101,8 @@
           "ko": "사진",
           "rom": "sajin",
           "en": "photo",
-          "ex": "고장 난 부분을 사진으로 찍었어요.",
-          "exEn": "I took a photo of the broken part."
+          "ex": "기계가 고장 나서 사진을 찍었어요.",
+          "exEn": "The machine broke down, so I took a photo of it."
         },
         {
           "ko": "영상통화",
@@ -277,7 +277,7 @@
           "ko": "계좌번호",
           "rom": "gyejwabeonho",
           "en": "account number",
-          "ex": "회사에 계좌번호를 냈어요.",
+          "ex": "회사에 계좌번호를 알려 줬어요.",
           "exEn": "I gave the company my account number."
         },
         {
@@ -375,8 +375,8 @@
           "ko": "출국만기보험",
           "rom": "chulgungmangiboheom",
           "en": "departure guarantee insurance",
-          "ex": "출국만기보험은 한국을 떠날 때 받아요.",
-          "exEn": "You receive your departure guarantee insurance when you leave Korea."
+          "ex": "출국만기보험은 출국한 후에 받아요.",
+          "exEn": "You receive your departure guarantee insurance after you leave Korea."
         }
       ],
       "tags": [
@@ -491,8 +491,8 @@
           "ko": "비행기표",
           "rom": "bihaenggipyo",
           "en": "plane ticket",
-          "ex": "고향 가는 비행기표를 샀어요.",
-          "exEn": "I bought a plane ticket home."
+          "ex": "다음 달에 고향에 가요. 비행기표를 샀어요.",
+          "exEn": "I'm going home next month. I've bought my plane ticket."
         },
         {
           "ko": "선물",
@@ -520,25 +520,18 @@
       "order": 23,
       "words": [
         {
-          "ko": "근로계약서",
-          "rom": "geullogyeyakseo",
-          "en": "employment contract",
-          "ex": "근로계약서를 꼭 한 부 받으세요.",
-          "exEn": "Make sure you get a copy of your employment contract."
-        },
-        {
           "ko": "근로자",
           "rom": "geulloja",
           "en": "worker, employee",
-          "ex": "외국인 근로자도 같은 법의 보호를 받아요.",
-          "exEn": "Foreign workers are protected by the same law."
+          "ex": "우리 공장에는 외국인 근로자가 많아요.",
+          "exEn": "There are a lot of foreign workers at our factory."
         },
         {
           "ko": "사업주",
           "rom": "saeopju",
           "en": "employer",
-          "ex": "사업주는 근로자에게 계약서를 꼭 줘야 합니다.",
-          "exEn": "The employer must give the worker a contract."
+          "ex": "계약서에서 사업주 이름을 확인하세요.",
+          "exEn": "Check the employer's name on the contract."
         },
         {
           "ko": "임금",
@@ -551,29 +544,29 @@
           "ko": "최저임금",
           "rom": "choejeoimgeum",
           "en": "minimum wage",
-          "ex": "최저임금은 매년 바뀌어요.",
-          "exEn": "The minimum wage changes every year."
+          "ex": "최저임금은 매년 새로 정해요.",
+          "exEn": "The minimum wage is set again every year."
         },
         {
           "ko": "근로시간",
           "rom": "geullosigan",
           "en": "working hours",
-          "ex": "계약서에 근로시간이 나와 있어요.",
-          "exEn": "Your working hours are written in the contract."
+          "ex": "근로시간이 계약서하고 달라요.",
+          "exEn": "My working hours are different from the contract."
         },
         {
           "ko": "휴게시간",
           "rom": "hyugesigan",
           "en": "rest break (in working hours)",
-          "ex": "휴게시간은 근로시간에 들어가지 않아요.",
-          "exEn": "Break time doesn't count as working hours."
+          "ex": "휴게시간이 몇 시부터예요?",
+          "exEn": "What time does the break start?"
         },
         {
           "ko": "연장근로",
           "rom": "yeonjanggeullo",
           "en": "overtime work",
-          "ex": "연장근로는 근로자가 동의해야 돼요.",
-          "exEn": "Overtime needs the worker's agreement."
+          "ex": "오늘 연장근로를 할 수 있어요?",
+          "exEn": "Can you work overtime today?"
         },
         {
           "ko": "동의",
@@ -586,8 +579,8 @@
           "ko": "퇴직금",
           "rom": "toejikgeum",
           "en": "severance pay",
-          "ex": "일 년 이상 일하면 퇴직금을 받아요.",
-          "exEn": "If you work for a year or more, you get severance pay."
+          "ex": "퇴직금은 일 년 이상 일해야 받을 수 있어요.",
+          "exEn": "You have to work for at least a year to get severance pay."
         },
         {
           "ko": "규칙",
@@ -599,7 +592,7 @@
         {
           "ko": "지키다",
           "rom": "jikida",
-          "en": "to keep, to follow (a rule)",
+          "en": "to keep (a rule, a time), to follow",
           "ex": "출근 시간을 꼭 지키세요.",
           "exEn": "Always be on time for work."
         },
@@ -614,8 +607,8 @@
           "ko": "수습",
           "rom": "suseup",
           "en": "probation, trial period",
-          "ex": "제 수습 기간은 석 달이에요.",
-          "exEn": "My probation period is three months."
+          "ex": "수습 기간이 언제 끝나요?",
+          "exEn": "When does the probation period end?"
         },
         {
           "ko": "계약 기간",
@@ -625,18 +618,25 @@
           "exEn": "What happens when the contract period ends?"
         },
         {
+          "ko": "재계약",
+          "rom": "jaegyeyak",
+          "en": "renewing a contract",
+          "ex": "회사하고 재계약할 수 있어요?",
+          "exEn": "Can I renew my contract with the company?"
+        },
+        {
           "ko": "해고",
           "rom": "haego",
           "en": "dismissal",
-          "ex": "이유 없이 해고하면 안 돼요.",
-          "exEn": "They can't dismiss you without a reason."
+          "ex": "해고 이유를 물어보세요.",
+          "exEn": "Ask them the reason for the dismissal."
         },
         {
           "ko": "서명",
           "rom": "seomyeong",
           "en": "signature",
           "ex": "내용을 이해한 후에 서명하세요.",
-          "exEn": "Sign only after you understand what it says."
+          "exEn": "Sign once you understand what it says."
         }
       ],
       "tags": [
@@ -730,29 +730,29 @@
           "ko": "괴롭힘",
           "rom": "goerophim",
           "en": "harassment, bullying",
-          "ex": "직장 내 괴롭힘은 법으로 금지돼 있어요.",
-          "exEn": "Bullying at work is against the law."
+          "ex": "회사에서 괴롭힘을 당했어요.",
+          "exEn": "I was bullied at work."
         },
         {
           "ko": "차별",
           "rom": "chabyeol",
           "en": "discrimination",
-          "ex": "외국인이라고 차별하면 안 돼요.",
-          "exEn": "No one may treat you worse for being a foreigner."
+          "ex": "외국인 근로자를 차별하면 안 돼요.",
+          "exEn": "Foreign workers must not be discriminated against."
         },
         {
           "ko": "폭언",
           "rom": "pogeon",
           "en": "verbal abuse",
-          "ex": "반장님이 자주 폭언을 해요.",
-          "exEn": "The team leader often yells abuse at us."
+          "ex": "오늘 또 폭언을 들었어요.",
+          "exEn": "I was verbally abused again today."
         },
         {
           "ko": "증거",
           "rom": "jeunggeo",
           "en": "evidence",
-          "ex": "녹음이나 사진이 증거가 돼요.",
-          "exEn": "Recordings and photos count as evidence."
+          "ex": "사진이나 문자를 증거로 남기세요.",
+          "exEn": "Keep photos and messages as evidence."
         },
         {
           "ko": "억울하다",
