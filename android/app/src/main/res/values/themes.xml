@@ -1,7 +1,10 @@
 <resources>
-    <!-- DayNight so the system bars follow the phone's theme; the page paints its
-         own background either way. -->
-    <style name="Theme.Hangil" parent="@android:style/Theme.DeviceDefault.DayNight">
+    <!-- Android 7 to 9. DayNight arrived in API 29 and does not exist below it,
+         so the app would have no theme to launch with on the older phones many
+         learners use. Those versions have no system dark mode to follow anyway,
+         so a light frame loses nothing; the page paints its own background.
+         Android 10 and later use values-v29/themes.xml. -->
+    <style name="Theme.Hangil" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowBackground">@color/window_bg</item>
