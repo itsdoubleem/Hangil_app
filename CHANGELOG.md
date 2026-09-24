@@ -1,5 +1,44 @@
 # Changelog
 
+## 2026-09-25 — a line-by-line review of v13–v24
+
+**34 of the 207 new words changed: 33 edited and one replaced.** The twelve
+sets went in without a human reading every line. A learner memorises exactly
+what is written, so each word was read again for natural Korean, a faithful
+English line, the right gloss, the right grammar level and true facts.
+
+**Twelve sentences stated a rule about work, pay, insurance or the contract,
+and all twelve were checked.** Four still state a rule, and each rule is
+confirmed on law.go.kr. 출국만기보험 is paid *after* departure, within fourteen
+days of it, not when you leave. Severance needs at least a year's work. The
+minimum wage is set every year. Discriminating against foreign workers is not
+allowed. The other eight now teach the word without stating a rule. Some
+examples of why: the rules on overtime and breaks do not cover farm, livestock
+or fishing work (근로기준법 제63조), and a lot of the people using this app do
+that work. The Labour Standards Act covers workplaces of four or fewer people
+only in part, and which parts could not be checked here, so the sentences on
+dismissal, bullying and the employer handing over the contract state nothing.
+A probation of 석 달 was a personal detail that reads like a rule, so it no
+longer gives a number.
+
+**Seventeen sentences used grammar before the course teaches it.** v13–v18 now
+use only level 1 and 2 grammar. v19–v24 use up to level 3. The two that were
+already known both used (으)면 in v13–v18: 점심을 먹으면 졸려요 and 영수증이
+있으면 환불받을 수 있어요. The others used the honorific past 셨어요, a word
+describing a noun (큰 기계, 더 싼 요금제, 고향 가는 비행기표), 아/어 있다,
+quoting with 이라고, and, in v13–v18, 아/어서. No unit teaches 아/어서, but
+unit 15 sets it beside (으)면, so v19–v24 keep it. In the earlier sets it is
+now two sentences joined by 그래서.
+
+**근로계약서 is replaced by 재계약** (renewing a contract). A learner who knows
+계약서 from v07 and 근로 from 근로자 can already read 근로계약서. 재계약 is a word
+they will need when the contract period ends.
+
+**The rest are small corrections.** 높다 is no longer glossed *tall*, because
+Korean says 키가 크다 about a person. The English no longer adds words the Korean
+does not have, such as *these* gloves or sign *only* after. 폭언 no longer pairs
+반장님 with a plain verb. 증거 no longer suggests recording people.
+
 ## 2026-09-25 — six romanizations corrected, and a check that keeps them right
 
 **Six `rom` values were wrong, and are fixed.** A learner memorises the

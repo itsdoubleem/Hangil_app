@@ -18,7 +18,7 @@
           "rom": "jakda",
           "en": "to be small",
           "ex": "장갑이 좀 작아요.",
-          "exEn": "These gloves are a bit small."
+          "exEn": "The gloves are a bit small."
         },
         {
           "ko": "많다",
@@ -65,7 +65,7 @@
         {
           "ko": "높다",
           "rom": "nopda",
-          "en": "to be high, to be tall",
+          "en": "to be high",
           "ex": "창고 천장이 높아요.",
           "exEn": "The warehouse has a high ceiling."
         },
@@ -519,8 +519,8 @@
           "ko": "태풍",
           "rom": "taepung",
           "en": "typhoon",
-          "ex": "태풍이 와서 배가 안 나가요.",
-          "exEn": "A typhoon's coming, so the boats aren't going out."
+          "ex": "태풍이 와요. 오늘은 배가 안 나가요.",
+          "exEn": "A typhoon is coming. The boats aren't going out today."
         },
         {
           "ko": "미세먼지",
@@ -558,36 +558,36 @@
           "ko": "좋다",
           "rom": "jota",
           "en": "to be good",
-          "ex": "고향 음식을 먹어서 기분이 좋아요.",
+          "ex": "고향 음식을 먹었어요. 그래서 기분이 좋아요.",
           "exEn": "I had food from home, so I'm in a good mood."
         },
         {
           "ko": "기쁘다",
           "rom": "gippeuda",
           "en": "to be glad, to be happy",
-          "ex": "가족 소식을 들어서 기뻐요.",
-          "exEn": "I'm happy to have heard from my family."
+          "ex": "가족 소식을 들었어요. 그래서 기뻐요.",
+          "exEn": "I heard from my family, so I'm happy."
         },
         {
           "ko": "슬프다",
           "rom": "seulpeuda",
           "en": "to be sad",
-          "ex": "친구가 고향에 돌아가서 슬퍼요.",
-          "exEn": "I'm sad because my friend has gone home."
+          "ex": "친구가 고향에 돌아갔어요. 그래서 슬퍼요.",
+          "exEn": "My friend has gone home, so I'm sad."
         },
         {
           "ko": "피곤하다",
           "rom": "pigonhada",
           "en": "to be tired",
-          "ex": "야간 근무를 해서 너무 피곤해요.",
-          "exEn": "I'm exhausted from working nights."
+          "ex": "어제 야간 근무를 했어요. 그래서 너무 피곤해요.",
+          "exEn": "I worked the night shift yesterday, so I'm exhausted."
         },
         {
           "ko": "졸리다",
           "rom": "jollida",
           "en": "to be sleepy",
-          "ex": "점심을 먹으면 졸려요.",
-          "exEn": "I get sleepy after lunch."
+          "ex": "오후에는 항상 졸려요.",
+          "exEn": "I always get sleepy in the afternoon."
         },
         {
           "ko": "힘들다",
@@ -621,15 +621,15 @@
           "ko": "무섭다",
           "rom": "museopda",
           "en": "to be scary, to be afraid",
-          "ex": "큰 기계가 좀 무서워요.",
-          "exEn": "The big machine scares me a bit."
+          "ex": "이 기계는 좀 무서워요.",
+          "exEn": "This machine scares me a bit."
         },
         {
           "ko": "화나다",
           "rom": "hwanada",
           "en": "to be angry",
-          "ex": "반장님이 화나셨어요.",
-          "exEn": "The team leader is angry."
+          "ex": "친구가 화났어요.",
+          "exEn": "My friend is angry."
         },
         {
           "ko": "심심하다",
@@ -663,7 +663,7 @@
           "ko": "긴장되다",
           "rom": "ginjangdoeda",
           "en": "to be nervous",
-          "ex": "내일 시험이 있어서 긴장돼요.",
+          "ex": "내일 시험이 있어요. 그래서 긴장돼요.",
           "exEn": "I've got an exam tomorrow, so I'm nervous."
         }
       ],
@@ -751,15 +751,15 @@
           "ko": "교환",
           "rom": "gyohwan",
           "en": "exchange (of goods)",
-          "ex": "사이즈가 안 맞아서 교환하고 싶어요.",
-          "exEn": "It doesn't fit, so I'd like to exchange it."
+          "ex": "사이즈가 안 맞아요. 교환하고 싶어요.",
+          "exEn": "It doesn't fit. I'd like to exchange it."
         },
         {
           "ko": "환불",
           "rom": "hwanbul",
           "en": "refund",
-          "ex": "영수증이 있으면 환불받을 수 있어요.",
-          "exEn": "If you have the receipt, you can get a refund."
+          "ex": "영수증 여기 있어요. 환불해 주세요.",
+          "exEn": "Here's the receipt. I'd like a refund, please."
         },
         {
           "ko": "옷",
