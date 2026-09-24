@@ -57,6 +57,25 @@ export function naive(syl) {
   return INITIAL_ROM[p.i] + VOWEL_ROM[p.v] + FINAL_NAIVE[p.f];
 }
 
+// How a syllable actually sounds, as a key: two syllables with the same key
+// cannot be told apart by ear. Romanization alone is not enough, because it
+// spells vowels that today's Korean merges — 재 is "jae" and 제 is "je", and
+// nobody hears the difference. So: ㅐ is said as ㅔ, ㅒ as ㅖ, ㅙ and ㅚ as ㅞ;
+// after ㅈ ㅉ ㅊ the y-glide is not said (져 is 저); after any consonant but ㅇ
+// or ㄹ, ㅖ may be said ㅔ (계 as 게), and after any but ㅇ, ㅢ is said ㅣ (희 as 히).
+const MERGED = { 'ㅐ': 'ㅔ', 'ㅒ': 'ㅖ', 'ㅙ': 'ㅞ', 'ㅚ': 'ㅞ' };
+const NO_GLIDE = { 'ㅑ': 'ㅏ', 'ㅕ': 'ㅓ', 'ㅛ': 'ㅗ', 'ㅠ': 'ㅜ', 'ㅖ': 'ㅔ' };
+
+export function said(syl) {
+  const p = parts(syl);
+  if (!p) return null;
+  let v = MERGED[p.vowel] || p.vowel;
+  if (['ㅈ', 'ㅉ', 'ㅊ'].includes(p.initial)) v = NO_GLIDE[v] || v;
+  if (v === 'ㅖ' && p.initial !== 'ㅇ' && p.initial !== 'ㄹ') v = 'ㅔ';
+  if (v === 'ㅢ' && p.initial !== 'ㅇ') v = 'ㅣ';
+  return romanize(compose(p.initial, v, p.final));
+}
+
 // Every syllable that differs from `syl` in exactly one of its parts, using
 // only the letters in `known` — the neighbours a learner could confuse it with.
 export function neighbours(syl, known) {
@@ -69,8 +88,8 @@ export function neighbours(syl, known) {
     for (const f of FINALS) if (f && f !== p.final && known.has(f) && FINAL_ROM[FINALS.indexOf(f)] !== FINAL_ROM[FINALS.indexOf(p.final)]) out.add(compose(p.initial, p.vowel, f));
   }
   out.delete(null);
-  // Two syllables that are romanized alike cannot both be options on a
-  // "how is this said?" question, so neighbours that sound the same are dropped.
-  const r = romanize(syl);
-  return [...out].filter(x => romanize(x) !== r);
+  // Two syllables that sound alike cannot both be options on a "how is this
+  // said?" or "which one did you hear?" question, so those are dropped.
+  const r = said(syl);
+  return [...out].filter(x => said(x) !== r);
 }

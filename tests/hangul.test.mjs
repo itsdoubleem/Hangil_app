@@ -69,3 +69,14 @@ test('neighbours never offers a closing letter said the same way', () => {
   assert.ok(!out.includes('밑') && !out.includes('밋'));
   assert.ok(out.includes('민') && out.includes('밉'));
 });
+
+test('said() gives syllables that sound alike the same key', async () => {
+  const { said } = await import('../src/js/hangul.js');
+  for (const [a, b] of [['재', '제'], ['얘', '예'], ['괘', '궤'], ['괴', '궤'], ['져', '저'], ['쟈', '자'], ['계', '게'], ['희', '히'], ['밑', '밋']]) {
+    assert.equal(said(a), said(b), `${a} ${b}`);
+  }
+  for (const [a, b] of [['가', '거'], ['예', '에'], ['례', '레'], ['의', '이'], ['여', '어'], ['자', '차']]) {
+    assert.notEqual(said(a), said(b), `${a} ${b}`);
+  }
+  assert.equal(said('x'), null);
+});
