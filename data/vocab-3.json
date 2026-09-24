@@ -1,0 +1,812 @@
+{
+  "sets": [
+    {
+      "id": "v13",
+      "title": "Describing things",
+      "titleKo": "상태와 모양",
+      "order": 13,
+      "words": [
+        {
+          "ko": "크다",
+          "rom": "keuda",
+          "en": "to be big",
+          "ex": "이 상자는 너무 커요.",
+          "exEn": "This box is too big."
+        },
+        {
+          "ko": "작다",
+          "rom": "jakda",
+          "en": "to be small",
+          "ex": "장갑이 좀 작아요.",
+          "exEn": "These gloves are a bit small."
+        },
+        {
+          "ko": "많다",
+          "rom": "manta",
+          "en": "to be a lot, to be many",
+          "ex": "오늘은 일이 많아요.",
+          "exEn": "There's a lot of work today."
+        },
+        {
+          "ko": "적다",
+          "rom": "jeokda",
+          "en": "to be few, to be little",
+          "ex": "이번 달은 잔업이 적어요.",
+          "exEn": "There isn't much overtime this month."
+        },
+        {
+          "ko": "무겁다",
+          "rom": "mugeopda",
+          "en": "to be heavy",
+          "ex": "이거 무거워요. 같이 들어요.",
+          "exEn": "This is heavy. Let's lift it together."
+        },
+        {
+          "ko": "가볍다",
+          "rom": "gabyeopda",
+          "en": "to be light",
+          "ex": "이 가방은 가벼워요.",
+          "exEn": "This bag is light."
+        },
+        {
+          "ko": "길다",
+          "rom": "gilda",
+          "en": "to be long",
+          "ex": "줄이 길어요.",
+          "exEn": "The queue is long."
+        },
+        {
+          "ko": "짧다",
+          "rom": "jjalda",
+          "en": "to be short",
+          "ex": "쉬는 시간이 너무 짧아요.",
+          "exEn": "The break is too short."
+        },
+        {
+          "ko": "높다",
+          "rom": "nopda",
+          "en": "to be high, to be tall",
+          "ex": "창고 천장이 높아요.",
+          "exEn": "The warehouse has a high ceiling."
+        },
+        {
+          "ko": "낮다",
+          "rom": "natda",
+          "en": "to be low",
+          "ex": "의자가 너무 낮아요.",
+          "exEn": "The chair is too low."
+        },
+        {
+          "ko": "뜨겁다",
+          "rom": "tteugeopda",
+          "en": "to be hot (to the touch)",
+          "ex": "물이 뜨거워요. 조심하세요.",
+          "exEn": "The water's hot. Be careful."
+        },
+        {
+          "ko": "차갑다",
+          "rom": "chagapda",
+          "en": "to be cold (to the touch)",
+          "ex": "손이 차가워요.",
+          "exEn": "My hands are cold."
+        },
+        {
+          "ko": "빠르다",
+          "rom": "ppareuda",
+          "en": "to be fast",
+          "ex": "라인 속도가 빨라요.",
+          "exEn": "The line is running fast."
+        },
+        {
+          "ko": "느리다",
+          "rom": "neurida",
+          "en": "to be slow",
+          "ex": "엘리베이터가 느려요.",
+          "exEn": "The lift is slow."
+        },
+        {
+          "ko": "깨끗하다",
+          "rom": "kkaekkeuthada",
+          "en": "to be clean",
+          "ex": "작업장이 깨끗해요.",
+          "exEn": "The work area is clean."
+        },
+        {
+          "ko": "더럽다",
+          "rom": "deoreopda",
+          "en": "to be dirty",
+          "ex": "작업복이 더러워요.",
+          "exEn": "My work clothes are dirty."
+        },
+        {
+          "ko": "쉽다",
+          "rom": "swipda",
+          "en": "to be easy",
+          "ex": "이 일은 쉬워요.",
+          "exEn": "This job is easy."
+        },
+        {
+          "ko": "어렵다",
+          "rom": "eoryeopda",
+          "en": "to be difficult",
+          "ex": "이 기계는 좀 어려워요.",
+          "exEn": "This machine is a bit tricky."
+        }
+      ],
+      "tags": [
+        "describing"
+      ]
+    },
+    {
+      "id": "v14",
+      "title": "Where things are",
+      "titleKo": "위치",
+      "order": 14,
+      "words": [
+        {
+          "ko": "앞",
+          "rom": "ap",
+          "en": "front, in front of",
+          "ex": "공장 앞에 버스가 있어요.",
+          "exEn": "There's a bus in front of the factory."
+        },
+        {
+          "ko": "뒤",
+          "rom": "dwi",
+          "en": "back, behind",
+          "ex": "창고는 식당 뒤에 있어요.",
+          "exEn": "The storeroom is behind the canteen."
+        },
+        {
+          "ko": "옆",
+          "rom": "yeop",
+          "en": "side, next to",
+          "ex": "제 자리는 창문 옆이에요.",
+          "exEn": "My place is next to the window."
+        },
+        {
+          "ko": "위",
+          "rom": "wi",
+          "en": "top, on, above",
+          "ex": "장갑은 책상 위에 있어요.",
+          "exEn": "The gloves are on the desk."
+        },
+        {
+          "ko": "아래",
+          "rom": "arae",
+          "en": "bottom, under, below",
+          "ex": "가방이 의자 아래에 있어요.",
+          "exEn": "The bag is under the chair."
+        },
+        {
+          "ko": "안",
+          "rom": "an",
+          "en": "inside, in",
+          "ex": "공구는 상자 안에 있어요.",
+          "exEn": "The tools are in the box."
+        },
+        {
+          "ko": "밖",
+          "rom": "bak",
+          "en": "outside",
+          "ex": "담배는 밖에서 피우세요.",
+          "exEn": "Smoke outside, please."
+        },
+        {
+          "ko": "사이",
+          "rom": "sai",
+          "en": "between",
+          "ex": "은행은 편의점하고 약국 사이에 있어요.",
+          "exEn": "The bank is between the convenience store and the pharmacy."
+        },
+        {
+          "ko": "가운데",
+          "rom": "gaunde",
+          "en": "the middle",
+          "ex": "사진 가운데가 저예요.",
+          "exEn": "That's me in the middle of the photo."
+        },
+        {
+          "ko": "건너편",
+          "rom": "geonneopyeon",
+          "en": "the other side, across the road",
+          "ex": "정류장은 길 건너편에 있어요.",
+          "exEn": "The bus stop is across the road."
+        },
+        {
+          "ko": "여기",
+          "rom": "yeogi",
+          "en": "here",
+          "ex": "여기에 앉으세요.",
+          "exEn": "Have a seat here."
+        },
+        {
+          "ko": "거기",
+          "rom": "geogi",
+          "en": "there (near you)",
+          "ex": "거기 누구 있어요?",
+          "exEn": "Is anyone there?"
+        },
+        {
+          "ko": "저기",
+          "rom": "jeogi",
+          "en": "over there",
+          "ex": "저기가 사무실이에요.",
+          "exEn": "That's the office over there."
+        },
+        {
+          "ko": "층",
+          "rom": "cheung",
+          "en": "floor, storey",
+          "ex": "식당은 2층에 있어요.",
+          "exEn": "The canteen is on the second floor."
+        },
+        {
+          "ko": "입구",
+          "rom": "ipgu",
+          "en": "entrance",
+          "ex": "입구에서 만나요.",
+          "exEn": "Let's meet at the entrance."
+        },
+        {
+          "ko": "출구",
+          "rom": "chulgu",
+          "en": "exit (of a station or building)",
+          "ex": "3번 출구로 나오세요.",
+          "exEn": "Come out of Exit 3."
+        },
+        {
+          "ko": "근처",
+          "rom": "geuncheo",
+          "en": "nearby, the area around",
+          "ex": "회사 근처에 마트가 있어요.",
+          "exEn": "There's a supermarket near the company."
+        }
+      ],
+      "tags": [
+        "position"
+      ]
+    },
+    {
+      "id": "v15",
+      "title": "Actions at work",
+      "titleKo": "작업 동작",
+      "order": 15,
+      "words": [
+        {
+          "ko": "들다",
+          "rom": "deulda",
+          "en": "to lift, to carry",
+          "ex": "혼자 들지 마세요.",
+          "exEn": "Don't lift it on your own."
+        },
+        {
+          "ko": "옮기다",
+          "rom": "omgida",
+          "en": "to move (something)",
+          "ex": "기계를 다른 데로 옮겼어요.",
+          "exEn": "They moved the machine somewhere else."
+        },
+        {
+          "ko": "켜다",
+          "rom": "kyeoda",
+          "en": "to switch on",
+          "ex": "불 좀 켜 주세요.",
+          "exEn": "Could you turn the light on?"
+        },
+        {
+          "ko": "끄다",
+          "rom": "kkeuda",
+          "en": "to switch off",
+          "ex": "기계를 끄고 쉬세요.",
+          "exEn": "Switch the machine off and take a break."
+        },
+        {
+          "ko": "열다",
+          "rom": "yeolda",
+          "en": "to open",
+          "ex": "창문 좀 열어 주세요.",
+          "exEn": "Could you open the window?"
+        },
+        {
+          "ko": "닫다",
+          "rom": "datda",
+          "en": "to close, to shut",
+          "ex": "문을 꼭 닫으세요.",
+          "exEn": "Make sure you shut the door."
+        },
+        {
+          "ko": "넣다",
+          "rom": "neota",
+          "en": "to put in",
+          "ex": "부품을 상자에 넣으세요.",
+          "exEn": "Put the parts in the box."
+        },
+        {
+          "ko": "꺼내다",
+          "rom": "kkeonaeda",
+          "en": "to take out",
+          "ex": "상자에서 부품을 꺼내세요.",
+          "exEn": "Take the parts out of the box."
+        },
+        {
+          "ko": "놓다",
+          "rom": "nota",
+          "en": "to put down, to place",
+          "ex": "여기에 놓으세요.",
+          "exEn": "Put it down here."
+        },
+        {
+          "ko": "잡다",
+          "rom": "japda",
+          "en": "to hold, to grab",
+          "ex": "손잡이를 꽉 잡으세요.",
+          "exEn": "Hold on tight to the handle."
+        },
+        {
+          "ko": "밀다",
+          "rom": "milda",
+          "en": "to push",
+          "ex": "카트를 천천히 미세요.",
+          "exEn": "Push the trolley slowly."
+        },
+        {
+          "ko": "당기다",
+          "rom": "danggida",
+          "en": "to pull",
+          "ex": "이 레버를 당기세요.",
+          "exEn": "Pull this lever."
+        },
+        {
+          "ko": "돌리다",
+          "rom": "dollida",
+          "en": "to turn",
+          "ex": "손잡이를 오른쪽으로 돌리세요.",
+          "exEn": "Turn the handle to the right."
+        },
+        {
+          "ko": "쌓다",
+          "rom": "ssata",
+          "en": "to stack, to pile up",
+          "ex": "상자를 너무 높이 쌓지 마세요.",
+          "exEn": "Don't stack the boxes too high."
+        },
+        {
+          "ko": "바꾸다",
+          "rom": "bakkuda",
+          "en": "to change, to swap",
+          "ex": "장갑을 새것으로 바꿨어요.",
+          "exEn": "I swapped my gloves for a new pair."
+        },
+        {
+          "ko": "기다리다",
+          "rom": "gidarida",
+          "en": "to wait",
+          "ex": "여기서 잠깐 기다리세요.",
+          "exEn": "Wait here a moment."
+        },
+        {
+          "ko": "시작하다",
+          "rom": "sijakhada",
+          "en": "to start",
+          "ex": "작업은 여덟 시에 시작해요.",
+          "exEn": "Work starts at eight."
+        },
+        {
+          "ko": "끝나다",
+          "rom": "kkeunnada",
+          "en": "to finish, to end",
+          "ex": "일이 몇 시에 끝나요?",
+          "exEn": "What time does work finish?"
+        }
+      ],
+      "tags": [
+        "actions"
+      ]
+    },
+    {
+      "id": "v16",
+      "title": "Weather and seasons",
+      "titleKo": "날씨와 계절",
+      "order": 16,
+      "words": [
+        {
+          "ko": "날씨",
+          "rom": "nalssi",
+          "en": "weather",
+          "ex": "오늘 날씨가 좋아요.",
+          "exEn": "It's nice weather today."
+        },
+        {
+          "ko": "봄",
+          "rom": "bom",
+          "en": "spring",
+          "ex": "봄에 한국에 왔어요.",
+          "exEn": "I came to Korea in the spring."
+        },
+        {
+          "ko": "여름",
+          "rom": "yeoreum",
+          "en": "summer",
+          "ex": "여름에는 공장이 정말 더워요.",
+          "exEn": "The factory gets really hot in summer."
+        },
+        {
+          "ko": "가을",
+          "rom": "gaeul",
+          "en": "autumn",
+          "ex": "가을에 추석이 있어요.",
+          "exEn": "Chuseok is in the autumn."
+        },
+        {
+          "ko": "겨울",
+          "rom": "gyeoul",
+          "en": "winter",
+          "ex": "한국 겨울은 아주 추워요.",
+          "exEn": "Korean winters are very cold."
+        },
+        {
+          "ko": "덥다",
+          "rom": "deopda",
+          "en": "to be hot (weather)",
+          "ex": "오늘 너무 더워요.",
+          "exEn": "It's so hot today."
+        },
+        {
+          "ko": "춥다",
+          "rom": "chupda",
+          "en": "to be cold (weather)",
+          "ex": "아침에는 추워요.",
+          "exEn": "It's cold in the mornings."
+        },
+        {
+          "ko": "따뜻하다",
+          "rom": "ttatteuthada",
+          "en": "to be warm",
+          "ex": "오늘은 좀 따뜻해요.",
+          "exEn": "It's fairly warm today."
+        },
+        {
+          "ko": "시원하다",
+          "rom": "siwonhada",
+          "en": "to be cool, to be refreshing",
+          "ex": "그늘은 시원해요.",
+          "exEn": "It's cool in the shade."
+        },
+        {
+          "ko": "비",
+          "rom": "bi",
+          "en": "rain",
+          "ex": "비가 와요. 우산 있어요?",
+          "exEn": "It's raining. Have you got an umbrella?"
+        },
+        {
+          "ko": "우산",
+          "rom": "usan",
+          "en": "umbrella",
+          "ex": "우산을 기숙사에 두고 왔어요.",
+          "exEn": "I left my umbrella at the dorm."
+        },
+        {
+          "ko": "바람",
+          "rom": "baram",
+          "en": "wind",
+          "ex": "바람이 많이 불어요.",
+          "exEn": "It's very windy."
+        },
+        {
+          "ko": "맑다",
+          "rom": "makda",
+          "en": "to be clear, to be sunny",
+          "ex": "내일은 맑을 거예요.",
+          "exEn": "Tomorrow will be clear."
+        },
+        {
+          "ko": "흐리다",
+          "rom": "heurida",
+          "en": "to be cloudy, to be overcast",
+          "ex": "하늘이 흐려요.",
+          "exEn": "It's overcast."
+        },
+        {
+          "ko": "장마",
+          "rom": "jangma",
+          "en": "the rainy season",
+          "ex": "7월은 장마철이에요.",
+          "exEn": "July is the rainy season."
+        },
+        {
+          "ko": "태풍",
+          "rom": "taepung",
+          "en": "typhoon",
+          "ex": "태풍이 와서 배가 안 나가요.",
+          "exEn": "A typhoon's coming, so the boats aren't going out."
+        },
+        {
+          "ko": "미세먼지",
+          "rom": "misemeonji",
+          "en": "fine dust (air pollution)",
+          "ex": "오늘은 미세먼지가 심해요.",
+          "exEn": "The fine dust is bad today."
+        },
+        {
+          "ko": "일기예보",
+          "rom": "ilgiyebo",
+          "en": "weather forecast",
+          "ex": "일기예보 봤어요?",
+          "exEn": "Did you see the forecast?"
+        }
+      ],
+      "tags": [
+        "weather"
+      ]
+    },
+    {
+      "id": "v17",
+      "title": "Feelings and how you are",
+      "titleKo": "기분과 상태",
+      "order": 17,
+      "words": [
+        {
+          "ko": "기분",
+          "rom": "gibun",
+          "en": "mood, how you feel",
+          "ex": "오늘 기분이 어때요?",
+          "exEn": "How are you feeling today?"
+        },
+        {
+          "ko": "좋다",
+          "rom": "jota",
+          "en": "to be good",
+          "ex": "고향 음식을 먹어서 기분이 좋아요.",
+          "exEn": "I had food from home, so I'm in a good mood."
+        },
+        {
+          "ko": "기쁘다",
+          "rom": "gippeuda",
+          "en": "to be glad, to be happy",
+          "ex": "가족 소식을 들어서 기뻐요.",
+          "exEn": "I'm happy to have heard from my family."
+        },
+        {
+          "ko": "슬프다",
+          "rom": "seulpeuda",
+          "en": "to be sad",
+          "ex": "친구가 고향에 돌아가서 슬퍼요.",
+          "exEn": "I'm sad because my friend has gone home."
+        },
+        {
+          "ko": "피곤하다",
+          "rom": "pigonhada",
+          "en": "to be tired",
+          "ex": "야간 근무를 해서 너무 피곤해요.",
+          "exEn": "I'm exhausted from working nights."
+        },
+        {
+          "ko": "졸리다",
+          "rom": "jollida",
+          "en": "to be sleepy",
+          "ex": "점심을 먹으면 졸려요.",
+          "exEn": "I get sleepy after lunch."
+        },
+        {
+          "ko": "힘들다",
+          "rom": "himdeulda",
+          "en": "to be hard, to be tiring",
+          "ex": "처음에는 일이 힘들었어요.",
+          "exEn": "The work was hard at first."
+        },
+        {
+          "ko": "외롭다",
+          "rom": "oeropda",
+          "en": "to be lonely",
+          "ex": "주말에는 가끔 외로워요.",
+          "exEn": "I sometimes get lonely at weekends."
+        },
+        {
+          "ko": "보고 싶다",
+          "rom": "bogo sipda",
+          "en": "to miss (someone)",
+          "ex": "엄마가 보고 싶어요.",
+          "exEn": "I miss my mum."
+        },
+        {
+          "ko": "걱정",
+          "rom": "geokjeong",
+          "en": "worry",
+          "ex": "걱정하지 마세요.",
+          "exEn": "Don't worry."
+        },
+        {
+          "ko": "무섭다",
+          "rom": "museopda",
+          "en": "to be scary, to be afraid",
+          "ex": "큰 기계가 좀 무서워요.",
+          "exEn": "The big machine scares me a bit."
+        },
+        {
+          "ko": "화나다",
+          "rom": "hwanada",
+          "en": "to be angry",
+          "ex": "반장님이 화나셨어요.",
+          "exEn": "The team leader is angry."
+        },
+        {
+          "ko": "심심하다",
+          "rom": "simsimhada",
+          "en": "to be bored",
+          "ex": "일요일은 좀 심심해요.",
+          "exEn": "Sundays are a bit boring."
+        },
+        {
+          "ko": "편하다",
+          "rom": "pyeonhada",
+          "en": "to be comfortable, to be easy",
+          "ex": "이 신발이 편해요.",
+          "exEn": "These shoes are comfortable."
+        },
+        {
+          "ko": "불편하다",
+          "rom": "bulpyeonhada",
+          "en": "to be uncomfortable, to be inconvenient",
+          "ex": "기숙사가 좀 불편해요.",
+          "exEn": "The dorm is a bit uncomfortable."
+        },
+        {
+          "ko": "스트레스",
+          "rom": "seuteureseu",
+          "en": "stress",
+          "ex": "스트레스를 많이 받아요.",
+          "exEn": "I'm under a lot of stress."
+        },
+        {
+          "ko": "긴장되다",
+          "rom": "ginjangdoeda",
+          "en": "to be nervous",
+          "ex": "내일 시험이 있어서 긴장돼요.",
+          "exEn": "I've got an exam tomorrow, so I'm nervous."
+        }
+      ],
+      "tags": [
+        "feelings"
+      ]
+    },
+    {
+      "id": "v18",
+      "title": "Shopping and prices",
+      "titleKo": "물건 사기",
+      "order": 18,
+      "words": [
+        {
+          "ko": "가게",
+          "rom": "gage",
+          "en": "shop",
+          "ex": "가게가 몇 시에 문을 닫아요?",
+          "exEn": "What time does the shop close?"
+        },
+        {
+          "ko": "사다",
+          "rom": "sada",
+          "en": "to buy",
+          "ex": "마트에서 쌀을 샀어요.",
+          "exEn": "I bought rice at the supermarket."
+        },
+        {
+          "ko": "팔다",
+          "rom": "palda",
+          "en": "to sell",
+          "ex": "이 가게에서 휴대폰 케이스도 팔아요?",
+          "exEn": "Does this shop sell phone cases too?"
+        },
+        {
+          "ko": "가격",
+          "rom": "gagyeok",
+          "en": "price",
+          "ex": "가격이 좀 올랐어요.",
+          "exEn": "Prices have gone up a bit."
+        },
+        {
+          "ko": "싸다",
+          "rom": "ssada",
+          "en": "to be cheap",
+          "ex": "시장이 더 싸요.",
+          "exEn": "The market is cheaper."
+        },
+        {
+          "ko": "비싸다",
+          "rom": "bissada",
+          "en": "to be expensive",
+          "ex": "이 신발은 너무 비싸요.",
+          "exEn": "These shoes are too expensive."
+        },
+        {
+          "ko": "할인",
+          "rom": "harin",
+          "en": "discount",
+          "ex": "이거 할인돼요?",
+          "exEn": "Is there a discount on this?"
+        },
+        {
+          "ko": "카드",
+          "rom": "kadeu",
+          "en": "card",
+          "ex": "카드로 계산할게요.",
+          "exEn": "I'll pay by card."
+        },
+        {
+          "ko": "거스름돈",
+          "rom": "geoseureumdon",
+          "en": "change (money back)",
+          "ex": "거스름돈을 덜 받았어요.",
+          "exEn": "I was given too little change."
+        },
+        {
+          "ko": "봉투",
+          "rom": "bongtu",
+          "en": "bag, envelope",
+          "ex": "봉투 필요하세요?",
+          "exEn": "Do you need a bag?"
+        },
+        {
+          "ko": "교환",
+          "rom": "gyohwan",
+          "en": "exchange (of goods)",
+          "ex": "사이즈가 안 맞아서 교환하고 싶어요.",
+          "exEn": "It doesn't fit, so I'd like to exchange it."
+        },
+        {
+          "ko": "환불",
+          "rom": "hwanbul",
+          "en": "refund",
+          "ex": "영수증이 있으면 환불받을 수 있어요.",
+          "exEn": "If you have the receipt, you can get a refund."
+        },
+        {
+          "ko": "옷",
+          "rom": "ot",
+          "en": "clothes",
+          "ex": "주말에 겨울 옷을 샀어요.",
+          "exEn": "I bought winter clothes at the weekend."
+        },
+        {
+          "ko": "신발",
+          "rom": "sinbal",
+          "en": "shoes",
+          "ex": "신발 사이즈가 어떻게 되세요?",
+          "exEn": "What's your shoe size?"
+        },
+        {
+          "ko": "시장",
+          "rom": "sijang",
+          "en": "market",
+          "ex": "주말마다 시장에 가요.",
+          "exEn": "I go to the market every weekend."
+        },
+        {
+          "ko": "배달",
+          "rom": "baedal",
+          "en": "delivery",
+          "ex": "치킨을 배달시켰어요.",
+          "exEn": "I ordered chicken for delivery."
+        },
+        {
+          "ko": "택배",
+          "rom": "taekbae",
+          "en": "parcel, courier delivery",
+          "ex": "택배가 기숙사로 왔어요.",
+          "exEn": "A parcel came to the dorm."
+        },
+        {
+          "ko": "무료",
+          "rom": "muryo",
+          "en": "free (of charge)",
+          "ex": "배달은 무료예요.",
+          "exEn": "Delivery is free."
+        }
+      ],
+      "tags": [
+        "shopping"
+      ]
+    }
+  ]
+}

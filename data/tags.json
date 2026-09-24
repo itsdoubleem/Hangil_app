@@ -221,6 +221,56 @@
       "ko": "농업·축산·어업",
       "kind": "topic"
     },
+    "describing": {
+      "label": "Describing things",
+      "ko": "상태와 모양",
+      "kind": "topic"
+    },
+    "position": {
+      "label": "Where things are",
+      "ko": "위치",
+      "kind": "topic"
+    },
+    "actions": {
+      "label": "Actions at work",
+      "ko": "작업 동작",
+      "kind": "topic"
+    },
+    "weather": {
+      "label": "Weather and seasons",
+      "ko": "날씨와 계절",
+      "kind": "topic"
+    },
+    "feelings": {
+      "label": "Feelings and how you are",
+      "ko": "기분과 상태",
+      "kind": "topic"
+    },
+    "shopping": {
+      "label": "Shopping and prices",
+      "ko": "물건 사기",
+      "kind": "topic"
+    },
+    "phone": {
+      "label": "The phone and messages",
+      "ko": "전화와 연락",
+      "kind": "topic"
+    },
+    "holidays-leave": {
+      "label": "Holidays and time off",
+      "ko": "명절과 휴가",
+      "kind": "topic"
+    },
+    "work-rights": {
+      "label": "The contract and the rules",
+      "ko": "근로계약과 규칙",
+      "kind": "topic"
+    },
+    "getting-help": {
+      "label": "Asking for help",
+      "ko": "도움 요청과 신고",
+      "kind": "topic"
+    },
     "industry": {
       "label": "Your trade's words",
       "ko": "업종별",
