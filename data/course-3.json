@@ -175,6 +175,20 @@
           "b": "할 수 없어요.",
           "bEn": "I can't do it.",
           "note": "The negative swaps 있다 for 없다 — you never say 안 할 수 있어요. In speech you will also hear 못 해요, which is blunter."
+        },
+        {
+          "a": "내일은 못 가요.",
+          "aEn": "I can't go tomorrow.",
+          "b": "내일은 갈 수 없어요.",
+          "bEn": "I can't go tomorrow.",
+          "note": "The same meaning. 못 is short and spoken. (으)ㄹ 수 없다 is flatter and more formal, and it is the one you will read on forms and notices."
+        },
+        {
+          "a": "한국어를 못해요.",
+          "aEn": "I can't speak Korean.",
+          "b": "한국어를 잘 못해요.",
+          "bEn": "I'm not very good at Korean.",
+          "note": "잘 turns cannot into not good at. It is the honest answer when you speak some Korean, and the polite one."
         }
       ],
       "tags": [
@@ -354,6 +368,20 @@
           "b": "여기에서 담배를 피우면 안 돼요.",
           "bEn": "You must not smoke here.",
           "note": "면 안 되다 is the prohibition. Literally: if you do it, it won't do. This is the exact phrasing a supervisor will use."
+        },
+        {
+          "a": "먼저 퇴근해도 돼요.",
+          "aEn": "You can go home before the others.",
+          "b": "먼저 퇴근하면 안 돼요.",
+          "bEn": "You must not go home before the others.",
+          "note": "아/어도 돼요 gives permission. (으)면 안 돼요 takes it away. Listen for 도 or 면 — the rest of the sentence is the same."
+        },
+        {
+          "a": "장갑을 끼면 안 돼요.",
+          "aEn": "You must not wear gloves.",
+          "b": "장갑을 안 끼면 안 돼요.",
+          "bEn": "You have to wear gloves.",
+          "note": "One extra 안 turns the rule upside down. 안 하면 안 돼요 means it won't do if you don't, so you must."
         }
       ],
       "tags": [
@@ -537,6 +565,20 @@
           "b": "시간이 없으면 오지 마세요.",
           "bEn": "Don't come if you don't have time.",
           "note": "면 attaches after 으 when the stem ends in a consonant — the same 으 you met in 으세요."
+        },
+        {
+          "a": "피곤하면 쉬어요.",
+          "aEn": "When I'm tired, I rest.",
+          "b": "피곤해서 쉬어요.",
+          "bEn": "I'm resting because I'm tired.",
+          "note": "면 sets a condition: whenever that is true. 아/어서 gives a reason that is true right now."
+        },
+        {
+          "a": "일이 끝나면 전화하세요.",
+          "aEn": "Call me when work finishes.",
+          "b": "일이 끝났으면 전화하세요.",
+          "bEn": "If work has finished, call me.",
+          "note": "Put the past inside 면 and the condition is about something already done. The first waits for the end of work; the second asks if it has ended."
         }
       ],
       "tags": [
@@ -721,6 +763,20 @@
           "b": "일했을 때 조심했어요.",
           "bEn": "I was careful when I was working.",
           "note": "ㄹ 때 is while or when. Put the tense inside it — 했을 때 — and you are talking about a particular past occasion."
+        },
+        {
+          "a": "기계를 끄기 전에 청소하세요.",
+          "aEn": "Clean it before you switch the machine off.",
+          "b": "기계를 끈 후에 청소하세요.",
+          "bEn": "Clean it after you switch the machine off.",
+          "note": "Only the time word changed, and the order of the two actions is reversed. 기 전에 goes on the plain stem; 후에 needs the ㄴ shape."
+        },
+        {
+          "a": "점심 때 만나요.",
+          "aEn": "Let's meet at lunchtime.",
+          "b": "점심 전에 만나요.",
+          "bEn": "Let's meet before lunch.",
+          "note": "After a noun, 때 is during it and 전에 is before it. Neither needs anything between it and the noun."
         }
       ],
       "tags": [
@@ -904,6 +960,20 @@
           "b": "이거 좋은데 한번 보세요.",
           "bEn": "This is good — have a look.",
           "note": "는데 is not but. It is the setup, and what follows can be a contrast, a request, or just the rest of the story."
+        },
+        {
+          "a": "부탁이 있어요.",
+          "aEn": "I have a favour to ask.",
+          "b": "부탁이 있는데요.",
+          "bEn": "Er, I have a favour to ask…",
+          "note": "는데요 leaves the sentence open and lets the other person answer first. It is the gentle way to start a request."
+        },
+        {
+          "a": "지금 좀 바쁜데 이따가 이야기해요.",
+          "aEn": "I'm a bit busy now, so let's talk later.",
+          "b": "지금 좀 바쁘는데 이따가 이야기해요.",
+          "bEn": "— not Korean.",
+          "note": "바쁘다 describes, so it takes ㄴ데: 바쁜데. 는데 is for action verbs and for 있다 and 없다."
         }
       ],
       "tags": [
@@ -1081,6 +1151,20 @@
           "b": "사장님이 오십니다.",
           "bEn": "The boss is coming.",
           "note": "시 honours the person doing the action, not the person you are speaking to. You never use it about yourself."
+        },
+        {
+          "a": "서류를 제출했습니다.",
+          "aEn": "I have handed in the documents.",
+          "b": "서류를 제출했습니까?",
+          "bEn": "Have you handed in the documents?",
+          "note": "At this level a statement ends in 다 and a question in 까. You will hear 습니까 at every office counter."
+        },
+        {
+          "a": "열심히 하겠습니다.",
+          "aEn": "I will work hard.",
+          "b": "열심히 합니다.",
+          "bEn": "I work hard.",
+          "note": "겠 adds intention. The first is a promise about the future, the line people close an interview with. The second only describes you."
         }
       ],
       "tags": [

@@ -184,6 +184,20 @@
           "b": "내일 만날 사람",
           "bEn": "the person I'll meet tomorrow",
           "note": "The tense lives in the modifier: ㄴ for done, 는 for now, ㄹ for not yet. Get this and half of written Korean opens up."
+        },
+        {
+          "a": "제가 일하는 공장은 멀어요.",
+          "aEn": "The factory I work at is far away.",
+          "b": "제가 일한 공장은 멀어요.",
+          "bEn": "The factory I worked at is far away.",
+          "note": "는 says you still work there. ㄴ says that job is finished. The one change in front of the noun moves you in time."
+        },
+        {
+          "a": "재미있는 일이에요.",
+          "aEn": "It's interesting work.",
+          "b": "재미있은 일이에요.",
+          "bEn": "— not Korean.",
+          "note": "Words built on 있다 and 없다 take 는, even though they feel like describing words: 재미있는, 맛있는, 재미없는."
         }
       ],
       "tags": [
@@ -363,6 +377,20 @@
           "b": "한국에 살게 됐어요.",
           "bEn": "It came about that I live in Korea.",
           "note": "게 되다 says the situation arrived rather than that you chose it. Koreans use it constantly to take the edge off announcing a decision."
+        },
+        {
+          "a": "일이 바빴어요.",
+          "aEn": "Work was busy.",
+          "b": "일이 바빠졌어요.",
+          "bEn": "Work has got busier.",
+          "note": "The past of a state only says how it was. 아/어지다 says it changed, and it usually still is that way now."
+        },
+        {
+          "a": "회의 시간을 정했어요.",
+          "aEn": "We set the meeting time.",
+          "b": "회의 시간이 정해졌어요.",
+          "bEn": "The meeting time has been set.",
+          "note": "지다 takes away the person who did it. The time becomes the subject, so 을 becomes 이, and nobody is named."
         }
       ],
       "tags": [
@@ -556,6 +584,20 @@
           "b": "언제 오냐고 물었어요.",
           "bEn": "He asked when I was coming.",
           "note": "A reported question takes 냐고, a reported suggestion 자고, a reported order 라고. Four endings, one pattern."
+        },
+        {
+          "a": "반장님이 먼저 가자고 했어요.",
+          "aEn": "The team leader suggested we go first.",
+          "b": "반장님이 먼저 가라고 했어요.",
+          "bEn": "The team leader told me to go first.",
+          "note": "One syllable apart. 자고 reports a let's, so the team leader is going too. 라고 reports an order, so only you are going."
+        },
+        {
+          "a": "월급이 들어온다고 했어요.",
+          "aEn": "They said the wages are going in.",
+          "b": "월급이 들어왔다고 했어요.",
+          "bEn": "They said the wages have gone in.",
+          "note": "The tense goes inside the quote. 들어온다고 has not happened yet; 들어왔다고 already has."
         }
       ],
       "tags": [
@@ -741,6 +783,20 @@
           "b": "어제 말했잖아요.",
           "bEn": "I told you yesterday, remember?",
           "note": "잖아요 appeals to what you both already know. It can sound warm between friends and sharp from a supervisor — the ending carries the whole difference."
+        },
+        {
+          "a": "그 식당 비싸요.",
+          "aEn": "That restaurant is expensive.",
+          "b": "그 식당 비싸더라고요.",
+          "bEn": "That restaurant was expensive — I went and saw.",
+          "note": "더라고요 reports something you found out yourself. It tells the listener this is your own experience, not something you heard."
+        },
+        {
+          "a": "오늘 덥네요.",
+          "aEn": "Oh, it's hot today.",
+          "b": "오늘 덥죠?",
+          "bEn": "It's hot today, isn't it?",
+          "note": "네요 is you noticing. 죠 asks the other person to agree, and it is an easy way to start a conversation."
         }
       ],
       "tags": [
@@ -924,6 +980,20 @@
           "b": "일찍 왔더라면 좋았을 텐데요.",
           "bEn": "If only I'd come early.",
           "note": "았더라면 is about what did NOT happen. It is the grammar of regret, and it takes a past form on both halves."
+        },
+        {
+          "a": "손을 다쳤어요.",
+          "aEn": "I hurt my hand.",
+          "b": "손을 다칠 뻔했어요.",
+          "bEn": "I nearly hurt my hand.",
+          "note": "(으)ㄹ 뻔했다 is a near miss: it did not happen. When you report an accident, the difference matters."
+        },
+        {
+          "a": "지금 출발하면 늦어요.",
+          "aEn": "If you leave now, you'll be late.",
+          "b": "지금 출발하면 늦을 텐데요.",
+          "bEn": "If you leave now, you'll be late, I'm afraid.",
+          "note": "The first states a fact. 텐데요 shares a worry and leaves the decision with the listener, so it sounds concerned rather than bossy."
         }
       ],
       "tags": [
@@ -1113,6 +1183,20 @@
           "b": "계약서에 따라 일한다.",
           "bEn": "Work shall be performed in accordance with the contract.",
           "note": "에 따라 means in accordance with, and it is the hinge of most official sentences. Find it and you have found what the rule depends on."
+        },
+        {
+          "a": "작업장에서는 안전모를 써야 해요.",
+          "aEn": "You have to wear a helmet in the work area. (said to you)",
+          "b": "작업장에서는 안전모를 써야 한다.",
+          "bEn": "A helmet must be worn in the work area. (on a notice)",
+          "note": "Only the ending changed. 한다 is the plain written style of a notice, addressed to nobody in particular, and it is not rude."
+        },
+        {
+          "a": "3만 원 이상 주문 시 배달은 무료이다.",
+          "aEn": "Delivery is free on orders of 30,000 won or more.",
+          "b": "3만 원 초과 주문 시 배달은 무료이다.",
+          "bEn": "Delivery is free on orders over 30,000 won.",
+          "note": "이상 includes the number itself; 초과 does not. Order exactly 30,000 won and only the first one is free."
         }
       ],
       "tags": [
