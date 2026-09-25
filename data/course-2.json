@@ -178,6 +178,20 @@
           "b": "가지 않아요.",
           "bEn": "I don't go.",
           "note": "The same meaning by a longer road. 지 않다 is the one you will see in writing and on the exam paper; 안 is the one you will hear."
+        },
+        {
+          "a": "오늘은 일 안 해요.",
+          "aEn": "I'm not working today.",
+          "b": "오늘은 안 일해요.",
+          "bEn": "— not Korean.",
+          "note": "In a noun + 하다 verb, 안 goes between the two parts, right in front of 해요. 일 안 해요, 청소 안 해요."
+        },
+        {
+          "a": "술을 안 마셔요.",
+          "aEn": "I don't drink. (my choice)",
+          "b": "술을 못 마셔요.",
+          "bEn": "I can't drink. (something stops me)",
+          "note": "안 is a choice. 못 is an obstacle, such as your health or your religion. At a work dinner the two are heard very differently."
         }
       ],
       "tags": [
@@ -364,6 +378,20 @@
           "b": "갔어요.",
           "bEn": "I went.",
           "note": "가 + 았어요 contracts to 갔어요. Korean swallows the repeated vowel rather than saying it twice."
+        },
+        {
+          "a": "네, 알아요.",
+          "aEn": "Yes, I know.",
+          "b": "네, 알았어요.",
+          "bEn": "Yes, got it.",
+          "note": "알아요 says you knew already. 알았어요 is what you say at the moment you have just been told something, even though it is past tense."
+        },
+        {
+          "a": "여기가 식당이에요.",
+          "aEn": "This is the canteen.",
+          "b": "여기가 식당이었어요.",
+          "bEn": "This used to be the canteen.",
+          "note": "Nouns have a past too. 이에요 becomes 이었어요 after a consonant, and 였어요 after a vowel."
         }
       ],
       "tags": [
@@ -546,6 +574,20 @@
           "b": "밥을 먹고 쉬어요.",
           "bEn": "I eat and rest.",
           "note": "고 welds two verbs into one sentence, so you stop needing 그리고 between every pair of clauses."
+        },
+        {
+          "a": "쉬고 싶어요.",
+          "aEn": "I want to rest.",
+          "b": "쉬고 싶어 해요.",
+          "bEn": "They want to rest.",
+          "note": "There is no he or she here, but a Korean still knows who is meant. 싶어요 is your own wish. 싶어 해요 is someone else's."
+        },
+        {
+          "a": "저는 밥하고 국을 먹어요.",
+          "aEn": "I eat rice and soup.",
+          "b": "저는 밥고 국을 먹어요.",
+          "bEn": "— not Korean.",
+          "note": "고 joins verbs. Between two nouns, and is 하고."
         }
       ],
       "tags": [
@@ -729,6 +771,20 @@
           "b": "이거 봐 주세요.",
           "bEn": "Please look at this for me.",
           "note": "세요 is a polite instruction. Add 주다 and it becomes a favour — see unit 12."
+        },
+        {
+          "a": "반장님이 찾아요.",
+          "aEn": "The team leader is looking for you.",
+          "b": "반장님이 찾으세요.",
+          "bEn": "The team leader is looking for you. (said with respect)",
+          "note": "Here 으세요 is not an order. Used about someone senior, it shows respect for the person doing the action."
+        },
+        {
+          "a": "들어가세요.",
+          "aEn": "Please go in.",
+          "b": "들어가지 마세요.",
+          "bEn": "Do not go in.",
+          "note": "To tell someone not to do something, put 지 마세요 on the stem. You will see it on doors and machines."
         }
       ],
       "tags": [
@@ -912,6 +968,20 @@
           "b": "내일 쉴 거예요.",
           "bEn": "I'm going to take tomorrow off.",
           "note": "Korean often uses the present for a fixed future arrangement, exactly as English does with I'm off tomorrow. 거예요 adds intention."
+        },
+        {
+          "a": "제가 할 거예요.",
+          "aEn": "I'm going to do it.",
+          "b": "제가 할게요.",
+          "bEn": "I'll do it — leave it to me.",
+          "note": "거예요 states a plan. ㄹ게요 is a promise to the person in front of you, the one to use when you volunteer."
+        },
+        {
+          "a": "반장님이 지금 바빠요.",
+          "aEn": "The team leader is busy right now.",
+          "b": "반장님이 지금 바쁠 거예요.",
+          "bEn": "The team leader is probably busy right now.",
+          "note": "With 지금 in the sentence, 거예요 is not a plan. About another person, it is a guess."
         }
       ],
       "tags": [
@@ -1099,6 +1169,20 @@
           "b": "천천히 말해 주세요.",
           "bEn": "Please speak slowly for me.",
           "note": "Both are polite; 주세요 is warmer, because it admits the other person is doing you a kindness. Use it when you are the one who needs something."
+        },
+        {
+          "a": "도와주세요.",
+          "aEn": "Please help me.",
+          "b": "좀 도와주세요.",
+          "bEn": "Could you give me a hand?",
+          "note": "좀 means a little, but its job here is to soften. Without it the request can sound urgent."
+        },
+        {
+          "a": "영수증 주세요.",
+          "aEn": "The receipt, please.",
+          "b": "영수증 보여 주세요.",
+          "bEn": "Please show me the receipt.",
+          "note": "After a noun, 주세요 means give it to me. After a verb, it means do this for me, so 보여 주세요 asks to see the receipt, not to be given it."
         }
       ],
       "tags": [

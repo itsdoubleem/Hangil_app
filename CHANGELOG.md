@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-09-25 — twice as many minimal pairs
+
+**48 pairs added, two in every unit, so each of the 24 units now has four.**
+A pair is the most direct teaching in the course: one sentence twice, one thing
+changed, so the change in meaning has only one possible cause. Two per unit
+left most of each unit's contrasts untaught this way.
+
+**Each new pair teaches something the unit's first two did not.** Most set the
+form against its nearest neighbour: 안 against 못, 할 거예요 against 할게요,
+기 전에 against 후에, 자고 against 라고, 이상 against 초과. Others show the
+other half of the rule, such as a noun in the past (식당이었어요), a formal
+question (습니까), or a condition about something already done (끝났으면).
+
+**Seven show a mistake learners really make,** with the English line
+`— not Korean.`, as g01's second pair already did: 이름는, 식당에 점심을 먹어요,
+둘 개, 안 일해요, 밥고, 바쁘는데, 재미있은. No unit has more than one.
+
+**Apart from the form being taught, each pair uses only grammar from earlier
+units.** None states a rule about work, pay or visas. Nothing else in the course
+changed, and the existing pairs are as they were.
+
 ## 2026-09-25 — a line-by-line review of v13–v24
 
 **34 of the 207 new words changed: 33 edited and one replaced.** The twelve

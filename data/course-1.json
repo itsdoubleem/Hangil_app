@@ -164,6 +164,20 @@
           "b": "친구이에요.",
           "bEn": "— not Korean.",
           "note": "친구 ends in the vowel ㅜ, so it can only take 예요. The consonant-or-vowel question decides almost every ending in this course."
+        },
+        {
+          "a": "여기가 기숙사예요.",
+          "aEn": "This is the dormitory.",
+          "b": "여기가 기숙사예요?",
+          "bEn": "Is this the dormitory?",
+          "note": "Not one word moved. A question is the same sentence with your voice rising at the end."
+        },
+        {
+          "a": "제 여권이에요.",
+          "aEn": "It's my passport.",
+          "b": "제 여권이 아니에요.",
+          "bEn": "It isn't my passport.",
+          "note": "The negative is not a new ending but a separate word, 아니에요. The noun in front of it takes 이 (or 가 after a vowel)."
         }
       ],
       "tags": [
@@ -333,6 +347,20 @@
           "b": "저는 베트남 사람이에요.",
           "bEn": "As for me, I'm Vietnamese.",
           "note": "Both are correct. 는 announces what the sentence is about, which matters most when you are answering a question about someone else."
+        },
+        {
+          "a": "이분이 반장님이에요.",
+          "aEn": "This is the team leader. (the answer to who is it?)",
+          "b": "이분은 반장님이에요.",
+          "bEn": "This person is the team leader. (introducing them)",
+          "note": "이/가 points: this one, not someone else. 은/는 takes a person already in front of you and says something about them."
+        },
+        {
+          "a": "제 이름은 아민이에요.",
+          "aEn": "My name is Amin.",
+          "b": "제 이름는 아민이에요.",
+          "bEn": "— not Korean.",
+          "note": "이름 ends in the consonant ㅁ, so it takes 은. 는 is only for a noun ending in a vowel, like 저는."
         }
       ],
       "tags": [
@@ -512,6 +540,20 @@
           "b": "화장실이 없어요.",
           "bEn": "There is no toilet.",
           "note": "있다 covers both there is and I have. Which one it means comes from the rest of the sentence, not from the verb."
+        },
+        {
+          "a": "시간이 있어요?",
+          "aEn": "Do you have time?",
+          "b": "시간 있어요?",
+          "bEn": "Got time? — the same question, the way it is usually said.",
+          "note": "In speech 이/가 is often left out and the meaning does not change. Expect to hear it missing."
+        },
+        {
+          "a": "돈이 없어요.",
+          "aEn": "I don't have any money.",
+          "b": "돈이 아니에요.",
+          "bEn": "It isn't money.",
+          "note": "없어요 says there is none. 아니에요 says it is not that thing. Both come out as not in English, which is why they get swapped."
         }
       ],
       "tags": [
@@ -697,6 +739,20 @@
           "b": "해요.",
           "bEn": "I do.",
           "note": "먹 has the vowel ㅓ, so 어요. 하다 is irregular and becomes 해요 — it is the one you will say most, so learn it as its own word."
+        },
+        {
+          "a": "지금 일해요.",
+          "aEn": "I'm working now.",
+          "b": "내일 일해요.",
+          "bEn": "I'm working tomorrow.",
+          "note": "The verb did not change. 아요/어요 covers now and the near future, and the time word tells you which."
+        },
+        {
+          "a": "내일 봐요.",
+          "aEn": "See you tomorrow.",
+          "b": "내일 봐.",
+          "bEn": "See you tomorrow. (to a close friend)",
+          "note": "Drop the 요 and the sentence becomes casual. Same meaning, but at work keep the 요."
         }
       ],
       "tags": [
@@ -882,6 +938,20 @@
           "b": "집에서 쉬어요.",
           "bEn": "I rest at home.",
           "note": "Going TO a place is 에. Doing something AT a place is 에서."
+        },
+        {
+          "a": "지금 공장에서 전화해요.",
+          "aEn": "I'm calling from the factory.",
+          "b": "지금 공장에 전화해요.",
+          "bEn": "I'm calling the factory.",
+          "note": "에서 is where the call comes from. 에 is where it goes to. Same verb, and the particle alone turns it round."
+        },
+        {
+          "a": "식당에서 점심을 먹어요.",
+          "aEn": "I eat lunch at the canteen.",
+          "b": "식당에 점심을 먹어요.",
+          "bEn": "— not Korean.",
+          "note": "English says at for both, but eating is something you do there, so it needs 에서. Keep 에 for 가다, 오다, 있다 and 없다."
         }
       ],
       "tags": [
@@ -1067,6 +1137,20 @@
           "b": "스무 살",
           "bEn": "twenty years old",
           "note": "A clock time uses both in one breath: native for the hour, Sino for the minutes. Age goes back to native."
+        },
+        {
+          "a": "상자가 두 개 있어요.",
+          "aEn": "There are two boxes.",
+          "b": "상자가 둘 개 있어요.",
+          "bEn": "— not Korean.",
+          "note": "Before a counter, 하나 둘 셋 넷 shorten to 한 두 세 네. 두 개, never 둘 개."
+        },
+        {
+          "a": "세 시예요.",
+          "aEn": "It's three o'clock.",
+          "b": "세 시간이에요.",
+          "bEn": "It's three hours.",
+          "note": "시 is the hour on the clock, 시간 is a length of time. Both use the native 세. The ending changes only because 시간 ends in a consonant."
         }
       ],
       "tags": [
