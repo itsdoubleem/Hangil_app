@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.2 — 2026-10-11 — twelve more vocabulary sets, reviewed
+
+Releases the three entries below: vocabulary sets v13–v24, six romanization
+fixes with a check that keeps them right, and a line-by-line review that
+changed 34 of the new words. Signed with the same key as 1.0.1, so it
+installs over it and keeps progress.
+
 ## 2026-09-25 — a line-by-line review of v13–v24
 
 **34 of the 207 new words changed: 33 edited and one replaced.** The twelve
