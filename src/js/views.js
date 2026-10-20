@@ -5,6 +5,7 @@ import { load, data, LEVELS, unitKey, vocabKey, drillKey, tradeKey, isExamKey, i
 import { Quiz, fromExercise, fromExamItem, fromWord, speakBtn } from './quiz.js';
 import { lessons as alphabetLessons, lessonCards, lessonQuestions, letterQuestion, readQuestion, syllableQuestion, changeQuestion, syllableKey } from './alphabet.js';
 import { t } from './i18n.js';
+import { marks, where } from './progress.js';
 import { runMock } from './mock.js';
 import { Deck, unitCards, hidden } from './deck.js';
 
@@ -87,27 +88,6 @@ function progressRow(label, done, total, tone) {
   return h('div', { class: 'progress', style: `--c: var(--c-${tone})` },
     h('div', { class: 'progress__row' }, h('span', {}, label), h('b', {}, `${done} of ${total}`)),
     h('div', { class: 'bar' }, h('i', { style: `width:${total ? (done / total) * 100 : 0}%` })));
-}
-
-const pct = (x) => `${Math.round(x * 100)}%`;
-
-// A card's line, tint and score. Before the practice, the line is how far
-// through the walk-through you are. After it, the line IS the score, and only
-// 100% turns the card its colour: a line and a number side by side read as
-// one quantity, so they must never disagree (a "78%" card with a full line
-// did, and looked finished when it was not).
-function marks(deck, cards, rec) {
-  if (rec && typeof rec.score === 'number') {
-    return { line: rec.score, done: rec.score >= 1, score: pct(rec.score) };
-  }
-  return { line: store.stepsDone(deck, cards, false), done: false, score: null };
-}
-
-// Where you are in something not yet finished, for its card's meta line.
-function where(deck, cards, next = 'practiceNext') {
-  if (store.walkedOf(deck)) return ` · ${t(next)}`;
-  const at = store.placeOf(deck);
-  return at ? ` · ${t('cardOf').replace('%a', Math.min(at, cards - 1) + 1).replace('%b', cards)}` : '';
 }
 
 // A ring rather than a bar, once, on the home screen. It is the only place the
