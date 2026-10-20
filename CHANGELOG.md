@@ -1,5 +1,57 @@
 # Changelog
 
+## 2026-10-20 — a design for the app: premium minimal
+
+The design is written down in `docs/design/DESIGN.md`, its values are in
+`src/css/tokens.css`, and every screen now follows it.
+
+**Quieter.** Section colours stay, so a screen is still quick to scan, but
+they are deeper and appear only on small marks. Buttons and the Today card
+turn deep navy, the navy of the app icon. Meta lines lose their tracked
+capitals, headings get lighter, lines get thinner, and the font becomes
+Pretendard, bundled so the app still makes no network requests.
+
+**Progress is a line along the top of a card**, and the card turns its section
+colour when you finish it. The line shows how far you have got (card 17 of 21
+is about three quarters), not your score, so a lesson finished at 86% still
+counts as finished. The score sits beside the lesson number as "✓ 86%". This
+replaced a gauge pill that was proposed first and turned down from the preview.
+
+**Only a card at 100% turns its colour.** The first version tinted a card
+as soon as its practice was done, so a lesson at 78% showed a full line on a
+coloured card beside the number 78%. Now, before the practice the line shows
+how far through you are, after it the line is your score, and only 100%
+changes the colour or earns the tick. Scores keep your best first attempt,
+so a worse retry no longer takes a 100% away. An exam question type tinted
+after a single try, even at 1 out of 8; it now needs full marks.
+
+**A finished card now stands out from the page.** The light tint first used
+for a 100% card sat almost exactly on the page's own colour (1.07:1), so
+finished lessons barely showed on the phone. The tint is now 20% of the
+section colour (22% in dark mode), with the score drawn a shade deeper so it
+stays at 5.2:1 or better in every section. A solid fill was tried first and
+replaced: it turned a finished section into a wall of one colour.
+
+**Also fixed while there:** the two rows of cards on Today touched; three
+buttons were under the app's 48px tap size (the speaker, the small "Show
+meaning", the paper's question grid); the exam screen showed up to three
+navy cards where the design allows one; "Up next" and "card 3 of 21" were
+English in the Korean interface; and the web manifest still had the old
+colours.
+
+**Finishing is now remembered on its own.** A walk-through forgets its card
+when you finish it, so that the next visit starts at the top, but its line
+must not drop back to nothing because of that. Finished walk-throughs and
+completed vocabulary drills are now recorded separately; the vocabulary list
+used to count words practised, which said nothing about the set being done.
+
+**One thing the capitals had been hiding:** course units were labelled from a
+string that did not exist, so the screen showed the key's own name, "unit",
+upper-cased into looking right. It now says "Unit", and "단원" in Korean.
+
+**The app is about 2 MB bigger,** all of it the font. Pretendard covers all
+11,172 Korean syllables; the 270 KB cut covers 2,350, and the alphabet
+practice builds syllables outside that set.
 ## 2026-10-20 — two fixes from an hour on the phone
 
 **오 and 우 are no longer asked by ear.** Recorded off Google's Korean voice

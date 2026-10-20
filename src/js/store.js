@@ -26,6 +26,8 @@ const FRESH = {
   last: null,          // last route, for "carry on"
   at: null,            // the screen open when the app was last left — reopened at boot
   place: {},           // walk-through id -> the card you were on
+  walked: {},          // walk-through id -> at, once its last card has been reached
+  sets: {},            // vocabulary setId -> { at, score } — its drill completed
 };
 
 let state = load();
@@ -86,14 +88,18 @@ export function touchDay() {
   save();
 }
 
+// Scores keep the best first attempt: a card turns its colour at 100%, and a
+// worse retry must not take that away.
+const best = (prev, score) => Math.max(prev && typeof prev.score === 'number' ? prev.score : 0, score);
+
 export function markLesson(id, score) {
-  state.done[id] = { at: today(), score };
+  state.done[id] = { at: today(), score: best(state.done[id], score) };
   touchDay();
   save();
 }
 
 export function markLetters(id, score) {
-  state.letters[id] = { at: today(), score };
+  state.letters[id] = { at: today(), score: best(state.letters[id], score) };
   touchDay();
   save();
 }
@@ -121,6 +127,26 @@ export function setAt(route) { if (state.at !== route) { state.at = route; save(
 export const placeOf = (id) => state.place[id] || 0;
 export function setPlace(id, i) {
   if (i > 0) state.place[id] = i; else delete state.place[id];
+  save();
+}
+
+// A finished walk-through forgets its card, so the next visit starts at the
+// top — but the progress line on its card must not drop back to nothing
+// because of that. So finishing is recorded on its own.
+export function markWalked(id) { state.walked[id] = today(); save(); }
+export const walkedOf = (id) => !!state.walked[id];
+
+// How far through a walk-through and its practice: each card is a step and the
+// practice is one more, so the line never fills until the practice is done.
+export function stepsDone(id, cards, finished) {
+  if (finished) return 1;
+  const passed = state.walked[id] ? cards : Math.min(placeOf(id), cards);
+  return passed / (cards + 1);
+}
+
+export function markSet(id, score) {
+  state.sets[id] = { at: today(), score: best(state.sets[id], score) };
+  touchDay();
   save();
 }
 

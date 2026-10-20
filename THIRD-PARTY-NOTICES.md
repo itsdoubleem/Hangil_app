@@ -1,9 +1,10 @@
 # Third-party notices
 
 한길 HANGIL is written without a framework or a bundler, so the web app carries no
-third-party code at all: every file in `src/` and `data/` was written for it. The
-notices below are for what the **Android app** links, and for the one kind of
-material a personal build can carry that is not ours.
+third-party code at all: every file in `src/` and `data/` was written for it,
+except the one font in `src/fonts/`. The notices below are for that font, for
+what the **Android app** links, and for the one kind of material a personal
+build can carry that is not ours.
 
 ---
 
@@ -43,10 +44,17 @@ None of these is part of the web build at `/hangil/`.
 
 ## Fonts
 
-No font file is embedded, in either build. The app asks for the system UI font and,
-for Korean, the system's Korean font (`Apple SD Gothic Neo`, `Noto Sans KR`,
-`Malgun Gothic`), and falls back to whatever the device provides. It never fetches
-a webfont, and the Android package holds no `INTERNET` permission, so it could not.
+Both builds embed one font, unmodified:
+
+| Font | Version | Licence | File |
+|---|---|---|---|
+| Pretendard Variable, © 2021 Kil Hyung-jin, Reserved Font Name "Pretendard" | 1.3.9 | SIL Open Font License 1.1 | `src/fonts/PretendardVariable.woff2` |
+
+The full licence travels beside the font as `src/fonts/OFL.txt`, which the build
+copies into both the web app and the APK. The file is the upstream release's
+own (SHA-256 `9599f12f…82d900b4`), served from the app's own folder like every
+other file. It is never fetched from a font service, and the Android package
+holds no `INTERNET` permission, so it could not be.
 
 ## Speech
 

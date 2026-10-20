@@ -139,7 +139,7 @@ export class Deck {
     this.onDone = onDone;
     this.doneLabel = doneLabel;
     // Clamped: a lesson that has lost cards since must not open past its end.
-    this.i = id ? Math.min(store.placeOf(id), this.cards.length - 1) : 0;
+    this.i = id ? Math.max(0, Math.min(store.placeOf(id), this.cards.length - 1)) : 0;
     this.draw();
   }
 
@@ -171,7 +171,7 @@ export class Deck {
         class: 'btn btn--accent btn--wide',
         onclick: () => {
           if (last) {
-            if (this.id) store.setPlace(this.id, 0);
+            if (this.id) { store.setPlace(this.id, 0); store.markWalked(this.id); }
             this.onDone && this.onDone();
             return;
           }
