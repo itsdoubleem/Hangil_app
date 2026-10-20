@@ -12,6 +12,14 @@ was half English and read like a score; it is now "2과 · 21장 중 6번째", a
 units are 과 throughout instead of 과 in one place and 단원 in another.
 
 **Smaller fixes:**
+- A card always opens what it says: one reading "card 4 of 10" resumes the
+  walk-through instead of jumping to the practice.
+- A vocabulary set counts only its current words, so a word edited or removed
+  from the set can no longer leave it reading 100%.
+- Vocabulary scores saved under the old one-drill rule are cleared, because a
+  100% there could cover a third of the set unanswered. The set is scored
+  afresh from its next drill.
+- The Korean progress label reads 진도 rather than a bare 과.
 - Going back through a lesson you already finished says which card you are on.
 - A finished card's grey text in dark mode now clears 4.5:1 on every colour.
 - An exam question type can no longer show a best above its total.
