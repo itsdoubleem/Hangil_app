@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-20 — loose ends from three reviews
+
+**A vocabulary set reaches 100% only when every word does.** A drill asks
+12 of up to 18 words, so one perfect drill used to mark the whole set done.
+The set now keeps every word you have answered right on a first attempt, and
+its score is that share of the set.
+
+**The Korean interface says where you are in Korean.** "Lesson 2 · 21장 중 6"
+was half English and read like a score; it is now "2과 · 21장 중 6번째", and
+units are 과 throughout instead of 과 in one place and 단원 in another.
+
+**Smaller fixes:**
+- Going back through a lesson you already finished says which card you are on.
+- A finished card's grey text in dark mode now clears 4.5:1 on every colour.
+- An exam question type can no longer show a best above its total.
+- The font has a second, plain format entry for engines that need it.
+
 ## 2026-10-20 — a design for the app: premium minimal
 
 The design is written down in `docs/design/DESIGN.md`, its values are in
