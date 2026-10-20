@@ -29,7 +29,7 @@ const S = {
     back:'뒤로', done:'완료', locked:'먼저 설명을 읽으세요',
     about:'정보', madeBy:'만든 사람 %n',
     upNext:'다음 순서', cardOf:'%b장 중 %a번째', practiceNext:'연습 남음', drillNext:'연습 남음',
-    lessonN:'%n과', unitN:'%n과', upNextUnit:'다음 순서 · %n과', lessonsLabel:'과', unitsLabel:'과', nOfM:'%a / %b',
+    lessonN:'%n과', unitN:'%n과', upNextUnit:'다음 순서 · %n과', lessonsLabel:'진도', unitsLabel:'진도', nOfM:'%a / %b',
   },
 };
 let lang = 'en';
