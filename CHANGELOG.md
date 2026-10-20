@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-10-20 — a design for the app: premium minimal
+
+Not applied yet. This is the design written down, in `docs/design/DESIGN.md`
+with its values in `src/css/tokens.css`, ready to be built.
+
+**Quieter.** Section colours stay, so a screen is still quick to scan, but
+they are deeper and appear only on small marks. Buttons and the Today card
+turn deep navy, the navy of the app icon. Meta lines lose their tracked
+capitals, headings get lighter, lines get thinner, and the font becomes
+Pretendard, bundled so the app still makes no network requests.
+
+**Progress is a line along the top of a card**, and the card turns its section
+colour when you finish it. The line shows how far you have got (card 17 of 21
+is about three quarters), not your score, so a lesson finished at 86% still
+counts as finished. The score sits beside the lesson number as "✓ 86%". This
+replaced a gauge pill that was proposed first and turned down from the preview.
 ## 2026-10-20 — two fixes from an hour on the phone
 
 **오 and 우 are no longer asked by ear.** Recorded off Google's Korean voice

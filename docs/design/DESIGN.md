@@ -19,8 +19,8 @@ than borders, a colour per section, motion with meaning, a 4pt rhythm. All of
 that stays. What changes is the **volume**:
 
 - **Colour is a signal, not a surface.** A section's colour appears on three
-  things only: the glyph or icon in its tile, its percentage pill, and its
-  progress line. Icon tiles are neutral grey. Nothing large is filled with a
+  things only: the glyph or icon in its tile, its progress line, and the
+  tint of a card once it is finished. Icon tiles are neutral grey. Nothing large is filled with a
   section colour.
 - **One dark, quiet primary.** Buttons, the Today hero card and focus rings use
   `--primary`, the deep navy of the app icon. It replaces the violet and orange
@@ -30,8 +30,8 @@ that stays. What changes is the **volume**:
   Headings are a little lighter. Korean subtitles are grey, not coloured.
 - **Thinner everything.** Progress lines are 4px, down from 10. Icon strokes
   are 1.7, down from 1.9. Shadows are softer.
-- **Scores are pills.** Any percentage shown on a card is a gauge pill, never
-  digits in a meta line. See below.
+- **Progress is a line along the card's top edge**, and a finished card turns
+  its section colour. The score is a small number, not a badge. See below.
 
 ## Palette
 
@@ -98,31 +98,87 @@ The font goes in `src/fonts/`, and its licence goes in `THIRD-PARTY-NOTICES.md`.
 | Korean under study | `--t-ko-lg` | 22 / 600 / 1.45 | 0 |
 | Korean subtitle | `--t-ko-sub` | 14 / 500 / 1.3 | 0 |
 | Meta | `--t-meta` | 12.5 / 500 / 1.2 | 0, sentence case |
-| Numbers in pills | `--t-num` | 13 / 680 / 1 | tabular figures |
+| Score on a card | `--t-num` | 13 / 680 / 1 | tabular figures |
 
 Korean is never tracked negative. Letters and blocks being taught are always
 real text, never SVG (see "The traps" in CLAUDE.md).
 
-## The percentage pill
+## Progress on a card
 
-The score on a card is a **gauge pill**: a 64 × 28 capsule whose fill rises
-to the score, with the number on top.
+*Changed on 2026-10-20. The first version of this design used a gauge pill;
+it was replaced before it was built. See "Why not the pill" below.*
 
-- **Track:** the section's wash. **Fill:** the section colour, with a straight
-  right edge (a rounded edge makes 25% look like a half-moon).
-- **The number is drawn twice.** In the section colour on the track, and in
-  `--on-fill` clipped to the fill's width, so it stays readable at every
-  score, including when the edge of the fill cuts through it.
-- **States:**
-  - scored: the gauge;
-  - up next: an outlined pill in `--primary` reading "Up next";
-  - not started: the plain chevron.
-- **Where it goes:** alphabet lessons (`letters[id].score`), course units
-  that have a score (`done[id].score`), and exam question types, where "best
-  7/8" becomes a pill at 88%. The weak-spot screen keeps its bar and
-  percentage, because there the number IS the content.
-- **Markup:** never put the fill in an `<i>`. Browsers italicise it by default,
-  and the clipped copy of the number leans while the other copy does not.
+A card that can be worked through shows **how far you have got** as a line
+along its top edge. When you finish it, **the card turns its section colour.**
+
+### The line
+
+- **3px** (`--line`), flush with the card's top edge and clipped by its 20px
+  corners, so a full line follows the curve at each end. The colour is `--c`.
+- **No track.** No line means not started. A grey track on every card in a
+  list would be eight more lines saying nothing.
+- **It measures progress, not score.** The score is a different thing and
+  has its own place (below). A line that showed the score would leave a lesson
+  finished at 86% looking unfinished forever.
+
+**How far you have got**, per kind of card:
+
+| Card | Steps | Finished when |
+|---|---|---|
+| Alphabet lesson | every walk-through card, then the practice as one last step | the practice is completed (`letters[id]`) |
+| Course unit | every walk-through card, then the practice as one last step | the practice is completed (`done[id]`) |
+| Vocabulary set | every walk-through card, then the drill as one last step | the drill is completed (no record of this exists yet; the build adds one) |
+| Exam question type | no walk-through | it has been attempted once (`drills[id]`) |
+
+So the line's width is `cards passed ÷ (cards + 1)`, and card 17 of 21 is
+16 ÷ 22, about three quarters. The card position is the one the app already
+saves for resuming (`store.place`).
+
+**Note for the build:** today a walk-through forgets its position the moment
+it is finished, so that the next visit starts from card one. The line needs
+to know a walk-through was finished even if the practice was then left
+half-done. Record "walked" separately from the resume position; don't reuse
+one for the other.
+
+### The finished card (tinted)
+
+- **Background:** `color-mix(in srgb, var(--c) var(--done-wash), var(--surface))`,
+  where `--done-wash` is 9% in light mode and 15% in dark mode. At 9% the dark
+  tint was invisible, so dark mode needs more.
+- **Icon tile:** solid `--c`, with the glyph in `--on-fill`.
+- **The line:** full width.
+- **Meta and chevron step up from `--ink-faint` to `--ink-soft`.** On the tint
+  `--ink-faint` measures 2.7:1 (light) and 2.9:1 (dark), under the 3:1 floor
+  that meta and icons are held to. `--ink-soft` measures 5.4–5.6:1 on every
+  section's tint.
+- Every section colour, as text on its own tint: 4.65:1 (review, light) is the
+  lowest, and everything else is higher. The glyph on the solid tile: 5.2:1 at
+  the lowest.
+- Not chosen: filling the whole card solid. It is the bigger reward, but a
+  finished section becomes a wall of one colour, and every card then looks
+  like the one hero card a screen is allowed.
+
+### The score, and the other states
+
+- **The score** sits at the right of the card's top row, level with "Lesson 1":
+  a tick and the percentage in `--c`, using `--t-num` ("✓ 86%"). Exam
+  question types show their best instead: "best 7/8".
+- **In progress:** the meta line says where you are: "Lesson 3 · card 17 of 21".
+- **Up next:** the meta line reads "Lesson 4 · Up next", with "Up next" in
+  `--primary` at weight 650. No outline, no badge.
+- **Not started:** no line, no score, just the chevron.
+- **The chevron stays** on every card. It says "this opens".
+- **The weak-spot screen keeps its bar and percentage,** because there the
+  number IS the content.
+
+### Why not the pill
+
+The gauge pill (a capsule that filled to the score) was the first proposal,
+and the owner turned it down from the preview. It put a second focal point
+on every card beside the title, and it showed the score when the more useful
+question in a list is "how far have I got". If a pill ever comes back, keep
+its one lesson: never put a fill layer in an `<i>`, because browsers
+italicise it by default and the clipped copy of a number leans.
 
 ## Shape, space, depth
 
@@ -150,8 +206,9 @@ Lucide's. Never use a filled icon, and never draw Hangul as an icon.
 ## Components
 
 - **Card:** white on the ground, 20px radius, `--e1`. Neutral icon tile with
-  the glyph in `--c`. Meta, then title, then Korean subtitle. A pill or a
-  chevron on the right.
+  the glyph in `--c`. Meta row (with the score at its right), then title,
+  then Korean subtitle, then a chevron on the right. A progress line along
+  the top edge, and a tint once it is finished; see "Progress on a card".
 - **Hero card (Today):** `--primary` fill, `--primary-ink` text, meta at 70%
   opacity. One per screen.
 - **Buttons:** primary is `--primary` filled; ghost is `--surface` with `--e1`.
@@ -185,9 +242,14 @@ bounce.
 
 | File | What it informed |
 |---|---|
-| `references/current-alphabet-list.png` | The baseline: the alphabet list as it shipped in 1.0.1/1.0.2, where scores were digits in the meta line. The pill exists because of this screen. |
+| `references/current-alphabet-list.png` | The baseline: the alphabet list as it shipped in 1.0.1/1.0.2, where scores were digits in the meta line. The progress line exists because of this screen. |
 | `references/current-today.png` | The baseline Today screen: the filled violet hero card, coloured icon tiles, tracked caps. |
 
 There were no outside style references. The direction is the owner's brief,
-"premium minimalist", and the choices above (gauge pill, quiet colour,
-Pretendard) were picked from `preview.html` on 2026-10-20.
+"premium minimalist", and the choices above (quiet colour, Pretendard) were
+picked from `preview.html` on 2026-10-20. The same day, the owner asked for a
+line on top of the card in place of the gauge pill, with the card changing
+colour when the line completes, and picked "how far you got" and the tinted
+card from the revised preview. Their markup was a screenshot of the
+preview's pill mock, which was not kept (the system deleted the temporary
+file before it could be copied).

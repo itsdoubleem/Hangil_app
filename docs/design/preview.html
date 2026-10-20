@@ -11,7 +11,7 @@
 :root {
   --ground:#F8F8F7; --surface:#FFFFFF; --sunk:#F1F1EF; --sunk-2:#E7E7E4; --hairline:#ECECEA;
   --ink:#131416; --ink-soft:#5D6169; --ink-faint:#8E929A;
-  --primary:#15304F; --primary-ink:#FFFFFF;
+  --primary:#15304F; --primary-ink:#FFFFFF; --on-fill:#FFFFFF; --done-wash:9%;
   --c-today:#B4471B; --c-course:#5145CD; --c-exam:#96591A; --c-hangeul:#0F6B7C;
   --c-vocab:#A6345F; --c-review:#2E7A4C; --c-trade:#2C55B5;
   --good:#2E7A4C; --bad:#B3261E;
@@ -24,7 +24,7 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --ground:#0E0F11; --surface:#17181B; --sunk:#1F2124; --sunk-2:#2A2C30; --hairline:#24262A;
   --ink:#EDEEF0; --ink-soft:#A3A7AF; --ink-faint:#72767E;
-  --primary:#C9D6EA; --primary-ink:#0E0F11;
+  --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11; --done-wash:15%;
   --c-today:#F0997A; --c-course:#AFA8F5; --c-exam:#E3B07A; --c-hangeul:#7CCBDA;
   --c-vocab:#EE9CBC; --c-review:#86D3A2; --c-trade:#9DB7F2; --good:#86D3A2; --bad:#FF8F84;
   --e1: 0 1px 2px rgba(0,0,0,.4);
@@ -32,7 +32,7 @@
 :root[data-theme="dark"] {
   --ground:#0E0F11; --surface:#17181B; --sunk:#1F2124; --sunk-2:#2A2C30; --hairline:#24262A;
   --ink:#EDEEF0; --ink-soft:#A3A7AF; --ink-faint:#72767E;
-  --primary:#C9D6EA; --primary-ink:#0E0F11;
+  --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11; --done-wash:15%;
   --c-today:#F0997A; --c-course:#AFA8F5; --c-exam:#E3B07A; --c-hangeul:#7CCBDA;
   --c-vocab:#EE9CBC; --c-review:#86D3A2; --c-trade:#9DB7F2; --good:#86D3A2; --bad:#FF8F84;
   --e1: 0 1px 2px rgba(0,0,0,.4);
@@ -89,6 +89,28 @@ h2.sec { font:650 13px/1 var(--font); color:var(--ink-faint); letter-spacing:.02
 .pill > i > span { position:absolute; left:0; top:0; width:var(--w); color:var(--surface); }
 :root[data-theme="dark"] .pill > i > span { color:#0E0F11; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill > i > span { color:#0E0F11; } }
+
+/* The progress line: along the card's top edge, clipped by its corners.
+   No track: no line means not started. */
+.card--line { position:relative; overflow:hidden; }
+.card--line::before { content:""; position:absolute; left:0; top:0; height:3px; width:var(--p, 0%); background:var(--c); }
+.card__row { display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin:0 0 4px; }
+.card__row .card__meta { margin:0; }
+.score { font:680 13px/1 var(--font); font-variant-numeric:tabular-nums; color:var(--c); }
+.upnext { color:var(--primary); font-weight:650; }
+/* Finished, variant A: the card takes a wash of its section colour and the
+   tile turns solid. */
+.card--done { --p:100%; background:color-mix(in srgb, var(--c) var(--done-wash), var(--surface)); }
+.card--done .card__icon { background:var(--c); color:var(--on-fill); }
+/* --ink-faint drops under 3:1 on the tint, so a finished card's meta and
+   chevron step up to --ink-soft. */
+.card--done .card__meta, .card--done .chev { color:var(--ink-soft); }
+/* Finished, variant B: the whole card fills. */
+.card--solid { --p:100%; background:var(--c); color:var(--on-fill); }
+.card--solid::before { background:var(--on-fill); opacity:.35; }
+.card--solid .card__icon { background:color-mix(in srgb, var(--on-fill) 18%, transparent); color:var(--on-fill); }
+.card--solid .card__meta, .card--solid .card__ko, .card--solid .score, .card--solid .chev { color:color-mix(in srgb, var(--on-fill) 80%, transparent); }
+.tick { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; vertical-align:-1px; margin-right:3px; }
 
 /* Pill B — the badge: solid when finished, tinted when not. */
 .badge { flex:none; display:inline-flex; align-items:center; gap:4px; height:28px; padding:0 11px; border-radius:var(--r-pill);
@@ -151,7 +173,7 @@ ul.changes b { color:var(--ink); }
 <body>
 <div class="doc">
   <h1>HANGIL, premium minimal</h1>
-  <p class="lead">A proposal, not yet applied. The current app on the left, the proposal on the right, then the three pill styles to choose from. Use the buttons to try dark mode and to compare Pretendard against the phone's own font.</p>
+  <p class="lead">A proposal, not yet applied. The current app on the left, the proposal on the right, then the two ways a finished card could change colour. Use the buttons to try dark mode and to compare Pretendard against the phone's own font.</p>
   <div class="words"><span>Calm</span><span>Quiet</span><span>Precise</span><span>Warm</span><span>Unhurried</span></div>
 
   <div class="controls" role="group" aria-label="Preview settings">
@@ -164,23 +186,18 @@ ul.changes b { color:var(--ink); }
   <h2 class="sec">THE ALPHABET LIST · BEFORE AND AFTER</h2>
   <div class="compare">
     <figure><figcaption>Now</figcaption><img class="shot" src="references/current-alphabet-list.png" alt="The current alphabet list"></figure>
-    <figure><figcaption>Proposed, with the gauge pill</figcaption>
+    <figure><figcaption>Proposed: a line along the top, and a tinted card once finished</figcaption>
       <div class="phone"><div class="phone__in" style="--c:var(--c-hangeul)">
         <div class="back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></div>
         <h3 class="title">The alphabet</h3>
         <p class="sub">Hangeul is not pictures. It is 24 letters that spell sounds, arranged into square blocks: one block, one syllable.</p>
         <div class="progress"><span>Lessons</span><b>6 of 8</b></div>
         <div class="thin"><i style="width:75%"></i></div>
-        <div class="card"><span class="card__icon"><span class="glyph">ㅏ</span></span><span class="card__body"><span class="card__meta">Lesson 1</span><span class="card__title">The six plain vowels</span><span class="card__ko">기본 모음</span></span>
-          <span class="pill" style="--p:100%"><span>100%</span><i><span>100%</span></i></span></div>
-        <div class="card"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__meta">Lesson 2</span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span>
-          <span class="pill" style="--p:86%"><span>86%</span><i><span>86%</span></i></span></div>
-        <div class="card"><span class="card__icon"><span class="glyph">ㅑ</span></span><span class="card__body"><span class="card__meta">Lesson 3</span><span class="card__title">The y vowels, and ㅐ ㅔ</span><span class="card__ko">이중 모음</span></span>
-          <span class="pill" style="--p:57%"><span>57%</span><i><span>57%</span></i></span></div>
-        <div class="card"><span class="card__icon"><span class="glyph">ㅋ</span></span><span class="card__body"><span class="card__meta">Lesson 4</span><span class="card__title">Consonants with a puff of air</span><span class="card__ko">격음</span></span>
-          <span class="next">Up next</span></div>
-        <div class="card"><span class="card__icon"><span class="glyph">ㄲ</span></span><span class="card__body"><span class="card__meta">Lesson 5</span><span class="card__title">Tense consonants</span><span class="card__ko">경음</span></span>
-          <svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㅏ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 1</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">The six plain vowels</span><span class="card__ko">기본 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 2</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>86%</span></span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="card card--line" style="--p:77%"><span class="card__icon"><span class="glyph">ㅑ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 3 · card 17 of 21</span></span><span class="card__title">The y vowels, and ㅐ ㅔ</span><span class="card__ko">이중 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="card"><span class="card__icon"><span class="glyph">ㅋ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 4 · <span class="upnext">Up next</span></span></span><span class="card__title">Consonants with a puff of air</span><span class="card__ko">격음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="card"><span class="card__icon"><span class="glyph">ㄲ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 5</span></span><span class="card__title">Tense consonants</span><span class="card__ko">경음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
       </div>
       <nav class="nav"><a><svg viewBox="0 0 24 24"><path d="M3 5.5h18v15H3z"/><path d="M8 3v5M16 3v5M3 10.5h18"/></svg>Today</a><a class="on"><svg viewBox="0 0 24 24"><path d="M4 4h7a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H4z"/><path d="M20 4h-3.5A2.5 2.5 0 0 0 14 6.5V20a2.5 2.5 0 0 1 2.5-2.5H20z"/></svg>Course</a><a><svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13.5l2 2 3.5-4"/></svg>Exam</a><a><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg>Review</a><a><svg viewBox="0 0 24 24"><path d="M4 20c0-3.6 3.6-6 8-6s8 2.4 8 6"/><circle cx="12" cy="8" r="4"/></svg>Settings</a></nav>
       </div>
@@ -208,30 +225,21 @@ ul.changes b { color:var(--ink); }
     </figure>
   </div>
 
-  <h2 class="sec">THE PERCENTAGE PILL · THREE STYLES</h2>
+  <h2 class="sec">WHEN A LESSON IS FINISHED · TWO STRENGTHS</h2>
   <div class="gallery">
-    <div class="variant" style="--c:var(--c-hangeul)">
-      <h3>A · Gauge <span class="rec">Recommended</span></h3>
-      <p>The pill fills to the score, so you can read it before you read the number.</p>
-      <div class="row">
-        <span class="pill" style="--p:100%"><span>100%</span><i><span>100%</span></i></span>
-        <span class="pill" style="--p:86%"><span>86%</span><i><span>86%</span></i></span>
-        <span class="pill" style="--p:57%"><span>57%</span><i><span>57%</span></i></span>
-        <span class="pill" style="--p:25%"><span>25%</span><i><span>25%</span></i></span>
-      </div>
+    <div class="variant" style="--c:var(--c-hangeul);background:var(--ground)">
+      <h3>A · Tinted <span class="rec">Chosen</span></h3>
+      <p>The card takes a light wash of the section colour and its tile turns solid. Clearly finished, and a list of eight finished lessons still reads calmly.</p>
+      <div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㅏ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 1</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">The six plain vowels</span><span class="card__ko">기본 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 2</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>86%</span></span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="card card--line" style="--p:77%"><span class="card__icon"><span class="glyph">ㅑ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 3 · card 17 of 21</span></span><span class="card__title">The y vowels, and ㅐ ㅔ</span><span class="card__ko">이중 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
     </div>
-    <div class="variant" style="--c:var(--c-hangeul)">
-      <h3>B · Badge</h3>
-      <p>Solid with a tick at 100%, tinted below that. The boldest of the three.</p>
-      <div class="row">
-        <span class="badge badge--full"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span>
-        <span class="badge">86%</span><span class="badge">57%</span><span class="badge">25%</span>
-      </div>
-    </div>
-    <div class="variant" style="--c:var(--c-hangeul)">
-      <h3>C · Quiet</h3>
-      <p>A grey capsule with a dot of the section's colour. The most minimal, and the least eye-catching.</p>
-      <div class="row"><span class="dotpill">100%</span><span class="dotpill">86%</span><span class="dotpill">57%</span><span class="dotpill">25%</span></div>
+    <div class="variant" style="--c:var(--c-hangeul);background:var(--ground)">
+      <h3>B · Solid <span class="rec" style="color:var(--ink-faint);background:var(--sunk)">Not chosen</span></h3>
+      <p>The whole card fills with the colour. The biggest reward, but once every lesson is done the screen is a wall of teal, and each card looks like the one hero card per screen.</p>
+      <div class="card card--line card--solid"><span class="card__icon"><span class="glyph">ㅏ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 1</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">The six plain vowels</span><span class="card__ko">기본 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="card card--line card--solid"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 2</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>86%</span></span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="card card--line" style="--p:77%"><span class="card__icon"><span class="glyph">ㅑ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 3 · card 17 of 21</span></span><span class="card__title">The y vowels, and ㅐ ㅔ</span><span class="card__ko">이중 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
     </div>
   </div>
 
@@ -266,7 +274,8 @@ ul.changes b { color:var(--ink); }
     <li><b>Thinner lines.</b> The progress bar goes from 10px to 4px and icon strokes from 1.9 to 1.7. Shadows get softer.</li>
     <li><b>A calmer tab bar.</b> The active tab loses its coloured block and gets dark ink with a small dot under it.</li>
     <li><b>Same bones.</b> 48px touch targets, one card component, the 4pt spacing, motion behind reduced-motion, every screen and route. Only the surface changes.</li>
-    <li><b>Screens affected:</b> all of them, because the change goes through the shared tokens. The pill appears on the alphabet lessons, the exam question types (now "best 7/8") and course units that have a score.</li>
+    <li><b>Progress is a line, not a pill.</b> A 3px line along the top of a card shows how far through it you are. When you finish it, the card turns its section colour. Any score sits as a small number in the card's top row.</li>
+    <li><b>Screens affected:</b> all of them, because the change goes through the shared tokens. The line appears on alphabet lessons, course units, vocabulary sets and exam question types.</li>
   </ul>
 </div>
 <script>

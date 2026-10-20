@@ -61,15 +61,15 @@
   --t-ko-lg:   600 22px/1.45 var(--font);   /* Korean being studied */
   --t-ko-sub:  500 14px/1.3 var(--font);    /* Korean subtitle on a card */
   --t-meta:    500 12.5px/1.2 var(--font);  /* sentence case, never tracked caps */
-  --t-num:     680 13px/1 var(--font);      /* pills; tabular-nums */
+  --t-num:     680 13px/1 var(--font);      /* the score on a card; tabular-nums */
 
   /* ---- shape ---- */
   --r-xs: 8px; --r-sm: 12px; --r-tile: 14px; --r-btn: 16px; --r-card: 20px; --r-pill: 999px;
   --tap: 48px;
   --stroke: 1.7;          /* icon stroke width */
-  --bar: 4px;             /* progress line height */
-  --pill-h: 28px;
-  --pill-w: 64px;
+  --bar: 4px;             /* a section's progress line, under its label */
+  --line: 3px;            /* the progress line along a card's top edge */
+  --done-wash: 9%;        /* how much --c tints a finished card */
 
   /* ---- 4pt rhythm (unchanged) ---- */
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px;
@@ -93,7 +93,7 @@
     --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11;
     --c-today:#F0997A; --c-course:#AFA8F5; --c-exam:#E3B07A; --c-hangeul:#7CCBDA;
     --c-vocab:#EE9CBC; --c-review:#86D3A2; --c-trade:#9DB7F2;
-    --good:#86D3A2; --bad:#FF8F84; --wash: 16%;
+    --good:#86D3A2; --bad:#FF8F84; --wash: 16%; --done-wash: 15%;
     --e1: 0 1px 2px rgba(0,0,0,.4);
     --e2: 0 2px 6px rgba(0,0,0,.45), 0 10px 28px rgba(0,0,0,.3);
     --e3: 0 10px 34px rgba(0,0,0,.5);
@@ -105,7 +105,7 @@
   --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11;
   --c-today:#F0997A; --c-course:#AFA8F5; --c-exam:#E3B07A; --c-hangeul:#7CCBDA;
   --c-vocab:#EE9CBC; --c-review:#86D3A2; --c-trade:#9DB7F2;
-  --good:#86D3A2; --bad:#FF8F84; --wash: 16%;
+  --good:#86D3A2; --bad:#FF8F84; --wash: 16%; --done-wash: 15%;
   --e1: 0 1px 2px rgba(0,0,0,.4);
   --e2: 0 2px 6px rgba(0,0,0,.45), 0 10px 28px rgba(0,0,0,.3);
   --e3: 0 10px 34px rgba(0,0,0,.5);
