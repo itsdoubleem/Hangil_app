@@ -92,8 +92,8 @@ function progressRow(label, done, total, tone) {
 const pct = (x) => `${Math.round(x * 100)}%`;
 
 // Where you are in something not yet finished, for its card's meta line.
-function where(deck, cards) {
-  if (store.walkedOf(deck)) return ' · practice next';
+function where(deck, cards, next = 'practice') {
+  if (store.walkedOf(deck)) return ` · ${next} next`;
   const at = store.placeOf(deck);
   return at ? ` · card ${Math.min(at, cards - 1) + 1} of ${cards}` : '';
 }
@@ -384,7 +384,8 @@ export async function hangeul(root) {
         upNext: !rec && n === nextIdx && !store.placeOf(deck) && !store.walkedOf(deck),
         line: store.stepsDone(deck, cards, !!rec), done: !!rec, score: rec ? pct(rec.score) : null,
         title: l.title, subKo: l.titleKo,
-        onclick: () => nav(`#/hangeul/lesson/${l.id}`),
+        // Walked through but not practised: the practice is the next thing.
+        onclick: () => nav(`#/hangeul/lesson/${l.id}${!rec && store.walkedOf(deck) ? '/practice' : ''}`),
       }));
     });
     root.append(h('h3', {}, 'Look it up'));
@@ -556,7 +557,7 @@ export async function course(root) {
         line: store.stepsDone(deck, cards, !!rec), done: !!rec,
         score: rec && typeof rec.score === 'number' ? pct(rec.score) : null,
         title: u.title, subKo: u.form, icon: 'course',
-        onclick: () => nav(`#/course/${u.id}`),
+        onclick: () => nav(`#/course/${u.id}${!rec && store.walkedOf(deck) ? '/practice' : ''}`),
       }));
     });
   }
@@ -662,10 +663,10 @@ export async function vocab(root) {
     const deck = `vocab/${set.id}`;
     root.append(tile({
       tone: 'vocab', i: n, icon: 'vocab',
-      meta: `${set.words.length} ${t('words')}${rec ? '' : where(deck, set.words.length) || (met ? ` · ${met} practised` : '')}`,
+      meta: `${set.words.length} ${t('words')}${rec ? '' : where(deck, set.words.length, 'drill') || (met ? ` · ${met} practised` : '')}`,
       line: store.stepsDone(deck, set.words.length, !!rec), done: !!rec, score: rec ? pct(rec.score) : null,
       title: set.title, subKo: set.titleKo,
-      onclick: () => nav(`#/vocab/${set.id}`),
+      onclick: () => nav(`#/vocab/${set.id}${!rec && store.walkedOf(deck) ? '/drill' : ''}`),
     }));
   });
 }
