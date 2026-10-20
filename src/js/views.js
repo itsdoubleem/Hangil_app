@@ -396,8 +396,9 @@ export async function hangeul(root) {
         upNext: !rec && n === nextIdx && !store.placeOf(deck) && !store.walkedOf(deck),
         ...marks(deck, cards, rec),
         title: l.title, subKo: l.titleKo,
-        // Walked through but not practised: the practice is the next thing.
-        onclick: () => nav(`#/hangeul/lesson/${l.id}${!rec && store.walkedOf(deck) ? '/practice' : ''}`),
+        // Walked through but not practised, or practised below 100%: the
+        // practice is the next thing, and the walk-through is one Back away.
+        onclick: () => nav(`#/hangeul/lesson/${l.id}${(rec ? rec.score < 1 : store.walkedOf(deck)) ? '/practice' : ''}`),
       }));
     });
     root.append(h('h3', {}, 'Look it up'));
