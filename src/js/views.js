@@ -167,7 +167,7 @@ function nextStep(d, s) {
   if (n >= 0) {
     return {
       tone: 'hangeul', route: `#/hangeul/lesson/${ls[n].id}`,
-      meta: `The alphabet · lesson ${n + 1} of ${ls.length}`,
+      meta: `The alphabet · Lesson ${n + 1} of ${ls.length}`,
       title: ls[n].title,
       desc: n === 0
         ? 'Start here. Every other screen in this app is written in 한글, and a few short lessons are enough to read it.'
@@ -178,7 +178,7 @@ function nextStep(d, s) {
   if (u) {
     return {
       tone: 'course', route: `#/course/${u.id}`,
-      meta: `Course · unit ${u.order} of ${d.units.length}`,
+      meta: `Course · Unit ${u.order} of ${d.units.length}`,
       title: u.title, desc: u.goal,
     };
   }
@@ -534,7 +534,7 @@ export async function course(root) {
   if (upNext && !lettersLeft) {
     root.append(tile({
       tone: 'course', hero: true,
-      meta: `Up next · unit ${upNext.order}`,
+      meta: `Up next · Unit ${upNext.order}`,
       title: upNext.title, desc: upNext.goal,
       onclick: () => nav(`#/course/${upNext.id}`),
     }));
