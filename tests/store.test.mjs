@@ -125,3 +125,15 @@ test('a vocabulary drill records its set and score', () => {
   store.markSet('v01', 0.75);
   assert.equal(store.get().sets.v01.score, 0.75);
 });
+
+test('a lesson, unit or set keeps its best score, not its latest', () => {
+  store.markLetters('a8', 1);
+  store.markLetters('a8', 0.78);
+  assert.equal(store.get().letters.a8.score, 1);
+  store.markLesson('g01', 0.6);
+  store.markLesson('g01', 0.9);
+  assert.equal(store.get().done.g01.score, 0.9);
+  store.markSet('v01', 1);
+  store.markSet('v01', 0.5);
+  assert.equal(store.get().sets.v01.score, 1);
+});

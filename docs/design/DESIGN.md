@@ -111,8 +111,16 @@ real text, never SVG (see "The traps" in CLAUDE.md).
 *Changed on 2026-10-20. The first version of this design used a gauge pill;
 it was replaced before it was built. See "Why not the pill" below.*
 
-A card that can be worked through shows **how far you have got** as a line
-along its top edge. When you finish it, **the card turns its section colour.**
+A card that can be worked through has a line along its top edge. Before the
+practice it shows **how far through you are**; after the practice it shows
+**your score**. **Only 100% turns the card its section colour.**
+
+*Revised the same day, after it was built.* The first rule tinted a card the
+moment its practice was finished, at any score. On the phone that put "78%"
+beside a full line on a tinted card: two quantities side by side that read
+as one, disagreeing, and a lesson that looked finished when it was not. The
+owner's ruling: only 100% changes colour. A line and a number on the same
+card must always say the same thing.
 
 ### The line
 
@@ -120,22 +128,25 @@ along its top edge. When you finish it, **the card turns its section colour.**
   corners, so a full line follows the curve at each end. The colour is `--c`.
 - **No track.** No line means not started. A grey track on every card in a
   list would be eight more lines saying nothing.
-- **It measures progress, not score.** The score is a different thing and
-  has its own place (below). A line that showed the score would leave a lesson
-  finished at 86% looking unfinished forever.
+- **Before the practice it measures progress; after, it measures the score.**
+  Before, there is no number on the card, so the line is the only quantity.
+  After, the score is printed beside it, and the line matches it.
 
-**How far you have got**, per kind of card:
+| Card | Before the practice | After the practice | Tinted when |
+|---|---|---|---|
+| Alphabet lesson | walk-through cards passed, the practice as one last step | the best score (`letters[id].score`) | the best score is 100% |
+| Course unit | the same | the best score (`done[id].score`) | the best score is 100% |
+| Vocabulary set | the same, the drill as the last step | the best score (`sets[id].score`) | the best score is 100% |
+| Exam question type | no walk-through, no line | best ÷ total (`drills[id]`) | best = total |
+| Trade | questions answered ÷ questions | (no score) | every question answered |
 
-| Card | Steps | Finished when |
-|---|---|---|
-| Alphabet lesson | every walk-through card, then the practice as one last step | the practice is completed (`letters[id]`) |
-| Course unit | every walk-through card, then the practice as one last step | the practice is completed (`done[id]`) |
-| Vocabulary set | every walk-through card, then the drill as one last step | the drill is completed (no record of this exists yet; the build adds one) |
-| Exam question type | no walk-through | it has been attempted once (`drills[id]`) |
+Before the practice the line's width is `cards passed ÷ (cards + 1)`, so card
+17 of 21 is 16 ÷ 22, about three quarters. The card position is the one the
+app saves for resuming (`store.place`).
 
-So the line's width is `cards passed ÷ (cards + 1)`, and card 17 of 21 is
-16 ÷ 22, about three quarters. The card position is the one the app already
-saves for resuming (`store.place`).
+**Scores keep the best first attempt.** A card turns its colour at 100%, and
+a worse retry must not take that away. The first attempt is the honest one:
+a retry of only the missed questions is never the score.
 
 **Note for the build:** today a walk-through forgets its position the moment
 it is finished, so that the next visit starts from card one. The line needs
@@ -143,7 +154,7 @@ to know a walk-through was finished even if the practice was then left
 half-done. Record "walked" separately from the resume position; don't reuse
 one for the other.
 
-### The finished card (tinted)
+### The finished card (tinted, at 100% only)
 
 - **Background:** `color-mix(in srgb, var(--c) var(--done-wash), var(--surface))`,
   where `--done-wash` is 9% in light mode and 15% in dark mode. At 9% the dark
@@ -164,8 +175,9 @@ one for the other.
 ### The score, and the other states
 
 - **The score** sits at the right of the card's top row, level with "Lesson 1":
-  a tick and the percentage in `--c`, using `--t-num` ("✓ 86%"). Exam
-  question types show their best instead: "best 7/8".
+  the percentage in `--c`, using `--t-num` ("78%"). The tick appears only on a
+  tinted card ("✓ 100%"); a tick beside 78% would read as "passed". Exam
+  question types show their best instead: "best 7/8", or "✓ best 8/8".
 - **In progress:** the meta line says where you are: "Lesson 3 · card 17 of 21".
 - **Up next:** the meta line reads "Lesson 4 · Up next", with "Up next" in
   `--primary` at weight 650. No outline, no badge.

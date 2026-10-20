@@ -88,14 +88,18 @@ export function touchDay() {
   save();
 }
 
+// Scores keep the best first attempt: a card turns its colour at 100%, and a
+// worse retry must not take that away.
+const best = (prev, score) => Math.max(prev && typeof prev.score === 'number' ? prev.score : 0, score);
+
 export function markLesson(id, score) {
-  state.done[id] = { at: today(), score };
+  state.done[id] = { at: today(), score: best(state.done[id], score) };
   touchDay();
   save();
 }
 
 export function markLetters(id, score) {
-  state.letters[id] = { at: today(), score };
+  state.letters[id] = { at: today(), score: best(state.letters[id], score) };
   touchDay();
   save();
 }
@@ -141,7 +145,7 @@ export function stepsDone(id, cards, finished) {
 }
 
 export function markSet(id, score) {
-  state.sets[id] = { at: today(), score };
+  state.sets[id] = { at: today(), score: best(state.sets[id], score) };
   touchDay();
   save();
 }

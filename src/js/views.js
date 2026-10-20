@@ -64,7 +64,7 @@ function tile({ tone = 'today', icon: ic, glyph, meta, title, sub, subKo, desc, 
   }
   const body = h('span', { class: 'card__body' });
   const metaEl = meta || upNext ? h('span', { class: 'card__meta' }, meta || '') : null;
-  if (upNext) metaEl.append(meta ? ' · ' : '', h('span', { class: 'upnext' }, 'Up next'));
+  if (upNext) metaEl.append(meta ? ' · ' : '', h('span', { class: 'upnext' }, t('upNext')));
   if (score && !hero) {
     const tick = done ? icon('check') : null;
     if (tick) tick.setAttribute('class', 'tick');
@@ -91,11 +91,23 @@ function progressRow(label, done, total, tone) {
 
 const pct = (x) => `${Math.round(x * 100)}%`;
 
+// A card's line, tint and score. Before the practice, the line is how far
+// through the walk-through you are. After it, the line IS the score, and only
+// 100% turns the card its colour: a line and a number side by side read as
+// one quantity, so they must never disagree (a "78%" card with a full line
+// did, and looked finished when it was not).
+function marks(deck, cards, rec) {
+  if (rec && typeof rec.score === 'number') {
+    return { line: rec.score, done: rec.score >= 1, score: pct(rec.score) };
+  }
+  return { line: store.stepsDone(deck, cards, false), done: false, score: null };
+}
+
 // Where you are in something not yet finished, for its card's meta line.
-function where(deck, cards, next = 'practice') {
-  if (store.walkedOf(deck)) return ` · ${next} next`;
+function where(deck, cards, next = 'practiceNext') {
+  if (store.walkedOf(deck)) return ` · ${t(next)}`;
   const at = store.placeOf(deck);
-  return at ? ` · card ${Math.min(at, cards - 1) + 1} of ${cards}` : '';
+  return at ? ` · ${t('cardOf').replace('%a', Math.min(at, cards - 1) + 1).replace('%b', cards)}` : '';
 }
 
 // A ring rather than a bar, once, on the home screen. It is the only place the
@@ -382,7 +394,7 @@ export async function hangeul(root) {
         glyph: first && first.length ? first[0].ch : l.kind === 'changes' ? '음' : '받',
         meta: `Lesson ${n + 1}${rec ? '' : where(deck, cards)}`,
         upNext: !rec && n === nextIdx && !store.placeOf(deck) && !store.walkedOf(deck),
-        line: store.stepsDone(deck, cards, !!rec), done: !!rec, score: rec ? pct(rec.score) : null,
+        ...marks(deck, cards, rec),
         title: l.title, subKo: l.titleKo,
         // Walked through but not practised: the practice is the next thing.
         onclick: () => nav(`#/hangeul/lesson/${l.id}${!rec && store.walkedOf(deck) ? '/practice' : ''}`),
@@ -554,8 +566,7 @@ export async function course(root) {
       root.append(tile({
         tone: 'course', i: n,
         meta: `${t('unit')} ${String(u.order).padStart(2, '0')}${rec ? '' : where(deck, cards)}`,
-        line: store.stepsDone(deck, cards, !!rec), done: !!rec,
-        score: rec && typeof rec.score === 'number' ? pct(rec.score) : null,
+        ...marks(deck, cards, rec),
         title: u.title, subKo: u.form, icon: 'course',
         onclick: () => nav(`#/course/${u.id}${!rec && store.walkedOf(deck) ? '/practice' : ''}`),
       }));
@@ -663,8 +674,8 @@ export async function vocab(root) {
     const deck = `vocab/${set.id}`;
     root.append(tile({
       tone: 'vocab', i: n, icon: 'vocab',
-      meta: `${set.words.length} ${t('words')}${rec ? '' : where(deck, set.words.length, 'drill') || (met ? ` · ${met} practised` : '')}`,
-      line: store.stepsDone(deck, set.words.length, !!rec), done: !!rec, score: rec ? pct(rec.score) : null,
+      meta: `${set.words.length} ${t('words')}${rec ? '' : where(deck, set.words.length, 'drillNext') || (met ? ` · ${met} practised` : '')}`,
+      ...marks(deck, set.words.length, rec),
       title: set.title, subKo: set.titleKo,
       onclick: () => nav(`#/vocab/${set.id}${!rec && store.walkedOf(deck) ? '/drill' : ''}`),
     }));
@@ -779,7 +790,8 @@ export async function exam(root) {
       tone: 'exam', i: n,
       icon: dr.section === 'listening' ? 'sound' : 'target',
       meta: `${dr.section === 'listening' ? '듣기 listening' : '읽기 reading'} · ${dr.items.length}`,
-      done: !!rec, score: rec ? `best ${rec.best}/${rec.total}` : null,
+      line: rec ? rec.best / rec.total : 0, done: !!rec && rec.best === rec.total,
+      score: rec ? `best ${rec.best}/${rec.total}` : null,
       title: dr.title, sub: dr.blurb,
       onclick: () => nav(`#/exam/drill/${dr.id}`),
     }));
@@ -804,8 +816,10 @@ export async function exam(root) {
   root.append(h('h3', {}, `2 · ${t('paper')}`));
   d.mocks.forEach((m, n) => {
     const prev = s.mocks.find(x => x.id === m.id);
+    // Ordinary cards: a screen has one hero, and "Go over what you missed"
+    // is it. Two papers as heroes made three identical navy slabs.
     root.append(tile({
-      tone: 'exam', hero: true, i: n,
+      tone: 'exam', icon: 'clock', i: n,
       meta: `40 ${t('questions')} · ${m.minutes} ${t('minutes')}${prev ? ` · last ${prev.score}/${prev.max}` : ''}`,
       title: m.title, desc: 'A full paper against a clock that does not stop.',
       onclick: () => nav(`#/exam/paper/${m.id}`),
