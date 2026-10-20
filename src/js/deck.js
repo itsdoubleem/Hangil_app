@@ -171,7 +171,7 @@ export class Deck {
         class: 'btn btn--accent btn--wide',
         onclick: () => {
           if (last) {
-            if (this.id) store.setPlace(this.id, 0);
+            if (this.id) { store.setPlace(this.id, 0); store.markWalked(this.id); }
             this.onDone && this.onDone();
             return;
           }

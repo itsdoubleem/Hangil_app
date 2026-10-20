@@ -105,3 +105,23 @@ test('the screen last open is remembered', () => {
   store.setAt('#/hangeul/lesson/l3');
   assert.equal(store.get().at, '#/hangeul/lesson/l3');
 });
+
+test('progress counts cards then the practice, and holds once walked', () => {
+  // 21 cards and a practice: 22 steps.
+  assert.equal(store.stepsDone('hangeul/l3', 21, false), 0);
+  store.setPlace('hangeul/l3', 16);
+  assert.equal(store.stepsDone('hangeul/l3', 21, false), 16 / 22);
+  // Finishing the walk-through forgets the card, but not the progress.
+  store.setPlace('hangeul/l3', 0);
+  store.markWalked('hangeul/l3');
+  assert.equal(store.stepsDone('hangeul/l3', 21, false), 21 / 22);
+  assert.equal(store.stepsDone('hangeul/l3', 21, true), 1);
+  // A place past the end, left by a lesson that has since lost cards, is capped.
+  store.setPlace('course/u1', 40);
+  assert.equal(store.stepsDone('course/u1', 10, false), 10 / 11);
+});
+
+test('a vocabulary drill records its set and score', () => {
+  store.markSet('v01', 0.75);
+  assert.equal(store.get().sets.v01.score, 0.75);
+});
