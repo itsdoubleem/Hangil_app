@@ -121,9 +121,17 @@ test('progress counts cards then the practice, and holds once walked', () => {
   assert.equal(store.stepsDone('course/u1', 10, false), 10 / 11);
 });
 
-test('a vocabulary drill records its set and score', () => {
-  store.markSet('v01', 0.75);
-  assert.equal(store.get().sets.v01.score, 0.75);
+test('a vocabulary set counts words right across drills, not one sample', () => {
+  // A drill asks 12 of an 18-word set: all 12 right is two thirds of the set.
+  const twelve = Array.from({ length: 12 }, (_, i) => `w:${i}`);
+  store.markSet('v01', twelve, 18);
+  assert.equal(store.get().sets.v01.score, 12 / 18);
+  // The next drill adds what it got right; a word already right stays right.
+  store.markSet('v01', ['w:0', 'w:12', 'w:13', 'w:14', 'w:15', 'w:16', 'w:17'], 18);
+  assert.equal(store.get().sets.v01.score, 1);
+  // A word not in the set never counts.
+  store.markSet('v02', ['x', 'y', 'z'], 2);
+  assert.ok(store.get().sets.v02.score <= 1);
 });
 
 test('a lesson, unit or set keeps its best score, not its latest', () => {
@@ -133,7 +141,4 @@ test('a lesson, unit or set keeps its best score, not its latest', () => {
   store.markLesson('g01', 0.6);
   store.markLesson('g01', 0.9);
   assert.equal(store.get().done.g01.score, 0.9);
-  store.markSet('v01', 1);
-  store.markSet('v01', 0.5);
-  assert.equal(store.get().sets.v01.score, 1);
 });

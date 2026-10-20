@@ -735,7 +735,7 @@ export async function vocabDrill(root, id, mode) {
   const box = h('div', { class: 'q' });
   root.append(box);
   const qs = shuffle(s.words).slice(0, 12).map(w => fromWord(w, s.words, vocabKey(w.ko), mode));
-  new Quiz(box, qs, { title: s.title, onDone: (r) => { store.markSet(s.id, r.right / r.total); nav(`#/vocab/${id}`); } });
+  new Quiz(box, qs, { title: s.title, onDone: (r) => { store.markSet(s.id, r.asked.filter(k => !r.missed.includes(k)), s.words.length); nav(`#/vocab/${id}`); } });
 }
 
 /* ---------------- exam ---------------- */
