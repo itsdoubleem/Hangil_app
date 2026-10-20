@@ -68,6 +68,10 @@
   --stroke: 1.7;          /* icon stroke width */
   --bar: 4px;             /* a section's progress line, under its label */
   --line: 3px;            /* the progress line along a card's top edge */
+  --done-wash: 20%;       /* how much --c tints a finished (100%) card */
+  --done-score: 80%;      /* how much --c (the rest --ink) draws the score on that tint.
+                             A share, not a colour: a colour here would resolve --c on
+                             :root, not on the card. */
 
   /* ---- 4pt rhythm (unchanged) ---- */
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px;
@@ -91,7 +95,7 @@
     --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11;
     --c-today:#F0997A; --c-course:#AFA8F5; --c-exam:#E3B07A; --c-hangeul:#7CCBDA;
     --c-vocab:#EE9CBC; --c-review:#86D3A2; --c-trade:#9DB7F2;
-    --good:#86D3A2; --bad:#FF8F84; --wash: 16%;
+    --good:#86D3A2; --bad:#FF8F84; --wash: 16%; --done-wash: 22%; --done-score: 100%;
     --e1: 0 1px 2px rgba(0,0,0,.4);
     --e2: 0 2px 6px rgba(0,0,0,.45), 0 10px 28px rgba(0,0,0,.3);
     --e3: 0 10px 34px rgba(0,0,0,.5);
@@ -103,7 +107,7 @@
   --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11;
   --c-today:#F0997A; --c-course:#AFA8F5; --c-exam:#E3B07A; --c-hangeul:#7CCBDA;
   --c-vocab:#EE9CBC; --c-review:#86D3A2; --c-trade:#9DB7F2;
-  --good:#86D3A2; --bad:#FF8F84; --wash: 16%;
+  --good:#86D3A2; --bad:#FF8F84; --wash: 16%; --done-wash: 22%; --done-score: 100%;
   --e1: 0 1px 2px rgba(0,0,0,.4);
   --e2: 0 2px 6px rgba(0,0,0,.45), 0 10px 28px rgba(0,0,0,.3);
   --e3: 0 10px 34px rgba(0,0,0,.5);

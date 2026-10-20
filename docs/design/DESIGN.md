@@ -154,28 +154,31 @@ to know a walk-through was finished even if the practice was then left
 half-done. Record "walked" separately from the resume position; don't reuse
 one for the other.
 
-### The finished card (solid, at 100% only)
+### The finished card (20% tint, at 100% only)
 
-*Revised again on 2026-10-20.* The tint (9% of `--c` into the surface) was
-too close to the page ground: `#E9F2F3` on `#F8F8F7` is 1.07:1, so on the phone
-a finished card hardly stood apart from the page. A 20% tint and a solid fill
-were compared in the preview against the ground, and the owner chose solid.
+*Revised twice on 2026-10-20.* The first tint (9% of `--c` into the surface)
+was too close to the page ground: `#E9F2F3` on `#F8F8F7` is 1.07:1, so on the
+phone a finished card hardly stood apart from the page. A 20% tint and a
+solid fill were compared in the preview. Solid was built first, and the owner
+then asked for the 20% tint instead.
 
-- **Background:** `--c`. Against the ground it measures 4.9:1 at the lowest
-  (review, light), so a finished card is unmistakable.
-- **All text is `--on-fill` at full strength:** title, meta, Korean subtitle,
-  score and chevron. The hierarchy comes from size and weight, never from
-  opacity. *Why:* `--on-fill` at 80% measured 4.0:1 on the review green and
-  4.1:1 on the orange in light mode, under 4.5. At full strength the lowest
-  is 5.2:1 (review, light), and dark mode is 8.7:1 or more.
-- **Icon tile:** `--on-fill` at 18% over `--c`, with the glyph in `--on-fill`.
-  The glyph is 24px semibold, which counts as large text with a 3:1 floor; the
-  lowest is 3.7:1 (review, light).
-- **The line:** full width, in `--on-fill` at 40%. A line in `--c` would vanish
-  into a card of the same colour.
-- **The known cost:** a section where everything is finished becomes a column
-  of one colour. That was weighed in the preview and accepted, because a
-  finished card has to read as finished at a glance.
+- **Background:** `color-mix(in srgb, var(--c) var(--done-wash), var(--surface))`,
+  where `--done-wash` is **20%** in light mode and **22%** in dark mode. The
+  alphabet's tint is `#CFE1E5`, roughly twice as far from the ground as before.
+- **Icon tile:** solid `--c`, with the glyph in `--on-fill` (5.2:1 at the lowest).
+- **The line:** full width, in `--c`.
+- **Meta, Korean subtitle and chevron step up to `--ink-soft`.** It measures
+  4.52:1 at the lowest on a light tint and 4.5:1 on a dark one. `--ink-faint`
+  would fall under 3:1.
+- **The score is `--c` mixed with `--ink` by `--done-score`:** 80% `--c` in light mode,
+  because plain `--c` on a 20% tint of itself falls to 3.98:1 (review green).
+  Drawn a shade deeper, every section measures 5.19:1 or more. In dark mode
+  plain `--c` stays at 5.3:1 or more, so `--done-score` is 100% there. The
+  token is a share, not a colour: a colour token would resolve `--c` on
+  `:root` rather than on the card, and every score would come out orange.
+- **Not chosen: solid.** It was unmistakable, but a finished section became a
+  wall of one colour, and all text on it had to be full-strength `--on-fill`,
+  because 80% fell to 4.0:1 on the review green.
 - A card below 100% stays white, with its line at the score.
 
 ### The score, and the other states
