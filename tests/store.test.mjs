@@ -122,16 +122,22 @@ test('progress counts cards then the practice, and holds once walked', () => {
 });
 
 test('a vocabulary set counts words right across drills, not one sample', () => {
+  const set = Array.from({ length: 18 }, (_, i) => `w:${i}`);
   // A drill asks 12 of an 18-word set: all 12 right is two thirds of the set.
-  const twelve = Array.from({ length: 12 }, (_, i) => `w:${i}`);
-  store.markSet('v01', twelve, 18);
+  store.markSet('v01', set.slice(0, 12), set);
   assert.equal(store.get().sets.v01.score, 12 / 18);
   // The next drill adds what it got right; a word already right stays right.
-  store.markSet('v01', ['w:0', 'w:12', 'w:13', 'w:14', 'w:15', 'w:16', 'w:17'], 18);
+  store.markSet('v01', ['w:0', ...set.slice(12)], set);
   assert.equal(store.get().sets.v01.score, 1);
-  // A word not in the set never counts.
-  store.markSet('v02', ['x', 'y', 'z'], 2);
-  assert.ok(store.get().sets.v02.score <= 1);
+});
+
+test('a word no longer in the set stops counting', () => {
+  store.markSet('v02', ['w:a', 'w:b'], ['w:a', 'w:b']);
+  assert.equal(store.get().sets.v02.score, 1);
+  // w:b was edited out of the set and w:c added: one of two, not 100%.
+  store.markSet('v02', [], ['w:a', 'w:c']);
+  assert.equal(store.get().sets.v02.score, 0.5);
+  assert.deepEqual(store.get().sets.v02.right, ['w:a']);
 });
 
 test('a lesson, unit or set keeps its best score, not its latest', () => {
