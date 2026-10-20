@@ -25,7 +25,7 @@
   --hairline:  #ECECEA;   /* the tab bar's top edge, table rules — nothing else */
   --ink:       #131416;   /* 18.4:1 on surface */
   --ink-soft:  #5D6169;   /*  6.2:1 */
-  --ink-faint: #8E929A;   /*  3.1:1 — meta at 12.5px+ and icons only */
+  --ink-faint: #858991;   /*  3.5:1 surface, 3.3:1 ground, 3.1:1 sunk — meta at 12.5px+ and icons only */
 
   /* ---- primary: the navy of the app icon ---- */
   --primary:     #15304F;  /* 13.4:1; buttons, the Today card, focus */

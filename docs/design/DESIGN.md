@@ -46,7 +46,7 @@ Contrast is measured, WCAG 2.x, as text on `--surface` (light) or `#17181B` (dar
 | Tab-bar edge, table rules | `--hairline` | `#ECECEA` | `#24262A` | n/a |
 | Text | `--ink` | `#131416` | `#EDEEF0` | 18.4 / 15.3 |
 | Secondary text | `--ink-soft` | `#5D6169` | `#A3A7AF` | 6.2 / 7.4 |
-| Meta, icons only | `--ink-faint` | `#8E929A` | `#72767E` | 3.1 / 3.9 ⚠ |
+| Meta, icons only | `--ink-faint` | `#858991` | `#72767E` | 3.5 / 3.9 ⚠ |
 | Primary | `--primary` | `#15304F` | `#C9D6EA` | 13.4 / 12.1 |
 | Alphabet | `--c-hangeul` | `#0F6B7C` | `#7CCBDA` | 6.2 / 9.7 |
 | Course | `--c-course` | `#5145CD` | `#AFA8F5` | 6.8 / 8.2 |
@@ -58,8 +58,11 @@ Contrast is measured, WCAG 2.x, as text on `--surface` (light) or `#17181B` (dar
 | Wrong answer | `--bad` | `#B3261E` | `#FF8F84` | 6.5 / 8.0 |
 
 ⚠ `--ink-faint` is below 4.5:1 on purpose and is never used for body text:
-only for meta at 12.5px or larger, and for icons. That rule carries over
-unchanged from the previous palette (3.3:1).
+only for meta at 12.5px or larger, and for icons, and it must clear 3:1 on
+every ground it sits on, not only on cards. The first value, `#8E929A`,
+measured 3.1:1 on a card but 2.9:1 on the page ground, where the screen
+kickers and question counts sit; `#858991` measures 3.5:1 on `--surface`,
+3.3:1 on `--ground` and 3.1:1 on `--sunk`.
 
 **A section's wash is derived, never listed:**
 `color-mix(in srgb, var(--c) var(--wash), transparent)`, at 13% light and 16%
