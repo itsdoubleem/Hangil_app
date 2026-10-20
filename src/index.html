@@ -5,14 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>HANGIL — Korean for the EPS-TOPIK, and after it</title>
 <meta name="description" content="Learn Korean for the EPS-TOPIK exam and keep going after it. Free, works offline, nothing leaves your phone.">
-<meta name="theme-color" content="#F6F7F9" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0A0D12" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F8F8F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F11" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="HANGIL">
+<!-- The font is the app's own file, fetched from the same folder like every
+     other file here. Preloaded so the first screen is not drawn twice. -->
+<link rel="preload" href="fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>

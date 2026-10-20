@@ -39,10 +39,16 @@ function head(root, title, opts = {}) {
  * an icon tile in the section's colour, a title, an optional subtitle, and a
  * chevron. `tone` sets --c and --cw so everything inside follows one colour.
  */
-function tile({ tone = 'today', icon: ic, glyph, meta, title, sub, subKo, desc, onclick, hero, i, progress }) {
+// `line` is how far through the thing you are, 0 to 1, drawn along the card's
+// top edge; `done` tints the finished card; `score` sits at the right of the
+// meta row ("86%", "best 7/8"); `upNext` adds "Up next" to the meta line.
+// See "Progress on a card" in docs/design/DESIGN.md. A hero card is the
+// screen's one main thing and carries none of them.
+function tile({ tone = 'today', icon: ic, glyph, meta, title, sub, subKo, desc, onclick, hero, i, line, done, score, upNext }) {
+  const tracked = !hero && (done || line > 0);
   const el = h('button', {
-    class: `card pressable${hero ? ' card--hero' : ''}`,
-    style: `--c: var(--c-${tone}); --cw: var(--cw-${tone}); --i:${i ?? 0}`,
+    class: `card pressable${hero ? ' card--hero' : ''}${tracked ? ' card--line' : ''}${done && !hero ? ' card--done' : ''}`,
+    style: `--c: var(--c-${tone}); --cw: var(--cw-${tone}); --i:${i ?? 0}${tracked ? `; --p:${done ? 100 : Math.round(line * 100)}%` : ''}`,
     onclick,
   });
   // A glyph rather than an icon, for the one card where the subject IS a
@@ -57,19 +63,39 @@ function tile({ tone = 'today', icon: ic, glyph, meta, title, sub, subKo, desc, 
     el.append(box);
   }
   const body = h('span', { class: 'card__body' });
-  if (meta) body.append(h('span', { class: 'card__meta' }, meta));
+  const metaEl = meta || upNext ? h('span', { class: 'card__meta' }, meta || '') : null;
+  if (upNext) metaEl.append(meta ? ' · ' : '', h('span', { class: 'upnext' }, 'Up next'));
+  if (score && !hero) {
+    const tick = done ? icon('check') : null;
+    if (tick) tick.setAttribute('class', 'tick');
+    body.append(h('span', { class: 'card__row' }, metaEl || h('span'), h('span', { class: 'score' }, tick, score)));
+  } else if (metaEl) body.append(metaEl);
   body.append(h('span', { class: 'card__title' }, title));
   if (subKo) body.append(h('span', { class: 'card__sub ko' }, subKo));
   if (sub) body.append(h('span', { class: 'card__desc' }, sub));
   if (desc) body.append(h('span', { class: 'card__desc' }, desc));
   el.append(body);
-  if (progress !== undefined) {
-    body.append(h('span', { class: 'bar', style: 'display:block' }, h('i', { style: `width:${Math.round(progress * 100)}%` })));
-  }
   if (!hero) {
     const c = icon('chev'); c.setAttribute('class', 'card__chev'); el.append(c);
   }
   return el;
+}
+
+// A section's progress: what is being counted on the left, the count on the
+// right, a 4px line under both.
+function progressRow(label, done, total, tone) {
+  return h('div', { class: 'progress', style: `--c: var(--c-${tone})` },
+    h('div', { class: 'progress__row' }, h('span', {}, label), h('b', {}, `${done} of ${total}`)),
+    h('div', { class: 'bar' }, h('i', { style: `width:${total ? (done / total) * 100 : 0}%` })));
+}
+
+const pct = (x) => `${Math.round(x * 100)}%`;
+
+// Where you are in something not yet finished, for its card's meta line.
+function where(deck, cards) {
+  if (store.walkedOf(deck)) return ' · practice next';
+  const at = store.placeOf(deck);
+  return at ? ` · card ${Math.min(at, cards - 1) + 1} of ${cards}` : '';
 }
 
 // A ring rather than a bar, once, on the home screen. It is the only place the
@@ -177,7 +203,7 @@ export async function home(root) {
 
   head(root, null, {
     right: s.streak.count
-      ? h('span', { class: 'streak' }, icon('flame'), `${s.streak.count}`)
+      ? h('span', { class: 'streak' }, `${s.streak.count}${t('streak')}`)
       : null,
   });
 
@@ -345,15 +371,18 @@ export async function hangeul(root) {
   if (ls.length) {
     const done = ls.filter(l => s.letters[l.id]).length;
     const nextIdx = ls.findIndex(l => !s.letters[l.id]);
-    root.append(h('h3', {}, `Lessons · ${done} of ${ls.length}`));
-    root.append(h('div', { class: 'bar', style: '--c: var(--c-hangeul)' }, h('i', { style: `width:${(done / ls.length) * 100}%` })));
+    root.append(progressRow('Lessons', done, ls.length, 'hangeul'));
     ls.forEach((l, n) => {
       const rec = s.letters[l.id];
       const first = (d.hangeul.groups.find(g => g.id === l.groups[0]) || {}).letters;
+      const deck = `hangeul/${l.id}`;
+      const cards = lessonCards(d, l).length;
       root.append(tile({
-        tone: 'hangeul', i: n, hero: n === nextIdx,
+        tone: 'hangeul', i: n,
         glyph: first && first.length ? first[0].ch : l.kind === 'changes' ? '음' : '받',
-        meta: `Lesson ${n + 1}${rec ? ` · done · ${Math.round(rec.score * 100)}%` : n === nextIdx ? ' · up next' : ''}`,
+        meta: `Lesson ${n + 1}${rec ? '' : where(deck, cards)}`,
+        upNext: !rec && n === nextIdx && !store.placeOf(deck) && !store.walkedOf(deck),
+        line: store.stepsDone(deck, cards, !!rec), done: !!rec, score: rec ? pct(rec.score) : null,
         title: l.title, subKo: l.titleKo,
         onclick: () => nav(`#/hangeul/lesson/${l.id}`),
       }));
@@ -516,13 +545,17 @@ export async function course(root) {
     const done = units.filter(u => s.done[u.id]).length;
     root.append(h('h3', {}, `${lv.title} · `, h('span', { class: 'ko' }, lv.titleKo)));
     root.append(h('p', { class: 'tiny' }, lv.blurb));
-    root.append(h('div', { class: 'bar', style: '--c: var(--c-course)' }, h('i', { style: `width:${(done / units.length) * 100}%` })));
+    root.append(progressRow('Units', done, units.length, 'course'));
     units.forEach((u, n) => {
+      const rec = s.done[u.id];
+      const deck = `course/${u.id}`;
+      const cards = unitCards(u).length;
       root.append(tile({
         tone: 'course', i: n,
-        meta: `${t('unit') || 'Unit'} ${String(u.order).padStart(2, '0')}${s.done[u.id] ? ' · done' : ''}`,
-        title: u.title, subKo: u.form,
-        icon: s.done[u.id] ? 'check' : 'course',
+        meta: `${t('unit')} ${String(u.order).padStart(2, '0')}${rec ? '' : where(deck, cards)}`,
+        line: store.stepsDone(deck, cards, !!rec), done: !!rec,
+        score: rec && typeof rec.score === 'number' ? pct(rec.score) : null,
+        title: u.title, subKo: u.form, icon: 'course',
         onclick: () => nav(`#/course/${u.id}`),
       }));
     });
@@ -625,10 +658,12 @@ export async function vocab(root) {
   d.sets.forEach((set, n) => {
     // A word counts once it has been answered: that is when it enters review.
     const met = set.words.filter(w => st.srs[vocabKey(w.ko)]).length;
+    const rec = st.sets[set.id];
+    const deck = `vocab/${set.id}`;
     root.append(tile({
-      tone: 'vocab', i: n, icon: met === set.words.length ? 'check' : 'vocab',
-      meta: `${set.words.length} ${t('words')}${met ? ` · ${met} practised` : ''}`,
-      progress: met ? met / set.words.length : undefined,
+      tone: 'vocab', i: n, icon: 'vocab',
+      meta: `${set.words.length} ${t('words')}${rec ? '' : where(deck, set.words.length) || (met ? ` · ${met} practised` : '')}`,
+      line: store.stepsDone(deck, set.words.length, !!rec), done: !!rec, score: rec ? pct(rec.score) : null,
       title: set.title, subKo: set.titleKo,
       onclick: () => nav(`#/vocab/${set.id}`),
     }));
@@ -687,7 +722,7 @@ export async function vocabDrill(root, id, mode) {
   const box = h('div', { class: 'q' });
   root.append(box);
   const qs = shuffle(s.words).slice(0, 12).map(w => fromWord(w, s.words, vocabKey(w.ko), mode));
-  new Quiz(box, qs, { title: s.title, onDone: () => nav(`#/vocab/${id}`) });
+  new Quiz(box, qs, { title: s.title, onDone: (r) => { store.markSet(s.id, r.right / r.total); nav(`#/vocab/${id}`); } });
 }
 
 /* ---------------- exam ---------------- */
@@ -741,8 +776,9 @@ export async function exam(root) {
     const rec = s.drills[dr.id];
     root.append(tile({
       tone: 'exam', i: n,
-      icon: rec && rec.best === rec.total ? 'check' : dr.section === 'listening' ? 'sound' : 'target',
-      meta: `${dr.section === 'listening' ? '듣기 listening' : '읽기 reading'} · ${dr.items.length}${rec ? ` · best ${rec.best}/${rec.total}` : ''}`,
+      icon: dr.section === 'listening' ? 'sound' : 'target',
+      meta: `${dr.section === 'listening' ? '듣기 listening' : '읽기 reading'} · ${dr.items.length}`,
+      done: !!rec, score: rec ? `best ${rec.best}/${rec.total}` : null,
       title: dr.title, sub: dr.blurb,
       onclick: () => nav(`#/exam/drill/${dr.id}`),
     }));
@@ -859,7 +895,7 @@ function tradeTile(tr, i, hero) {
     meta: `${tr.titleKo} · ${tr.words.length} ${t('words')} · ${tr.items.length} ${t('questions')}`,
     title: tr.title,
     desc: hero ? tr.about : tr.blurb,
-    progress: done / tr.items.length,
+    line: done / tr.items.length, done: done === tr.items.length,
     onclick: () => nav(`#/trade/${tr.id}`),
   });
 }

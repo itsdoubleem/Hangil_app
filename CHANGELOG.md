@@ -2,8 +2,8 @@
 
 ## 2026-10-20 — a design for the app: premium minimal
 
-Not applied yet. This is the design written down, in `docs/design/DESIGN.md`
-with its values in `src/css/tokens.css`, ready to be built.
+The design is written down in `docs/design/DESIGN.md`, its values are in
+`src/css/tokens.css`, and every screen now follows it.
 
 **Quieter.** Section colours stay, so a screen is still quick to scan, but
 they are deeper and appear only on small marks. Buttons and the Today card
@@ -16,6 +16,20 @@ colour when you finish it. The line shows how far you have got (card 17 of 21
 is about three quarters), not your score, so a lesson finished at 86% still
 counts as finished. The score sits beside the lesson number as "✓ 86%". This
 replaced a gauge pill that was proposed first and turned down from the preview.
+
+**Finishing is now remembered on its own.** A walk-through forgets its card
+when you finish it, so that the next visit starts at the top, but its line
+must not drop back to nothing because of that. Finished walk-throughs and
+completed vocabulary drills are now recorded separately; the vocabulary list
+used to count words practised, which said nothing about the set being done.
+
+**One thing the capitals had been hiding:** course units were labelled from a
+string that did not exist, so the screen showed the key's own name, "unit",
+upper-cased into looking right. It now says "Unit", and "단원" in Korean.
+
+**The app is about 2 MB bigger,** all of it the font. Pretendard covers all
+11,172 Korean syllables; the 270 KB cut covers 2,350, and the alphabet
+practice builds syllables outside that set.
 ## 2026-10-20 — two fixes from an hour on the phone
 
 **오 and 우 are no longer asked by ear.** Recorded off Google's Korean voice

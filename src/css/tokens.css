@@ -5,8 +5,7 @@
  * colour pair used as text was measured against its ground, and the ratios
  * are in DESIGN.md. Change a value there and here together.
  *
- * Not linked yet: app.css still carries the previous tokens until the design
- * is applied.
+ * Loaded before app.css by index.html.
  */
 
 @font-face {
