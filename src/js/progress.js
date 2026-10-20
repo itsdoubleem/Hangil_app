@@ -27,3 +27,12 @@ export function where(deck, cards, next = 'practiceNext') {
   if (at) return ` · ${t('cardOf').replace('%a', Math.min(at, cards - 1) + 1).replace('%b', cards)}`;
   return store.walkedOf(deck) ? ` · ${t(next)}` : '';
 }
+
+// What an unpractised card opens, decided in the same order as where() writes
+// its label, so a card saying "card 4 of 10" never opens the practice: a card
+// in progress resumes the walk-through ('walk'), a walked one goes on to the
+// practice ('practice'), and an untouched one opens its own page (null).
+export function resume(deck) {
+  if (store.placeOf(deck)) return 'walk';
+  return store.walkedOf(deck) ? 'practice' : null;
+}
