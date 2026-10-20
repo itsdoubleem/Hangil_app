@@ -183,7 +183,7 @@ p  { margin: 0 0 var(--s3); max-width: 36rem; }
    the weakest section stays above 4.5:1. See DESIGN.md. */
 .card--done { background: color-mix(in srgb, var(--c) var(--done-wash), var(--surface)); }
 .card--done .card__icon { background: var(--c); color: var(--on-fill); }
-.card--done .card__meta, .card--done .card__sub { color: var(--ink-soft); }
+.card--done .card__meta { color: var(--ink-soft); }
 .card--done .card__chev { stroke: var(--ink-soft); }
 .card--done .score { color: color-mix(in srgb, var(--c) var(--done-score), var(--ink)); }
 
