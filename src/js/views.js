@@ -86,7 +86,7 @@ function tile({ tone = 'today', icon: ic, glyph, meta, title, sub, subKo, desc, 
 // right, a 4px line under both.
 function progressRow(label, done, total, tone) {
   return h('div', { class: 'progress', style: `--c: var(--c-${tone})` },
-    h('div', { class: 'progress__row' }, h('span', {}, label), h('b', {}, `${done} of ${total}`)),
+    h('div', { class: 'progress__row' }, h('span', {}, label), h('b', {}, t('nOfM').replace('%a', done).replace('%b', total))),
     h('div', { class: 'bar' }, h('i', { style: `width:${total ? (done / total) * 100 : 0}%` })));
 }
 
@@ -363,7 +363,7 @@ export async function hangeul(root) {
   if (ls.length) {
     const done = ls.filter(l => s.letters[l.id]).length;
     const nextIdx = ls.findIndex(l => !s.letters[l.id]);
-    root.append(progressRow('Lessons', done, ls.length, 'hangeul'));
+    root.append(progressRow(t('lessonsLabel'), done, ls.length, 'hangeul'));
     ls.forEach((l, n) => {
       const rec = s.letters[l.id];
       const first = (d.hangeul.groups.find(g => g.id === l.groups[0]) || {}).letters;
@@ -372,7 +372,7 @@ export async function hangeul(root) {
       root.append(tile({
         tone: 'hangeul', i: n,
         glyph: first && first.length ? first[0].ch : l.kind === 'changes' ? '음' : '받',
-        meta: `Lesson ${n + 1}${rec ? '' : where(deck, cards)}`,
+        meta: `${t('lessonN', n + 1)}${rec ? '' : where(deck, cards)}`,
         upNext: !rec && n === nextIdx && !store.placeOf(deck) && !store.walkedOf(deck),
         ...marks(deck, cards, rec),
         title: l.title, subKo: l.titleKo,
@@ -528,7 +528,7 @@ export async function course(root) {
   if (upNext && !lettersLeft) {
     root.append(tile({
       tone: 'course', hero: true,
-      meta: `Up next · Unit ${upNext.order}`,
+      meta: t('upNextUnit', upNext.order),
       title: upNext.title, desc: upNext.goal,
       onclick: () => nav(`#/course/${upNext.id}`),
     }));
@@ -539,14 +539,14 @@ export async function course(root) {
     const done = units.filter(u => s.done[u.id]).length;
     root.append(h('h3', {}, `${lv.title} · `, h('span', { class: 'ko' }, lv.titleKo)));
     root.append(h('p', { class: 'tiny' }, lv.blurb));
-    root.append(progressRow('Units', done, units.length, 'course'));
+    root.append(progressRow(t('unitsLabel'), done, units.length, 'course'));
     units.forEach((u, n) => {
       const rec = s.done[u.id];
       const deck = `course/${u.id}`;
       const cards = unitCards(u).length;
       root.append(tile({
         tone: 'course', i: n,
-        meta: `${t('unit')} ${String(u.order).padStart(2, '0')}${rec ? '' : where(deck, cards)}`,
+        meta: `${t('unitN', u.order)}${rec ? '' : where(deck, cards)}`,
         ...marks(deck, cards, rec),
         title: u.title, subKo: u.form, icon: 'course',
         onclick: () => nav(`#/course/${u.id}${!rec && store.walkedOf(deck) ? '/practice' : ''}`),

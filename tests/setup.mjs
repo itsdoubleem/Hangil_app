@@ -18,7 +18,7 @@ globalThis.localStorage = {
   removeItem: (k) => { mem.delete(k); },
   clear: () => mem.clear(),
 };
-globalThis.document = { addEventListener() {}, hidden: false };
+globalThis.document = { addEventListener() {}, hidden: false, documentElement: {} };
 globalThis.window = { addEventListener() {} };
 
 export const failing = new Set();

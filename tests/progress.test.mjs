@@ -37,3 +37,14 @@ test('a place past the end is shown as the last card', () => {
   store.setPlace('vocab/v01', 40);
   assert.equal(where('vocab/v01', 18), ' · card 18 of 18');
 });
+
+test('the Korean interface says where you are in Korean', async () => {
+  const { setLang, t } = await import('../src/js/i18n.js');
+  setLang('ko');
+  try {
+    store.setPlace('hangeul/a3', 5);
+    assert.equal(where('hangeul/a3', 21), ' · 21장 중 6번째');
+    assert.equal(t('lessonN', 2), '2과');
+    assert.equal(t('upNextUnit', 3), '다음 순서 · 3과');
+  } finally { setLang('en'); }
+});
