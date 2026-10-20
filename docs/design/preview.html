@@ -4,14 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HANGIL Premium Minimal</title>
-<!-- Preview only. The app itself never loads anything from the network; if
-     Pretendard is chosen it is bundled into the app as a file. -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<!-- The font is the app's own file, so this page loads nothing from the network either. -->
+<style>@font-face { font-family:"Pretendard Variable"; src:url("../../src/fonts/PretendardVariable.woff2") format("woff2-variations"), url("../../src/fonts/PretendardVariable.woff2") format("woff2"); font-weight:45 920; font-display:swap; }</style>
 <style>
 :root {
   --ground:#F8F8F7; --surface:#FFFFFF; --sunk:#F1F1EF; --sunk-2:#E7E7E4; --hairline:#ECECEA;
   --ink:#131416; --ink-soft:#5D6169; --ink-faint:#858991;
-  --primary:#15304F; --primary-ink:#FFFFFF; --on-fill:#FFFFFF; --done-wash:9%;
+  --primary:#15304F; --primary-ink:#FFFFFF; --on-fill:#FFFFFF; --done-wash:20%; --done-score:80%;
   --c-today:#B4471B; --c-course:#5145CD; --c-exam:#96591A; --c-hangeul:#0F6B7C;
   --c-vocab:#A6345F; --c-review:#2E7A4C; --c-trade:#2C55B5;
   --good:#2E7A4C; --bad:#B3261E;
@@ -24,7 +23,7 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --ground:#0E0F11; --surface:#17181B; --sunk:#1F2124; --sunk-2:#2A2C30; --hairline:#24262A;
   --ink:#EDEEF0; --ink-soft:#A3A7AF; --ink-faint:#72767E;
-  --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11; --done-wash:15%;
+  --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11; --done-wash:21%; --done-score:100%;
   --c-today:#F0997A; --c-course:#AFA8F5; --c-exam:#E3B07A; --c-hangeul:#7CCBDA;
   --c-vocab:#EE9CBC; --c-review:#86D3A2; --c-trade:#9DB7F2; --good:#86D3A2; --bad:#FF8F84;
   --e1: 0 1px 2px rgba(0,0,0,.4);
@@ -32,7 +31,7 @@
 :root[data-theme="dark"] {
   --ground:#0E0F11; --surface:#17181B; --sunk:#1F2124; --sunk-2:#2A2C30; --hairline:#24262A;
   --ink:#EDEEF0; --ink-soft:#A3A7AF; --ink-faint:#72767E;
-  --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11; --done-wash:15%;
+  --primary:#C9D6EA; --primary-ink:#0E0F11; --on-fill:#0E0F11; --done-wash:21%; --done-score:100%;
   --c-today:#F0997A; --c-course:#AFA8F5; --c-exam:#E3B07A; --c-hangeul:#7CCBDA;
   --c-vocab:#EE9CBC; --c-review:#86D3A2; --c-trade:#9DB7F2; --good:#86D3A2; --bad:#FF8F84;
   --e1: 0 1px 2px rgba(0,0,0,.4);
@@ -104,7 +103,12 @@ h2.sec { font:650 13px/1 var(--font); color:var(--ink-faint); letter-spacing:.02
 .card--done .card__icon { background:var(--c); color:var(--on-fill); }
 /* --ink-faint drops under 3:1 on the tint, so a finished card's meta and
    chevron step up to --ink-soft. */
-.card--done .card__meta, .card--done .chev { color:var(--ink-soft); }
+.card--done .card__meta, .card--done .card__ko, .card--done .chev { color:var(--ink-soft); }
+.card--done .score { color:color-mix(in srgb, var(--c) var(--done-score), var(--ink)); }
+/* The first finished tint, kept only to show why it was replaced. */
+.card--done9 { --p:100%; background:color-mix(in srgb, var(--c) 9%, var(--surface)); }
+.card--done9 .card__icon { background:var(--c); color:var(--on-fill); }
+.card--done9 .card__meta, .card--done9 .chev { color:var(--ink-soft); }
 /* Finished, variant B: the whole card fills. */
 .card--solid { --p:100%; background:var(--c); color:var(--on-fill); }
 .card--solid::before { background:var(--on-fill); opacity:.4; }
@@ -118,7 +122,7 @@ h2.sec { font:650 13px/1 var(--font); color:var(--ink-faint); letter-spacing:.02
 .card--done20 .card__icon { background:var(--c); color:var(--on-fill); }
 .card--done20 .card__meta, .card--done20 .chev { color:var(--ink-soft); }
 .card--done20 .score { color:color-mix(in srgb, var(--c) 80%, var(--ink)); }
-:root[data-theme="dark"] .card--done20 { background:color-mix(in srgb, var(--c) 22%, var(--surface)); }
+:root[data-theme="dark"] .card--done20 { background:color-mix(in srgb, var(--c) 21%, var(--surface)); }
 :root[data-theme="dark"] .card--done20 .score { color:var(--c); }
 .strengths { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:16px; }
 .strengths > div { background:var(--ground); border-radius:var(--r-card); padding:16px; outline:1px solid var(--hairline); }
@@ -199,7 +203,7 @@ ul.changes b { color:var(--ink); }
   <h2 class="sec">THE ALPHABET LIST · BEFORE AND AFTER</h2>
   <div class="compare">
     <figure><figcaption>Now</figcaption><img class="shot" src="references/current-alphabet-list.png" alt="The current alphabet list"></figure>
-    <figure><figcaption>Proposed: a line along the top, and a tinted card once finished</figcaption>
+    <figure><figcaption>The design as built: a line along the top, and a tinted card only at 100%</figcaption>
       <div class="phone"><div class="phone__in" style="--c:var(--c-hangeul)">
         <div class="back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></div>
         <h3 class="title">The alphabet</h3>
@@ -207,7 +211,7 @@ ul.changes b { color:var(--ink); }
         <div class="progress"><span>Lessons</span><b>6 of 8</b></div>
         <div class="thin"><i style="width:75%"></i></div>
         <div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㅏ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 1</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">The six plain vowels</span><span class="card__ko">기본 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-        <div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 2</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>86%</span></span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div class="card card--line" style="--p:86%"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 2</span><span class="score">86%</span></span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
         <div class="card card--line" style="--p:77%"><span class="card__icon"><span class="glyph">ㅑ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 3 · card 17 of 21</span></span><span class="card__title">The y vowels, and ㅐ ㅔ</span><span class="card__ko">이중 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
         <div class="card"><span class="card__icon"><span class="glyph">ㅋ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 4 · <span class="upnext">Up next</span></span></span><span class="card__title">Consonants with a puff of air</span><span class="card__ko">격음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
         <div class="card"><span class="card__icon"><span class="glyph">ㄲ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 5</span></span><span class="card__title">Tense consonants</span><span class="card__ko">경음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
@@ -238,17 +242,17 @@ ul.changes b { color:var(--ink); }
     </figure>
   </div>
 
-  <h2 class="sec">WHEN A LESSON IS FINISHED · TWO STRENGTHS</h2>
+  <h2 class="sec">ROUND 1 · WHEN A LESSON IS FINISHED · SUPERSEDED: A CARD NOW TINTS ONLY AT 100%, AND AT 20%</h2>
   <div class="gallery">
     <div class="variant" style="--c:var(--c-hangeul);background:var(--ground)">
-      <h3>A · Tinted <span class="rec">Chosen</span></h3>
+      <h3>A · Tinted <span class="rec" style="color:var(--ink-faint);background:var(--sunk)">Chosen in round 1, then strengthened</span></h3>
       <p>The card takes a light wash of the section colour and its tile turns solid. Clearly finished, and a list of eight finished lessons still reads calmly.</p>
-      <div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㅏ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 1</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">The six plain vowels</span><span class="card__ko">기본 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-      <div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 2</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>86%</span></span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="card card--line card--done9"><span class="card__icon"><span class="glyph">ㅏ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 1</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">The six plain vowels</span><span class="card__ko">기본 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="card card--line card--done9"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 2</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>86%</span></span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
       <div class="card card--line" style="--p:77%"><span class="card__icon"><span class="glyph">ㅑ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 3 · card 17 of 21</span></span><span class="card__title">The y vowels, and ㅐ ㅔ</span><span class="card__ko">이중 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
     </div>
     <div class="variant" style="--c:var(--c-hangeul);background:var(--ground)">
-      <h3>B · Solid <span class="rec" style="color:var(--ink-faint);background:var(--sunk)">Not chosen</span></h3>
+      <h3>B · Solid <span class="rec" style="color:var(--ink-faint);background:var(--sunk)">Tried later, replaced</span></h3>
       <p>The whole card fills with the colour. The biggest reward, but once every lesson is done the screen is a wall of teal, and each card looks like the one hero card per screen.</p>
       <div class="card card--line card--solid"><span class="card__icon"><span class="glyph">ㅏ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 1</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">The six plain vowels</span><span class="card__ko">기본 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
       <div class="card card--line card--solid"><span class="card__icon"><span class="glyph">ㄱ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 2</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>86%</span></span><span class="card__title">The ten plain consonants</span><span class="card__ko">기본 자음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
@@ -256,8 +260,8 @@ ul.changes b { color:var(--ink); }
     </div>
   </div>
 
-  <h2 class="sec">FINISHED CARDS AGAINST THE PAGE · ROUND 2</h2>
-  <div class="strengths"><div style="--c:var(--c-hangeul)"><h3>Now · 9% tint</h3><p>What is on your phone. Too close to the page to see at a glance.</p><div class="card card--line card--done"><span class="card__icon"><span class="glyph">ㅘ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 6</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Vowels that slide</span><span class="card__ko">합성 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line card--done"><span class="card__icon"><span class="glyph">받</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 7</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Closing sounds</span><span class="card__ko">받침</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line " style="--p:78%"><span class="card__icon"><span class="glyph">음</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 8</span><span class="score">78%</span></span><span class="card__title">How blocks change each other</span><span class="card__ko">발음 규칙</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div><div style="--c:var(--c-hangeul)"><h3>A · 20% tint <span class="rec">Chosen</span></h3><p>Twice the colour, so a finished card reads at arm's length. The score is drawn a shade deeper to stay readable.</p><div class="card card--line card--done20"><span class="card__icon"><span class="glyph">ㅘ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 6</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Vowels that slide</span><span class="card__ko">합성 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line card--done20"><span class="card__icon"><span class="glyph">받</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 7</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Closing sounds</span><span class="card__ko">받침</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line " style="--p:78%"><span class="card__icon"><span class="glyph">음</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 8</span><span class="score">78%</span></span><span class="card__title">How blocks change each other</span><span class="card__ko">발음 규칙</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div><div style="--c:var(--c-hangeul)"><h3>B · Solid <span class="rec" style="color:var(--ink-faint);background:var(--sunk)">Built, then replaced by A</span></h3><p>Unmistakable, but a finished section becomes a wall of one colour.</p><div class="card card--line card--solid"><span class="card__icon"><span class="glyph">ㅘ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 6</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Vowels that slide</span><span class="card__ko">합성 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line card--solid"><span class="card__icon"><span class="glyph">받</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 7</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Closing sounds</span><span class="card__ko">받침</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line " style="--p:78%"><span class="card__icon"><span class="glyph">음</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 8</span><span class="score">78%</span></span><span class="card__title">How blocks change each other</span><span class="card__ko">발음 규칙</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div></div>
+  <h2 class="sec">ROUND 2 · FINISHED CARDS AGAINST THE PAGE</h2>
+  <div class="strengths"><div style="--c:var(--c-hangeul)"><h3>Before · 9% tint</h3><p>What shipped first. Too close to the page to see at a glance.</p><div class="card card--line card--done9"><span class="card__icon"><span class="glyph">ㅘ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 6</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Vowels that slide</span><span class="card__ko">합성 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line card--done9"><span class="card__icon"><span class="glyph">받</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 7</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Closing sounds</span><span class="card__ko">받침</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line " style="--p:78%"><span class="card__icon"><span class="glyph">음</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 8</span><span class="score">78%</span></span><span class="card__title">How blocks change each other</span><span class="card__ko">발음 규칙</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div><div style="--c:var(--c-hangeul)"><h3>A · 20% tint <span class="rec">Chosen</span></h3><p>Twice the colour, so a finished card reads at arm's length. The score is drawn a shade deeper to stay readable.</p><div class="card card--line card--done20"><span class="card__icon"><span class="glyph">ㅘ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 6</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Vowels that slide</span><span class="card__ko">합성 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line card--done20"><span class="card__icon"><span class="glyph">받</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 7</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Closing sounds</span><span class="card__ko">받침</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line " style="--p:78%"><span class="card__icon"><span class="glyph">음</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 8</span><span class="score">78%</span></span><span class="card__title">How blocks change each other</span><span class="card__ko">발음 규칙</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div><div style="--c:var(--c-hangeul)"><h3>B · Solid <span class="rec" style="color:var(--ink-faint);background:var(--sunk)">Built, then replaced by A</span></h3><p>Unmistakable, but a finished section becomes a wall of one colour.</p><div class="card card--line card--solid"><span class="card__icon"><span class="glyph">ㅘ</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 6</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Vowels that slide</span><span class="card__ko">합성 모음</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line card--solid"><span class="card__icon"><span class="glyph">받</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 7</span><span class="score"><svg class="tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100%</span></span><span class="card__title">Closing sounds</span><span class="card__ko">받침</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div><div class="card card--line " style="--p:78%"><span class="card__icon"><span class="glyph">음</span></span><span class="card__body"><span class="card__row"><span class="card__meta">Lesson 8</span><span class="score">78%</span></span><span class="card__title">How blocks change each other</span><span class="card__ko">발음 규칙</span></span><svg class="chev ic" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div></div>
 
   <h2 class="sec">PALETTE · CONTRAST MEASURED AGAINST WHITE (LIGHT) AND #17181B (DARK)</h2>
   <div class="swatches" id="swatches"></div>
