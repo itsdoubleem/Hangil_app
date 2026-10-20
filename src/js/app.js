@@ -9,6 +9,7 @@ import * as V from './views.js';
 import { isKoreanKey, isExamKey } from './data.js';
 
 const root = document.getElementById('app');
+const PAPER = /^#\/exam\/paper\//;
 
 function applyTheme(mode) {
   if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
@@ -82,10 +83,10 @@ async function route() {
   for (const [re, fn] of ROUTES) {
     const m = hash.match(re);
     if (m) {
-      // A timed paper is not reopened half-done: it would start again with a
-      // fresh clock and no answers, which only looks like carrying on.
-      store.setAt(/^#\/exam\/paper\//.test(hash) ? '#/exam' : hash);
-      try { await fn(m); } catch (e) { fail(e); }
+      // Remembered only once the screen has drawn: a screen that throws must
+      // not become the one every later start opens on. A timed paper is
+      // remembered as the Exam screen — see PAPER below.
+      try { await fn(m); store.setAt(PAPER.test(hash) ? '#/exam' : hash); } catch (e) { fail(e); }
       bar(); return;
     }
   }
@@ -108,6 +109,12 @@ setLang(s.lang);
 applyTheme(s.theme);
 store.touchDay();
 window.addEventListener('hashchange', route);
+// A timed paper cannot be resumed: its clock and answers live only in the page
+// that was running it. A page that STARTS on one — a reload, or Android
+// restoring the WebView after killing the app, which brings the hash back with
+// it — would silently begin a fresh paper with a full clock. Go to the Exam
+// screen instead, where the paper is one tap away.
+if (PAPER.test(location.hash)) history.replaceState(null, '', '#/exam');
 // Opened cold — the launcher icon, or Android having closed the app while it
 // sat in the background — there is no hash, and the app goes back to the
 // screen it was left on rather than to Today. A link to a screen still wins.
