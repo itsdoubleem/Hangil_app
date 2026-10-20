@@ -156,3 +156,10 @@ test('a drill best never exceeds its total when the set shrinks', () => {
   assert.ok(r.best <= r.total, `best ${r.best}/${r.total}`);
   assert.equal(r.best, 8);
 });
+
+test('a vocabulary score from the old one-drill rule is cleared, not kept', () => {
+  const old = { app: 'hangil', version: 1, state: { sets: { v01: { at: '2026-10-20', score: 1 }, v02: { at: '2026-10-20', right: ['w:a'], score: 0.5 } } } };
+  store.importAll(JSON.stringify(old));
+  assert.equal(store.get().sets.v01, undefined);
+  assert.equal(store.get().sets.v02.score, 0.5);
+});

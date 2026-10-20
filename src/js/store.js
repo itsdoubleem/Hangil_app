@@ -30,7 +30,18 @@ const FRESH = {
   sets: {},            // vocabulary setId -> { at, score } — its drill completed
 };
 
-let state = load();
+let state = tidy(load());
+
+// A vocabulary set's score once came from a single drill (12 of up to 18
+// words), so a 100% there may cover a third of the set unanswered. Those
+// records carry no word list to recount from; they are dropped rather than
+// left to fall at the set's next drill, and the set is scored afresh.
+function tidy(s) {
+  for (const [id, rec] of Object.entries(s.sets || {})) {
+    if (!rec || !Array.isArray(rec.right)) delete s.sets[id];
+  }
+  return s;
+}
 
 // The first version shipped at 0.85, on the theory that slower is easier to
 // follow. It is not: slowing a neural voice smears it, and it was the single
@@ -243,7 +254,7 @@ export function exportAll() {
 export function importAll(text) {
   const parsed = JSON.parse(text);
   if (!parsed || parsed.app !== 'hangil' || !parsed.state) throw new Error('Not a HANGIL backup file.');
-  state = Object.assign(structuredClone(FRESH), parsed.state);
+  state = tidy(Object.assign(structuredClone(FRESH), parsed.state));
   localStorage.setItem(KEY, JSON.stringify(state));
 }
 
