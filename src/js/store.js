@@ -24,6 +24,8 @@ const FRESH = {
   tags: {},            // tagId -> { right, wrong } — what you are good and bad at
   mocks: [],           // { id, at, score, max, listening, reading }
   last: null,          // last route, for "carry on"
+  at: null,            // the screen open when the app was last left — reopened at boot
+  place: {},           // walk-through id -> the card you were on
 };
 
 let state = load();
@@ -107,6 +109,20 @@ export function recordDrill(id, right, total) {
 export function markSeen(id) { state.seen[id] = today(); touchDay(); save(); }
 
 export function setLast(route, label) { state.last = { route, label }; save(); }
+
+/* Where you were, so leaving the app costs nothing.
+ *
+ * A phone kills an app in the background whenever it likes, and the app used
+ * to come back on Today with every walk-through at card one — eighty percent of
+ * an alphabet lesson, gone because a shift started. The screen and the card are
+ * both remembered now. Neither is touchDay(): looking is not studying.
+ */
+export function setAt(route) { if (state.at !== route) { state.at = route; save(); } }
+export const placeOf = (id) => state.place[id] || 0;
+export function setPlace(id, i) {
+  if (i > 0) state.place[id] = i; else delete state.place[id];
+  save();
+}
 
 /* ---- spaced repetition -------------------------------------------------
    A short SM-2. Get it right and the gap widens; get it wrong and the item

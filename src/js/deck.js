@@ -130,12 +130,22 @@ const RENDER = {
 };
 
 export class Deck {
-  constructor(box, cards, { onDone, doneLabel = 'Practise it' } = {}) {
+  // `id` names the walk-through so the card you were on survives the app being
+  // closed. Finishing it forgets the place, so the next visit starts at the top.
+  constructor(box, cards, { id, onDone, doneLabel = 'Practise it' } = {}) {
     this.box = box;
     this.cards = cards.filter(Boolean);
+    this.id = id;
     this.onDone = onDone;
     this.doneLabel = doneLabel;
-    this.i = 0;
+    // Clamped: a lesson that has lost cards since must not open past its end.
+    this.i = id ? Math.min(store.placeOf(id), this.cards.length - 1) : 0;
+    this.draw();
+  }
+
+  go(i) {
+    this.i = i;
+    if (this.id) store.setPlace(this.id, i);
     this.draw();
   }
 
@@ -155,13 +165,17 @@ export class Deck {
     this.box.append(h('div', { class: 'deck__nav' },
       h('button', {
         class: 'btn btn--ghost', disabled: this.i === 0,
-        onclick: () => { this.i--; this.draw(); },
+        onclick: () => this.go(this.i - 1),
       }, 'Back'),
       h('button', {
         class: 'btn btn--accent btn--wide',
         onclick: () => {
-          if (last) { this.onDone && this.onDone(); return; }
-          this.i++; this.draw();
+          if (last) {
+            if (this.id) store.setPlace(this.id, 0);
+            this.onDone && this.onDone();
+            return;
+          }
+          this.go(this.i + 1);
         },
       }, last ? this.doneLabel : 'Next'),
     ));
