@@ -2,7 +2,7 @@ import './setup.mjs';
 import { test, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 const store = await import('../src/js/store.js');
-const { marks, where } = await import('../src/js/progress.js');
+const { marks, where, resume } = await import('../src/js/progress.js');
 
 beforeEach(() => store.wipe());
 
@@ -47,4 +47,13 @@ test('the Korean interface says where you are in Korean', async () => {
     assert.equal(t('lessonN', 2), '2과');
     assert.equal(t('upNextUnit', 3), '다음 순서 · 3과');
   } finally { setLang('en'); }
+});
+
+test('a card opens what its label says, in the same order', () => {
+  assert.equal(resume('course/g02'), null);
+  store.markWalked('course/g02');
+  assert.equal(resume('course/g02'), 'practice');   // label: practice next
+  store.setPlace('course/g02', 3);
+  assert.equal(resume('course/g02'), 'walk');       // label: card 4 of N
+  assert.equal(where('course/g02', 10), ' · card 4 of 10');
 });

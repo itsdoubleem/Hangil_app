@@ -5,7 +5,7 @@ import { load, data, LEVELS, unitKey, vocabKey, drillKey, tradeKey, isExamKey, i
 import { Quiz, fromExercise, fromExamItem, fromWord, speakBtn } from './quiz.js';
 import { lessons as alphabetLessons, lessonCards, lessonQuestions, letterQuestion, readQuestion, syllableQuestion, changeQuestion, syllableKey } from './alphabet.js';
 import { t } from './i18n.js';
-import { marks, where } from './progress.js';
+import { marks, where, resume } from './progress.js';
 import { runMock } from './mock.js';
 import { Deck, unitCards, hidden } from './deck.js';
 
@@ -378,7 +378,7 @@ export async function hangeul(root) {
         title: l.title, subKo: l.titleKo,
         // Walked through but not practised, or practised below 100%: the
         // practice is the next thing, and the walk-through is one Back away.
-        onclick: () => nav(`#/hangeul/lesson/${l.id}${(rec ? rec.score < 1 : store.walkedOf(deck)) ? '/practice' : ''}`),
+        onclick: () => nav(`#/hangeul/lesson/${l.id}${(rec ? rec.score < 1 : resume(deck) === 'practice') ? '/practice' : ''}`),
       }));
     });
     root.append(h('h3', {}, 'Look it up'));
@@ -549,7 +549,7 @@ export async function course(root) {
         meta: `${t('unitN', u.order)}${rec ? '' : where(deck, cards)}`,
         ...marks(deck, cards, rec),
         title: u.title, subKo: u.form, icon: 'course',
-        onclick: () => nav(`#/course/${u.id}${!rec && store.walkedOf(deck) ? '/practice' : ''}`),
+        onclick: () => nav(`#/course/${u.id}${rec ? '' : ({ walk: '/learn', practice: '/practice' })[resume(deck)] || ''}`),
       }));
     });
   }
@@ -658,7 +658,7 @@ export async function vocab(root) {
       meta: `${set.words.length} ${t('words')}${rec ? '' : where(deck, set.words.length, 'drillNext') || (met ? ` · ${met} practised` : '')}`,
       ...marks(deck, set.words.length, rec),
       title: set.title, subKo: set.titleKo,
-      onclick: () => nav(`#/vocab/${set.id}${!rec && store.walkedOf(deck) ? '/drill' : ''}`),
+      onclick: () => nav(`#/vocab/${set.id}${rec ? '' : ({ walk: '/learn', practice: '/drill' })[resume(deck)] || ''}`),
     }));
   });
 }
@@ -715,7 +715,7 @@ export async function vocabDrill(root, id, mode) {
   const box = h('div', { class: 'q' });
   root.append(box);
   const qs = shuffle(s.words).slice(0, 12).map(w => fromWord(w, s.words, vocabKey(w.ko), mode));
-  new Quiz(box, qs, { title: s.title, onDone: (r) => { store.markSet(s.id, r.asked.filter(k => !r.missed.includes(k)), s.words.length); nav(`#/vocab/${id}`); } });
+  new Quiz(box, qs, { title: s.title, onDone: (r) => { store.markSet(s.id, r.asked.filter(k => !r.missed.includes(k)), s.words.map(w => vocabKey(w.ko))); nav(`#/vocab/${id}`); } });
 }
 
 /* ---------------- exam ---------------- */
