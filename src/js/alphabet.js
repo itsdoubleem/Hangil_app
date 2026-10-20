@@ -10,7 +10,7 @@
 // has not taught.
 
 import { shuffle } from './util.js';
-import { compose, romanize, said, naive, neighbours, parts, VOWELS } from './hangul.js';
+import { compose, romanize, said, heard, naive, neighbours, parts, VOWELS } from './hangul.js';
 
 // Closing letters the 받침 lesson practises: the seven sounds, plus the letters
 // that are NOT said as they look, which is the point of the lesson.
@@ -112,8 +112,9 @@ export function letterQuestion(d, ch, key) {
 
 // Pick three wrong options that each differ from `syl` by one letter. A block
 // with a closing letter is being asked about that letter, so its wrong options
-// differ at the bottom first: 밥 against 밤 and 반, not against 갑.
-function confusable(syl, have) {
+// differ at the bottom first: 밥 against 밤 and 반, not against 갑. Asked by
+// ear, `sound` is heard() rather than said(), so 오 and 우 are never both there.
+function confusable(syl, have, sound = said) {
   const all = shuffle(neighbours(syl, have));
   const p = parts(syl);
   const ordered = (p && p.final)
@@ -125,9 +126,9 @@ function confusable(syl, have) {
   // One per SOUND. 밋, 밑 and 믿 are all said mit, and 내 and 네 are both said
   // ne; two options that sound alike cannot be told apart by ear — nor be two
   // different answers to "how is this said?".
-  const seen = new Set([said(syl)]), out = [];
+  const seen = new Set([sound(syl)]), out = [];
   for (const x of ordered) {
-    const r = said(x);
+    const r = sound(x);
     if (seen.has(r)) continue;
     seen.add(r); out.push(x);
     if (out.length === 3) break;
@@ -155,7 +156,7 @@ export function readQuestion(d, syl, key, have = optionLetters(d, lessonOfSyllab
 // Which one did you hear? Four blocks that differ by a single letter, so the
 // only way to get it right is to hear that letter — 자, 차 or 짜.
 export function listenQuestion(d, syl, key, have = optionLetters(d, lessonOfSyllable(d, syl))) {
-  const wrong = confusable(syl, have);
+  const wrong = confusable(syl, have, heard);
   if (wrong.length < 2) return readQuestion(d, syl, key, have);
   const opts = shuffle([syl, ...wrong]);
   return {
@@ -247,9 +248,9 @@ export function lessonQuestions(d, n) {
   const hearing = syl.slice(reading.length, reading.length + 4);
   // Too few new blocks to split (lesson one has only ㅇ to pair with): hear the
   // same ones instead of hearing nothing.
-  const heard = hearing.length ? hearing : reading.slice(0, 4);
+  const byEar = hearing.length ? hearing : reading.slice(0, 4);
   for (const s of reading) qs.push(readQuestion(d, s, syllableKey(s), have));
-  for (const s of heard) qs.push(listenQuestion(d, s, syllableKey(s), have));
+  for (const s of byEar) qs.push(listenQuestion(d, s, syllableKey(s), have));
   return qs.filter(Boolean);
 }
 

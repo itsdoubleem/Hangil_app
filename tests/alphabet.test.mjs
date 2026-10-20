@@ -12,12 +12,17 @@ const d = await load();
 const SAID_ALIKE = [['ㅐ', 'ㅔ'], ['ㅒ', 'ㅖ'], ['ㅙ', 'ㅞ'], ['ㅚ', 'ㅞ'], ['ㅙ', 'ㅚ']];
 // After ㅈ ㅉ ㅊ the y-glide is not said at all: 져 is said 저.
 const AFTER_J = [['ㅕ', 'ㅓ'], ['ㅑ', 'ㅏ'], ['ㅛ', 'ㅗ'], ['ㅠ', 'ㅜ'], ['ㅖ', 'ㅔ'], ['ㅒ', 'ㅐ']];
+// Not merged in Korean, but merged by the phone's voice: 오 and 우 recorded off
+// Google's Korean voice are the same vowel to the ear. See heard() in hangul.js.
+const VOICE_ALIKE = [['ㅗ', 'ㅜ']];
+const AFTER_J_VOICE = [['ㅛ', 'ㅜ'], ['ㅗ', 'ㅠ'], ['ㅛ', 'ㅠ']];
 
 function alike(x, y) {
   const a = parts(x), b = parts(y);
   if (a.initial !== b.initial || a.final !== b.final) return false;
   const pair = (list) => list.some(([p, q]) => (a.vowel === p && b.vowel === q) || (a.vowel === q && b.vowel === p));
-  return pair(SAID_ALIKE) || (['ㅈ', 'ㅉ', 'ㅊ'].includes(a.initial) && pair(AFTER_J));
+  return pair(SAID_ALIKE) || pair(VOICE_ALIKE)
+    || (['ㅈ', 'ㅉ', 'ㅊ'].includes(a.initial) && (pair(AFTER_J) || pair(AFTER_J_VOICE)));
 }
 
 test('no "which one did you hear?" question offers two options said alike', () => {

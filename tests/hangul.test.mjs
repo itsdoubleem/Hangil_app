@@ -80,3 +80,17 @@ test('said() gives syllables that sound alike the same key', async () => {
   }
   assert.equal(said('x'), null);
 });
+
+test('heard() also joins ㅗ and ㅜ, which the phone voice says alike', async () => {
+  const { heard, said } = await import('../src/js/hangul.js');
+  assert.equal(heard('오'), heard('우'));
+  assert.equal(heard('보'), heard('부'));
+  assert.equal(heard('촉'), heard('축'));
+  // Still two sounds to said(): a reading question keeps asking which is which.
+  assert.notEqual(said('오'), said('우'));
+  // Only that pair: the glide vowels came out clearly apart on the recording.
+  assert.notEqual(heard('요'), heard('유'));
+  assert.notEqual(heard('와'), heard('워'));
+  // After ㅈ/ㅊ the glide is not said, so 쵸 goes with 초 and therefore with 추.
+  assert.equal(heard('쵸'), heard('추'));
+});
