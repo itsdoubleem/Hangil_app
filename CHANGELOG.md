@@ -25,6 +25,12 @@ changes the colour or earns the tick. Scores keep your best first attempt,
 so a worse retry no longer takes a 100% away. An exam question type tinted
 after a single try, even at 1 out of 8; it now needs full marks.
 
+**A finished card is now solid colour.** The light tint first used for a
+100% card sat almost exactly on the page's own colour (1.07:1), so finished
+lessons barely stood out on the phone. It now fills with its section colour,
+with every line of text in full white (dark text in dark mode), which keeps
+5.2:1 or better in every section.
+
 **Also fixed while there:** the two rows of cards on Today touched; three
 buttons were under the app's 48px tap size (the speaker, the small "Show
 meaning", the paper's question grid); the exam screen showed up to three

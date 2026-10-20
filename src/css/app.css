@@ -177,12 +177,14 @@ p  { margin: 0 0 var(--s3); max-width: 36rem; }
 @media (prefers-reduced-motion: no-preference) {
   .card--line::before { animation: grow .7s var(--ease) both; animation-delay: calc(min(var(--i, 0) * 42ms, 380ms) + .15s); }
 }
-/* Finished: a tint of the section colour, the tile turns solid. --ink-faint
-   measures under 3:1 on the tint, so meta and chevron step up. */
-.card--done { background: color-mix(in srgb, var(--c) var(--done-wash), var(--surface)); }
-.card--done .card__icon { background: var(--c); color: var(--on-fill); }
-.card--done .card__meta { color: var(--ink-soft); }
-.card--done .card__chev { stroke: var(--ink-soft); }
+/* Finished (100% only): the card fills with its section colour. Every line of
+   text is --on-fill at full strength — at 80% the meta measured 4.0:1 on the
+   review green — so the hierarchy is size and weight, never opacity. */
+.card--done { background: var(--c); color: var(--on-fill); }
+.card--done::before { background: color-mix(in srgb, var(--on-fill) 40%, transparent); }
+.card--done .card__icon { background: color-mix(in srgb, var(--on-fill) 18%, transparent); color: var(--on-fill); }
+.card--done .card__meta, .card--done .card__sub, .card--done .card__desc, .card--done .score { color: var(--on-fill); }
+.card--done .card__chev { stroke: var(--on-fill); }
 
 /* a card that is the main thing on the screen */
 .card--hero {
