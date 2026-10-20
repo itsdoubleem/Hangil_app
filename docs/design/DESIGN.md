@@ -154,29 +154,35 @@ to know a walk-through was finished even if the practice was then left
 half-done. Record "walked" separately from the resume position; don't reuse
 one for the other.
 
-### The finished card (tinted, at 100% only)
+### The finished card (solid, at 100% only)
 
-- **Background:** `color-mix(in srgb, var(--c) var(--done-wash), var(--surface))`,
-  where `--done-wash` is 9% in light mode and 15% in dark mode. At 9% the dark
-  tint was invisible, so dark mode needs more.
-- **Icon tile:** solid `--c`, with the glyph in `--on-fill`.
-- **The line:** full width.
-- **Meta and chevron step up from `--ink-faint` to `--ink-soft`.** On the tint
-  `--ink-faint` measures 2.7:1 (light) and 2.9:1 (dark), under the 3:1 floor
-  that meta and icons are held to. `--ink-soft` measures 5.4–5.6:1 on every
-  section's tint.
-- Every section colour, as text on its own tint: 4.65:1 (review, light) is the
-  lowest, and everything else is higher. The glyph on the solid tile: 5.2:1 at
-  the lowest.
-- Not chosen: filling the whole card solid. It is the bigger reward, but a
-  finished section becomes a wall of one colour, and every card then looks
-  like the one hero card a screen is allowed.
+*Revised again on 2026-10-20.* The tint (9% of `--c` into the surface) was
+too close to the page ground: `#E9F2F3` on `#F8F8F7` is 1.07:1, so on the phone
+a finished card hardly stood apart from the page. A 20% tint and a solid fill
+were compared in the preview against the ground, and the owner chose solid.
+
+- **Background:** `--c`. Against the ground it measures 4.9:1 at the lowest
+  (review, light), so a finished card is unmistakable.
+- **All text is `--on-fill` at full strength:** title, meta, Korean subtitle,
+  score and chevron. The hierarchy comes from size and weight, never from
+  opacity. *Why:* `--on-fill` at 80% measured 4.0:1 on the review green and
+  4.1:1 on the orange in light mode, under 4.5. At full strength the lowest
+  is 5.2:1 (review, light), and dark mode is 8.7:1 or more.
+- **Icon tile:** `--on-fill` at 18% over `--c`, with the glyph in `--on-fill`.
+  The glyph is 24px semibold, which counts as large text with a 3:1 floor; the
+  lowest is 3.7:1 (review, light).
+- **The line:** full width, in `--on-fill` at 40%. A line in `--c` would vanish
+  into a card of the same colour.
+- **The known cost:** a section where everything is finished becomes a column
+  of one colour. That was weighed in the preview and accepted, because a
+  finished card has to read as finished at a glance.
+- A card below 100% stays white, with its line at the score.
 
 ### The score, and the other states
 
 - **The score** sits at the right of the card's top row, level with "Lesson 1":
   the percentage in `--c`, using `--t-num` ("78%"). The tick appears only on a
-  tinted card ("✓ 100%"); a tick beside 78% would read as "passed". Exam
+  finished card ("✓ 100%"); a tick beside 78% would read as "passed". Exam
   question types show their best instead: "best 7/8", or "✓ best 8/8".
 - **In progress:** the meta line says where you are: "Lesson 3 · card 17 of 21".
 - **Up next:** the meta line reads "Lesson 4 · Up next", with "Up next" in
