@@ -183,7 +183,9 @@ export class Quiz {
     const total = this.qs.length;
     // Retrying the missed ones replays a smaller set, and its score is not the
     // lesson's score: 2 out of 2 on a retry would otherwise overwrite 4 out of 6.
-    if (!this.first) this.first = { right: this.right, total };
+    // Which questions were asked and which missed, first time round, for a
+    // caller that counts items rather than a percentage (a vocabulary set).
+    if (!this.first) this.first = { right: this.right, total, asked: this.qs.map(q => q.key), missed: this.wrong.map(q => q.key) };
     const pct = Math.round((this.right / total) * 100);
     const tone = pct === 100 ? 'review' : pct >= 60 ? 'course' : 'exam';
     const R = 54, C = 2 * Math.PI * R;

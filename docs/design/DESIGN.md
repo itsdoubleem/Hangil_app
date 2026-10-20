@@ -136,7 +136,7 @@ card must always say the same thing.
 |---|---|---|---|
 | Alphabet lesson | walk-through cards passed, the practice as one last step | the best score (`letters[id].score`) | the best score is 100% |
 | Course unit | the same | the best score (`done[id].score`) | the best score is 100% |
-| Vocabulary set | the same, the drill as the last step | the best score (`sets[id].score`) | the best score is 100% |
+| Vocabulary set | the same, the drill as the last step | the share of the set's words answered right on a first attempt, across drills (`sets[id].score`) | every word has been answered right |
 | Exam question type | no walk-through, no line | best ÷ total (`drills[id]`) | best = total |
 | Trade | questions answered ÷ questions | (no score) | every question answered |
 
@@ -148,11 +148,10 @@ app saves for resuming (`store.place`).
 a worse retry must not take that away. The first attempt is the honest one:
 a retry of only the missed questions is never the score.
 
-**Note for the build:** today a walk-through forgets its position the moment
-it is finished, so that the next visit starts from card one. The line needs
-to know a walk-through was finished even if the practice was then left
-half-done. Record "walked" separately from the resume position; don't reuse
-one for the other.
+**Walked is its own record.** A walk-through forgets its position the moment
+it is finished, so the next visit starts from card one, yet its line must not
+fall back to nothing. So finishing one is recorded on its own
+(`store.walked`), never inferred from the resume position.
 
 ### The finished card (20% tint, at 100% only)
 
@@ -163,12 +162,14 @@ solid fill were compared in the preview. Solid was built first, and the owner
 then asked for the 20% tint instead.
 
 - **Background:** `color-mix(in srgb, var(--c) var(--done-wash), var(--surface))`,
-  where `--done-wash` is **20%** in light mode and **22%** in dark mode. The
+  where `--done-wash` is **20%** in light mode and **21%** in dark mode. The
   alphabet's tint is `#CFE1E5`, roughly twice as far from the ground as before.
 - **Icon tile:** solid `--c`, with the glyph in `--on-fill` (5.2:1 at the lowest).
 - **The line:** full width, in `--c`.
 - **Meta, Korean subtitle and chevron step up to `--ink-soft`.** It measures
-  4.52:1 at the lowest on a light tint and 4.5:1 on a dark one. `--ink-faint`
+  4.52:1 at the lowest on a light tint and 4.62:1 on a dark one. The dark
+  tint is 21%, not 22%: at 22% the review green measured 4.496:1, which
+  rounds to 4.5 but is under it. `--ink-faint`
   would fall under 3:1.
 - **The score is `--c` mixed with `--ink` by `--done-score`:** 80% `--c` in light mode,
   because plain `--c` on a 20% tint of itself falls to 3.98:1 (review green).
@@ -180,11 +181,18 @@ then asked for the 20% tint instead.
   wall of one colour, and all text on it had to be full-strength `--on-fill`,
   because 80% fell to 4.0:1 on the review green.
 - A card below 100% stays white, with its line at the score.
+- **Practised below 100% still counts as done everywhere else.** The section
+  counts ("4 of 8"), Today's next step and "Up next" treat a practised lesson
+  as done, because it has been studied. Only its own card holds back the
+  colour, as a standing invitation to bring it to 100%, and tapping it opens
+  the practice. *Why:* making 78% block the path would hold a learner on one
+  lesson for the sake of a colour.
 
 ### The score, and the other states
 
 - **The score** sits at the right of the card's top row, level with "Lesson 1":
-  the percentage in `--c`, using `--t-num` ("78%"). The tick appears only on a
+  the percentage in `--c`, using `--t-num` ("78%"); on a finished card it is
+  drawn deeper (`--done-score`, above). The tick appears only on a
   finished card ("✓ 100%"); a tick beside 78% would read as "passed". Exam
   question types show their best instead: "best 7/8", or "✓ best 8/8".
 - **In progress:** the meta line says where you are: "Lesson 3 · card 17 of 21".

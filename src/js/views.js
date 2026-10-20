@@ -5,6 +5,7 @@ import { load, data, LEVELS, unitKey, vocabKey, drillKey, tradeKey, isExamKey, i
 import { Quiz, fromExercise, fromExamItem, fromWord, speakBtn } from './quiz.js';
 import { lessons as alphabetLessons, lessonCards, lessonQuestions, letterQuestion, readQuestion, syllableQuestion, changeQuestion, syllableKey } from './alphabet.js';
 import { t } from './i18n.js';
+import { marks, where } from './progress.js';
 import { runMock } from './mock.js';
 import { Deck, unitCards, hidden } from './deck.js';
 
@@ -85,29 +86,8 @@ function tile({ tone = 'today', icon: ic, glyph, meta, title, sub, subKo, desc, 
 // right, a 4px line under both.
 function progressRow(label, done, total, tone) {
   return h('div', { class: 'progress', style: `--c: var(--c-${tone})` },
-    h('div', { class: 'progress__row' }, h('span', {}, label), h('b', {}, `${done} of ${total}`)),
+    h('div', { class: 'progress__row' }, h('span', {}, label), h('b', {}, t('nOfM').replace('%a', done).replace('%b', total))),
     h('div', { class: 'bar' }, h('i', { style: `width:${total ? (done / total) * 100 : 0}%` })));
-}
-
-const pct = (x) => `${Math.round(x * 100)}%`;
-
-// A card's line, tint and score. Before the practice, the line is how far
-// through the walk-through you are. After it, the line IS the score, and only
-// 100% turns the card its colour: a line and a number side by side read as
-// one quantity, so they must never disagree (a "78%" card with a full line
-// did, and looked finished when it was not).
-function marks(deck, cards, rec) {
-  if (rec && typeof rec.score === 'number') {
-    return { line: rec.score, done: rec.score >= 1, score: pct(rec.score) };
-  }
-  return { line: store.stepsDone(deck, cards, false), done: false, score: null };
-}
-
-// Where you are in something not yet finished, for its card's meta line.
-function where(deck, cards, next = 'practiceNext') {
-  if (store.walkedOf(deck)) return ` · ${t(next)}`;
-  const at = store.placeOf(deck);
-  return at ? ` · ${t('cardOf').replace('%a', Math.min(at, cards - 1) + 1).replace('%b', cards)}` : '';
 }
 
 // A ring rather than a bar, once, on the home screen. It is the only place the
@@ -383,7 +363,7 @@ export async function hangeul(root) {
   if (ls.length) {
     const done = ls.filter(l => s.letters[l.id]).length;
     const nextIdx = ls.findIndex(l => !s.letters[l.id]);
-    root.append(progressRow('Lessons', done, ls.length, 'hangeul'));
+    root.append(progressRow(t('lessonsLabel'), done, ls.length, 'hangeul'));
     ls.forEach((l, n) => {
       const rec = s.letters[l.id];
       const first = (d.hangeul.groups.find(g => g.id === l.groups[0]) || {}).letters;
@@ -392,7 +372,7 @@ export async function hangeul(root) {
       root.append(tile({
         tone: 'hangeul', i: n,
         glyph: first && first.length ? first[0].ch : l.kind === 'changes' ? '음' : '받',
-        meta: `Lesson ${n + 1}${rec ? '' : where(deck, cards)}`,
+        meta: `${t('lessonN', n + 1)}${rec ? '' : where(deck, cards)}`,
         upNext: !rec && n === nextIdx && !store.placeOf(deck) && !store.walkedOf(deck),
         ...marks(deck, cards, rec),
         title: l.title, subKo: l.titleKo,
@@ -548,7 +528,7 @@ export async function course(root) {
   if (upNext && !lettersLeft) {
     root.append(tile({
       tone: 'course', hero: true,
-      meta: `Up next · Unit ${upNext.order}`,
+      meta: t('upNextUnit', upNext.order),
       title: upNext.title, desc: upNext.goal,
       onclick: () => nav(`#/course/${upNext.id}`),
     }));
@@ -559,14 +539,14 @@ export async function course(root) {
     const done = units.filter(u => s.done[u.id]).length;
     root.append(h('h3', {}, `${lv.title} · `, h('span', { class: 'ko' }, lv.titleKo)));
     root.append(h('p', { class: 'tiny' }, lv.blurb));
-    root.append(progressRow('Units', done, units.length, 'course'));
+    root.append(progressRow(t('unitsLabel'), done, units.length, 'course'));
     units.forEach((u, n) => {
       const rec = s.done[u.id];
       const deck = `course/${u.id}`;
       const cards = unitCards(u).length;
       root.append(tile({
         tone: 'course', i: n,
-        meta: `${t('unit')} ${String(u.order).padStart(2, '0')}${rec ? '' : where(deck, cards)}`,
+        meta: `${t('unitN', u.order)}${rec ? '' : where(deck, cards)}`,
         ...marks(deck, cards, rec),
         title: u.title, subKo: u.form, icon: 'course',
         onclick: () => nav(`#/course/${u.id}${!rec && store.walkedOf(deck) ? '/practice' : ''}`),
@@ -735,7 +715,7 @@ export async function vocabDrill(root, id, mode) {
   const box = h('div', { class: 'q' });
   root.append(box);
   const qs = shuffle(s.words).slice(0, 12).map(w => fromWord(w, s.words, vocabKey(w.ko), mode));
-  new Quiz(box, qs, { title: s.title, onDone: (r) => { store.markSet(s.id, r.right / r.total); nav(`#/vocab/${id}`); } });
+  new Quiz(box, qs, { title: s.title, onDone: (r) => { store.markSet(s.id, r.asked.filter(k => !r.missed.includes(k)), s.words.length); nav(`#/vocab/${id}`); } });
 }
 
 /* ---------------- exam ---------------- */

@@ -108,7 +108,8 @@ export function markLetters(id, score) {
 // which of the paper's question types still needs work.
 export function recordDrill(id, right, total) {
   const prev = state.drills[id];
-  state.drills[id] = { at: today(), total, best: Math.max(right, prev ? prev.best : 0) };
+  // Capped at the current total: a set that loses questions must not show 9/8.
+  state.drills[id] = { at: today(), total, best: Math.min(total, Math.max(right, prev ? prev.best : 0)) };
   save();
 }
 
@@ -144,8 +145,13 @@ export function stepsDone(id, cards, finished) {
   return passed / (cards + 1);
 }
 
-export function markSet(id, score) {
-  state.sets[id] = { at: today(), score: best(state.sets[id], score) };
+// A drill asks a sample of a set's words, so one perfect drill is not the
+// whole set. The set keeps every word answered right on a first attempt, and
+// its score is that share of the set: 100% means every word, not 12 of 18.
+export function markSet(id, rightKeys, total) {
+  const prev = state.sets[id];
+  const right = [...new Set([...((prev && prev.right) || []), ...rightKeys])];
+  state.sets[id] = { at: today(), right, score: Math.min(1, right.length / total) };
   touchDay();
   save();
 }
