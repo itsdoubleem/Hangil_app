@@ -17,6 +17,21 @@ is about three quarters), not your score, so a lesson finished at 86% still
 counts as finished. The score sits beside the lesson number as "✓ 86%". This
 replaced a gauge pill that was proposed first and turned down from the preview.
 
+**Only a card at 100% turns its colour.** The first version tinted a card
+as soon as its practice was done, so a lesson at 78% showed a full line on a
+coloured card beside the number 78%. Now, before the practice the line shows
+how far through you are, after it the line is your score, and only 100%
+changes the colour or earns the tick. Scores keep your best first attempt,
+so a worse retry no longer takes a 100% away. An exam question type tinted
+after a single try, even at 1 out of 8; it now needs full marks.
+
+**Also fixed while there:** the two rows of cards on Today touched; three
+buttons were under the app's 48px tap size (the speaker, the small "Show
+meaning", the paper's question grid); the exam screen showed up to three
+navy cards where the design allows one; "Up next" and "card 3 of 21" were
+English in the Korean interface; and the web manifest still had the old
+colours.
+
 **Finishing is now remembered on its own.** A walk-through forgets its card
 when you finish it, so that the next visit starts at the top, but its line
 must not drop back to nothing because of that. Finished walk-throughs and

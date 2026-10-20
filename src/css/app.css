@@ -196,7 +196,9 @@ p  { margin: 0 0 var(--s3); max-width: 36rem; }
 .card--hero .bar { background: color-mix(in srgb, var(--primary-ink) 22%, transparent); }
 .card--hero .bar i { background: var(--primary-ink); }
 
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* Two of these sit one above the other on Today, so the gap between them has
+   to be the grid's own margin: without it the rows touched. */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 10px; }
 .grid2 .card { flex-direction: column; align-items: flex-start; gap: var(--s3); min-height: 150px; margin: 0; padding: var(--s4); }
 .grid2 .card__desc { font-size: 13.5px; line-height: 1.4; }
 .grid2 .card__icon { width: 48px; height: 48px; }
@@ -294,12 +296,14 @@ p  { margin: 0 0 var(--s3); max-width: 36rem; }
 .word__ex b { font-family: var(--ko); font-weight: 600; color: var(--ink); }
 
 .speak {
-  flex: none; width: 40px; height: 40px; border-radius: var(--r-pill);
+  position: relative; flex: none; width: 40px; height: 40px; border-radius: var(--r-pill);
   border: 0; background: var(--cw-vocab);
   display: inline-flex; align-items: center; justify-content: center; padding: 0;
   transition: transform .18s var(--ease);
 }
 .speak:active { transform: scale(.88); }
+/* Drawn at 40px so a line of Korean is not crowded by it; tapped at 48. */
+.speak::after { content: ""; position: absolute; inset: -4px; border-radius: inherit; }
 .speak svg { width: 18px; height: 18px; fill: none; stroke: var(--c-vocab); stroke-width: var(--stroke); stroke-linecap: round; stroke-linejoin: round; }
 .speak[data-on="1"] { background: var(--c-vocab); }
 .speak[data-on="1"] svg { stroke: var(--on-fill); }
@@ -465,8 +469,8 @@ img.pic { object-fit: contain; background: #fff; border-radius: var(--r-xs); pad
 
 .sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(46px,1fr)); gap: var(--s2); margin-top: var(--s3); }
 .sheet button {
-  min-height: 46px; border: 2px solid transparent; background: var(--surface);
-  border-radius: var(--r-xs); font: 700 13.5px/1 var(--sans); color: var(--ink-faint); box-shadow: var(--e1);
+  min-height: var(--tap); border: 2px solid transparent; background: var(--surface);
+  border-radius: var(--r-xs); font: 650 13.5px/1 var(--sans); color: var(--ink-faint); box-shadow: var(--e1); font-variant-numeric: tabular-nums;
 }
 .sheet button[data-done="1"] { background: var(--cw-exam); color: var(--c-exam); }
 .sheet button[data-here="1"] { border-color: var(--ink); color: var(--ink); }
@@ -541,7 +545,7 @@ audio { width: 100%; margin-top: var(--s3); }
 }
 .reveal__hint { font: 500 13px/1 var(--sans); color: var(--ink-faint); }
 .reveal[data-on="1"] { background: var(--cw); color: var(--ink); cursor: default; }
-.reveal--sm { font-size: 15px; min-height: 40px; margin-top: var(--s2); }
+.reveal--sm { font-size: 15px; min-height: var(--tap); margin-top: var(--s2); }
 
 /* The minimal pair: the same sentence twice, with the arrow marking the step. */
 .pair { display: grid; gap: var(--s2); }
