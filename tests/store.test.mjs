@@ -90,3 +90,18 @@ test('a backup round-trips, and anything else is refused', () => {
   assert.throws(() => store.importAll('{"app":"other","state":{}}'), /Not a HANGIL backup/);
   assert.throws(() => store.importAll('not json'));
 });
+
+test('a walk-through keeps its card, and forgets it at zero', () => {
+  assert.equal(store.placeOf('hangeul/l3'), 0);
+  store.setPlace('hangeul/l3', 16);
+  assert.equal(store.placeOf('hangeul/l3'), 16);
+  assert.equal(store.placeOf('hangeul/l4'), 0);
+  store.setPlace('hangeul/l3', 0);
+  assert.equal(store.placeOf('hangeul/l3'), 0);
+  assert.equal('hangeul/l3' in store.get().place, false);
+});
+
+test('the screen last open is remembered', () => {
+  store.setAt('#/hangeul/lesson/l3');
+  assert.equal(store.get().at, '#/hangeul/lesson/l3');
+});

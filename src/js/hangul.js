@@ -66,14 +66,33 @@ export function naive(syl) {
 const MERGED = { 'ㅐ': 'ㅔ', 'ㅒ': 'ㅖ', 'ㅙ': 'ㅞ', 'ㅚ': 'ㅞ' };
 const NO_GLIDE = { 'ㅑ': 'ㅏ', 'ㅕ': 'ㅓ', 'ㅛ': 'ㅗ', 'ㅠ': 'ㅜ', 'ㅖ': 'ㅔ' };
 
-export function said(syl) {
-  const p = parts(syl);
-  if (!p) return null;
+function saidVowel(p) {
   let v = MERGED[p.vowel] || p.vowel;
   if (['ㅈ', 'ㅉ', 'ㅊ'].includes(p.initial)) v = NO_GLIDE[v] || v;
   if (v === 'ㅖ' && p.initial !== 'ㅇ' && p.initial !== 'ㄹ') v = 'ㅔ';
   if (v === 'ㅢ' && p.initial !== 'ㅇ') v = 'ㅣ';
-  return romanize(compose(p.initial, v, p.final));
+  return v;
+}
+
+export function said(syl) {
+  const p = parts(syl);
+  if (!p) return null;
+  return romanize(compose(p.initial, saidVowel(p), p.final));
+}
+
+// How a syllable comes out of the phone's voice, as a key — stricter than
+// said() in one place. ㅗ and ㅜ are two sounds, and a reading question still
+// asks which is which, but Google's Korean voice says them nearly alike: 오 and
+// 우 were recorded off a Galaxy S24 at F1 453/429 Hz and F2 911/933 Hz, the
+// same vowel to any ear, and 보/부, 고/구 only ~100 Hz apart. 요/유 and 와/워 come
+// out clearly different. So a "which one did you hear?" question never offers
+// two blocks that differ only there; it would be asking for a guess.
+export function heard(syl) {
+  const p = parts(syl);
+  if (!p) return null;
+  // After said()'s own merging, so 쵸 — said 초 — goes with 추 as well.
+  const v = saidVowel(p);
+  return romanize(compose(p.initial, v === 'ㅗ' ? 'ㅜ' : v, p.final));
 }
 
 // Every syllable that differs from `syl` in exactly one of its parts, using

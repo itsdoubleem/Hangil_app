@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-10-20 — two fixes from an hour on the phone
+
+**오 and 우 are no longer asked by ear.** Recorded off Google's Korean voice
+on a Galaxy S24, the two came out as the same vowel (F1 453/429 Hz, F2
+911/933 Hz), and 보/부 or 고/구 were only about 100 Hz apart. A "which one
+did you hear?" question no longer offers two blocks that differ only by ㅗ
+against ㅜ. A reading question still asks which is which, because there the
+learner is working from the letter. 요/유, 와/워 and 어/오 measured clearly
+apart and are unchanged.
+
+**Leaving the app no longer loses your place.** Opened cold, the app goes
+back to the screen it was left on, not to Today, and every walk-through
+(alphabet lessons, course units, vocabulary sets) reopens on the card you
+were on. Finishing a walk-through forgets its card, so the next visit starts
+at the top. A timed paper is the exception, because it cannot be resumed
+honestly: reopening it would start a fresh clock, so the app goes back to
+the Exam screen instead.
+
 ## v1.0.2 — 2026-10-11 — twelve more vocabulary sets, reviewed
 
 Releases the three entries below: vocabulary sets v13–v24, six romanization

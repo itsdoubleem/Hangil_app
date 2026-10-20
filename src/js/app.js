@@ -81,7 +81,13 @@ async function route() {
   window.scrollTo(0, 0);
   for (const [re, fn] of ROUTES) {
     const m = hash.match(re);
-    if (m) { try { await fn(m); } catch (e) { fail(e); } bar(); return; }
+    if (m) {
+      // A timed paper is not reopened half-done: it would start again with a
+      // fresh clock and no answers, which only looks like carrying on.
+      store.setAt(/^#\/exam\/paper\//.test(hash) ? '#/exam' : hash);
+      try { await fn(m); } catch (e) { fail(e); }
+      bar(); return;
+    }
   }
   location.hash = '#/';
 }
@@ -102,6 +108,10 @@ setLang(s.lang);
 applyTheme(s.theme);
 store.touchDay();
 window.addEventListener('hashchange', route);
+// Opened cold — the launcher icon, or Android having closed the app while it
+// sat in the background — there is no hash, and the app goes back to the
+// screen it was left on rather than to Today. A link to a screen still wins.
+if (!location.hash && s.at && s.at !== '#/') history.replaceState(null, '', s.at);
 route();
 
 // The service worker exists so the *web* app keeps working with the network off.

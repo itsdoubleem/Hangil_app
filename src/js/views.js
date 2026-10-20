@@ -409,7 +409,7 @@ export async function hangeulLesson(root, id) {
   root.append(h('p', { class: 'kicker' }, `Lesson ${n + 1} of ${ls.length}`));
   const box = h('div', { class: 'deck' });
   root.append(box);
-  new Deck(box, lessonCards(d, l), { onDone: () => nav(`#/hangeul/lesson/${id}/practice`) });
+  new Deck(box, lessonCards(d, l), { id: `hangeul/${id}`, onDone: () => nav(`#/hangeul/lesson/${id}/practice`) });
 }
 
 export async function hangeulPractice(root, id) {
@@ -597,7 +597,7 @@ export async function lessonLearn(root, id) {
   root.append(h('p', { class: 'kicker' }, u.title));
   const box = h('div', { class: 'deck' });
   root.append(box);
-  new Deck(box, unitCards(u), { onDone: () => nav(`#/course/${id}/practice`) });
+  new Deck(box, unitCards(u), { id: `course/${id}`, onDone: () => nav(`#/course/${id}/practice`) });
 }
 
 export async function lessonPractice(root, id) {
@@ -675,7 +675,7 @@ export async function vocabLearn(root, id) {
   const box = h('div', { class: 'deck' });
   root.append(box);
   const cards = set.words.map(w => ({ kind: 'word', word: w }));
-  new Deck(box, cards, { onDone: () => nav(`#/vocab/${id}/drill`), doneLabel: 'Drill them' });
+  new Deck(box, cards, { id: `vocab/${id}`, onDone: () => nav(`#/vocab/${id}/drill`), doneLabel: 'Drill them' });
 }
 
 export async function vocabDrill(root, id, mode) {
