@@ -142,3 +142,11 @@ test('a lesson, unit or set keeps its best score, not its latest', () => {
   store.markLesson('g01', 0.9);
   assert.equal(store.get().done.g01.score, 0.9);
 });
+
+test('a drill best never exceeds its total when the set shrinks', () => {
+  store.recordDrill('d09', 9, 10);
+  store.recordDrill('d09', 5, 8);
+  const r = store.get().drills.d09;
+  assert.ok(r.best <= r.total, `best ${r.best}/${r.total}`);
+  assert.equal(r.best, 8);
+});

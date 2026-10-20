@@ -108,7 +108,8 @@ export function markLetters(id, score) {
 // which of the paper's question types still needs work.
 export function recordDrill(id, right, total) {
   const prev = state.drills[id];
-  state.drills[id] = { at: today(), total, best: Math.max(right, prev ? prev.best : 0) };
+  // Capped at the current total: a set that loses questions must not show 9/8.
+  state.drills[id] = { at: today(), total, best: Math.min(total, Math.max(right, prev ? prev.best : 0)) };
   save();
 }
 
