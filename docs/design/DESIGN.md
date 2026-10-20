@@ -163,12 +163,14 @@ solid fill were compared in the preview. Solid was built first, and the owner
 then asked for the 20% tint instead.
 
 - **Background:** `color-mix(in srgb, var(--c) var(--done-wash), var(--surface))`,
-  where `--done-wash` is **20%** in light mode and **22%** in dark mode. The
+  where `--done-wash` is **20%** in light mode and **21%** in dark mode. The
   alphabet's tint is `#CFE1E5`, roughly twice as far from the ground as before.
 - **Icon tile:** solid `--c`, with the glyph in `--on-fill` (5.2:1 at the lowest).
 - **The line:** full width, in `--c`.
 - **Meta, Korean subtitle and chevron step up to `--ink-soft`.** It measures
-  4.52:1 at the lowest on a light tint and 4.5:1 on a dark one. `--ink-faint`
+  4.52:1 at the lowest on a light tint and 4.62:1 on a dark one. The dark
+  tint is 21%, not 22%: at 22% the review green measured 4.496:1, which
+  rounds to 4.5 but is under it. `--ink-faint`
   would fall under 3:1.
 - **The score is `--c` mixed with `--ink` by `--done-score`:** 80% `--c` in light mode,
   because plain `--c` on a 20% tint of itself falls to 3.98:1 (review green).

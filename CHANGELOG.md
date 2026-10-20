@@ -28,7 +28,7 @@ after a single try, even at 1 out of 8; it now needs full marks.
 **A finished card now stands out from the page.** The light tint first used
 for a 100% card sat almost exactly on the page's own colour (1.07:1), so
 finished lessons barely showed on the phone. The tint is now 20% of the
-section colour (22% in dark mode), with the score drawn a shade deeper so it
+section colour (21% in dark mode), with the score drawn a shade deeper so it
 stays at 5.2:1 or better in every section. A solid fill was tried first and
 replaced: it turned a finished section into a wall of one colour.
 
